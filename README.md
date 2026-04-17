@@ -25,19 +25,23 @@
 
 - 军事家关心地形起伏
 
-  ![伊朗地形图](images/readme/iran-topo-en.jpg)
+  <img src="images/readme/iran-topo-en.jpg" alt="伊朗地形图" width="900" />
 
 - 消费者关心餐厅分布
 
+  <img src="images/readme/unesco-world-heritage-sites.png" alt="点位分布示意" width="900" />
 
 - 流行病学家关注病例空间分布（John Snow, 1854）
 
-  ![John%20Snow%20cholera%20map](images/readme/snow-cholera-map.jpg)
+  <img src="images/readme/snow-cholera-map.jpg" alt="John Snow cholera map" width="900" />
 
 
 
 每个人的关注范围和精度需求是参差的，也因此产生了不同分辨率不同专题的地图。
 
+| 低分辨率（世界范围） | 高分辨率（世界范围） | 像素级对比（局部放大） |
+| --- | --- | --- |
+| <img src="images/readme/whole-world-land-oceans-8192.jpg" alt="Whole world low res" width="320" /> | <img src="images/readme/whole-world-land-oceans-12000.jpg" alt="Whole world high res" width="320" /> | <img src="images/readme/compare-world-low-high-res.png" alt="Compare low high res" width="320" /> |
 
 
 
@@ -62,6 +66,7 @@
   
      如果按比例尺测算，常规全国地图上河流和道路的宽度甚至可达2-3km，远超其真实值（数米到数十米）
      
+     <img src="images/readme/china-topography.jpg" alt="全国尺度地图示意（中国地形）" width="900" />
      
      
      为了避免将关键信息消失于背景，也为了照顾人类有限的认知，地图提供的是有选择性的，不完整的现实视图。

@@ -1,12 +1,19 @@
-# 崔子橙
-
-现任某互联网大厂数据运营职位，探索 AI中，提升生命厚度...
-
-- 电话：[15510522509](tel:15510522509)
-- 邮箱：[cuizicheng.1024@gmail.com](mailto:cuizicheng.1024@gmail.com)
-- GitHub：[cuizicheng1024](https://github.com/cuizicheng1024)
-
-<img src="images/avatar.png" alt="头像" width="140" />
+<table>
+  <tr>
+    <td width="160" valign="top">
+      <img src="images/avatar.png" alt="头像" width="140" />
+    </td>
+    <td valign="top">
+      <h1>崔子橙</h1>
+      <p>现任某互联网大厂数据运营职位，探索 AI中，提升生命厚度...</p>
+      <ul>
+        <li>电话：<a href="tel:15510522509">15510522509</a></li>
+        <li>邮箱：<a href="mailto:cuizicheng.1024@gmail.com">cuizicheng.1024@gmail.com</a></li>
+        <li>GitHub：<a href="https://github.com/cuizicheng1024">cuizicheng1024</a></li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ## 个人简介
 
@@ -51,5 +58,5 @@
 
 | 项目名称 | 简介 | 体验地址 | 截图 |
 | --- | --- | --- | --- |
-| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | ![故事地图-1](images/mapstory1.png)<br>![故事地图-2](images/mapstory2.png) |
+| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | <img src="images/mapstory1.png" alt="故事地图-1" width="240" /><br><img src="images/mapstory2.png" alt="故事地图-2" width="240" /> |
 | 陆游记 | 为在大陆发展的台湾同胞提供连接社群 | [陆游记](https://bytedance.larkoffice.com/wiki/GS1tw0yvCiqazKkhbHAcxmFunCS) | - |
