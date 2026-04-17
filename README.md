@@ -21,15 +21,27 @@
 
 注意力永远是稀缺的，因此制图时只能有所取舍。
 
-不同角色对现实世界的关注点是不一样的，军事家关心地形起伏，消费者关心餐饮分布，流行病学家关注病例空间分布...
+不同角色对现实世界的关注点是不一样的：
 
-[伊朗地形图][五道口餐饮分布]【john snow地图】
+- 军事家关心地形起伏（以伊朗地形图为例）
+
+  ![伊朗地形图](https://commons.wikimedia.org/wiki/Special:FilePath/Iran%20topo%20en.jpg?width=1100)
+
+- 消费者关心 POI/餐饮点位分布（点位分布示意）
+
+  ![点位分布示意](https://commons.wikimedia.org/wiki/Special:FilePath/Unesco%20world%20heritage%20sites.png?width=1100)
+
+- 流行病学家关注病例空间分布（John Snow, 1854）
+
+  ![John%20Snow%20cholera%20map](https://commons.wikimedia.org/wiki/Special:FilePath/Snow-cholera-map.jpg?width=1100)
 
 
 
 每个人的关注范围和精度需求是参差的，也因此产生了不同分辨率不同专题的地图。
 
-【不同分辨率的地图】
+| 低分辨率（世界范围） | 高分辨率（世界范围） | 像素级对比（局部放大） |
+| --- | --- | --- |
+| ![Whole%20world%20low%20res](https://commons.wikimedia.org/wiki/Special:FilePath/Whole%20world%20-%20land%20and%20oceans.jpg?width=650) | ![Whole%20world%20high%20res](https://commons.wikimedia.org/wiki/Special:FilePath/Whole%20world%20-%20land%20and%20oceans%2012000.jpg?width=650) | ![Compare%20low%20high%20res](https://commons.wikimedia.org/wiki/Special:FilePath/Compare_world_low_high_res.png?width=650) |
 
 > 90%的信息都是垃圾。
 
@@ -52,7 +64,7 @@
   
      如果按比例尺测算，常规全国地图上河流和道路的宽度甚至可达2-3km，远超其真实值（数米到数十米）
      
-     【全国地图.jpg】
+     ![全国尺度地图示意（中国地形）](https://commons.wikimedia.org/wiki/Special:FilePath/China%20topography%20full%20res.jpg?width=1400)
      
      
      为了避免将关键信息消失于背景，也为了照顾人类有限的认知，地图提供的是有选择性的，不完整的现实视图。
@@ -86,5 +98,12 @@
      LLM对知识的抽象也让我们对 什么是智能 有了更深入的理解。
 
 
-  
+## 图片来源
+
+- 伊朗地形图：https://commons.wikimedia.org/wiki/File:Iran_topo_en.jpg
+- 点位分布示意（世界遗产点位）：https://commons.wikimedia.org/wiki/File:Unesco_world_heritage_sites.png
+- John Snow 病例分布地图：https://commons.wikimedia.org/wiki/File:Snow-cholera-map.jpg
+- 分辨率对比示意：https://commons.wikimedia.org/wiki/File:Compare_world_low_high_res.png
+- 世界底图（低/高分辨率）：https://commons.wikimedia.org/wiki/Category:Satellite_maps_of_the_world
+- 中国地形图：https://commons.wikimedia.org/wiki/File:China_topography_full_res.jpg
 
