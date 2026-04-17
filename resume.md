@@ -51,5 +51,5 @@
 
 | 项目名称 | 简介 | 体验地址 | 截图 |
 | --- | --- | --- | --- |
-| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | ![故事地图-1](images/image.png)<br>![故事地图-2](images/image-1.png) |
+| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | ![故事地图-1](images/mapstory1.png)<br>![故事地图-2](images/mapstory2.png) |
 | 陆游记 | 为在大陆发展的台湾同胞提供连接社群 | [陆游记](https://bytedance.larkoffice.com/wiki/GS1tw0yvCiqazKkhbHAcxmFunCS) | - |
