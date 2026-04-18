@@ -1767,16 +1767,4 @@
    id="path4313-64-90-5-8-43"
    inkscape:connector-curvature="0"
    style="fill:#b9b9b9;fill-opacity:1;stroke:#ffffff;stroke-width:1.51328313000000000;stroke-miterlimit:4;stroke-dasharray:none" />
-  <g id="highlight-greenland-africa" style="fill:none;stroke:#ff4d4f;stroke-width:6;stroke-linejoin:round;stroke-linecap:round;opacity:0.9">
-    <path
-      id="outline-greenland"
-      d="M 575 270 L 600 235 L 640 210 L 690 190 L 735 205 L 760 245 L 745 290 L 710 325 L 655 345 L 610 330 Z" />
-    <path
-      id="outline-africa"
-      d="M 820 470 L 865 435 L 910 435 L 945 470 L 955 520 L 940 585 L 915 655 L 885 735 L 850 785 L 820 755 L 800 690 L 790 610 L 795 540 Z" />
-  </g>
-  <g id="highlight-labels" style="font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial;fill:#ff4d4f">
-    <text x="770" y="210" font-size="30">Greenland</text>
-    <text x="970" y="510" font-size="30">Africa</text>
-  </g>
 </svg>
