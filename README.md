@@ -17,7 +17,7 @@
 一幅遥感影像不是地图，人类不可能事无巨细地看到每个角落的细节。
 
 <p align="center">
-  <img src="assets/images/readme/american_image.png" alt="遥感影像示例" width="900" />
+  <img src="assets/images/readme/american_image.png" alt="遥感影像示例" width="820" />
 </p>
 
 地图需要经过概括与抽象，把纷繁复杂的三维现实世界展现在二维介质上：道路河流简约成线条，村庄缩小为点，疆域显示为面，地形起伏通过等高线表示。
@@ -28,14 +28,18 @@
 
 注意力永远是稀缺的，因此制图时只能有所取舍。不同角色对现实世界的关注点不一样：
 
-- 军事家关心地形起伏  
-  <img src="assets/images/readme/iran-topo-en.jpg" alt="伊朗地形图" width="900" />
-
-- 消费者关心餐厅分布  
-  <img src="assets/images/readme/restaurant.png" alt="餐厅分布示意" width="900" />
-
-- 流行病学家关注病例空间分布（John Snow, 1854）  
-  <img src="assets/images/readme/snow-cholera-map.jpg" alt="John Snow cholera map" width="900" />
+<table>
+  <tr>
+    <th>军事家<br>地形起伏</th>
+    <th>消费者<br>餐厅分布</th>
+    <th>流行病学家<br>病例分布</th>
+  </tr>
+  <tr>
+    <td><img src="assets/images/readme/iran-topo-en.jpg" alt="伊朗地形图" width="320" /></td>
+    <td><img src="assets/images/readme/restaurant.png" alt="餐厅分布示意" width="320" /></td>
+    <td><img src="assets/images/readme/snow-cholera-map.jpg" alt="John Snow cholera map" width="320" /></td>
+  </tr>
+</table>
 
 ### Attitude：态度与价值观
 
