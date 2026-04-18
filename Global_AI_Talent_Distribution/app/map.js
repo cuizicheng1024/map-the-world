@@ -4,6 +4,7 @@ const DATA_PATH = "../data/movements.geojson";
 const YEAR_RANGE = { min: 2000, max: 2026 };
 const DEFAULT_MARKER_SIZE = 8;
 const DEFAULT_LINE_OPACITY = 0.55;
+const DEFAULT_VIEW = { center: [30, 120], zoom: 3 };
 
 function normalizeText(s) {
   return String(s ?? "")
@@ -118,7 +119,7 @@ function makePopupHtml(p, year) {
 const map = L.map("map", {
   zoomControl: true,
   worldCopyJump: true,
-}).setView([25, 0], 2);
+}).setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   maxZoom: 19,
