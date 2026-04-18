@@ -68,8 +68,19 @@
 
 降维压缩的信息损失同样不可避免：从高维向低维进行信息压缩，必然是有损的。典型现象包括：
 
-- 格陵兰岛（210 万平方千米）看起来和非洲大陆（3000 万平方千米）一样大
+- 格陵兰岛（210 万 km²）看起来和非洲大陆（3000 万 km²）一样大
 - 地球仪上弯曲的等角航线在平面地图上变为直线
+
+<table>
+  <tr>
+    <th>面积失真（墨卡托投影）</th>
+    <th>大圆航线 vs 恒向线</th>
+  </tr>
+  <tr>
+    <td><img src="assets/images/readme/mercator-size-distortion.svg" alt="墨卡托投影面积失真示意" width="430" /></td>
+    <td><img src="assets/images/readme/rhumb-vs-greatcircle.png" alt="大圆航线与恒向线对比" width="430" /></td>
+  </tr>
+</table>
 
 ### 分辨率与尺度
 

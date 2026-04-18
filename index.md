@@ -47,18 +47,18 @@ title: 崔子橙
 
 ## 课程与授课
 
-| 类型 | 难度 | 课程名称 | 课程简介 | 工具 | 场景 |
-| --- | --- | --- | --- | --- | --- |
-| 理论课 | 初级 | 大模型入门通识：概念篇 | 介绍大模型领域基础概念，为后续进阶课程打基础：大语言模型、Token、提示词、Workflow、智能体、Vibe Coding 等。 | — | 通识 |
-| 实战课 | 初级 | 实战：小红书爆款内容生成 | 一键生成小红书爆款标题、文案与图片，实现矩阵号内容的批量生产。 | Refly、Coze | 自媒体行业 |
-| 实战课 | 中级 | 豆瓣电影信息批量获取 | 完成豆瓣高分电影信息获取与词云分析，开启爬虫实践。 | Trae | 批量数据获取 |
-| 理论课 | 中级 | LangGraph 入门：从拖拽到代码 | 讲解 LangGraph 设计理念与 Demo 测试。 | Trae、LangGraph | 搭建生产级 Agent |
-| 理论课 | 高级 | OpenClaw 入门：一起玩龙虾 | 理解 OpenClaw 是什么，以及如何用好 OpenClaw。 | OpenClaw | 智能体工具链 |
-| 实战课 | 高级 | OpenClaw 配置：打通 IM 接口 | 安装 OpenClaw（火山引擎/扣子/智谱），并为 OpenClaw 打通飞书 IM 接口。 | OpenClaw、飞书 | 企业协作接入 |
-| 实战课 | 高级 | OpenClaw 配置：LLM 基座 | 常用海内外模型基座与 OpenClaw 的模型配置方案。 | OpenClaw | 模型接入配置 |
-| 实战课 | 高级 | OpenClaw 配置：技能安装 | Skill 格式、获取方式与配置准则。 | OpenClaw | 技能体系搭建 |
-| 实战课 | 高级 | OpenClaw 配置：安全风控和社区生态 | 讲解 OpenClaw 四层安全机制。 | OpenClaw | 安全与风控 |
-| 实战课 | 高级 | OpenClaw 应用：打造你的专属主力 | Skill 配置与 ClawHub 应用实战。 | OpenClaw、ClawHub | 内容创作 |
+| 课程名称 | 课程简介 | 工具 | 场景 |
+| --- | --- | --- | --- |
+| 大模型入门通识：概念篇 | 介绍大模型领域基础概念，为后续进阶课程打基础：大语言模型、Token、提示词、Workflow、智能体、Vibe Coding 等。 | — | 通识 |
+| 实战：小红书爆款内容生成 | 一键生成小红书爆款标题、文案与图片，实现矩阵号内容的批量生产。 | Refly、Coze | 自媒体行业 |
+| 豆瓣电影信息批量获取 | 完成豆瓣高分电影信息获取与词云分析，开启爬虫实践。 | Trae | 批量数据获取 |
+| LangGraph 入门：从拖拽到代码 | 讲解 LangGraph 设计理念与 Demo 测试。 | Trae、LangGraph | 搭建生产级 Agent |
+| OpenClaw 入门：一起玩龙虾 | 理解 OpenClaw 是什么，以及如何用好 OpenClaw。 | OpenClaw | 智能体工具链 |
+| OpenClaw 配置：打通 IM 接口 | 安装 OpenClaw（火山引擎/扣子/智谱），并为 OpenClaw 打通飞书 IM 接口。 | OpenClaw、飞书 | 企业协作接入 |
+| OpenClaw 配置：LLM 基座 | 常用海内外模型基座与 OpenClaw 的模型配置方案。 | OpenClaw | 模型接入配置 |
+| OpenClaw 配置：技能安装 | Skill 格式、获取方式与配置准则。 | OpenClaw | 技能体系搭建 |
+| OpenClaw 配置：安全风控和社区生态 | 讲解 OpenClaw 四层安全机制。 | OpenClaw | 安全与风控 |
+| OpenClaw 应用：打造你的专属主力 | Skill 配置与 ClawHub 应用实战。 | OpenClaw、ClawHub | 内容创作 |
 
 ## Side Projects
 
