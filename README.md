@@ -31,8 +31,8 @@
 - 军事家关心地形起伏  
   <img src="assets/images/readme/iran-topo-en.jpg" alt="伊朗地形图" width="900" />
 
-- 消费者关心餐厅 / 点位分布  
-  <img src="assets/images/readme/unesco-world-heritage-sites.png" alt="点位分布示意" width="900" />
+- 消费者关心餐厅分布  
+  <img src="assets/images/readme/restaurant.png" alt="餐厅分布示意" width="900" />
 
 - 流行病学家关注病例空间分布（John Snow, 1854）  
   <img src="assets/images/readme/snow-cholera-map.jpg" alt="John Snow cholera map" width="900" />

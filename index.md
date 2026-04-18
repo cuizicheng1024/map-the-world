@@ -1,3 +1,7 @@
+---
+title: 崔子橙
+---
+
 <table>
   <tr>
     <td width="160" valign="top">
