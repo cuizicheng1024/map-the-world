@@ -34,6 +34,7 @@ function openMapForNode(node) {
 async function main() {
   const root = document.getElementById("graph");
   const searchInput = document.getElementById("searchInput");
+  root.textContent = "关系网加载中...";
   if (!window.vis) {
     root.textContent = "关系网依赖的 vis-network 脚本未能加载（可能被网络拦截）。请刷新重试，或使用更稳定的网络环境。";
     return;
@@ -78,6 +79,17 @@ async function main() {
       },
     }
   );
+  root.textContent = "";
+  window.setTimeout(() => {
+    try {
+      network.fit({ animation: { duration: 250 } });
+    } catch (_) {
+      // noop
+    }
+  }, 60);
+  network.once("stabilizationIterationsDone", () => {
+    network.fit({ animation: { duration: 250 } });
+  });
 
   network.on("doubleClick", (params) => {
     const nodeId = params?.nodes?.[0];
