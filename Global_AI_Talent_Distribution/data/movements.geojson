@@ -90,7 +90,456 @@
         "source": "demo"
       },
       "geometry": { "type": "Point", "coordinates": [2.3522, 48.8566] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-kaifu",
+        "person_name": "李开复",
+        "org_id": "org-01ai",
+        "org_name": "零一万物（01.AI）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-kaifu",
+        "person_name": "李开复",
+        "org_id": "org-01ai",
+        "org_name": "零一万物（01.AI）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "wang-xiaochuan",
+        "person_name": "王小川",
+        "org_id": "org-baichuan",
+        "org_name": "百川智能",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "wang-xiaochuan",
+        "person_name": "王小川",
+        "org_id": "org-baichuan",
+        "org_name": "百川智能",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yang-zhilin",
+        "person_name": "杨植麟",
+        "org_id": "org-moonshot",
+        "org_name": "月之暗面（Moonshot AI）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yang-zhilin",
+        "person_name": "杨植麟",
+        "org_id": "org-moonshot",
+        "org_name": "月之暗面（Moonshot AI）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhang-peng",
+        "person_name": "张鹏",
+        "org_id": "org-zhipu",
+        "org_name": "智谱AI",
+        "role": "Executive",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhang-peng",
+        "person_name": "张鹏",
+        "org_id": "org-zhipu",
+        "org_name": "智谱AI",
+        "role": "Executive",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yan-junjie",
+        "person_name": "闫俊杰",
+        "org_id": "org-minimax",
+        "org_name": "MiniMax",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yan-junjie",
+        "person_name": "闫俊杰",
+        "org_id": "org-minimax",
+        "org_name": "MiniMax",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dai-wenyuan",
+        "person_name": "戴文渊",
+        "org_id": "org-4paradigm",
+        "org_name": "第四范式",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dai-wenyuan",
+        "person_name": "戴文渊",
+        "org_id": "org-4paradigm",
+        "org_name": "第四范式",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "xu-li",
+        "person_name": "徐立",
+        "org_id": "org-sensetime",
+        "org_name": "商汤科技",
+        "role": "Executive",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "xu-li",
+        "person_name": "徐立",
+        "org_id": "org-sensetime",
+        "org_name": "商汤科技",
+        "role": "Executive",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yin-qi",
+        "person_name": "印奇",
+        "org_id": "org-megvii",
+        "org_name": "旷视科技",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yin-qi",
+        "person_name": "印奇",
+        "org_id": "org-megvii",
+        "org_name": "旷视科技",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "liu-qingfeng",
+        "person_name": "刘庆峰",
+        "org_id": "org-iflytek",
+        "org_name": "科大讯飞",
+        "role": "Executive",
+        "city": "合肥",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [117.2272, 31.8206] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "liu-qingfeng",
+        "person_name": "刘庆峰",
+        "org_id": "org-iflytek",
+        "org_name": "科大讯飞",
+        "role": "Executive",
+        "city": "合肥",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [117.2272, 31.8206] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhu-long",
+        "person_name": "朱珑",
+        "org_id": "org-yitu",
+        "org_name": "依图科技",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhu-long",
+        "person_name": "朱珑",
+        "org_id": "org-yitu",
+        "org_name": "依图科技",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-xi",
+        "person_name": "周曦",
+        "org_id": "org-cloudwalk",
+        "org_name": "云从科技",
+        "role": "Founder",
+        "city": "广州",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-xi",
+        "person_name": "周曦",
+        "org_id": "org-cloudwalk",
+        "org_name": "云从科技",
+        "role": "Founder",
+        "city": "广州",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-yanhong",
+        "person_name": "李彦宏",
+        "org_id": "org-baidu",
+        "org_name": "百度",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-yanhong",
+        "person_name": "李彦宏",
+        "org_id": "org-baidu",
+        "org_name": "百度",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhang-yiming",
+        "person_name": "张一鸣",
+        "org_id": "org-bytedance",
+        "org_name": "字节跳动",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhang-yiming",
+        "person_name": "张一鸣",
+        "org_id": "org-bytedance",
+        "org_name": "字节跳动",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ma-huateng",
+        "person_name": "马化腾",
+        "org_id": "org-tencent",
+        "org_name": "腾讯",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ma-huateng",
+        "person_name": "马化腾",
+        "org_id": "org-tencent",
+        "org_name": "腾讯",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ren-zhengfei",
+        "person_name": "任正非",
+        "org_id": "org-huawei",
+        "org_name": "华为",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ren-zhengfei",
+        "person_name": "任正非",
+        "org_id": "org-huawei",
+        "org_name": "华为",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
     }
   ]
 }
-

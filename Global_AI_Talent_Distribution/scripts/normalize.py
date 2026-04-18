@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -16,10 +17,14 @@ class Event:
 
 
 def slugify(s: str) -> str:
-    s = s.strip().lower()
+    raw = s.strip()
+    s = raw.lower()
     s = re.sub(r"[^a-z0-9]+", "-", s)
     s = re.sub(r"-{2,}", "-", s).strip("-")
-    return s or "unknown"
+    if s:
+        return s
+    h = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
+    return f"u-{h}"
 
 
 def load_geocode_cache(path: str) -> dict:
@@ -102,4 +107,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
