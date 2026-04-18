@@ -924,6 +924,596 @@
       "id": "微博",
       "label": "微博",
       "kind": "org"
+    },
+    {
+      "id": "Microsoft Research",
+      "label": "Microsoft Research",
+      "kind": "org"
+    },
+    {
+      "id": "零一万物（01.AI）",
+      "label": "零一万物（01.AI）",
+      "kind": "org"
+    },
+    {
+      "id": "百川智能",
+      "label": "百川智能",
+      "kind": "org"
+    },
+    {
+      "id": "杨植麟",
+      "label": "杨植麟",
+      "kind": "person"
+    },
+    {
+      "id": "Tsinghua University",
+      "label": "Tsinghua University",
+      "kind": "org"
+    },
+    {
+      "id": "CMU",
+      "label": "CMU",
+      "kind": "org"
+    },
+    {
+      "id": "Independent Researcher",
+      "label": "Independent Researcher",
+      "kind": "org"
+    },
+    {
+      "id": "月之暗面（Moonshot AI）",
+      "label": "月之暗面（Moonshot AI）",
+      "kind": "org"
+    },
+    {
+      "id": "张鹏",
+      "label": "张鹏",
+      "kind": "person"
+    },
+    {
+      "id": "Baidu",
+      "label": "Baidu",
+      "kind": "org"
+    },
+    {
+      "id": "智谱AI",
+      "label": "智谱AI",
+      "kind": "org"
+    },
+    {
+      "id": "闫俊杰",
+      "label": "闫俊杰",
+      "kind": "person"
+    },
+    {
+      "id": "University of California, Berkeley",
+      "label": "University of California, Berkeley",
+      "kind": "org"
+    },
+    {
+      "id": "MiniMax",
+      "label": "MiniMax",
+      "kind": "org"
+    },
+    {
+      "id": "戴文渊",
+      "label": "戴文渊",
+      "kind": "person"
+    },
+    {
+      "id": "University of Illinois at Urbana-Champaign",
+      "label": "University of Illinois at Urbana-Champaign",
+      "kind": "org"
+    },
+    {
+      "id": "第四范式",
+      "label": "第四范式",
+      "kind": "org"
+    },
+    {
+      "id": "University of Oxford",
+      "label": "University of Oxford",
+      "kind": "org"
+    },
+    {
+      "id": "Chinese University of Hong Kong",
+      "label": "Chinese University of Hong Kong",
+      "kind": "org"
+    },
+    {
+      "id": "印奇",
+      "label": "印奇",
+      "kind": "person"
+    },
+    {
+      "id": "旷视科技",
+      "label": "旷视科技",
+      "kind": "org"
+    },
+    {
+      "id": "University of Science and Technology of China",
+      "label": "University of Science and Technology of China",
+      "kind": "org"
+    },
+    {
+      "id": "朱珑",
+      "label": "朱珑",
+      "kind": "person"
+    },
+    {
+      "id": "University of California, Los Angeles",
+      "label": "University of California, Los Angeles",
+      "kind": "org"
+    },
+    {
+      "id": "依图科技",
+      "label": "依图科技",
+      "kind": "org"
+    },
+    {
+      "id": "周曦",
+      "label": "周曦",
+      "kind": "person"
+    },
+    {
+      "id": "云从科技",
+      "label": "云从科技",
+      "kind": "org"
+    },
+    {
+      "id": "Infoseek",
+      "label": "Infoseek",
+      "kind": "org"
+    },
+    {
+      "id": "Nankai University",
+      "label": "Nankai University",
+      "kind": "org"
+    },
+    {
+      "id": "Microsoft",
+      "label": "Microsoft",
+      "kind": "org"
+    },
+    {
+      "id": "九九房",
+      "label": "九九房",
+      "kind": "org"
+    },
+    {
+      "id": "Tencent",
+      "label": "Tencent",
+      "kind": "org"
+    },
+    {
+      "id": "陈天石",
+      "label": "陈天石",
+      "kind": "person"
+    },
+    {
+      "id": "University/Company",
+      "label": "University/Company",
+      "kind": "org"
+    },
+    {
+      "id": "寒武纪",
+      "label": "寒武纪",
+      "kind": "org"
+    },
+    {
+      "id": "周剑",
+      "label": "周剑",
+      "kind": "person"
+    },
+    {
+      "id": "优必选",
+      "label": "优必选",
+      "kind": "org"
+    },
+    {
+      "id": "王兴兴",
+      "label": "王兴兴",
+      "kind": "person"
+    },
+    {
+      "id": "宇树科技",
+      "label": "宇树科技",
+      "kind": "org"
+    },
+    {
+      "id": "彭军",
+      "label": "彭军",
+      "kind": "person"
+    },
+    {
+      "id": "小马智行（Pony.ai）",
+      "label": "小马智行（Pony.ai）",
+      "kind": "org"
+    },
+    {
+      "id": "梁文锋",
+      "label": "梁文锋",
+      "kind": "person"
+    },
+    {
+      "id": "DeepSeek（深度求索）",
+      "label": "DeepSeek（深度求索）",
+      "kind": "org"
+    },
+    {
+      "id": "姜大昕",
+      "label": "姜大昕",
+      "kind": "person"
+    },
+    {
+      "id": "阶跃星辰（StepFun）",
+      "label": "阶跃星辰（StepFun）",
+      "kind": "org"
+    },
+    {
+      "id": "李志飞",
+      "label": "李志飞",
+      "kind": "person"
+    },
+    {
+      "id": "出门问问（Mobvoi）",
+      "label": "出门问问（Mobvoi）",
+      "kind": "org"
+    },
+    {
+      "id": "微软",
+      "label": "微软",
+      "kind": "org"
+    },
+    {
+      "id": "上海交通大学",
+      "label": "上海交通大学",
+      "kind": "org"
+    },
+    {
+      "id": "易车网",
+      "label": "易车网",
+      "kind": "org"
+    },
+    {
+      "id": "UC优视",
+      "label": "UC优视",
+      "kind": "org"
+    },
+    {
+      "id": "高盛",
+      "label": "高盛",
+      "kind": "org"
+    },
+    {
+      "id": "老罗英语培训",
+      "label": "老罗英语培训",
+      "kind": "org"
+    },
+    {
+      "id": "西伯尔联合",
+      "label": "西伯尔联合",
+      "kind": "org"
+    },
+    {
+      "id": "金山软件",
+      "label": "金山软件",
+      "kind": "org"
+    },
+    {
+      "id": "猎豹移动",
+      "label": "猎豹移动",
+      "kind": "org"
+    },
+    {
+      "id": "焦点网",
+      "label": "焦点网",
+      "kind": "org"
+    },
+    {
+      "id": "265导航",
+      "label": "265导航",
+      "kind": "org"
+    },
+    {
+      "id": "Microsoft Research Asia",
+      "label": "Microsoft Research Asia",
+      "kind": "org"
+    },
+    {
+      "id": "Stanford University",
+      "label": "Stanford University",
+      "kind": "org"
+    },
+    {
+      "id": "Goldman Sachs",
+      "label": "Goldman Sachs",
+      "kind": "org"
+    },
+    {
+      "id": "Alibaba",
+      "label": "Alibaba",
+      "kind": "org"
+    },
+    {
+      "id": "Ant Group",
+      "label": "Ant Group",
+      "kind": "org"
+    },
+    {
+      "id": "PwC",
+      "label": "PwC",
+      "kind": "org"
+    },
+    {
+      "id": "Zhejiang University",
+      "label": "Zhejiang University",
+      "kind": "org"
+    },
+    {
+      "id": "Alibaba Cloud",
+      "label": "Alibaba Cloud",
+      "kind": "org"
+    },
+    {
+      "id": "China Construction Bank",
+      "label": "China Construction Bank",
+      "kind": "org"
+    },
+    {
+      "id": "Cainiao Network",
+      "label": "Cainiao Network",
+      "kind": "org"
+    },
+    {
+      "id": "SAP",
+      "label": "SAP",
+      "kind": "org"
+    },
+    {
+      "id": "University",
+      "label": "University",
+      "kind": "org"
+    },
+    {
+      "id": "Princeton University",
+      "label": "Princeton University",
+      "kind": "org"
+    },
+    {
+      "id": "Sina",
+      "label": "Sina",
+      "kind": "org"
+    },
+    {
+      "id": "Geoffrey Hinton",
+      "label": "Geoffrey Hinton",
+      "kind": "person"
+    },
+    {
+      "id": "University of Toronto",
+      "label": "University of Toronto",
+      "kind": "org"
+    },
+    {
+      "id": "Google / University of Toronto",
+      "label": "Google / University of Toronto",
+      "kind": "org"
+    },
+    {
+      "id": "Yann LeCun",
+      "label": "Yann LeCun",
+      "kind": "person"
+    },
+    {
+      "id": "NYU",
+      "label": "NYU",
+      "kind": "org"
+    },
+    {
+      "id": "Facebook AI Research",
+      "label": "Facebook AI Research",
+      "kind": "org"
+    },
+    {
+      "id": "Yoshua Bengio",
+      "label": "Yoshua Bengio",
+      "kind": "person"
+    },
+    {
+      "id": "University of Montreal",
+      "label": "University of Montreal",
+      "kind": "org"
+    },
+    {
+      "id": "Mila",
+      "label": "Mila",
+      "kind": "org"
+    },
+    {
+      "id": "Andrew Ng",
+      "label": "Andrew Ng",
+      "kind": "person"
+    },
+    {
+      "id": "Coursera / DeepLearning.AI",
+      "label": "Coursera / DeepLearning.AI",
+      "kind": "org"
+    },
+    {
+      "id": "Ian Goodfellow",
+      "label": "Ian Goodfellow",
+      "kind": "person"
+    },
+    {
+      "id": "Apple",
+      "label": "Apple",
+      "kind": "org"
+    },
+    {
+      "id": "Fei-Fei Li",
+      "label": "Fei-Fei Li",
+      "kind": "person"
+    },
+    {
+      "id": "Jürgen Schmidhuber",
+      "label": "Jürgen Schmidhuber",
+      "kind": "person"
+    },
+    {
+      "id": "IDSIA",
+      "label": "IDSIA",
+      "kind": "org"
+    },
+    {
+      "id": "NNAISENSE",
+      "label": "NNAISENSE",
+      "kind": "org"
+    },
+    {
+      "id": "Demis Hassabis",
+      "label": "Demis Hassabis",
+      "kind": "person"
+    },
+    {
+      "id": "University of Cambridge",
+      "label": "University of Cambridge",
+      "kind": "org"
+    },
+    {
+      "id": "DeepMind",
+      "label": "DeepMind",
+      "kind": "org"
+    },
+    {
+      "id": "DeepMind / Google",
+      "label": "DeepMind / Google",
+      "kind": "org"
+    },
+    {
+      "id": "Ilya Sutskever",
+      "label": "Ilya Sutskever",
+      "kind": "person"
+    },
+    {
+      "id": "OpenAI",
+      "label": "OpenAI",
+      "kind": "org"
+    },
+    {
+      "id": "Jeff Dean",
+      "label": "Jeff Dean",
+      "kind": "person"
+    },
+    {
+      "id": "Andrej Karpathy",
+      "label": "Andrej Karpathy",
+      "kind": "person"
+    },
+    {
+      "id": "University of British Columbia",
+      "label": "University of British Columbia",
+      "kind": "org"
+    },
+    {
+      "id": "OpenAI / Tesla",
+      "label": "OpenAI / Tesla",
+      "kind": "org"
+    },
+    {
+      "id": "周志华",
+      "label": "周志华",
+      "kind": "person"
+    },
+    {
+      "id": "Nanjing University",
+      "label": "Nanjing University",
+      "kind": "org"
+    },
+    {
+      "id": "李沐",
+      "label": "李沐",
+      "kind": "person"
+    },
+    {
+      "id": "University of Washington",
+      "label": "University of Washington",
+      "kind": "org"
+    },
+    {
+      "id": "Amazon / AWS",
+      "label": "Amazon / AWS",
+      "kind": "org"
+    },
+    {
+      "id": "何恺明",
+      "label": "何恺明",
+      "kind": "person"
+    },
+    {
+      "id": "香港中文大学",
+      "label": "香港中文大学",
+      "kind": "org"
+    },
+    {
+      "id": "微软亚洲研究院",
+      "label": "微软亚洲研究院",
+      "kind": "org"
+    },
+    {
+      "id": "Facebook AI Research (FAIR)",
+      "label": "Facebook AI Research (FAIR)",
+      "kind": "org"
+    },
+    {
+      "id": "孙剑",
+      "label": "孙剑",
+      "kind": "person"
+    },
+    {
+      "id": "王晓刚",
+      "label": "王晓刚",
+      "kind": "person"
+    },
+    {
+      "id": "梅宏",
+      "label": "梅宏",
+      "kind": "person"
+    },
+    {
+      "id": "中国科学院软件研究所",
+      "label": "中国科学院软件研究所",
+      "kind": "org"
+    },
+    {
+      "id": "北京理工大学",
+      "label": "北京理工大学",
+      "kind": "org"
+    },
+    {
+      "id": "郑南宁",
+      "label": "郑南宁",
+      "kind": "person"
+    },
+    {
+      "id": "西安交通大学",
+      "label": "西安交通大学",
+      "kind": "org"
+    },
+    {
+      "id": "周伯文",
+      "label": "周伯文",
+      "kind": "person"
+    },
+    {
+      "id": "IBM研究院",
+      "label": "IBM研究院",
+      "kind": "org"
+    },
+    {
+      "id": "京东探索研究院",
+      "label": "京东探索研究院",
+      "kind": "org"
     }
   ],
   "edges": [
@@ -1616,6 +2206,1542 @@
       "to": "华为",
       "type": "works_at",
       "label": "董事长"
+    },
+    {
+      "from": "李开复",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "李开复",
+      "to": "Google",
+      "type": "works_at",
+      "label": "VP"
+    },
+    {
+      "from": "李开复",
+      "to": "零一万物（01.AI）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王小川",
+      "to": "搜狗",
+      "type": "works_at",
+      "label": "Engineer"
+    },
+    {
+      "from": "王小川",
+      "to": "搜狗",
+      "type": "works_at",
+      "label": "Director"
+    },
+    {
+      "from": "王小川",
+      "to": "百川智能",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "杨植麟",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "杨植麟",
+      "to": "CMU",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "杨植麟",
+      "to": "Google",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "杨植麟",
+      "to": "Independent Researcher",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "杨植麟",
+      "to": "月之暗面（Moonshot AI）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "张鹏",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "张鹏",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "张鹏",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "Director"
+    },
+    {
+      "from": "张鹏",
+      "to": "智谱AI",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "闫俊杰",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "闫俊杰",
+      "to": "University of California, Berkeley",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "闫俊杰",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "闫俊杰",
+      "to": "Independent Researcher",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "闫俊杰",
+      "to": "MiniMax",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "戴文渊",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "戴文渊",
+      "to": "University of Illinois at Urbana-Champaign",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "戴文渊",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "Director"
+    },
+    {
+      "from": "戴文渊",
+      "to": "第四范式",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "徐立",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "徐立",
+      "to": "University of Oxford",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "徐立",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "徐立",
+      "to": "商汤科技",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "汤晓鸥",
+      "to": "Chinese University of Hong Kong",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "印奇",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "印奇",
+      "to": "University of Illinois at Urbana-Champaign",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "印奇",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "印奇",
+      "to": "旷视科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "刘庆峰",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "刘庆峰",
+      "to": "University of Illinois at Urbana-Champaign",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "刘庆峰",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "Director"
+    },
+    {
+      "from": "刘庆峰",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "朱珑",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "朱珑",
+      "to": "University of California, Los Angeles",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "朱珑",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "朱珑",
+      "to": "依图科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "周曦",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "周曦",
+      "to": "University of Illinois at Urbana-Champaign",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "周曦",
+      "to": "Microsoft Research",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "周曦",
+      "to": "云从科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "李彦宏",
+      "to": "Infoseek",
+      "type": "works_at",
+      "label": "Engineer"
+    },
+    {
+      "from": "李彦宏",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "李彦宏",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张一鸣",
+      "to": "Nankai University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "张一鸣",
+      "to": "Microsoft",
+      "type": "works_at",
+      "label": "Engineer"
+    },
+    {
+      "from": "张一鸣",
+      "to": "九九房",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "马化腾",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "马化腾",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "陈天石",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "陈天石",
+      "to": "寒武纪",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "余凯",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "周剑",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "周剑",
+      "to": "优必选",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王兴兴",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "王兴兴",
+      "to": "宇树科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "彭军",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "彭军",
+      "to": "小马智行（Pony.ai）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "梁文锋",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "梁文锋",
+      "to": "DeepSeek（深度求索）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "姜大昕",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "姜大昕",
+      "to": "阶跃星辰（StepFun）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "李志飞",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "李志飞",
+      "to": "出门问问（Mobvoi）",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "周鸿祎",
+      "to": "360",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "雷军",
+      "to": "小米",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "刘强东",
+      "to": "京东",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王兴",
+      "to": "美团",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "黄峥",
+      "to": "University/Company",
+      "type": "works_at",
+      "label": "Independent Researcher"
+    },
+    {
+      "from": "丁磊",
+      "to": "网易",
+      "type": "works_at",
+      "label": "董事长/CEO"
+    },
+    {
+      "from": "曹国伟",
+      "to": "新浪",
+      "type": "works_at",
+      "label": "CFO"
+    },
+    {
+      "from": "张朝阳",
+      "to": "搜狐",
+      "type": "works_at",
+      "label": "董事长/CEO"
+    },
+    {
+      "from": "梁稳根",
+      "to": "三一重工",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "梁稳根",
+      "to": "三一重工",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "梁稳根",
+      "to": "三一重工",
+      "type": "works_at",
+      "label": "创始人/董事长"
+    },
+    {
+      "from": "董明珠",
+      "to": "格力电器",
+      "type": "works_at",
+      "label": "销售经理"
+    },
+    {
+      "from": "董明珠",
+      "to": "格力电器",
+      "type": "works_at",
+      "label": "总裁"
+    },
+    {
+      "from": "董明珠",
+      "to": "格力电器",
+      "type": "works_at",
+      "label": "董事长/CEO"
+    },
+    {
+      "from": "陆奇",
+      "to": "微软",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "陆奇",
+      "to": "微软",
+      "type": "works_at",
+      "label": "执行副总裁"
+    },
+    {
+      "from": "陆奇",
+      "to": "YC中国",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "王海峰",
+      "to": "百度",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "王海峰",
+      "to": "百度",
+      "type": "works_at",
+      "label": "高级科学家"
+    },
+    {
+      "from": "张潼",
+      "to": "Google",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "俞凯",
+      "to": "上海交通大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "俞凯",
+      "to": "思必驰",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "胡郁",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "胡郁",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "高级副总裁"
+    },
+    {
+      "from": "姚欣",
+      "to": "PPTV",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "姚欣",
+      "to": "PPTV",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "姚欣",
+      "to": "PPTV",
+      "type": "works_at",
+      "label": "创始人/董事长"
+    },
+    {
+      "from": "陈天桥",
+      "to": "盛大网络",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "陈天桥",
+      "to": "盛大网络",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "陈天桥",
+      "to": "盛大网络",
+      "type": "works_at",
+      "label": "创始人/董事长"
+    },
+    {
+      "from": "史玉柱",
+      "to": "巨人网络",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "史玉柱",
+      "to": "巨人网络",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "史玉柱",
+      "to": "巨人网络",
+      "type": "works_at",
+      "label": "创始人/董事长"
+    },
+    {
+      "from": "李斌",
+      "to": "易车网",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "李斌",
+      "to": "易车网",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "何小鹏",
+      "to": "UC优视",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "何小鹏",
+      "to": "UC优视",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王传福",
+      "to": "比亚迪",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "王传福",
+      "to": "比亚迪",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "魏建军",
+      "to": "长城汽车",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "魏建军",
+      "to": "长城汽车",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "李书福",
+      "to": "吉利汽车",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "李书福",
+      "to": "吉利汽车",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "张勇",
+      "to": "阿里云",
+      "type": "works_at",
+      "label": "早期员工"
+    },
+    {
+      "from": "张勇",
+      "to": "阿里云",
+      "type": "works_at",
+      "label": "高管"
+    },
+    {
+      "from": "戴威",
+      "to": "北京大学",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "戴威",
+      "to": "ofo",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "程维",
+      "to": "阿里巴巴",
+      "type": "works_at",
+      "label": "员工"
+    },
+    {
+      "from": "程维",
+      "to": "滴滴",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "柳青",
+      "to": "高盛",
+      "type": "works_at",
+      "label": "分析师"
+    },
+    {
+      "from": "柳青",
+      "to": "高盛",
+      "type": "works_at",
+      "label": "董事总经理"
+    },
+    {
+      "from": "罗永浩",
+      "to": "新东方",
+      "type": "works_at",
+      "label": "教师"
+    },
+    {
+      "from": "罗永浩",
+      "to": "老罗英语培训",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "贾跃亭",
+      "to": "西伯尔联合",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "贾跃亭",
+      "to": "乐视",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "陈睿",
+      "to": "金山软件",
+      "type": "works_at",
+      "label": "高管"
+    },
+    {
+      "from": "陈睿",
+      "to": "猎豹移动",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "龚宇",
+      "to": "焦点网",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "龚宇",
+      "to": "爱奇艺",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "古永锵",
+      "to": "搜狐",
+      "type": "works_at",
+      "label": "高管"
+    },
+    {
+      "from": "古永锵",
+      "to": "优酷",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "李竹",
+      "to": "英诺天使",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "徐小平",
+      "to": "新东方",
+      "type": "works_at",
+      "label": "联合创始人"
+    },
+    {
+      "from": "徐小平",
+      "to": "真格基金",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "蔡文胜",
+      "to": "265导航",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王俊",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "王俊",
+      "to": "Microsoft Research Asia",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "林元庆",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "林元庆",
+      "to": "University of California, Berkeley",
+      "type": "works_at",
+      "label": "PhD Candidate"
+    },
+    {
+      "from": "吴恩达",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "吴恩达",
+      "to": "Google",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "吴恩达",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "Former Chief Scientist"
+    },
+    {
+      "from": "张志东",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "Co-Founder"
+    },
+    {
+      "from": "张志东",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "CTO"
+    },
+    {
+      "from": "张志东",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "Former CTO"
+    },
+    {
+      "from": "刘炽平",
+      "to": "Goldman Sachs",
+      "type": "works_at",
+      "label": "Managing Director"
+    },
+    {
+      "from": "刘炽平",
+      "to": "Tencent",
+      "type": "works_at",
+      "label": "President"
+    },
+    {
+      "from": "彭蕾",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "HR Director"
+    },
+    {
+      "from": "彭蕾",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "Chief People Officer"
+    },
+    {
+      "from": "彭蕾",
+      "to": "Ant Group",
+      "type": "works_at",
+      "label": "Former CEO"
+    },
+    {
+      "from": "井贤栋",
+      "to": "PwC",
+      "type": "works_at",
+      "label": "Manager"
+    },
+    {
+      "from": "井贤栋",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "CFO"
+    },
+    {
+      "from": "井贤栋",
+      "to": "Ant Group",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王坚",
+      "to": "Zhejiang University",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "王坚",
+      "to": "Microsoft Research Asia",
+      "type": "works_at",
+      "label": "Director"
+    },
+    {
+      "from": "王坚",
+      "to": "Alibaba Cloud",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "胡晓明",
+      "to": "China Construction Bank",
+      "type": "works_at",
+      "label": "Manager"
+    },
+    {
+      "from": "胡晓明",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "VP"
+    },
+    {
+      "from": "胡晓明",
+      "to": "Alibaba Cloud",
+      "type": "works_at",
+      "label": "Former President"
+    },
+    {
+      "from": "童文红",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "HR Manager"
+    },
+    {
+      "from": "童文红",
+      "to": "Alibaba",
+      "type": "works_at",
+      "label": "COO"
+    },
+    {
+      "from": "童文红",
+      "to": "Cainiao Network",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "沈抖",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "沈抖",
+      "to": "University of Illinois at Urbana-Champaign",
+      "type": "works_at",
+      "label": "PhD Candidate"
+    },
+    {
+      "from": "沈抖",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "VP"
+    },
+    {
+      "from": "景鲲",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "景鲲",
+      "to": "Microsoft Research Asia",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "景鲲",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "VP"
+    },
+    {
+      "from": "尹世明",
+      "to": "Tsinghua University",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "尹世明",
+      "to": "SAP",
+      "type": "works_at",
+      "label": "Manager"
+    },
+    {
+      "from": "尹世明",
+      "to": "Baidu",
+      "type": "works_at",
+      "label": "VP"
+    },
+    {
+      "from": "赵明",
+      "to": "华为",
+      "type": "works_at",
+      "label": "工程师"
+    },
+    {
+      "from": "赵明",
+      "to": "华为",
+      "type": "works_at",
+      "label": "高级经理"
+    },
+    {
+      "from": "赵明",
+      "to": "荣耀",
+      "type": "works_at",
+      "label": "总裁"
+    },
+    {
+      "from": "陈冰",
+      "to": "University",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "陈冰",
+      "to": "Microsoft",
+      "type": "works_at",
+      "label": "工程师"
+    },
+    {
+      "from": "陈冰",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "技术总监"
+    },
+    {
+      "from": "杨震原",
+      "to": "University",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "杨震原",
+      "to": "Google",
+      "type": "works_at",
+      "label": "工程师"
+    },
+    {
+      "from": "杨震原",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "技术副总裁"
+    },
+    {
+      "from": "谢欣",
+      "to": "University",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "谢欣",
+      "to": "Microsoft",
+      "type": "works_at",
+      "label": "产品经理"
+    },
+    {
+      "from": "谢欣",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "产品副总裁"
+    },
+    {
+      "from": "朱文佳",
+      "to": "University",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "朱文佳",
+      "to": "Google",
+      "type": "works_at",
+      "label": "工程师"
+    },
+    {
+      "from": "朱文佳",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "技术副总裁"
+    },
+    {
+      "from": "洪定坤",
+      "to": "University",
+      "type": "works_at",
+      "label": "学生"
+    },
+    {
+      "from": "洪定坤",
+      "to": "百度",
+      "type": "works_at",
+      "label": "工程师"
+    },
+    {
+      "from": "洪定坤",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "技术副总裁"
+    },
+    {
+      "from": "李飞飞",
+      "to": "Princeton University",
+      "type": "works_at",
+      "label": "博士生"
+    },
+    {
+      "from": "李飞飞",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "李飞飞",
+      "to": "Google",
+      "type": "works_at",
+      "label": "科学家"
+    },
+    {
+      "from": "姚期智",
+      "to": "University of California, Berkeley",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "李国庆",
+      "to": "当当",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "俞敏洪",
+      "to": "新东方",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张磊",
+      "to": "高瓴资本",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "刘爽",
+      "to": "Independent Researcher",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "刘爽",
+      "to": "Sina",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "王高飞",
+      "to": "Independent Researcher",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "王高飞",
+      "to": "Sina",
+      "type": "works_at",
+      "label": "Executive"
+    },
+    {
+      "from": "Geoffrey Hinton",
+      "to": "University of Toronto",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "Geoffrey Hinton",
+      "to": "Google / University of Toronto",
+      "type": "works_at",
+      "label": "Chief Scientist"
+    },
+    {
+      "from": "Yann LeCun",
+      "to": "NYU",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "Yann LeCun",
+      "to": "Facebook AI Research",
+      "type": "works_at",
+      "label": "Chief Scientist"
+    },
+    {
+      "from": "Yoshua Bengio",
+      "to": "University of Montreal",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "Yoshua Bengio",
+      "to": "Mila",
+      "type": "works_at",
+      "label": "Scientific Director"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "Assistant Professor"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "Associate Professor"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "Coursera / DeepLearning.AI",
+      "type": "works_at",
+      "label": "Co-founder"
+    },
+    {
+      "from": "Ian Goodfellow",
+      "to": "University of Montreal",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "Ian Goodfellow",
+      "to": "University of Montreal",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "Ian Goodfellow",
+      "to": "Apple",
+      "type": "works_at",
+      "label": "Research Scientist"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "Princeton University",
+      "type": "works_at",
+      "label": "Assistant Professor"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "Associate Professor"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "Jürgen Schmidhuber",
+      "to": "IDSIA",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "Jürgen Schmidhuber",
+      "to": "NNAISENSE",
+      "type": "works_at",
+      "label": "Co-founder"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "University of Cambridge",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "DeepMind",
+      "type": "works_at",
+      "label": "Co-founder"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "DeepMind / Google",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "University of Toronto",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "University of Toronto",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "OpenAI",
+      "type": "works_at",
+      "label": "Co-founder"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "Google",
+      "type": "works_at",
+      "label": "Software Engineer"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "Google",
+      "type": "works_at",
+      "label": "Senior Engineer"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "Google",
+      "type": "works_at",
+      "label": "Chief Scientist"
+    },
+    {
+      "from": "Andrej Karpathy",
+      "to": "University of British Columbia",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "Andrej Karpathy",
+      "to": "Stanford University",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "Andrej Karpathy",
+      "to": "OpenAI / Tesla",
+      "type": "works_at",
+      "label": "Researcher"
+    },
+    {
+      "from": "周志华",
+      "to": "Nanjing University",
+      "type": "works_at",
+      "label": "Lecturer"
+    },
+    {
+      "from": "周志华",
+      "to": "Nanjing University",
+      "type": "works_at",
+      "label": "Professor"
+    },
+    {
+      "from": "周志华",
+      "to": "Nanjing University",
+      "type": "works_at",
+      "label": "Dean"
+    },
+    {
+      "from": "李沐",
+      "to": "University of Science and Technology of China",
+      "type": "works_at",
+      "label": "Student"
+    },
+    {
+      "from": "李沐",
+      "to": "University of Washington",
+      "type": "works_at",
+      "label": "PhD Student"
+    },
+    {
+      "from": "李沐",
+      "to": "Amazon / AWS",
+      "type": "works_at",
+      "label": "Research Scientist"
+    },
+    {
+      "from": "何恺明",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "本科生"
+    },
+    {
+      "from": "何恺明",
+      "to": "香港中文大学",
+      "type": "works_at",
+      "label": "博士生"
+    },
+    {
+      "from": "何恺明",
+      "to": "微软亚洲研究院",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "何恺明",
+      "to": "Facebook AI Research (FAIR)",
+      "type": "works_at",
+      "label": "研究科学家"
+    },
+    {
+      "from": "孙剑",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "本科生"
+    },
+    {
+      "from": "孙剑",
+      "to": "微软亚洲研究院",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "孙剑",
+      "to": "微软亚洲研究院",
+      "type": "works_at",
+      "label": "高级研究员"
+    },
+    {
+      "from": "孙剑",
+      "to": "旷视科技",
+      "type": "works_at",
+      "label": "首席科学家"
+    },
+    {
+      "from": "王晓刚",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "本科生"
+    },
+    {
+      "from": "王晓刚",
+      "to": "香港中文大学",
+      "type": "works_at",
+      "label": "博士生"
+    },
+    {
+      "from": "王晓刚",
+      "to": "微软亚洲研究院",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "王晓刚",
+      "to": "商汤科技",
+      "type": "works_at",
+      "label": "首席科学家"
+    },
+    {
+      "from": "梅宏",
+      "to": "北京大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "梅宏",
+      "to": "中国科学院软件研究所",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "梅宏",
+      "to": "上海交通大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "梅宏",
+      "to": "北京理工大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "郑南宁",
+      "to": "西安交通大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "郑南宁",
+      "to": "西安交通大学",
+      "type": "works_at",
+      "label": "副校长"
+    },
+    {
+      "from": "郑南宁",
+      "to": "西安交通大学",
+      "type": "works_at",
+      "label": "校长"
+    },
+    {
+      "from": "周伯文",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "本科生"
+    },
+    {
+      "from": "周伯文",
+      "to": "香港中文大学",
+      "type": "works_at",
+      "label": "博士生"
+    },
+    {
+      "from": "周伯文",
+      "to": "IBM研究院",
+      "type": "works_at",
+      "label": "研究员"
+    },
+    {
+      "from": "周伯文",
+      "to": "京东探索研究院",
+      "type": "works_at",
+      "label": "首席科学家"
     }
   ]
 }
