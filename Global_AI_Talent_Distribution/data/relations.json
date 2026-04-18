@@ -1,80 +1,1621 @@
 {
   "nodes": [
-    { "id": "li-kaifu", "label": "李开复", "kind": "person" },
-    { "id": "wang-xiaochuan", "label": "王小川", "kind": "person" },
-    { "id": "yang-zhilin", "label": "杨植麟", "kind": "person" },
-    { "id": "zhang-peng", "label": "张鹏", "kind": "person" },
-    { "id": "yan-junjie", "label": "闫俊杰", "kind": "person" },
-    { "id": "dai-wenyuan", "label": "戴文渊", "kind": "person" },
-    { "id": "xu-li", "label": "徐立", "kind": "person" },
-    { "id": "tang-xiaoou", "label": "汤晓鸥", "kind": "person" },
-    { "id": "yin-qi", "label": "印奇", "kind": "person" },
-    { "id": "liu-qingfeng", "label": "刘庆峰", "kind": "person" },
-    { "id": "zhu-long", "label": "朱珑", "kind": "person" },
-    { "id": "zhou-xi", "label": "周曦", "kind": "person" },
-    { "id": "li-yanhong", "label": "李彦宏", "kind": "person" },
-    { "id": "zhang-yiming", "label": "张一鸣", "kind": "person" },
-    { "id": "ma-huateng", "label": "马化腾", "kind": "person" },
-    { "id": "ren-zhengfei", "label": "任正非", "kind": "person" },
-    { "id": "chen-tianshi", "label": "陈天石", "kind": "person" },
-    { "id": "yu-kai", "label": "余凯", "kind": "person" },
-    { "id": "zhou-jian", "label": "周剑", "kind": "person" },
-    { "id": "wang-xingxing", "label": "王兴兴", "kind": "person" },
-    { "id": "peng-jun", "label": "彭军", "kind": "person" },
-    { "id": "liang-wenfeng", "label": "梁文锋", "kind": "person" },
-    { "id": "jiang-daxin", "label": "姜大昕", "kind": "person" },
-    { "id": "li-zhifei", "label": "李志飞", "kind": "person" },
-    { "id": "zhou-hongyi", "label": "周鸿祎", "kind": "person" },
-    { "id": "org-01ai", "label": "零一万物（01.AI）", "kind": "org" },
-    { "id": "org-baichuan", "label": "百川智能", "kind": "org" },
-    { "id": "org-moonshot", "label": "月之暗面（Moonshot AI）", "kind": "org" },
-    { "id": "org-zhipu", "label": "智谱AI", "kind": "org" },
-    { "id": "org-minimax", "label": "MiniMax", "kind": "org" },
-    { "id": "org-4paradigm", "label": "第四范式", "kind": "org" },
-    { "id": "org-sensetime", "label": "商汤科技", "kind": "org" },
-    { "id": "org-megvii", "label": "旷视科技", "kind": "org" },
-    { "id": "org-iflytek", "label": "科大讯飞", "kind": "org" },
-    { "id": "org-yitu", "label": "依图科技", "kind": "org" },
-    { "id": "org-cloudwalk", "label": "云从科技", "kind": "org" },
-    { "id": "org-cambricon", "label": "寒武纪", "kind": "org" },
-    { "id": "org-horizon", "label": "地平线", "kind": "org" },
-    { "id": "org-ubtech", "label": "优必选", "kind": "org" },
-    { "id": "org-unitree", "label": "宇树科技", "kind": "org" },
-    { "id": "org-pony", "label": "小马智行（Pony.ai）", "kind": "org" },
-    { "id": "org-deepseek", "label": "DeepSeek（深度求索）", "kind": "org" },
-    { "id": "org-stepfun", "label": "阶跃星辰（StepFun）", "kind": "org" },
-    { "id": "org-mobvoi", "label": "出门问问（Mobvoi）", "kind": "org" },
-    { "id": "org-360", "label": "360", "kind": "org" },
-    { "id": "org-baidu", "label": "百度", "kind": "org" },
-    { "id": "org-bytedance", "label": "字节跳动", "kind": "org" },
-    { "id": "org-tencent", "label": "腾讯", "kind": "org" },
-    { "id": "org-huawei", "label": "华为", "kind": "org" }
+    {
+      "id": "li-kaifu",
+      "label": "李开复",
+      "kind": "person"
+    },
+    {
+      "id": "wang-xiaochuan",
+      "label": "王小川",
+      "kind": "person"
+    },
+    {
+      "id": "yang-zhilin",
+      "label": "杨植麟",
+      "kind": "person"
+    },
+    {
+      "id": "zhang-peng",
+      "label": "张鹏",
+      "kind": "person"
+    },
+    {
+      "id": "yan-junjie",
+      "label": "闫俊杰",
+      "kind": "person"
+    },
+    {
+      "id": "dai-wenyuan",
+      "label": "戴文渊",
+      "kind": "person"
+    },
+    {
+      "id": "xu-li",
+      "label": "徐立",
+      "kind": "person"
+    },
+    {
+      "id": "tang-xiaoou",
+      "label": "汤晓鸥",
+      "kind": "person"
+    },
+    {
+      "id": "yin-qi",
+      "label": "印奇",
+      "kind": "person"
+    },
+    {
+      "id": "liu-qingfeng",
+      "label": "刘庆峰",
+      "kind": "person"
+    },
+    {
+      "id": "zhu-long",
+      "label": "朱珑",
+      "kind": "person"
+    },
+    {
+      "id": "zhou-xi",
+      "label": "周曦",
+      "kind": "person"
+    },
+    {
+      "id": "li-yanhong",
+      "label": "李彦宏",
+      "kind": "person"
+    },
+    {
+      "id": "zhang-yiming",
+      "label": "张一鸣",
+      "kind": "person"
+    },
+    {
+      "id": "ma-huateng",
+      "label": "马化腾",
+      "kind": "person"
+    },
+    {
+      "id": "ren-zhengfei",
+      "label": "任正非",
+      "kind": "person"
+    },
+    {
+      "id": "chen-tianshi",
+      "label": "陈天石",
+      "kind": "person"
+    },
+    {
+      "id": "yu-kai",
+      "label": "余凯",
+      "kind": "person"
+    },
+    {
+      "id": "zhou-jian",
+      "label": "周剑",
+      "kind": "person"
+    },
+    {
+      "id": "wang-xingxing",
+      "label": "王兴兴",
+      "kind": "person"
+    },
+    {
+      "id": "peng-jun",
+      "label": "彭军",
+      "kind": "person"
+    },
+    {
+      "id": "liang-wenfeng",
+      "label": "梁文锋",
+      "kind": "person"
+    },
+    {
+      "id": "jiang-daxin",
+      "label": "姜大昕",
+      "kind": "person"
+    },
+    {
+      "id": "li-zhifei",
+      "label": "李志飞",
+      "kind": "person"
+    },
+    {
+      "id": "zhou-hongyi",
+      "label": "周鸿祎",
+      "kind": "person"
+    },
+    {
+      "id": "org-01ai",
+      "label": "零一万物（01.AI）",
+      "kind": "org"
+    },
+    {
+      "id": "org-baichuan",
+      "label": "百川智能",
+      "kind": "org"
+    },
+    {
+      "id": "org-moonshot",
+      "label": "月之暗面（Moonshot AI）",
+      "kind": "org"
+    },
+    {
+      "id": "org-zhipu",
+      "label": "智谱AI",
+      "kind": "org"
+    },
+    {
+      "id": "org-minimax",
+      "label": "MiniMax",
+      "kind": "org"
+    },
+    {
+      "id": "org-4paradigm",
+      "label": "第四范式",
+      "kind": "org"
+    },
+    {
+      "id": "org-sensetime",
+      "label": "商汤科技",
+      "kind": "org"
+    },
+    {
+      "id": "org-megvii",
+      "label": "旷视科技",
+      "kind": "org"
+    },
+    {
+      "id": "org-iflytek",
+      "label": "科大讯飞",
+      "kind": "org"
+    },
+    {
+      "id": "org-yitu",
+      "label": "依图科技",
+      "kind": "org"
+    },
+    {
+      "id": "org-cloudwalk",
+      "label": "云从科技",
+      "kind": "org"
+    },
+    {
+      "id": "org-cambricon",
+      "label": "寒武纪",
+      "kind": "org"
+    },
+    {
+      "id": "org-horizon",
+      "label": "地平线",
+      "kind": "org"
+    },
+    {
+      "id": "org-ubtech",
+      "label": "优必选",
+      "kind": "org"
+    },
+    {
+      "id": "org-unitree",
+      "label": "宇树科技",
+      "kind": "org"
+    },
+    {
+      "id": "org-pony",
+      "label": "小马智行（Pony.ai）",
+      "kind": "org"
+    },
+    {
+      "id": "org-deepseek",
+      "label": "DeepSeek（深度求索）",
+      "kind": "org"
+    },
+    {
+      "id": "org-stepfun",
+      "label": "阶跃星辰（StepFun）",
+      "kind": "org"
+    },
+    {
+      "id": "org-mobvoi",
+      "label": "出门问问（Mobvoi）",
+      "kind": "org"
+    },
+    {
+      "id": "org-360",
+      "label": "360",
+      "kind": "org"
+    },
+    {
+      "id": "org-baidu",
+      "label": "百度",
+      "kind": "org"
+    },
+    {
+      "id": "org-bytedance",
+      "label": "字节跳动",
+      "kind": "org"
+    },
+    {
+      "id": "org-tencent",
+      "label": "腾讯",
+      "kind": "org"
+    },
+    {
+      "id": "org-huawei",
+      "label": "华为",
+      "kind": "org"
+    },
+    {
+      "id": "李彦宏",
+      "label": "李彦宏",
+      "kind": "person"
+    },
+    {
+      "id": "百度",
+      "label": "百度",
+      "kind": "org"
+    },
+    {
+      "id": "张一鸣",
+      "label": "张一鸣",
+      "kind": "person"
+    },
+    {
+      "id": "字节跳动",
+      "label": "字节跳动",
+      "kind": "org"
+    },
+    {
+      "id": "马云",
+      "label": "马云",
+      "kind": "person"
+    },
+    {
+      "id": "阿里巴巴",
+      "label": "阿里巴巴",
+      "kind": "org"
+    },
+    {
+      "id": "马化腾",
+      "label": "马化腾",
+      "kind": "person"
+    },
+    {
+      "id": "腾讯",
+      "label": "腾讯",
+      "kind": "org"
+    },
+    {
+      "id": "雷军",
+      "label": "雷军",
+      "kind": "person"
+    },
+    {
+      "id": "小米",
+      "label": "小米",
+      "kind": "org"
+    },
+    {
+      "id": "刘强东",
+      "label": "刘强东",
+      "kind": "person"
+    },
+    {
+      "id": "京东",
+      "label": "京东",
+      "kind": "org"
+    },
+    {
+      "id": "王兴",
+      "label": "王兴",
+      "kind": "person"
+    },
+    {
+      "id": "美团",
+      "label": "美团",
+      "kind": "org"
+    },
+    {
+      "id": "黄峥",
+      "label": "黄峥",
+      "kind": "person"
+    },
+    {
+      "id": "拼多多",
+      "label": "拼多多",
+      "kind": "org"
+    },
+    {
+      "id": "丁磊",
+      "label": "丁磊",
+      "kind": "person"
+    },
+    {
+      "id": "网易",
+      "label": "网易",
+      "kind": "org"
+    },
+    {
+      "id": "曹国伟",
+      "label": "曹国伟",
+      "kind": "person"
+    },
+    {
+      "id": "新浪",
+      "label": "新浪",
+      "kind": "org"
+    },
+    {
+      "id": "李开复",
+      "label": "李开复",
+      "kind": "person"
+    },
+    {
+      "id": "创新工场",
+      "label": "创新工场",
+      "kind": "org"
+    },
+    {
+      "id": "王小川",
+      "label": "王小川",
+      "kind": "person"
+    },
+    {
+      "id": "搜狗",
+      "label": "搜狗",
+      "kind": "org"
+    },
+    {
+      "id": "周鸿祎",
+      "label": "周鸿祎",
+      "kind": "person"
+    },
+    {
+      "id": "360",
+      "label": "360",
+      "kind": "org"
+    },
+    {
+      "id": "张朝阳",
+      "label": "张朝阳",
+      "kind": "person"
+    },
+    {
+      "id": "搜狐",
+      "label": "搜狐",
+      "kind": "org"
+    },
+    {
+      "id": "梁稳根",
+      "label": "梁稳根",
+      "kind": "person"
+    },
+    {
+      "id": "三一重工",
+      "label": "三一重工",
+      "kind": "org"
+    },
+    {
+      "id": "董明珠",
+      "label": "董明珠",
+      "kind": "person"
+    },
+    {
+      "id": "格力电器",
+      "label": "格力电器",
+      "kind": "org"
+    },
+    {
+      "id": "任正非",
+      "label": "任正非",
+      "kind": "person"
+    },
+    {
+      "id": "华为",
+      "label": "华为",
+      "kind": "org"
+    },
+    {
+      "id": "徐立",
+      "label": "徐立",
+      "kind": "person"
+    },
+    {
+      "id": "商汤科技",
+      "label": "商汤科技",
+      "kind": "org"
+    },
+    {
+      "id": "汤晓鸥",
+      "label": "汤晓鸥",
+      "kind": "person"
+    },
+    {
+      "id": "陆奇",
+      "label": "陆奇",
+      "kind": "person"
+    },
+    {
+      "id": "YC中国",
+      "label": "YC中国",
+      "kind": "org"
+    },
+    {
+      "id": "王海峰",
+      "label": "王海峰",
+      "kind": "person"
+    },
+    {
+      "id": "张潼",
+      "label": "张潼",
+      "kind": "person"
+    },
+    {
+      "id": "俞凯",
+      "label": "俞凯",
+      "kind": "person"
+    },
+    {
+      "id": "思必驰",
+      "label": "思必驰",
+      "kind": "org"
+    },
+    {
+      "id": "胡郁",
+      "label": "胡郁",
+      "kind": "person"
+    },
+    {
+      "id": "科大讯飞",
+      "label": "科大讯飞",
+      "kind": "org"
+    },
+    {
+      "id": "刘庆峰",
+      "label": "刘庆峰",
+      "kind": "person"
+    },
+    {
+      "id": "姚欣",
+      "label": "姚欣",
+      "kind": "person"
+    },
+    {
+      "id": "PPTV",
+      "label": "PPTV",
+      "kind": "org"
+    },
+    {
+      "id": "陈天桥",
+      "label": "陈天桥",
+      "kind": "person"
+    },
+    {
+      "id": "盛大网络",
+      "label": "盛大网络",
+      "kind": "org"
+    },
+    {
+      "id": "史玉柱",
+      "label": "史玉柱",
+      "kind": "person"
+    },
+    {
+      "id": "巨人网络",
+      "label": "巨人网络",
+      "kind": "org"
+    },
+    {
+      "id": "沈南鹏",
+      "label": "沈南鹏",
+      "kind": "person"
+    },
+    {
+      "id": "红杉资本",
+      "label": "红杉资本",
+      "kind": "org"
+    },
+    {
+      "id": "李斌",
+      "label": "李斌",
+      "kind": "person"
+    },
+    {
+      "id": "蔚来",
+      "label": "蔚来",
+      "kind": "org"
+    },
+    {
+      "id": "何小鹏",
+      "label": "何小鹏",
+      "kind": "person"
+    },
+    {
+      "id": "小鹏汽车",
+      "label": "小鹏汽车",
+      "kind": "org"
+    },
+    {
+      "id": "王传福",
+      "label": "王传福",
+      "kind": "person"
+    },
+    {
+      "id": "比亚迪",
+      "label": "比亚迪",
+      "kind": "org"
+    },
+    {
+      "id": "魏建军",
+      "label": "魏建军",
+      "kind": "person"
+    },
+    {
+      "id": "长城汽车",
+      "label": "长城汽车",
+      "kind": "org"
+    },
+    {
+      "id": "李书福",
+      "label": "李书福",
+      "kind": "person"
+    },
+    {
+      "id": "吉利汽车",
+      "label": "吉利汽车",
+      "kind": "org"
+    },
+    {
+      "id": "张勇",
+      "label": "张勇",
+      "kind": "person"
+    },
+    {
+      "id": "哪吒汽车",
+      "label": "哪吒汽车",
+      "kind": "org"
+    },
+    {
+      "id": "戴威",
+      "label": "戴威",
+      "kind": "person"
+    },
+    {
+      "id": "ofo",
+      "label": "ofo",
+      "kind": "org"
+    },
+    {
+      "id": "程维",
+      "label": "程维",
+      "kind": "person"
+    },
+    {
+      "id": "滴滴",
+      "label": "滴滴",
+      "kind": "org"
+    },
+    {
+      "id": "柳青",
+      "label": "柳青",
+      "kind": "person"
+    },
+    {
+      "id": "罗永浩",
+      "label": "罗永浩",
+      "kind": "person"
+    },
+    {
+      "id": "锤子科技",
+      "label": "锤子科技",
+      "kind": "org"
+    },
+    {
+      "id": "贾跃亭",
+      "label": "贾跃亭",
+      "kind": "person"
+    },
+    {
+      "id": "乐视",
+      "label": "乐视",
+      "kind": "org"
+    },
+    {
+      "id": "陈睿",
+      "label": "陈睿",
+      "kind": "person"
+    },
+    {
+      "id": "B站",
+      "label": "B站",
+      "kind": "org"
+    },
+    {
+      "id": "龚宇",
+      "label": "龚宇",
+      "kind": "person"
+    },
+    {
+      "id": "爱奇艺",
+      "label": "爱奇艺",
+      "kind": "org"
+    },
+    {
+      "id": "古永锵",
+      "label": "古永锵",
+      "kind": "person"
+    },
+    {
+      "id": "优酷",
+      "label": "优酷",
+      "kind": "org"
+    },
+    {
+      "id": "李竹",
+      "label": "李竹",
+      "kind": "person"
+    },
+    {
+      "id": "英诺天使",
+      "label": "英诺天使",
+      "kind": "org"
+    },
+    {
+      "id": "徐小平",
+      "label": "徐小平",
+      "kind": "person"
+    },
+    {
+      "id": "真格基金",
+      "label": "真格基金",
+      "kind": "org"
+    },
+    {
+      "id": "蔡文胜",
+      "label": "蔡文胜",
+      "kind": "person"
+    },
+    {
+      "id": "美图",
+      "label": "美图",
+      "kind": "org"
+    },
+    {
+      "id": "王俊",
+      "label": "王俊",
+      "kind": "person"
+    },
+    {
+      "id": "林元庆",
+      "label": "林元庆",
+      "kind": "person"
+    },
+    {
+      "id": "Aibee",
+      "label": "Aibee",
+      "kind": "org"
+    },
+    {
+      "id": "吴恩达",
+      "label": "吴恩达",
+      "kind": "person"
+    },
+    {
+      "id": "余凯",
+      "label": "余凯",
+      "kind": "person"
+    },
+    {
+      "id": "地平线",
+      "label": "地平线",
+      "kind": "org"
+    },
+    {
+      "id": "黄仁勋",
+      "label": "黄仁勋",
+      "kind": "person"
+    },
+    {
+      "id": "NVIDIA",
+      "label": "NVIDIA",
+      "kind": "org"
+    },
+    {
+      "id": "张志东",
+      "label": "张志东",
+      "kind": "person"
+    },
+    {
+      "id": "刘炽平",
+      "label": "刘炽平",
+      "kind": "person"
+    },
+    {
+      "id": "彭蕾",
+      "label": "彭蕾",
+      "kind": "person"
+    },
+    {
+      "id": "蚂蚁集团",
+      "label": "蚂蚁集团",
+      "kind": "org"
+    },
+    {
+      "id": "井贤栋",
+      "label": "井贤栋",
+      "kind": "person"
+    },
+    {
+      "id": "阿里云",
+      "label": "阿里云",
+      "kind": "org"
+    },
+    {
+      "id": "王坚",
+      "label": "王坚",
+      "kind": "person"
+    },
+    {
+      "id": "胡晓明",
+      "label": "胡晓明",
+      "kind": "person"
+    },
+    {
+      "id": "童文红",
+      "label": "童文红",
+      "kind": "person"
+    },
+    {
+      "id": "菜鸟网络",
+      "label": "菜鸟网络",
+      "kind": "org"
+    },
+    {
+      "id": "沈抖",
+      "label": "沈抖",
+      "kind": "person"
+    },
+    {
+      "id": "景鲲",
+      "label": "景鲲",
+      "kind": "person"
+    },
+    {
+      "id": "尹世明",
+      "label": "尹世明",
+      "kind": "person"
+    },
+    {
+      "id": "赵明",
+      "label": "赵明",
+      "kind": "person"
+    },
+    {
+      "id": "荣耀",
+      "label": "荣耀",
+      "kind": "org"
+    },
+    {
+      "id": "陈冰",
+      "label": "陈冰",
+      "kind": "person"
+    },
+    {
+      "id": "杨震原",
+      "label": "杨震原",
+      "kind": "person"
+    },
+    {
+      "id": "谢欣",
+      "label": "谢欣",
+      "kind": "person"
+    },
+    {
+      "id": "朱文佳",
+      "label": "朱文佳",
+      "kind": "person"
+    },
+    {
+      "id": "洪定坤",
+      "label": "洪定坤",
+      "kind": "person"
+    },
+    {
+      "id": "李飞飞",
+      "label": "李飞飞",
+      "kind": "person"
+    },
+    {
+      "id": "Google",
+      "label": "Google",
+      "kind": "org"
+    },
+    {
+      "id": "张钹",
+      "label": "张钹",
+      "kind": "person"
+    },
+    {
+      "id": "清华大学",
+      "label": "清华大学",
+      "kind": "org"
+    },
+    {
+      "id": "姚期智",
+      "label": "姚期智",
+      "kind": "person"
+    },
+    {
+      "id": "高文",
+      "label": "高文",
+      "kind": "person"
+    },
+    {
+      "id": "北京大学",
+      "label": "北京大学",
+      "kind": "org"
+    },
+    {
+      "id": "李德毅",
+      "label": "李德毅",
+      "kind": "person"
+    },
+    {
+      "id": "中国工程院",
+      "label": "中国工程院",
+      "kind": "org"
+    },
+    {
+      "id": "吴晓波",
+      "label": "吴晓波",
+      "kind": "person"
+    },
+    {
+      "id": "财经作家",
+      "label": "财经作家",
+      "kind": "org"
+    },
+    {
+      "id": "李国庆",
+      "label": "李国庆",
+      "kind": "person"
+    },
+    {
+      "id": "当当",
+      "label": "当当",
+      "kind": "org"
+    },
+    {
+      "id": "俞敏洪",
+      "label": "俞敏洪",
+      "kind": "person"
+    },
+    {
+      "id": "新东方",
+      "label": "新东方",
+      "kind": "org"
+    },
+    {
+      "id": "张磊",
+      "label": "张磊",
+      "kind": "person"
+    },
+    {
+      "id": "高瓴资本",
+      "label": "高瓴资本",
+      "kind": "org"
+    },
+    {
+      "id": "刘爽",
+      "label": "刘爽",
+      "kind": "person"
+    },
+    {
+      "id": "凤凰网",
+      "label": "凤凰网",
+      "kind": "org"
+    },
+    {
+      "id": "王高飞",
+      "label": "王高飞",
+      "kind": "person"
+    },
+    {
+      "id": "微博",
+      "label": "微博",
+      "kind": "org"
+    }
   ],
   "edges": [
-    { "from": "li-kaifu", "to": "org-01ai", "type": "founded", "label": "founded" },
-    { "from": "wang-xiaochuan", "to": "org-baichuan", "type": "founded", "label": "founded" },
-    { "from": "yang-zhilin", "to": "org-moonshot", "type": "founded", "label": "founded" },
-    { "from": "zhang-peng", "to": "org-zhipu", "type": "works_at", "label": "leads" },
-    { "from": "yan-junjie", "to": "org-minimax", "type": "founded", "label": "founded" },
-    { "from": "dai-wenyuan", "to": "org-4paradigm", "type": "founded", "label": "founded" },
-    { "from": "xu-li", "to": "org-sensetime", "type": "works_at", "label": "leads" },
-    { "from": "tang-xiaoou", "to": "org-sensetime", "type": "founded", "label": "founded" },
-    { "from": "yin-qi", "to": "org-megvii", "type": "founded", "label": "founded" },
-    { "from": "liu-qingfeng", "to": "org-iflytek", "type": "works_at", "label": "leads" },
-    { "from": "zhu-long", "to": "org-yitu", "type": "founded", "label": "founded" },
-    { "from": "zhou-xi", "to": "org-cloudwalk", "type": "founded", "label": "founded" },
-    { "from": "chen-tianshi", "to": "org-cambricon", "type": "founded", "label": "founded" },
-    { "from": "yu-kai", "to": "org-horizon", "type": "founded", "label": "founded" },
-    { "from": "zhou-jian", "to": "org-ubtech", "type": "founded", "label": "founded" },
-    { "from": "wang-xingxing", "to": "org-unitree", "type": "founded", "label": "founded" },
-    { "from": "peng-jun", "to": "org-pony", "type": "founded", "label": "founded" },
-    { "from": "liang-wenfeng", "to": "org-deepseek", "type": "founded", "label": "founded" },
-    { "from": "jiang-daxin", "to": "org-stepfun", "type": "founded", "label": "founded" },
-    { "from": "li-zhifei", "to": "org-mobvoi", "type": "founded", "label": "founded" },
-    { "from": "zhou-hongyi", "to": "org-360", "type": "works_at", "label": "leads" },
-    { "from": "li-yanhong", "to": "org-baidu", "type": "founded", "label": "founded" },
-    { "from": "zhang-yiming", "to": "org-bytedance", "type": "founded", "label": "founded" },
-    { "from": "ma-huateng", "to": "org-tencent", "type": "founded", "label": "founded" },
-    { "from": "ren-zhengfei", "to": "org-huawei", "type": "founded", "label": "founded" }
+    {
+      "from": "li-kaifu",
+      "to": "org-01ai",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "wang-xiaochuan",
+      "to": "org-baichuan",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "yang-zhilin",
+      "to": "org-moonshot",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "zhang-peng",
+      "to": "org-zhipu",
+      "type": "works_at",
+      "label": "leads"
+    },
+    {
+      "from": "yan-junjie",
+      "to": "org-minimax",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "dai-wenyuan",
+      "to": "org-4paradigm",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "xu-li",
+      "to": "org-sensetime",
+      "type": "works_at",
+      "label": "leads"
+    },
+    {
+      "from": "tang-xiaoou",
+      "to": "org-sensetime",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "yin-qi",
+      "to": "org-megvii",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "liu-qingfeng",
+      "to": "org-iflytek",
+      "type": "works_at",
+      "label": "leads"
+    },
+    {
+      "from": "zhu-long",
+      "to": "org-yitu",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "zhou-xi",
+      "to": "org-cloudwalk",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "chen-tianshi",
+      "to": "org-cambricon",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "yu-kai",
+      "to": "org-horizon",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "zhou-jian",
+      "to": "org-ubtech",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "wang-xingxing",
+      "to": "org-unitree",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "peng-jun",
+      "to": "org-pony",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "liang-wenfeng",
+      "to": "org-deepseek",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "jiang-daxin",
+      "to": "org-stepfun",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "li-zhifei",
+      "to": "org-mobvoi",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "zhou-hongyi",
+      "to": "org-360",
+      "type": "works_at",
+      "label": "leads"
+    },
+    {
+      "from": "li-yanhong",
+      "to": "org-baidu",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "zhang-yiming",
+      "to": "org-bytedance",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "ma-huateng",
+      "to": "org-tencent",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "ren-zhengfei",
+      "to": "org-huawei",
+      "type": "founded",
+      "label": "founded"
+    },
+    {
+      "from": "李彦宏",
+      "to": "百度",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张一鸣",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "马云",
+      "to": "阿里巴巴",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "马化腾",
+      "to": "腾讯",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "雷军",
+      "to": "小米",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "刘强东",
+      "to": "京东",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王兴",
+      "to": "美团",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "黄峥",
+      "to": "拼多多",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "丁磊",
+      "to": "网易",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "曹国伟",
+      "to": "新浪",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "李开复",
+      "to": "创新工场",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王小川",
+      "to": "搜狗",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "周鸿祎",
+      "to": "360",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张朝阳",
+      "to": "搜狐",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "梁稳根",
+      "to": "三一重工",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "董明珠",
+      "to": "格力电器",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "任正非",
+      "to": "华为",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "徐立",
+      "to": "商汤科技",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "汤晓鸥",
+      "to": "商汤科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "陆奇",
+      "to": "YC中国",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王海峰",
+      "to": "百度",
+      "type": "works_at",
+      "label": "CTO"
+    },
+    {
+      "from": "张潼",
+      "to": "腾讯",
+      "type": "works_at",
+      "label": "AI Lab主任"
+    },
+    {
+      "from": "俞凯",
+      "to": "思必驰",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "胡郁",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "轮值总裁"
+    },
+    {
+      "from": "刘庆峰",
+      "to": "科大讯飞",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "姚欣",
+      "to": "PPTV",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "陈天桥",
+      "to": "盛大网络",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "史玉柱",
+      "to": "巨人网络",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "沈南鹏",
+      "to": "红杉资本",
+      "type": "works_at",
+      "label": "合伙人"
+    },
+    {
+      "from": "李斌",
+      "to": "蔚来",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "何小鹏",
+      "to": "小鹏汽车",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王传福",
+      "to": "比亚迪",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "魏建军",
+      "to": "长城汽车",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "李书福",
+      "to": "吉利汽车",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "张勇",
+      "to": "哪吒汽车",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "戴威",
+      "to": "ofo",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "程维",
+      "to": "滴滴",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "柳青",
+      "to": "滴滴",
+      "type": "works_at",
+      "label": "总裁"
+    },
+    {
+      "from": "罗永浩",
+      "to": "锤子科技",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "贾跃亭",
+      "to": "乐视",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "陈睿",
+      "to": "B站",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "龚宇",
+      "to": "爱奇艺",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "古永锵",
+      "to": "优酷",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "李竹",
+      "to": "英诺天使",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "徐小平",
+      "to": "真格基金",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "蔡文胜",
+      "to": "美图",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "王俊",
+      "to": "商汤科技",
+      "type": "works_at",
+      "label": "CTO"
+    },
+    {
+      "from": "林元庆",
+      "to": "Aibee",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "吴恩达",
+      "to": "百度",
+      "type": "works_at",
+      "label": "前首席科学家"
+    },
+    {
+      "from": "余凯",
+      "to": "地平线",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "黄仁勋",
+      "to": "NVIDIA",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张志东",
+      "to": "腾讯",
+      "type": "works_at",
+      "label": "前CTO"
+    },
+    {
+      "from": "刘炽平",
+      "to": "腾讯",
+      "type": "works_at",
+      "label": "总裁"
+    },
+    {
+      "from": "彭蕾",
+      "to": "蚂蚁集团",
+      "type": "works_at",
+      "label": "前CEO"
+    },
+    {
+      "from": "井贤栋",
+      "to": "蚂蚁集团",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "张勇",
+      "to": "阿里云",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王坚",
+      "to": "阿里云",
+      "type": "works_at",
+      "label": "创始人"
+    },
+    {
+      "from": "胡晓明",
+      "to": "阿里云",
+      "type": "works_at",
+      "label": "前总裁"
+    },
+    {
+      "from": "童文红",
+      "to": "菜鸟网络",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "沈抖",
+      "to": "百度",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "景鲲",
+      "to": "百度",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "尹世明",
+      "to": "百度",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "赵明",
+      "to": "荣耀",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "陈冰",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "CTO"
+    },
+    {
+      "from": "杨震原",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "谢欣",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "朱文佳",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "洪定坤",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "副总裁"
+    },
+    {
+      "from": "李飞飞",
+      "to": "Google",
+      "type": "works_at",
+      "label": "前科学家"
+    },
+    {
+      "from": "张钹",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "姚期智",
+      "to": "清华大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "高文",
+      "to": "北京大学",
+      "type": "works_at",
+      "label": "教授"
+    },
+    {
+      "from": "李德毅",
+      "to": "中国工程院",
+      "type": "works_at",
+      "label": "院士"
+    },
+    {
+      "from": "吴晓波",
+      "to": "财经作家",
+      "type": "works_at",
+      "label": "作家"
+    },
+    {
+      "from": "李国庆",
+      "to": "当当",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "俞敏洪",
+      "to": "新东方",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "张磊",
+      "to": "高瓴资本",
+      "type": "works_at",
+      "label": "Founder"
+    },
+    {
+      "from": "刘爽",
+      "to": "凤凰网",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "曹国伟",
+      "to": "新浪",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "王高飞",
+      "to": "微博",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "李彦宏",
+      "to": "百度",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "马化腾",
+      "to": "腾讯",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "马云",
+      "to": "阿里巴巴",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "张一鸣",
+      "to": "字节跳动",
+      "type": "works_at",
+      "label": "CEO"
+    },
+    {
+      "from": "王兴",
+      "to": "美团",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "黄峥",
+      "to": "拼多多",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "丁磊",
+      "to": "网易",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "雷军",
+      "to": "小米",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "刘强东",
+      "to": "京东",
+      "type": "works_at",
+      "label": "董事长"
+    },
+    {
+      "from": "任正非",
+      "to": "华为",
+      "type": "works_at",
+      "label": "董事长"
+    }
   ]
 }

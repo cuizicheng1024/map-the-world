@@ -14,7 +14,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -29,7 +35,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [-74.006, 40.7128] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -44,7 +56,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -59,7 +77,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [-0.1276, 51.5072] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -74,7 +98,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -89,7 +119,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [2.3522, 48.8566] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3522,
+          48.8566
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -104,7 +140,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -119,7 +161,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -134,7 +182,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -149,7 +203,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -164,7 +224,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -179,7 +245,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -194,7 +266,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -209,7 +287,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -224,7 +308,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -239,7 +329,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -254,7 +350,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -269,7 +371,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -284,7 +392,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -299,7 +413,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -314,7 +434,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -329,7 +455,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -344,7 +476,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [117.2272, 31.8206] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.2272,
+          31.8206
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -359,7 +497,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [117.2272, 31.8206] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.2272,
+          31.8206
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -374,7 +518,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -389,7 +539,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -404,7 +560,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.2644,
+          23.1291
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -419,7 +581,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.2644,
+          23.1291
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -434,7 +602,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -449,7 +623,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -464,7 +644,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -479,7 +665,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -494,7 +686,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -509,7 +707,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -524,7 +728,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -539,7 +749,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -554,7 +770,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -569,7 +791,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -584,7 +812,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -599,7 +833,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -614,7 +854,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -629,7 +875,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -644,7 +896,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -659,7 +917,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -674,7 +938,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -689,7 +959,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -704,7 +980,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.2644,
+          23.1291
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -719,7 +1001,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.2644,
+          23.1291
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -734,7 +1022,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -749,7 +1043,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -764,7 +1064,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -779,7 +1085,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -794,7 +1106,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -809,7 +1127,13 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -824,7 +1148,13 @@
         "year": 2023,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -839,7 +1169,1609 @@
         "year": 2024,
         "source": "demo"
       },
-      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "马云",
+        "person_name": "马云",
+        "org_id": "阿里巴巴",
+        "org_name": "阿里巴巴",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "雷军",
+        "person_name": "雷军",
+        "org_id": "小米",
+        "org_name": "小米",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "刘强东",
+        "person_name": "刘强东",
+        "org_id": "京东",
+        "org_name": "京东",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王兴",
+        "person_name": "王兴",
+        "org_id": "美团",
+        "org_name": "美团",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "黄峥",
+        "person_name": "黄峥",
+        "org_id": "拼多多",
+        "org_name": "拼多多",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "丁磊",
+        "person_name": "丁磊",
+        "org_id": "网易",
+        "org_name": "网易",
+        "role": "CEO",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "曹国伟",
+        "person_name": "曹国伟",
+        "org_id": "新浪",
+        "org_name": "新浪",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李开复",
+        "person_name": "李开复",
+        "org_id": "创新工场",
+        "org_name": "创新工场",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王小川",
+        "person_name": "王小川",
+        "org_id": "搜狗",
+        "org_name": "搜狗",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张朝阳",
+        "person_name": "张朝阳",
+        "org_id": "搜狐",
+        "org_name": "搜狐",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "梁稳根",
+        "person_name": "梁稳根",
+        "org_id": "三一重工",
+        "org_name": "三一重工",
+        "role": "Founder",
+        "city": "长沙",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.9388,
+          28.2282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "董明珠",
+        "person_name": "董明珠",
+        "org_id": "格力电器",
+        "org_name": "格力电器",
+        "role": "CEO",
+        "city": "珠海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.5767,
+          22.2709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "陆奇",
+        "person_name": "陆奇",
+        "org_id": "YC中国",
+        "org_name": "YC中国",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王海峰",
+        "person_name": "王海峰",
+        "org_id": "百度",
+        "org_name": "百度",
+        "role": "CTO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张潼",
+        "person_name": "张潼",
+        "org_id": "腾讯",
+        "org_name": "腾讯",
+        "role": "AI Lab主任",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "俞凯",
+        "person_name": "俞凯",
+        "org_id": "思必驰",
+        "org_name": "思必驰",
+        "role": "CEO",
+        "city": "苏州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.5853,
+          31.2989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "胡郁",
+        "person_name": "胡郁",
+        "org_id": "科大讯飞",
+        "org_name": "科大讯飞",
+        "role": "轮值总裁",
+        "city": "合肥",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.2272,
+          31.8206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "姚欣",
+        "person_name": "姚欣",
+        "org_id": "PPTV",
+        "org_name": "PPTV",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "陈天桥",
+        "person_name": "陈天桥",
+        "org_id": "盛大网络",
+        "org_name": "盛大网络",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "史玉柱",
+        "person_name": "史玉柱",
+        "org_id": "巨人网络",
+        "org_name": "巨人网络",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "沈南鹏",
+        "person_name": "沈南鹏",
+        "org_id": "红杉资本",
+        "org_name": "红杉资本",
+        "role": "合伙人",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李斌",
+        "person_name": "李斌",
+        "org_id": "蔚来",
+        "org_name": "蔚来",
+        "role": "CEO",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "何小鹏",
+        "person_name": "何小鹏",
+        "org_id": "小鹏汽车",
+        "org_name": "小鹏汽车",
+        "role": "CEO",
+        "city": "广州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.2644,
+          23.1291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王传福",
+        "person_name": "王传福",
+        "org_id": "比亚迪",
+        "org_name": "比亚迪",
+        "role": "CEO",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "魏建军",
+        "person_name": "魏建军",
+        "org_id": "长城汽车",
+        "org_name": "长城汽车",
+        "role": "CEO",
+        "city": "保定",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.4646,
+          38.8677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李书福",
+        "person_name": "李书福",
+        "org_id": "吉利汽车",
+        "org_name": "吉利汽车",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张勇",
+        "person_name": "张勇",
+        "org_id": "哪吒汽车",
+        "org_name": "哪吒汽车",
+        "role": "CEO",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "戴威",
+        "person_name": "戴威",
+        "org_id": "ofo",
+        "org_name": "ofo",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "程维",
+        "person_name": "程维",
+        "org_id": "滴滴",
+        "org_name": "滴滴",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "柳青",
+        "person_name": "柳青",
+        "org_id": "滴滴",
+        "org_name": "滴滴",
+        "role": "总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "罗永浩",
+        "person_name": "罗永浩",
+        "org_id": "锤子科技",
+        "org_name": "锤子科技",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "贾跃亭",
+        "person_name": "贾跃亭",
+        "org_id": "乐视",
+        "org_name": "乐视",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "陈睿",
+        "person_name": "陈睿",
+        "org_id": "B站",
+        "org_name": "B站",
+        "role": "CEO",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "龚宇",
+        "person_name": "龚宇",
+        "org_id": "爱奇艺",
+        "org_name": "爱奇艺",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "古永锵",
+        "person_name": "古永锵",
+        "org_id": "优酷",
+        "org_name": "优酷",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李竹",
+        "person_name": "李竹",
+        "org_id": "英诺天使",
+        "org_name": "英诺天使",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "徐小平",
+        "person_name": "徐小平",
+        "org_id": "真格基金",
+        "org_name": "真格基金",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "蔡文胜",
+        "person_name": "蔡文胜",
+        "org_id": "美图",
+        "org_name": "美图",
+        "role": "Founder",
+        "city": "厦门",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.0894,
+          24.4798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王俊",
+        "person_name": "王俊",
+        "org_id": "商汤科技",
+        "org_name": "商汤科技",
+        "role": "CTO",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "林元庆",
+        "person_name": "林元庆",
+        "org_id": "Aibee",
+        "org_name": "Aibee",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "吴恩达",
+        "person_name": "吴恩达",
+        "org_id": "百度",
+        "org_name": "百度",
+        "role": "前首席科学家",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "黄仁勋",
+        "person_name": "黄仁勋",
+        "org_id": "NVIDIA",
+        "org_name": "NVIDIA",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张志东",
+        "person_name": "张志东",
+        "org_id": "腾讯",
+        "org_name": "腾讯",
+        "role": "前CTO",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "刘炽平",
+        "person_name": "刘炽平",
+        "org_id": "腾讯",
+        "org_name": "腾讯",
+        "role": "总裁",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "彭蕾",
+        "person_name": "彭蕾",
+        "org_id": "蚂蚁集团",
+        "org_name": "蚂蚁集团",
+        "role": "前CEO",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "井贤栋",
+        "person_name": "井贤栋",
+        "org_id": "蚂蚁集团",
+        "org_name": "蚂蚁集团",
+        "role": "CEO",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张勇",
+        "person_name": "张勇",
+        "org_id": "阿里云",
+        "org_name": "阿里云",
+        "role": "CEO",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王坚",
+        "person_name": "王坚",
+        "org_id": "阿里云",
+        "org_name": "阿里云",
+        "role": "创始人",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "胡晓明",
+        "person_name": "胡晓明",
+        "org_id": "阿里云",
+        "org_name": "阿里云",
+        "role": "前总裁",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "童文红",
+        "person_name": "童文红",
+        "org_id": "菜鸟网络",
+        "org_name": "菜鸟网络",
+        "role": "CEO",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "沈抖",
+        "person_name": "沈抖",
+        "org_id": "百度",
+        "org_name": "百度",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "景鲲",
+        "person_name": "景鲲",
+        "org_id": "百度",
+        "org_name": "百度",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "尹世明",
+        "person_name": "尹世明",
+        "org_id": "百度",
+        "org_name": "百度",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "赵明",
+        "person_name": "赵明",
+        "org_id": "荣耀",
+        "org_name": "荣耀",
+        "role": "CEO",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "陈冰",
+        "person_name": "陈冰",
+        "org_id": "字节跳动",
+        "org_name": "字节跳动",
+        "role": "CTO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "杨震原",
+        "person_name": "杨震原",
+        "org_id": "字节跳动",
+        "org_name": "字节跳动",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "谢欣",
+        "person_name": "谢欣",
+        "org_id": "字节跳动",
+        "org_name": "字节跳动",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "朱文佳",
+        "person_name": "朱文佳",
+        "org_id": "字节跳动",
+        "org_name": "字节跳动",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "洪定坤",
+        "person_name": "洪定坤",
+        "org_id": "字节跳动",
+        "org_name": "字节跳动",
+        "role": "副总裁",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李飞飞",
+        "person_name": "李飞飞",
+        "org_id": "Google",
+        "org_name": "Google",
+        "role": "前科学家",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张钹",
+        "person_name": "张钹",
+        "org_id": "清华大学",
+        "org_name": "清华大学",
+        "role": "教授",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "姚期智",
+        "person_name": "姚期智",
+        "org_id": "清华大学",
+        "org_name": "清华大学",
+        "role": "教授",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "高文",
+        "person_name": "高文",
+        "org_id": "北京大学",
+        "org_name": "北京大学",
+        "role": "教授",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李德毅",
+        "person_name": "李德毅",
+        "org_id": "中国工程院",
+        "org_name": "中国工程院",
+        "role": "院士",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "吴晓波",
+        "person_name": "吴晓波",
+        "org_id": "财经作家",
+        "org_name": "财经作家",
+        "role": "作家",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "李国庆",
+        "person_name": "李国庆",
+        "org_id": "当当",
+        "org_name": "当当",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "俞敏洪",
+        "person_name": "俞敏洪",
+        "org_id": "新东方",
+        "org_name": "新东方",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "张磊",
+        "person_name": "张磊",
+        "org_id": "高瓴资本",
+        "org_name": "高瓴资本",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "刘爽",
+        "person_name": "刘爽",
+        "org_id": "凤凰网",
+        "org_name": "凤凰网",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王高飞",
+        "person_name": "王高飞",
+        "org_id": "微博",
+        "org_name": "微博",
+        "role": "CEO",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "马云",
+        "person_name": "马云",
+        "org_id": "阿里巴巴",
+        "org_name": "阿里巴巴",
+        "role": "董事长",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "王兴",
+        "person_name": "王兴",
+        "org_id": "美团",
+        "org_name": "美团",
+        "role": "董事长",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "黄峥",
+        "person_name": "黄峥",
+        "org_id": "拼多多",
+        "org_name": "拼多多",
+        "role": "董事长",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "丁磊",
+        "person_name": "丁磊",
+        "org_id": "网易",
+        "org_name": "网易",
+        "role": "董事长",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.1551,
+          30.2741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "雷军",
+        "person_name": "雷军",
+        "org_id": "小米",
+        "org_name": "小米",
+        "role": "董事长",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "刘强东",
+        "person_name": "刘强东",
+        "org_id": "京东",
+        "org_name": "京东",
+        "role": "董事长",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "mimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
     }
   ]
 }
