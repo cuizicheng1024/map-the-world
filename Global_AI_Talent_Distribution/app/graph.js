@@ -10,15 +10,11 @@ function normalizeText(s) {
 
 function colorForKind(kind) {
   if (kind === "person") return { fill: "rgba(34, 211, 238, 0.34)", stroke: "rgba(125, 211, 252, 0.95)" };
-  if (kind === "org") return { fill: "rgba(99, 102, 241, 0.30)", stroke: "rgba(165, 180, 252, 0.9)" };
-  if (kind === "investor") return { fill: "rgba(245, 158, 11, 0.30)", stroke: "rgba(253, 230, 138, 0.9)" };
-  return { fill: "rgba(148, 163, 184, 0.22)", stroke: "rgba(148, 163, 184, 0.55)" };
+  return { fill: "rgba(34, 211, 238, 0.34)", stroke: "rgba(125, 211, 252, 0.95)" };
 }
 
 function edgeColor(type) {
-  if (type === "works_at") return "rgba(125, 211, 252, 0.38)";
-  if (type === "founded") return "rgba(165, 180, 252, 0.45)";
-  if (type === "invested") return "rgba(253, 230, 138, 0.45)";
+  if (type === "co_worked") return "rgba(125, 211, 252, 0.32)";
   return "rgba(148, 163, 184, 0.38)";
 }
 
@@ -68,15 +64,72 @@ function ringLayout(nodes, { baseRadius, spacing }) {
 }
 
 function applyLayout(nodes) {
-  const persons = stableSort(nodes.filter((n) => n.kind === "person"), (n) => String(n.label ?? n.id));
-  const orgs = stableSort(nodes.filter((n) => n.kind === "org"), (n) => String(n.label ?? n.id));
-  const investors = stableSort(nodes.filter((n) => n.kind === "investor"), (n) => String(n.label ?? n.id));
-  const others = stableSort(nodes.filter((n) => !["person", "org", "investor"].includes(n.kind)), (n) => String(n.label ?? n.id));
+  const persons = stableSort(nodes, (n) => String(n.label ?? n.id));
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  const spacing = 12;
+  for (let i = 0; i < persons.length; i += 1) {
+    const r = spacing * Math.sqrt(i);
+    const t = i * golden;
+    persons[i].x = Math.cos(t) * r;
+    persons[i].y = Math.sin(t) * r;
+  }
+}
 
-  ringLayout(orgs, { baseRadius: 140, spacing: 14 });
-  ringLayout(investors, { baseRadius: 220, spacing: 16 });
-  ringLayout(persons, { baseRadius: 280, spacing: 16 });
-  ringLayout(others, { baseRadius: 190, spacing: 14 });
+function buildPeopleEdgesFromRelations(raw, { maxDegree, maxEdges, minWeight }) {
+  const people = new Set((raw.nodes ?? []).filter((n) => n?.kind === "person").map((n) => n.id));
+  const orgToPeople = new Map();
+  for (const e of raw.edges ?? []) {
+    if (!e || e.type !== "works_at") continue;
+    if (!people.has(e.from)) continue;
+    const org = e.to;
+    if (!org) continue;
+    if (!orgToPeople.has(org)) orgToPeople.set(org, new Set());
+    orgToPeople.get(org).add(e.from);
+  }
+
+  const weights = new Map();
+  const addWeight = (a, b) => {
+    const k = a < b ? `${a}||${b}` : `${b}||${a}`;
+    weights.set(k, (weights.get(k) ?? 0) + 1);
+  };
+
+  for (const set of orgToPeople.values()) {
+    const ps = Array.from(set);
+    if (ps.length < 2) continue;
+    ps.sort();
+    for (let i = 0; i < ps.length; i += 1) {
+      for (let j = i + 1; j < ps.length; j += 1) {
+        addWeight(ps[i], ps[j]);
+      }
+    }
+  }
+
+  let edgeList = [];
+  for (const [k, w] of weights.entries()) {
+    if (w < minWeight) continue;
+    const [a, b] = k.split("||");
+    edgeList.push([a, b, w]);
+  }
+  edgeList.sort((x, y) => y[2] - x[2] || x[0].localeCompare(y[0]) || x[1].localeCompare(y[1]));
+
+  const degrees = new Map();
+  const chosen = [];
+  const degreeOf = (id) => degrees.get(id) ?? 0;
+  const inc = (id) => degrees.set(id, degreeOf(id) + 1);
+
+  for (const [a, b, w] of edgeList) {
+    if (chosen.length >= maxEdges) break;
+    if (degreeOf(a) >= maxDegree || degreeOf(b) >= maxDegree) continue;
+    chosen.push({ from: a, to: b, type: "co_worked", label: `共同任职×${w}`, color: edgeColor("co_worked") });
+    inc(a);
+    inc(b);
+  }
+
+  if (chosen.length < 60 && minWeight > 1) {
+    return buildPeopleEdgesFromRelations(raw, { maxDegree, maxEdges, minWeight: 1 });
+  }
+
+  return { people, edges: chosen };
 }
 
 function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
@@ -300,36 +353,38 @@ async function main() {
 
   const raw = await fetchJson(DATA_PATH);
   const rawNodes = raw.nodes ?? [];
-  const rawEdges = raw.edges ?? [];
 
-  const nodes = rawNodes.map((n, idx) => {
-    const kind = n.kind ?? "node";
+  const { people, edges: derivedEdges } = buildPeopleEdgesFromRelations(raw, { maxDegree: 16, maxEdges: 900, minWeight: 2 });
+  const nodes = rawNodes
+    .filter((n) => people.has(n.id))
+    .map((n, idx) => {
+    const kind = "person";
     const c = colorForKind(kind);
-    const r = kind === "person" ? 11 : kind === "org" ? 9 : 10;
+    const r = 10;
     return {
       id: n.id,
       label: n.label ?? n.id,
       kind,
       color: c,
-      x: (Math.random() - 0.5) * 600 + (idx % 9) * 6,
-      y: (Math.random() - 0.5) * 420 + (idx % 7) * 6,
+      x: (Math.random() - 0.5) * 40 + (idx % 9) * 2,
+      y: (Math.random() - 0.5) * 40 + (idx % 7) * 2,
       vx: 0,
       vy: 0,
       fx: 0,
       fy: 0,
       r,
-      mass: kind === "person" ? 1.2 : 1,
+      mass: 1,
     };
-  });
+    });
   applyLayout(nodes);
 
   const byId = new Map(nodes.map((n) => [n.id, n]));
-  const edges = rawEdges
+  const edges = derivedEdges
     .map((e) => {
       const a = byId.get(e.from);
       const b = byId.get(e.to);
       if (!a || !b) return null;
-      return { a, b, type: e.type ?? "", color: edgeColor(e.type) };
+      return { a, b, type: e.type, color: e.color };
     })
     .filter(Boolean);
 
