@@ -1,0 +1,7 @@
+{
+  "San Francisco,US": { "lat": 37.7749, "lon": -122.4194 },
+  "New York,US": { "lat": 40.7128, "lon": -74.006 },
+  "London,UK": { "lat": 51.5072, "lon": -0.1276 },
+  "Paris,FR": { "lat": 48.8566, "lon": 2.3522 }
+}
+

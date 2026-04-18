@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global AI Talent Distribution · MapStory</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h1 class="brand">MapStory · 时间 + 空间</h1>
+        <div class="hint">
+          拖动时间轴，观察人才节点随年份迁徙与分裂。数据来自 <code>data/movements.geojson</code>。
+        </div>
+
+        <div class="field">
+          <label>年份</label>
+          <div class="row">
+            <div class="pill" style="flex: 1; justify-content: space-between;">
+              <span id="yearLabel">—</span>
+              <span style="opacity: 0.7;" id="countLabel">—</span>
+            </div>
+          </div>
+          <input class="slider" id="yearSlider" type="range" min="2019" max="2025" step="1" value="2023" />
+          <div class="kv">
+            <span id="minYear">—</span>
+            <span id="maxYear">—</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>过滤（人 / 公司 / 城市）</label>
+          <input id="filterInput" type="text" placeholder="例如：Researcher A / OpenAI / San Francisco" />
+        </div>
+
+        <div class="field">
+          <div class="row">
+            <button id="playBtn" class="btn">播放</button>
+            <button id="pauseBtn" class="btn secondary">暂停</button>
+            <a class="btn secondary" href="./graph.html" style="display: inline-flex; align-items: center;">关系网</a>
+          </div>
+        </div>
+
+        <div class="footer">
+          入口页：<a href="../">项目说明</a><br />
+          数据：<a href="../data/movements.geojson">movements.geojson</a> · <a href="../data/relations.json">relations.json</a>
+        </div>
+      </aside>
+
+      <main style="position: relative;">
+        <div class="topbar">
+          <a class="btn secondary" href="../">Docs</a>
+        </div>
+
+        <div class="panel" id="tweaksPanel">
+          <h3>Tweaks</h3>
+          <div class="field">
+            <label>点大小</label>
+            <input class="slider" id="markerSize" type="range" min="4" max="14" step="1" value="8" />
+            <div class="kv"><span>4</span><span>14</span></div>
+          </div>
+          <div class="field">
+            <label>连线透明度</label>
+            <input class="slider" id="lineOpacity" type="range" min="0.1" max="1" step="0.05" value="0.55" />
+            <div class="kv"><span>0.10</span><span>1.00</span></div>
+          </div>
+          <div class="field">
+            <label>播放速度（年/秒）</label>
+            <input class="slider" id="playSpeed" type="range" min="0.5" max="6" step="0.5" value="2" />
+            <div class="kv"><span>0.5</span><span>6</span></div>
+          </div>
+        </div>
+
+        <div id="map" class="map"></div>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="./map.js"></script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-a",
+        "person_name": "Researcher A",
+        "org_id": "org-openai",
+        "org_name": "OpenAI",
+        "role": "Research",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-a",
+        "person_name": "Researcher A",
+        "org_id": "org-startup-nyc",
+        "org_name": "Stealth Startup",
+        "role": "Co-founder",
+        "city": "New York",
+        "country": "US",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [-74.006, 40.7128] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-b",
+        "person_name": "Researcher B",
+        "org_id": "org-openai",
+        "org_name": "OpenAI",
+        "role": "Engineering",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-b",
+        "person_name": "Researcher B",
+        "org_id": "org-london-lab",
+        "org_name": "London Lab",
+        "role": "Research Lead",
+        "city": "London",
+        "country": "UK",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [-0.1276, 51.5072] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-c",
+        "person_name": "Researcher C",
+        "org_id": "org-openai",
+        "org_name": "OpenAI",
+        "role": "Research",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "researcher-c",
+        "person_name": "Researcher C",
+        "org_id": "org-paris-team",
+        "org_name": "Paris Team",
+        "role": "Research",
+        "city": "Paris",
+        "country": "FR",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [2.3522, 48.8566] }
+    }
+  ]
+}
+

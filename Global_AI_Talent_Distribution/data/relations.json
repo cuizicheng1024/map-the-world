@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    { "id": "researcher-a", "label": "Researcher A", "kind": "person" },
+    { "id": "researcher-b", "label": "Researcher B", "kind": "person" },
+    { "id": "researcher-c", "label": "Researcher C", "kind": "person" },
+    { "id": "org-openai", "label": "OpenAI", "kind": "org" },
+    { "id": "org-startup-nyc", "label": "Stealth Startup", "kind": "org" },
+    { "id": "org-london-lab", "label": "London Lab", "kind": "org" },
+    { "id": "org-paris-team", "label": "Paris Team", "kind": "org" },
+    { "id": "inv-alpha", "label": "Alpha Ventures", "kind": "investor" }
+  ],
+  "edges": [
+    { "from": "researcher-a", "to": "org-openai", "type": "works_at", "label": "works_at" },
+    { "from": "researcher-b", "to": "org-openai", "type": "works_at", "label": "works_at" },
+    { "from": "researcher-c", "to": "org-openai", "type": "works_at", "label": "works_at" },
+    { "from": "researcher-a", "to": "org-startup-nyc", "type": "founded", "label": "founded" },
+    { "from": "inv-alpha", "to": "org-startup-nyc", "type": "invested", "label": "seed" },
+    { "from": "researcher-b", "to": "org-london-lab", "type": "works_at", "label": "joined" },
+    { "from": "researcher-c", "to": "org-paris-team", "type": "works_at", "label": "joined" }
+  ]
+}
+
