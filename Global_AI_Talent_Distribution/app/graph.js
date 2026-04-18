@@ -43,14 +43,40 @@ function resizeCanvas(canvas, dpr) {
   return false;
 }
 
-function dist2(a, b) {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
-  return dx * dx + dy * dy;
-}
-
 function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
+}
+
+function stableSort(arr, keyFn) {
+  return [...arr].sort((a, b) => {
+    const ka = keyFn(a);
+    const kb = keyFn(b);
+    if (ka < kb) return -1;
+    if (ka > kb) return 1;
+    return 0;
+  });
+}
+
+function ringLayout(nodes, { baseRadius, spacing }) {
+  if (!nodes.length) return;
+  const r = Math.max(baseRadius, Math.round((nodes.length * spacing) / (2 * Math.PI)));
+  for (let i = 0; i < nodes.length; i += 1) {
+    const t = (i / nodes.length) * Math.PI * 2;
+    nodes[i].x = Math.cos(t) * r;
+    nodes[i].y = Math.sin(t) * r;
+  }
+}
+
+function applyLayout(nodes) {
+  const persons = stableSort(nodes.filter((n) => n.kind === "person"), (n) => String(n.label ?? n.id));
+  const orgs = stableSort(nodes.filter((n) => n.kind === "org"), (n) => String(n.label ?? n.id));
+  const investors = stableSort(nodes.filter((n) => n.kind === "investor"), (n) => String(n.label ?? n.id));
+  const others = stableSort(nodes.filter((n) => !["person", "org", "investor"].includes(n.kind)), (n) => String(n.label ?? n.id));
+
+  ringLayout(orgs, { baseRadius: 140, spacing: 14 });
+  ringLayout(investors, { baseRadius: 220, spacing: 16 });
+  ringLayout(persons, { baseRadius: 280, spacing: 16 });
+  ringLayout(others, { baseRadius: 190, spacing: 14 });
 }
 
 function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
@@ -65,8 +91,6 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
     dragStart: null,
     hoverNode: null,
     selectedNode: null,
-    energy: 1,
-    settled: false,
   };
 
   function worldToScreen(p) {
@@ -152,13 +176,17 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
       const pad = 8;
       const w = Math.min(canvas.width - 20, ctx.measureText(text).width + pad * 2);
       const h = 28;
-      const x = clamp(s.x * dpr - w / 2, 10, canvas.width - w - 10);
-      const y = clamp(s.y * dpr - 44, 10, canvas.height - h - 10);
+      const x = clamp(s.x - w / 2, 10, canvas.width - w - 10);
+      const y = clamp(s.y - 44, 10, canvas.height - h - 10);
       ctx.fillStyle = "rgba(11,16,32,0.92)";
       ctx.strokeStyle = "rgba(255,255,255,0.14)";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(x, y, w, h, 10);
+      if (typeof ctx.roundRect === "function") {
+        ctx.roundRect(x, y, w, h, 10);
+      } else {
+        ctx.rect(x, y, w, h);
+      }
       ctx.fill();
       ctx.stroke();
       ctx.fillStyle = "rgba(230,237,243,0.92)";
@@ -166,83 +194,14 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
     }
   }
 
-  function step() {
-    const repulsion = 1100;
-    const springK = 0.02;
-    const springLen = 80;
-    const centerK = 0.002;
-    const damping = 0.88;
-
-    for (const n of nodes) {
-      n.fx = 0;
-      n.fy = 0;
-    }
-
-    for (let i = 0; i < nodes.length; i += 1) {
-      const a = nodes[i];
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const b = nodes[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const d2v = dx * dx + dy * dy + 0.01;
-        const f = repulsion / d2v;
-        const inv = 1 / Math.sqrt(d2v);
-        const fx = dx * inv * f;
-        const fy = dy * inv * f;
-        a.fx += fx;
-        a.fy += fy;
-        b.fx -= fx;
-        b.fy -= fy;
-      }
-    }
-
-    for (const e of edges) {
-      const a = e.a;
-      const b = e.b;
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const d = Math.sqrt(dx * dx + dy * dy) + 0.001;
-      const diff = d - springLen;
-      const f = springK * diff;
-      const fx = (dx / d) * f;
-      const fy = (dy / d) * f;
-      a.fx += fx;
-      a.fy += fy;
-      b.fx -= fx;
-      b.fy -= fy;
-    }
-
-    for (const n of nodes) {
-      n.fx += -n.x * centerK;
-      n.fy += -n.y * centerK;
-    }
-
-    let totalV = 0;
-    for (const n of nodes) {
-      if (state.draggingNode && state.draggingNode.id === n.id) {
-        n.vx = 0;
-        n.vy = 0;
-        continue;
-      }
-      n.vx = (n.vx + n.fx / n.mass) * damping;
-      n.vy = (n.vy + n.fy / n.mass) * damping;
-      n.x += n.vx;
-      n.y += n.vy;
-      totalV += Math.abs(n.vx) + Math.abs(n.vy);
-    }
-
-    state.energy = totalV / nodes.length;
-    state.settled = state.energy < 0.02;
-  }
-
-  function tick() {
-    const changed = resizeCanvas(canvas, dpr);
-    if (changed) draw();
-    if (!state.settled || state.draggingNode || state.draggingCanvas) {
-      for (let i = 0; i < 2; i += 1) step();
-    }
-    draw();
-    window.requestAnimationFrame(tick);
+  let raf = 0;
+  function scheduleDraw() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      resizeCanvas(canvas, dpr);
+      draw();
+    });
   }
 
   const onMove = (evt) => {
@@ -262,6 +221,7 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
       state.offsetX = state.dragStart.offsetX + dx;
       state.offsetY = state.dragStart.offsetY + dy;
     }
+    scheduleDraw();
   };
 
   const onDown = (evt) => {
@@ -277,12 +237,14 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
     state.selectedNode = null;
     state.draggingCanvas = true;
     state.dragStart = { x, y, offsetX: state.offsetX, offsetY: state.offsetY };
+    scheduleDraw();
   };
 
   const onUp = () => {
     state.draggingNode = null;
     state.draggingCanvas = false;
     state.dragStart = null;
+    scheduleDraw();
   };
 
   const onWheel = (evt) => {
@@ -298,6 +260,7 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
     const after = screenToWorld(x, y);
     state.offsetX += after.x - before.x;
     state.offsetY += after.y - before.y;
+    scheduleDraw();
   };
 
   const onDblClick = () => {
@@ -320,13 +283,14 @@ function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
     state.selectedNode = hit;
     centerOnNode(hit);
     state.zoom = 1.2;
-    state.settled = false;
+    scheduleDraw();
   }, 120);
 
   searchInput.addEventListener("input", search);
 
+  window.addEventListener("resize", () => scheduleDraw());
   centerOnNode(nodes[0] ?? { x: 0, y: 0 });
-  tick();
+  scheduleDraw();
 }
 
 async function main() {
@@ -357,6 +321,7 @@ async function main() {
       mass: kind === "person" ? 1.2 : 1,
     };
   });
+  applyLayout(nodes);
 
   const byId = new Map(nodes.map((n) => [n.id, n]));
   const edges = rawEdges
