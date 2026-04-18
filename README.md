@@ -70,7 +70,7 @@
 
 降维压缩的信息损失同样不可避免：从高维向低维进行信息压缩，必然是有损的。典型现象包括：
 
-- 格陵兰岛（210 万 km²）看起来和非洲大陆（3000 万 km²）一样大
+- <u>格陵兰岛</u>（210 万 km²）看起来和 <u>非洲大陆</u>（3000 万 km²）一样大
 - 等角航线（恒向线）在地球仪上是曲线，在墨卡托投影中是直线
 
 <table>
@@ -80,7 +80,7 @@
   </tr>
   <tr>
     <td><img src="assets/images/readme/mercator-size-distortion.svg" alt="墨卡托投影面积失真示意" width="430" /></td>
-    <td><img src="assets/images/readme/rhumb-vs-greatcircle.png" alt="等角航线在地球仪与墨卡托投影中的差异" width="430" /></td>
+    <td><img src="assets/images/readme/rhumb-globe-vs-mercator.svg" alt="等角航线在地球仪与墨卡托投影中的差异" width="430" /></td>
   </tr>
 </table>
 
