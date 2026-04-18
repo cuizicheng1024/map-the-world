@@ -80,7 +80,7 @@
   </tr>
   <tr>
     <td><img src="assets/images/readme/mercator-size-distortion.svg" alt="墨卡托投影面积失真示意" width="430" /></td>
-    <td><img src="assets/images/readme/rhumb-globe-vs-mercator.svg" alt="等角航线在地球仪与墨卡托投影中的差异" width="430" /></td>
+    <td><img src="assets/images/readme/rhumb-vs-greatcircle.png" alt="等角航线在地球仪与墨卡托投影中的差异" width="430" /></td>
   </tr>
 </table>
 
