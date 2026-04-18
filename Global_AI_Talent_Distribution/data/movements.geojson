@@ -540,6 +540,306 @@
         "source": "demo"
       },
       "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "tang-xiaoou",
+        "person_name": "汤晓鸥",
+        "org_id": "org-sensetime",
+        "org_name": "商汤科技",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "tang-xiaoou",
+        "person_name": "汤晓鸥",
+        "org_id": "org-sensetime",
+        "org_name": "商汤科技",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "chen-tianshi",
+        "person_name": "陈天石",
+        "org_id": "org-cambricon",
+        "org_name": "寒武纪",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "chen-tianshi",
+        "person_name": "陈天石",
+        "org_id": "org-cambricon",
+        "org_name": "寒武纪",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yu-kai",
+        "person_name": "余凯",
+        "org_id": "org-horizon",
+        "org_name": "地平线",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "yu-kai",
+        "person_name": "余凯",
+        "org_id": "org-horizon",
+        "org_name": "地平线",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-jian",
+        "person_name": "周剑",
+        "org_id": "org-ubtech",
+        "org_name": "优必选",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-jian",
+        "person_name": "周剑",
+        "org_id": "org-ubtech",
+        "org_name": "优必选",
+        "role": "Founder",
+        "city": "深圳",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [114.0579, 22.5431] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "wang-xingxing",
+        "person_name": "王兴兴",
+        "org_id": "org-unitree",
+        "org_name": "宇树科技",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "wang-xingxing",
+        "person_name": "王兴兴",
+        "org_id": "org-unitree",
+        "org_name": "宇树科技",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "peng-jun",
+        "person_name": "彭军",
+        "org_id": "org-pony",
+        "org_name": "小马智行（Pony.ai）",
+        "role": "Founder",
+        "city": "广州",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "peng-jun",
+        "person_name": "彭军",
+        "org_id": "org-pony",
+        "org_name": "小马智行（Pony.ai）",
+        "role": "Founder",
+        "city": "广州",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [113.2644, 23.1291] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "liang-wenfeng",
+        "person_name": "梁文锋",
+        "org_id": "org-deepseek",
+        "org_name": "DeepSeek（深度求索）",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "liang-wenfeng",
+        "person_name": "梁文锋",
+        "org_id": "org-deepseek",
+        "org_name": "DeepSeek（深度求索）",
+        "role": "Founder",
+        "city": "杭州",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [120.1551, 30.2741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jiang-daxin",
+        "person_name": "姜大昕",
+        "org_id": "org-stepfun",
+        "org_name": "阶跃星辰（StepFun）",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jiang-daxin",
+        "person_name": "姜大昕",
+        "org_id": "org-stepfun",
+        "org_name": "阶跃星辰（StepFun）",
+        "role": "Founder",
+        "city": "上海",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [121.4737, 31.2304] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-zhifei",
+        "person_name": "李志飞",
+        "org_id": "org-mobvoi",
+        "org_name": "出门问问（Mobvoi）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "li-zhifei",
+        "person_name": "李志飞",
+        "org_id": "org-mobvoi",
+        "org_name": "出门问问（Mobvoi）",
+        "role": "Founder",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-hongyi",
+        "person_name": "周鸿祎",
+        "org_id": "org-360",
+        "org_name": "360",
+        "role": "Executive",
+        "city": "北京",
+        "country": "CN",
+        "year": 2023,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "zhou-hongyi",
+        "person_name": "周鸿祎",
+        "org_id": "org-360",
+        "org_name": "360",
+        "role": "Executive",
+        "city": "北京",
+        "country": "CN",
+        "year": 2024,
+        "source": "demo"
+      },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
     }
   ]
 }
