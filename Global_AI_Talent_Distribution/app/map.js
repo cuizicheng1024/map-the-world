@@ -1,6 +1,9 @@
 import { clamp, debounce, fetchJson, getQueryParam, groupBy, setQueryParam, sortBy } from "./common.js";
 
 const DATA_PATH = "../data/movements.geojson";
+const YEAR_RANGE = { min: 2000, max: 2026 };
+const DEFAULT_MARKER_SIZE = 8;
+const DEFAULT_LINE_OPACITY = 0.55;
 
 function normalizeText(s) {
   return String(s ?? "")
@@ -133,8 +136,6 @@ const maxYearEl = document.getElementById("maxYear");
 const filterInputEl = document.getElementById("filterInput");
 const playBtnEl = document.getElementById("playBtn");
 const pauseBtnEl = document.getElementById("pauseBtn");
-const markerSizeEl = document.getElementById("markerSize");
-const lineOpacityEl = document.getElementById("lineOpacity");
 const playSpeedEl = document.getElementById("playSpeed");
 
 let allFeatures = [];
@@ -187,8 +188,8 @@ function render() {
 
   const visible = allFeatures.filter((f) => f.properties.year === y).filter((f) => matchesFilter(f, filter));
   const visibleIds = new Set(visible.map((f) => `${f.properties.person_id}::${f.properties.year}`));
-  const markerSize = Number(markerSizeEl.value);
-  const lineOpacity = Number(lineOpacityEl.value);
+  const markerSize = DEFAULT_MARKER_SIZE;
+  const lineOpacity = DEFAULT_LINE_OPACITY;
 
   for (const f of visible) {
     const [lon, lat] = f.geometry.coordinates;
@@ -263,8 +264,8 @@ async function main() {
   }));
 
   const years = allFeatures.map((f) => f.properties.year).filter((y) => Number.isFinite(y));
-  minYear = Math.min(...years);
-  maxYear = Math.max(...years);
+  minYear = Math.min(YEAR_RANGE.min, ...years);
+  maxYear = Math.max(YEAR_RANGE.max, ...years);
   allEdges = buildStoryEdges(allFeatures);
 
   yearSliderEl.min = String(minYear);
@@ -296,8 +297,6 @@ filterInputEl.addEventListener(
 playBtnEl.addEventListener("click", () => startPlaying());
 pauseBtnEl.addEventListener("click", () => stopPlaying());
 
-markerSizeEl.addEventListener("input", () => render());
-lineOpacityEl.addEventListener("input", () => render());
 playSpeedEl.addEventListener("input", () => {
   if (playing) startPlaying();
 });
@@ -306,4 +305,3 @@ main().catch((e) => {
   yearLabelEl.textContent = "加载失败";
   countLabelEl.textContent = String(e?.message ?? e);
 });
-

@@ -16,13 +16,17 @@
 本地预览（在 `map-the-world` 目录下）：
 
 ```bash
-python3 -m http.server 5173
+python3 -m http.server 8000
 ```
 
 然后打开：
 
-- http://localhost:5173/Global_AI_Talent_Distribution/app/map.html
-- http://localhost:5173/Global_AI_Talent_Distribution/app/graph.html
+- http://localhost:8000/Global_AI_Talent_Distribution/app/map.html
+- http://localhost:8000/Global_AI_Talent_Distribution/app/graph.html
+
+## 时间范围
+
+时间轴固定为 2000–2026（即使某些年份没有数据也会显示为空）。
 
 ## 数据文件
 
@@ -60,41 +64,27 @@ python3 -m http.server 5173
 
 ## 数据扩充（使用 MiMo）
 
-当你需要“把人物库扩到几十/上百/上千”，推荐把“检索/总结/结构化抽取”交给模型做，但仍然要对结果进行抽样校验。
+当你需要“把人物库扩到几十/上百/上千”，推荐把“结构化抽取”交给模型做，但仍然建议对结果抽样校验。
 
 ### Key 放置
 
-本项目默认从两个地方读取 `MIMO_API_KEY`：
+脚本默认从两个地方读取 `MIMO_API_KEY`：
 
 - 环境变量 `MIMO_API_KEY`
-- 或者仓库上一级目录的 `.trae/.env`（不会提交到仓库；仓库已忽略 `.trae/` 与 `*.env`）
+- 或者仓库上一级目录的 `.trae/.env`（配合仓库忽略规则，避免误提交）
 
 ### 一键扩充脚本
 
 脚本：`scripts/expand_people_cn_with_mimo.py`
 
-它会调用 MiMo 的 OpenAI 兼容接口，生成一批 “国内 AI 工业界人物” 记录，并合并进：
-
-- `data/movements.geojson`
-- `data/relations.json`
-
 运行：
 
 ```bash
-python3 Global_AI_Talent_Distribution/scripts/expand_people_cn_with_mimo.py --count 80
+python3 Global_AI_Talent_Distribution/scripts/expand_people_cn_with_mimo.py --count 120
 ```
 
-参数：
+环境变量：
 
-- `--count`：目标条数下限（模型输出可能略有浮动）
-- `--model`：默认 `mimo-v2-flash`，可用环境变量 `MIMO_MODEL` 覆盖
+- `MIMO_MODEL`：默认 `mimo-v2-flash`
 - `MIMO_BASE_URL`：默认 `https://api.xiaomimimo.com/v1`
-
-## 质量与风控建议
-
-这个项目的关键不是“把数据做多”，而是“让数据可追溯、可校验、可维护”。
-
-- 记录 `source` 与可选的 `source_url`：后续可把每条人物/公司信息链接到新闻/官网/百科/论文等
-- 把“自动生成”与“人工确认”分层：例如新增 `status = generated | verified`
-- 避免写入敏感信息：只保留公开渠道可验证的信息（公司、城市、年份、公开职位）
 

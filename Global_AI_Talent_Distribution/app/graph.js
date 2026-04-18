@@ -34,6 +34,10 @@ function openMapForNode(node) {
 async function main() {
   const root = document.getElementById("graph");
   const searchInput = document.getElementById("searchInput");
+  if (!window.vis) {
+    root.textContent = "关系网依赖的 vis-network 脚本未能加载（可能被网络拦截）。请刷新重试，或使用更稳定的网络环境。";
+    return;
+  }
 
   const raw = await fetchJson(DATA_PATH);
   const nodes = (raw.nodes ?? []).map((n) => {
@@ -68,7 +72,10 @@ async function main() {
     {
       autoResize: true,
       interaction: { hover: true, tooltipDelay: 120 },
-      physics: { stabilization: true, barnesHut: { gravitationalConstant: -12000, springLength: 170, springConstant: 0.05 } },
+      physics: {
+        stabilization: { enabled: true, iterations: 220, fit: true },
+        barnesHut: { gravitationalConstant: -12000, springLength: 170, springConstant: 0.05 },
+      },
     }
   );
 
@@ -100,4 +107,3 @@ main().catch((e) => {
   const root = document.getElementById("graph");
   root.textContent = String(e?.message ?? e);
 });
-
