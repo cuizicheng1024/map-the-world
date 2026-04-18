@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td width="160" valign="top">
-      <img src="images/avatar.png" alt="头像" width="140" />
+      <img src="assets/images/profile/avatar.png" alt="头像" width="140" />
     </td>
     <td valign="top">
       <h1>崔子橙</h1>
@@ -18,12 +18,14 @@
 ## 个人简介
 
 - 中科院地理所硕士
+- Trae 深度使用者
+- Coze Skill 开发者
+- 超脑 AI 公益导师
 - 豆包「一点也不技术」创作挑战赛：铜奖
 - 中关村北纬龙虾大赛：三等奖
 - 上地街道智能体创新大赛：二等奖
 - 大钟寺人工智能先导区青年夜校讲师
-- Coze Skill 开发者
-- 超脑 AI 公益导师
+
 
 
 ## 标签
@@ -58,5 +60,5 @@
 
 | 项目名称 | 简介 | 体验地址 | 截图 |
 | --- | --- | --- | --- |
-| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | <img src="images/mapstory1.png" alt="故事地图-1" width="240" /><br><img src="images/mapstory2.png" alt="故事地图-2" width="240" /> |
+| 故事地图 | 从空间视角重新发现历史人物的时空关联 | [故事地图](https://github.com/cuizicheng1024/map_story_poster) | <img src="assets/images/stories/mapstory1.png" alt="故事地图-1" width="240" /><br><img src="assets/images/stories/mapstory2.png" alt="故事地图-2" width="240" /> |
 | 陆游记 | 为在大陆发展的台湾同胞提供连接社群 | [陆游记](https://bytedance.larkoffice.com/wiki/GS1tw0yvCiqazKkhbHAcxmFunCS) | - |
