@@ -1,15 +1,13 @@
-/* Kimi 月之暗面品牌色板（2025 官方规范） */
 :root {
-  --kimi-primary: #1A1A1D;        /* 深空黑 */
-  --kimi-secondary: #2D2D31;      /* 石墨灰 */
-  --kimi-accent: #00E5FF;         /* 月辉青 */
-  --kimi-highlight: #FF3B91;      /* 暗面红 */
-  --kimi-gold: #FFD60A;           /* 月壤金 */
-  --kimi-text: #E6E6EA;           /* 月表白 */
-  --kimi-muted: #8E8E93;          /* 月尘灰 */
+  --kimi-primary: #1a1a1d;
+  --kimi-secondary: #2d2d31;
+  --kimi-accent: #00e5ff;
+  --kimi-highlight: #ff3b91;
+  --kimi-gold: #ffd60a;
+  --kimi-text: #e6e6ea;
+  --kimi-muted: #8e8e93;
 }
 
-/* 覆盖 Cesium 默认控件与侧边栏 */
 body {
   background: radial-gradient(ellipse at 50% 50%, #0b0c10 0%, #1A1A1D 100%);
   color: var(--kimi-text);
@@ -57,7 +55,6 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 6px rgba(0, 229, 255, 0.6);
 }
 
-/* Cesium 地球微调 */
 .cesium-widget-credits {
   display: none !important;
 }
@@ -65,7 +62,6 @@ input[type="range"]::-webkit-slider-thumb {
   display: none !important;
 }
 
-/* 星点氛围 */
 #cesiumContainer::before {
   content: "";
   position: absolute;

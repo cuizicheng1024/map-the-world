@@ -1,15 +1,15 @@
 # Global AI Talent Distribution
 
-> 基于 Cesium 3D 地球与 D3 力导向关系网的交互式可视化，展示 1912–2026 年间全球 82 位 AI 关键人物的城市迁徙轨迹与组织关联。
+> 基于 Cesium 3D 地球与 Canvas 关系网的交互式可视化，展示 1912–2026 年间全球 82 位 AI 关键人物的城市迁徙轨迹与组织关联。
 
 ## 快速体验
 
 ```bash
-cd app
+cd Global_AI_Talent_Distribution
 python3 -m http.server 8080
 # 浏览器访问：
-# 3D 地球：http://localhost:8080/cesium.html
-# 关系网：http://localhost:8080/graph.html
+# 3D 地球：http://localhost:8080/app/cesium.html
+# 关系网：http://localhost:8080/app/graph.html
 ```
 
 ## 核心特性
@@ -38,7 +38,7 @@ app/
 ├── graph.html       # 关系网页面
 ├── graph.js         # 单击弹窗 + 高亮关联
 ├── kimi.css         # 月之暗面品牌色板 & 星点动画
-└── utils.js         # 通用工具（URL 参数）
+└── common.js        # 通用工具（URL 参数 / fetch / debounce）
 
 data/
 ├── movements.geojson
