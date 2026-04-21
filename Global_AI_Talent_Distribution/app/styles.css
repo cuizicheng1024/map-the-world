@@ -60,6 +60,48 @@ a:hover {
   align-items: center;
 }
 
+.valueRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.valueLabel {
+  font-size: 12px;
+  opacity: 0.78;
+}
+
+.valueRight {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.valueTag {
+  font-size: 11px;
+  opacity: 0.75;
+  letter-spacing: 0.2px;
+}
+
+.valueNumber {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(230, 237, 243, 0.96);
+}
+
+.controlsRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
 input[type="text"] {
   width: 100%;
   background: rgba(255, 255, 255, 0.06);
@@ -71,6 +113,21 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
+  border-color: rgba(125, 211, 252, 0.75);
+}
+
+.select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e6edf3;
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+  appearance: none;
+}
+
+.select:focus {
   border-color: rgba(125, 211, 252, 0.75);
 }
 
@@ -116,6 +173,155 @@ input[type="text"]:focus {
   position: relative;
   background: #020412;
   overflow: hidden;
+}
+
+.hud {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 20;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 16, 32, 0.72);
+  backdrop-filter: blur(8px);
+  padding: 10px 12px;
+  min-width: 200px;
+}
+
+.hudRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hudLabel {
+  opacity: 0.72;
+}
+
+.hudValue {
+  font-weight: 650;
+  opacity: 0.96;
+}
+
+.hudSep {
+  opacity: 0.45;
+}
+
+.infoCard {
+  position: absolute;
+  right: 14px;
+  top: 84px;
+  z-index: 20;
+  width: 320px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 16, 32, 0.86);
+  backdrop-filter: blur(8px);
+  padding: 12px;
+}
+
+.infoHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.infoTitle {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.infoClose {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(230, 237, 243, 0.9);
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.infoSub {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.78;
+  line-height: 1.5;
+}
+
+.infoList {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.infoItem {
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 8px 10px;
+  line-height: 1.5;
+}
+
+.legend {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  opacity: 0.88;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.dotCur {
+  background: rgba(0, 229, 255, 0.92);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+.dotGhost {
+  background: rgba(230, 230, 234, 0.2);
+}
+
+.line {
+  width: 18px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.lineArc {
+  background: linear-gradient(90deg, rgba(0, 229, 255, 0.92), rgba(255, 59, 145, 0.72));
+}
+
+.ring {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 229, 255, 0.7);
+}
+
+.ringPulse {
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
 }
 
 .map::before {

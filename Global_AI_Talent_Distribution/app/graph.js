@@ -10,6 +10,14 @@ const BG = "rgba(0,0,0,0)";
 
 const canvas = document.getElementById("graphCanvas");
 const searchInput = document.getElementById("searchInput");
+const layoutRoot = document.getElementById("layoutRoot");
+const toggleSidebarBtn = document.getElementById("toggleSidebarBtn");
+const layoutRingBtn = document.getElementById("layoutRingBtn");
+const layoutRadialBtn = document.getElementById("layoutRadialBtn");
+const layoutGeoBtn = document.getElementById("layoutGeoBtn");
+const geoYearField = document.getElementById("geoYearField");
+const geoYearInput = document.getElementById("geoYear");
+const geoYearLabel = document.getElementById("geoYearLabel");
 const ctx = canvas.getContext("2d");
 
 let width = 0;
@@ -24,6 +32,9 @@ let view = { x: 0, y: 0, k: 1 };
 let isPanning = false;
 let panStart = { x: 0, y: 0, vx: 0, vy: 0 };
 let popupEl = null;
+let layoutMode = "ring";
+let geoYear = 2026;
+let movementByPersonYear = null;
 
 function resize() {
   const dpr = Math.max(1, window.devicePixelRatio || 1);
@@ -47,6 +58,18 @@ function buildIndex() {
 }
 
 function setLayout() {
+  if (layoutMode === "radial") {
+    setRadialLayout();
+    return;
+  }
+  if (layoutMode === "geo") {
+    setGeoLayout();
+    return;
+  }
+  setRingLayout();
+}
+
+function setRingLayout() {
   const cx = width / 2;
   const cy = height / 2;
   const rOuter = Math.max(140, Math.min(width, height) * 0.39);
@@ -59,16 +82,167 @@ function setLayout() {
     const t = (i / Math.max(1, persons.length)) * Math.PI * 2;
     n.x = cx + Math.cos(t) * rOuter;
     n.y = cy + Math.sin(t) * rOuter;
+    n.vx = 0;
+    n.vy = 0;
   });
 
   orgs.forEach((n, i) => {
     const t = (i / Math.max(1, orgs.length)) * Math.PI * 2;
-    const wobble = 0.15 + 0.12 * Math.sin(i * 0.9);
-    n.x = cx + Math.cos(t) * rInner * (1 + wobble);
-    n.y = cy + Math.sin(t) * rInner * (1 + wobble);
+    n.x = cx + Math.cos(t) * rInner;
+    n.y = cy + Math.sin(t) * rInner;
+    n.vx = 0;
+    n.vy = 0;
   });
 
   view = { x: 0, y: 0, k: 1 };
+}
+
+function setRadialLayout() {
+  const cx = width / 2;
+  const cy = height / 2;
+  const pad = 36;
+  const maxR = Math.max(140, Math.min(width, height) / 2 - pad);
+
+  let root = selectedId ? nodeById.get(selectedId) : null;
+  if (!root) {
+    let best = null;
+    let bestDeg = -1;
+    for (const n of nodes) {
+      if (n.kind !== "person") continue;
+      const d = neighbors.get(n.id)?.size ?? 0;
+      if (d > bestDeg) {
+        bestDeg = d;
+        best = n;
+      }
+    }
+    root = best ?? nodes[0];
+  }
+  if (!root) return;
+
+  const depth = new Map();
+  const order = [];
+  const q = [root.id];
+  depth.set(root.id, 0);
+
+  while (q.length) {
+    const id = q.shift();
+    order.push(id);
+    const nb = neighbors.get(id);
+    if (!nb) continue;
+    for (const other of nb) {
+      if (depth.has(other)) continue;
+      depth.set(other, (depth.get(id) ?? 0) + 1);
+      q.push(other);
+    }
+  }
+
+  const maxDepth = Math.max(...depth.values());
+  const rings = Array.from({ length: maxDepth + 1 }, () => []);
+  for (const id of order) rings[depth.get(id) ?? 0].push(id);
+
+  for (let d = 0; d <= maxDepth; d++) {
+    const ids = rings[d];
+    const r = d === 0 ? 0 : (d / Math.max(1, maxDepth)) * maxR;
+    for (let i = 0; i < ids.length; i++) {
+      const t = ids.length <= 1 ? 0 : i / ids.length;
+      const ang = t * Math.PI * 2;
+      const n = nodeById.get(ids[i]);
+      if (!n) continue;
+      n.x = cx + Math.cos(ang) * r;
+      n.y = cy + Math.sin(ang) * r;
+      n.vx = 0;
+      n.vy = 0;
+    }
+  }
+
+  const placed = new Set(depth.keys());
+  const rest = nodes.filter((n) => !placed.has(n.id));
+  const rRest = Math.max(maxR * 0.82, 180);
+  rest.forEach((n, i) => {
+    const ang = (i / Math.max(1, rest.length)) * Math.PI * 2;
+    n.x = cx + Math.cos(ang) * rRest;
+    n.y = cy + Math.sin(ang) * rRest;
+    n.vx = 0;
+    n.vy = 0;
+  });
+
+  root.x = cx;
+  root.y = cy;
+
+  view = { x: 0, y: 0, k: 1 };
+}
+
+function ensureMovements() {
+  if (movementByPersonYear) return Promise.resolve(movementByPersonYear);
+  return fetch("../data/movements.geojson", { cache: "no-store" })
+    .then((r) => r.json())
+    .then((gj) => {
+      const map = new Map();
+      for (const ft of gj.features ?? []) {
+        if (!ft?.geometry || ft.geometry.type !== "Point") continue;
+        const c = ft.geometry.coordinates;
+        if (!Array.isArray(c) || c.length !== 2) continue;
+        const lon = c[0];
+        const lat = c[1];
+        if (typeof lon !== "number" || typeof lat !== "number") continue;
+        const p = ft.properties ?? {};
+        const pid = String(p.person_id ?? "");
+        const y = typeof p.year === "number" ? p.year : parseInt(String(p.year ?? ""), 10);
+        if (!pid || !Number.isFinite(y)) continue;
+        if (!map.has(pid)) map.set(pid, new Map());
+        map.get(pid).set(y, { lon, lat });
+      }
+      movementByPersonYear = map;
+      return map;
+    });
+}
+
+function setGeoLayout() {
+  ensureMovements().then(() => {
+    if (layoutMode !== "geo") return;
+    const pad = 28;
+    const w = Math.max(1, width - pad * 2);
+    const h = Math.max(1, height - pad * 2);
+    const loc = movementByPersonYear;
+
+    const persons = nodes.filter((n) => n.kind === "person");
+    const orgs = nodes.filter((n) => n.kind !== "person");
+
+    persons.forEach((n) => {
+      const rec = loc.get(n.id)?.get(geoYear);
+      if (rec) {
+        n.x = pad + ((rec.lon + 180) / 360) * w;
+        n.y = pad + ((90 - rec.lat) / 180) * h;
+      } else {
+        n.x = pad + Math.random() * w;
+        n.y = height - pad - Math.random() * 60;
+      }
+      n.vx = 0;
+      n.vy = 0;
+    });
+
+    orgs.forEach((n) => {
+      const nb = neighbors.get(n.id);
+      const ps = nb ? [...nb].map((id) => nodeById.get(id)).filter((x) => x?.kind === "person") : [];
+      if (!ps.length) {
+        n.x = width - pad - Math.random() * 120;
+        n.y = pad + Math.random() * h;
+      } else {
+        let sx = 0;
+        let sy = 0;
+        for (const p of ps) {
+          sx += p.x;
+          sy += p.y;
+        }
+        n.x = sx / ps.length + 38;
+        n.y = sy / ps.length;
+      }
+      n.vx = 0;
+      n.vy = 0;
+    });
+
+    view = { x: 0, y: 0, k: 1 };
+  });
 }
 
 function worldToScreen(p) {
@@ -98,9 +272,10 @@ function pickNodeAt(x, y) {
 }
 
 function highlightSet() {
-  if (!selectedId) return null;
-  const s = new Set([selectedId]);
-  const nb = neighbors.get(selectedId);
+  const activeId = selectedId || hoveredId;
+  if (!activeId) return null;
+  const s = new Set([activeId]);
+  const nb = neighbors.get(activeId);
   if (nb) for (const id of nb) s.add(id);
   return s;
 }
@@ -143,6 +318,7 @@ function draw() {
   ctx.fillRect(0, 0, width, height);
 
   const hl = highlightSet();
+  const activeId = selectedId || hoveredId;
 
   ctx.save();
   ctx.translate(view.x, view.y);
@@ -152,9 +328,19 @@ function draw() {
     const a = nodeById.get(e.from);
     const b = nodeById.get(e.to);
     if (!a || !b) continue;
-    const isHL = hl && (e.from === selectedId || e.to === selectedId);
-    ctx.strokeStyle = isHL ? EDGE_HL : EDGE_COLOR;
-    ctx.lineWidth = isHL ? 1.8 / view.k : 1.0 / view.k;
+
+    if (activeId) {
+      const inHL = hl ? (hl.has(e.from) || hl.has(e.to)) : true;
+      const isHL = e.from === activeId || e.to === activeId;
+      ctx.globalAlpha = inHL ? 1 : 0.18;
+      ctx.strokeStyle = isHL ? EDGE_HL : EDGE_COLOR;
+      ctx.lineWidth = isHL ? 1.8 / view.k : 1.0 / view.k;
+    } else {
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = EDGE_COLOR;
+      ctx.lineWidth = 1.0 / view.k;
+    }
+
     ctx.beginPath();
     ctx.moveTo(a.x, a.y);
     ctx.lineTo(b.x, b.y);
@@ -166,8 +352,9 @@ function draw() {
     const isHL = hl ? hl.has(n.id) : true;
     const isHover = n.id === hoveredId;
     const alpha = hl ? (isHL ? 1 : 0.18) : 1;
-    ctx.globalAlpha = alpha;
-    const r = (isSelected ? 7.5 : isHover ? 7 : 5.5) / view.k;
+    const baseAlpha = selectedId ? alpha : n.kind === "person" ? 1 : 0.55;
+    ctx.globalAlpha = baseAlpha;
+    const r = (isSelected ? 7.5 : isHover ? 7 : n.kind === "person" ? 5.3 : 4.6) / view.k;
     ctx.beginPath();
     ctx.fillStyle = n.kind === "person" ? PERSON_COLOR : ORG_COLOR;
     ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
@@ -231,6 +418,7 @@ function onClick(ev) {
   selectedId = n.id;
   setFocusQuery(n.id);
   showPopup(n, ev.pageX, ev.pageY);
+  if (layoutMode === "radial") setRadialLayout();
 }
 
 function onDoubleClick(ev) {
@@ -240,7 +428,7 @@ function onDoubleClick(ev) {
   const n = pickNodeAt(x, y);
   if (!n) return;
   if (n.kind !== "person") return;
-  const url = new URL("./map.html", window.location.href);
+  const url = new URL("./cesium.html", window.location.href);
   url.searchParams.set("focus", `person:${n.id}`);
   window.open(url.toString(), "_blank");
 }
@@ -288,6 +476,11 @@ function onMouseDrag(ev) {
 
 async function main() {
   resize();
+  if (geoYearInput) {
+    geoYear = parseInt(geoYearInput.value, 10);
+    if (geoYearLabel) geoYearLabel.textContent = String(geoYear);
+  }
+  setGeoYearVisible(layoutMode === "geo");
   window.addEventListener("resize", debounce(() => {
     resize();
     setLayout();
@@ -321,10 +514,50 @@ async function main() {
       setFocusQuery(hit.id);
       focusOnNode(hit);
       clearPopup();
+      if (layoutMode === "radial") setRadialLayout();
     }, 160),
   );
 
   requestAnimationFrame(draw);
 }
+
+function setGeoYearVisible(isVisible) {
+  if (geoYearField) geoYearField.hidden = !isVisible;
+}
+
+function setSidebarCollapsed(collapsed) {
+  layoutRoot?.classList.toggle("collapsed", collapsed);
+  if (toggleSidebarBtn) {
+    toggleSidebarBtn.textContent = collapsed ? "⟩" : "⟨";
+    toggleSidebarBtn.title = collapsed ? "展开侧栏" : "收起侧栏";
+    toggleSidebarBtn.setAttribute("aria-label", collapsed ? "展开侧栏" : "收起侧栏");
+  }
+  resize();
+  setLayout();
+}
+
+function setLayoutMode(nextMode) {
+  layoutMode = nextMode;
+  layoutRingBtn?.classList.toggle("secondary", nextMode !== "ring");
+  layoutRadialBtn?.classList.toggle("secondary", nextMode !== "radial");
+  layoutGeoBtn?.classList.toggle("secondary", nextMode !== "geo");
+  setGeoYearVisible(nextMode === "geo");
+  setLayout();
+}
+
+layoutRingBtn?.addEventListener("click", () => setLayoutMode("ring"));
+layoutRadialBtn?.addEventListener("click", () => setLayoutMode("radial"));
+layoutGeoBtn?.addEventListener("click", () => setLayoutMode("geo"));
+
+geoYearInput?.addEventListener("input", (ev) => {
+  geoYear = parseInt(ev.target.value, 10);
+  if (geoYearLabel) geoYearLabel.textContent = String(geoYear);
+  if (layoutMode === "geo") setGeoLayout();
+});
+
+toggleSidebarBtn?.addEventListener("click", () => {
+  const collapsed = !!layoutRoot?.classList.contains("collapsed");
+  setSidebarCollapsed(!collapsed);
+});
 
 main();

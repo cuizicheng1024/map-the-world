@@ -22,30 +22,65 @@
         height: 100%;
         display: block;
       }
+      .row.wrap {
+        flex-wrap: wrap;
+      }
+      #layoutRoot.collapsed {
+        grid-template-columns: 56px 1fr;
+      }
+      #layoutRoot.collapsed .sidebar {
+        padding: 10px 8px;
+      }
+      #layoutRoot.collapsed .sidebarContent {
+        display: none;
+      }
+      #layoutRoot.collapsed .brand {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <div class="layout">
+    <div class="layout" id="layoutRoot">
       <aside class="sidebar">
-        <h1 class="brand">人物关系网</h1>
-        <div class="hint">
-          双击人物节点：右侧打开迁徙地图并自动过滤到该人物。
+        <div class="row" style="justify-content: space-between; align-items: flex-start">
+          <h1 class="brand">人物关系网</h1>
+          <button id="toggleSidebarBtn" class="btn secondary icon" aria-label="收起侧栏" title="收起侧栏">⟨</button>
         </div>
 
-        <div class="field">
-          <label>搜索</label>
-          <input id="searchInput" type="text" placeholder="输入人物姓名，例如：李开复 / Geoffrey Hinton" />
-        </div>
-
-        <div class="field">
-          <div class="row">
-            <a class="btn" href="./map.html">时间轴地图</a>
-            <a class="btn secondary" href="../">Docs</a>
+        <div class="sidebarContent">
+          <div class="hint">
+            单击：查看人物贡献并高亮关联节点；双击人物节点：打开 3D 地球并自动过滤到该人物。
           </div>
-        </div>
 
-        <div class="footer">
-          数据：<a href="../data/relations.json">relations.json</a>
+          <div class="field">
+            <label>搜索</label>
+            <input id="searchInput" type="text" placeholder="输入人物姓名，例如：李开复 / Geoffrey Hinton" />
+          </div>
+
+          <div class="field">
+            <label>布局</label>
+            <div class="row wrap">
+              <button id="layoutRingBtn" class="btn">环形</button>
+              <button id="layoutRadialBtn" class="btn secondary">径向</button>
+              <button id="layoutGeoBtn" class="btn secondary">地理</button>
+            </div>
+          </div>
+
+          <div class="field" id="geoYearField">
+            <label>地理布局年份</label>
+            <input id="geoYear" type="range" min="1912" max="2026" step="1" value="2026" />
+            <div class="kv"><span>1912</span><span id="geoYearLabel">2026</span></div>
+          </div>
+
+          <div class="field">
+            <div class="row">
+              <a class="btn" href="./cesium.html">3D 地球</a>
+            </div>
+          </div>
+
+          <div class="footer">
+            数据：<a href="../data/relations.json">relations.json</a>
+          </div>
         </div>
       </aside>
 

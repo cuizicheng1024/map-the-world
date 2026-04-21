@@ -6,10 +6,10 @@
 
 ```bash
 cd Global_AI_Talent_Distribution
-python3 -m http.server 8080
+python3 serve.py --open
 # 浏览器访问：
-# 3D 地球：http://localhost:8080/app/cesium.html
-# 关系网：http://localhost:8080/app/graph.html
+# 3D 地球：http://127.0.0.1:<port>/app/cesium.html
+# 关系网：http://127.0.0.1:<port>/app/graph.html
 ```
 
 ## 核心特性
