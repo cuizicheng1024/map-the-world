@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Global AI Talent Distribution · People Graph</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./kimi.css" />
     <style>
       .graphWrap {
         position: relative;
@@ -48,13 +49,21 @@
         </div>
 
         <div class="sidebarContent">
-          <div class="hint">
-            单击：查看人物贡献并高亮关联节点；双击人物节点：打开 3D 地球并自动过滤到该人物。
+          <div class="legend">
+            <div class="legendItem"><span class="dot dotPerson"></span><span>人物</span></div>
+            <div class="legendItem"><span class="dot dotOrg"></span><span>机构</span></div>
           </div>
 
           <div class="field">
             <label>搜索</label>
-            <input id="searchInput" type="text" placeholder="输入人物姓名，例如：李开复 / Geoffrey Hinton" />
+            <input id="searchInput" type="text" style="max-width:280px" placeholder="输入人物姓名，例如：李开复 / Geoffrey Hinton" />
+          </div>
+
+          <div class="field">
+            <label>关联关系</label>
+            <div class="row">
+              <button id="toggleEdgesBtn" class="btn">关联线：开</button>
+            </div>
           </div>
 
           <div class="field">
@@ -63,6 +72,7 @@
               <button id="layoutRingBtn" class="btn">环形</button>
               <button id="layoutRadialBtn" class="btn secondary">径向</button>
               <button id="layoutGeoBtn" class="btn secondary">地理</button>
+              <button id="layoutForceBtn" class="btn secondary">力导向</button>
             </div>
           </div>
 
@@ -76,10 +86,6 @@
             <div class="row">
               <a class="btn" href="./cesium.html">3D 地球</a>
             </div>
-          </div>
-
-          <div class="footer">
-            数据：<a href="../data/relations.json">relations.json</a>
           </div>
         </div>
       </aside>

@@ -10,35 +10,46 @@ import { getQueryParam } from "./common.js";
 
 const DATA_PATH = "../data/movements.geojson";
 const WORLD_TOPOJSON_URL = "https://unpkg.com/world-atlas@2/countries-110m.json";
-const COLOR_CYAN_BASE = "rgb(0,229,255)";
-const COLOR_PINK_BASE = "rgb(255,59,145)";
-const COLOR_BORDER_BASE = "rgb(125,211,252)";
-const COLOR_GHOST_BASE = "rgb(230,230,234)";
+const ADMIN1_BORDERS_URL =
+  "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_1_states_provinces_lines.geojson";
+const COLOR_CYAN_BASE = "rgb(66,133,244)";
+const COLOR_PINK_BASE = "rgb(219,68,55)";
+const COLOR_BORDER_BASE = "rgb(255,255,255)";
+const COLOR_GREEN_BASE = "rgb(15,157,88)";
+const COLOR_YELLOW_BASE = "rgb(244,180,0)";
 const DEFAULT_CENTER = { lat: 35.8617, lng: 104.1954 };
-const GHOST_ALT = 0.008;
-const CUR_ALT = 0.02;
-const TRANSITION_MS = 2400;
+const CUR_ALT = 0.002;
 const ARC_ANIMATE_MS = 7200;
 const ARC_TRAIL_MS = 2600;
 const ARC_TRAIL_ALPHA = 0.18;
 
-const OCEAN_COLOR = "#051226";
-const LAND_COLOR = "rgba(14, 28, 40, 0.94)";
+const OCEAN_COLOR = "#5ba3c9";
+const LAND_COLOR = "rgba(175, 218, 190, 0.85)";
+const EARTH_TEXTURE_URL = "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg";
+const EARTH_BUMP_URL = "https://unpkg.com/three-globe/example/img/earth-topology.png";
 
 let scene, camera, renderer, composer, controls, globe, stars, bloomPass;
 let currentYear = 2023;
 let playTimer = null;
-let playSpeed = 2;
-let transitionTimer = null;
+let playSpeed = 0.5;
 let renderedArcs = [];
 let lastArcs = [];
 let lastArcsUntil = 0;
 let visualMode = "balanced";
+let blinkTimer = null;
+let blinkOn = true;
+let renderedPoints = [];
+let chordCache = null;
+let chordHover = null;
+let chordTip = null;
+let lodPrecisionDeg = 0.02;
+let blinkIntervalMs = 520;
+let lastLodUpdateAt = 0;
 
 let colorCyan = "rgba(0,229,255,0.92)";
 let colorPink = "rgba(255,59,145,0.72)";
 let colorBorder = "rgba(125,211,252,0.36)";
-let colorGhost = "rgba(230,230,234,0.14)";
+let borderAlpha = 0.36;
 let bloomStrength = 0.65;
 let atmosphereAlt = 0.15;
 let emissiveIntensity = 0.22;
@@ -71,11 +82,45 @@ const infoSub = document.getElementById("infoSub");
 const infoList = document.getElementById("infoList");
 const infoClose = document.getElementById("infoClose");
 const visualModeSelect = document.getElementById("visualMode");
+const boxplotCanvas = document.getElementById("boxplotCanvas");
+const chordCanvas = document.getElementById("chordCanvas");
+const chordLevelSelect = document.getElementById("chordLevel");
+const barCanvas = document.getElementById("barCanvas");
+const powerLawLabel = document.getElementById("powerLawLabel");
 
 const state = {
   byYear: new Map(),
   byPerson: new Map(),
 };
+
+let cityAliasMap = new Map();
+let countryContinentMap = new Map();
+let admin1Lines = null;
+let borderLevel = "country";
+
+async function loadCityAliases() {
+  try {
+    const res = await fetch("../data/relations.json", { cache: "no-store" });
+    const data = await res.json();
+    const map = data?.stats?.city_alias_map || {};
+    const cc = data?.stats?.country_continent_map || {};
+    const m = new Map();
+    for (const [k, v] of Object.entries(map)) {
+      if (!k || !v) continue;
+      m.set(String(k), String(v));
+    }
+    cityAliasMap = m;
+    const cm = new Map();
+    for (const [k, v] of Object.entries(cc)) {
+      if (!k || !v) continue;
+      cm.set(String(k), String(v));
+    }
+    countryContinentMap = cm;
+  } catch {
+    cityAliasMap = new Map();
+    countryContinentMap = new Map();
+  }
+}
 
 function getFocusFilter() {
   const focus = getQueryParam("focus");
@@ -105,7 +150,7 @@ function matchFocusOrQuery(m, focus, query) {
 }
 
 function createStars() {
-  const n = 1600;
+  const n = 420;
   const pos = new Float32Array(n * 3);
   for (let i = 0; i < n; i++) {
     const r = 240 + Math.random() * 520;
@@ -119,7 +164,7 @@ function createStars() {
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-  const m = new THREE.PointsMaterial({ color: 0xffffff, size: 0.55, transparent: true, opacity: 0.5, depthWrite: false });
+  const m = new THREE.PointsMaterial({ color: 0x9aa0a6, size: 0.55, transparent: true, opacity: 0.045, depthWrite: false });
   return new THREE.Points(g, m);
 }
 
@@ -146,6 +191,7 @@ async function loadMovements() {
       person_name: String(p.person_name ?? ""),
       org_name: String(p.org_name ?? ""),
       city: String(p.city ?? ""),
+      country: String(p.country ?? p.country_name ?? ""),
     });
   }
 
@@ -155,36 +201,32 @@ async function loadMovements() {
     if (!state.byYear.has(m.year)) state.byYear.set(m.year, []);
     state.byYear.get(m.year).push(m);
     if (!state.byPerson.has(m.person_id)) state.byPerson.set(m.person_id, new Map());
-    state.byPerson.get(m.person_id).set(m.year, { lon: m.lon, lat: m.lat });
+    state.byPerson.get(m.person_id).set(m.year, { lon: m.lon, lat: m.lat, city: m.city, country: m.country, org_name: m.org_name });
   }
 }
 
-function clusterPoints(records) {
+function clusterPoints(records, precisionDeg) {
+  const prec = Number.isFinite(precisionDeg) ? precisionDeg : 0.02;
   const buckets = new Map();
   for (const r of records) {
-    const k = `${r.lon.toFixed(2)},${r.lat.toFixed(2)}`;
+    const kx = Math.round(r.lon / prec);
+    const ky = Math.round(r.lat / prec);
+    const k = `${kx},${ky}`;
     if (!buckets.has(k)) {
-      buckets.set(k, { lng: r.lon, lat: r.lat, count: 0, people: [], examples: [], kind: "cur" });
+      buckets.set(k, { lng: 0, lat: 0, count: 0, people: [], examples: [], kind: "cur" });
     }
     const b = buckets.get(k);
+    b.lng += r.lon;
+    b.lat += r.lat;
     b.count += 1;
     if (b.people.length < 6) b.people.push(r.person_name || r.person_id);
     if (b.examples.length < 6) b.examples.push({ person: r.person_name || r.person_id, org: r.org_name || "", city: r.city || "" });
   }
-  return [...buckets.values()];
-}
-
-function clusterPointsGhost(records) {
-  const buckets = new Map();
-  for (const r of records) {
-    const k = `${r.lon.toFixed(2)},${r.lat.toFixed(2)}`;
-    if (!buckets.has(k)) {
-      buckets.set(k, { lng: r.lon, lat: r.lat, count: 0, people: [], kind: "ghost" });
-    }
-    const b = buckets.get(k);
-    b.count += 1;
+  const out = [];
+  for (const b of buckets.values()) {
+    out.push({ ...b, lng: b.lng / Math.max(1, b.count), lat: b.lat / Math.max(1, b.count) });
   }
-  return [...buckets.values()];
+  return out;
 }
 
 function clamp(v, min, max) {
@@ -277,10 +319,80 @@ async function loadBorders() {
   const geo = feature(topo, topo.objects.countries);
   globe
     .polygonsData(geo.features)
-    .polygonAltitude(0.005)
-    .polygonCapColor(() => LAND_COLOR)
+    .polygonAltitude(0.0025)
+    .polygonCapColor(() => "rgba(230,236,242,0.1)")
     .polygonSideColor(() => "rgba(0,0,0,0)")
     .polygonStrokeColor(() => colorBorder);
+}
+
+function lngLatToVector3(lng, lat, radius) {
+  const latR = THREE.MathUtils.degToRad(lat);
+  const lngR = THREE.MathUtils.degToRad(lng);
+  const x = Math.cos(latR) * Math.sin(lngR) * radius;
+  const y = Math.sin(latR) * radius;
+  const z = Math.cos(latR) * Math.cos(lngR) * radius;
+  return new THREE.Vector3(x, y, z);
+}
+
+async function ensureAdmin1Borders() {
+  if (admin1Lines || !scene || !globe) return;
+  const gj = await fetch(ADMIN1_BORDERS_URL, { cache: "force-cache" }).then((r) => r.json());
+  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+  const r = r0 * 1.012;
+  const pos = [];
+
+  const pushLine = (coords) => {
+    if (!Array.isArray(coords) || coords.length < 2) return;
+    for (let i = 1; i < coords.length; i++) {
+      const a = coords[i - 1];
+      const b = coords[i];
+      if (!Array.isArray(a) || !Array.isArray(b) || a.length < 2 || b.length < 2) continue;
+      const v1 = lngLatToVector3(a[0], a[1], r);
+      const v2 = lngLatToVector3(b[0], b[1], r);
+      pos.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
+    }
+  };
+
+  for (const ft of gj?.features ?? []) {
+    const g = ft?.geometry;
+    if (!g) continue;
+    if (g.type === "LineString") {
+      pushLine(g.coordinates);
+    } else if (g.type === "MultiLineString") {
+      for (const line of g.coordinates ?? []) pushLine(line);
+    }
+  }
+
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  const mat = new THREE.LineBasicMaterial({
+    color: new THREE.Color(COLOR_BORDER_BASE),
+    transparent: true,
+    opacity: Math.min(0.9, borderAlpha * 1.35),
+    depthTest: false,
+    depthWrite: false,
+  });
+  admin1Lines = new THREE.LineSegments(geom, mat);
+  admin1Lines.renderOrder = 10;
+  admin1Lines.visible = false;
+  scene.add(admin1Lines);
+}
+
+async function applyBorderLevel(level) {
+  const v = String(level || "country");
+  borderLevel = v;
+  if (v === "admin1") {
+    await ensureAdmin1Borders();
+    if (admin1Lines) admin1Lines.visible = true;
+  } else {
+    if (admin1Lines) admin1Lines.visible = false;
+  }
+  if (typeof globe?.polygonStrokeColor === "function") {
+    globe.polygonStrokeColor(() => {
+      if (borderLevel === "admin1") return rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.16));
+      return colorBorder;
+    });
+  }
 }
 
 function updateHud(peopleCount) {
@@ -296,98 +408,675 @@ function closeInfoCard() {
 
 function applyData() {
   const focus = getFocusFilter();
-  const q = filterInput.value.trim().toLowerCase();
+  const q = "";
   const yearList = state.byYear.get(currentYear) ?? [];
-  const prevYearList = state.byYear.get(currentYear - 1) ?? [];
   const visible = yearList.filter((m) => matchFocusOrQuery(m, focus, q));
-  const visiblePrev = prevYearList.filter((m) => matchFocusOrQuery(m, focus, q));
   const visiblePersonIds = new Set(visible.map((m) => m.person_id));
 
-  const pointsCur = clusterPoints(visible);
-  const pointsGhost = clusterPointsGhost(visiblePrev);
-  const arcsCur = buildArcsForYear(currentYear, visiblePersonIds);
-  renderedArcs = arcsCur;
-  const now = performance.now();
-  const arcsTrail =
-    lastArcs.length && now < lastArcsUntil
-      ? lastArcs.map((a) => ({
-          ...a,
-          color: [rgbaWithAlpha(a.color?.[0], ARC_TRAIL_ALPHA), rgbaWithAlpha(a.color?.[1], ARC_TRAIL_ALPHA)],
-        }))
-      : [];
-  const arcs = [...arcsTrail, ...arcsCur];
-  const pointsAll = [...pointsGhost, ...pointsCur];
+  const pointsCur = clusterPoints(visible, lodPrecisionDeg);
+  renderedPoints = pointsCur;
 
   updateHud(visiblePersonIds.size);
 
+  renderCharts(visiblePersonIds, currentYear);
   globe
-    .pointsData(pointsAll)
+    .pointsData(pointsCur)
     .pointLat("lat")
     .pointLng("lng")
-    .pointAltitude((d) => (d.kind === "ghost" ? GHOST_ALT : CUR_ALT))
+    .pointAltitude(() => CUR_ALT)
     .pointRadius((d) => {
-      const base = d.kind === "ghost" ? 0.14 : 0.18;
-      const scale = d.kind === "ghost" ? 0.04 : 0.08;
-      return base + Math.log1p(d.count) * scale;
+      const base = 0.16;
+      const scale = 0.06;
+      const pulse = blinkOn ? 1.18 : 1.0;
+      return (base + Math.log1p(d.count) * scale) * pulse;
     })
-    .pointColor((d) => (d.kind === "ghost" ? colorGhost : colorCyan))
+    .pointColor(() => (blinkOn ? "rgba(26,115,232,0.92)" : "rgba(138,180,248,0.72)"))
     .pointsMerge(false);
 
-  globe
-    .arcsData(arcs)
-    .arcStartLat("startLat")
-    .arcStartLng("startLng")
-    .arcEndLat("endLat")
-    .arcEndLng("endLng")
-    .arcColor("color")
-    .arcStroke((d) => arcStrokeBase + Math.log1p(d?.count || 1) * arcStrokeScale)
-    .arcAltitude((d) => clamp(((d?.distDeg || 0) / 180) * arcAltScale, arcAltMin, arcAltMax))
-    .arcDashLength(arcDashLength)
-    .arcDashGap(arcDashGap)
-    .arcDashInitialGap(() => Math.random() * arcDashGap)
-    .arcDashAnimateTime((d) => {
-      const dist = d?.distDeg || 0;
-      const t = arcAnimateBase * (0.55 + dist / 180);
-      return Math.max(1600, Math.round(t));
-    });
+  globe.arcsData([]);
 
-  triggerTransition(pointsCur);
+  startBlink();
 }
 
-function triggerTransition(destPoints) {
-  if (transitionTimer) {
-    clearTimeout(transitionTimer);
-    transitionTimer = null;
-  }
-
-  globe
-    .ringsData(destPoints)
-    .ringLat("lat")
-    .ringLng("lng")
-    .ringAltitude(() => CUR_ALT)
-    .ringMaxRadius((d) => 1.0 + Math.log1p(d.count) * 0.8)
-    .ringPropagationSpeed(2.8)
-    .ringRepeatPeriod(999999);
-
-  transitionTimer = setTimeout(() => {
-    globe.ringsData([]);
-    transitionTimer = null;
-  }, TRANSITION_MS);
+function startBlink() {
+  if (blinkTimer) clearInterval(blinkTimer);
+  blinkTimer = setInterval(() => {
+    blinkOn = !blinkOn;
+    globe.pointsData(renderedPoints);
+  }, blinkIntervalMs);
 }
 
 function updateYear(nextYear) {
-  if (renderedArcs.length) {
-    lastArcs = renderedArcs;
-    lastArcsUntil = performance.now() + ARC_TRAIL_MS;
-  } else {
-    lastArcs = [];
-    lastArcsUntil = 0;
-  }
   currentYear = nextYear;
   yearSlider.value = String(nextYear);
   if (yearValue) yearValue.textContent = String(nextYear);
   if (hudYear) hudYear.textContent = String(nextYear);
   applyData();
+}
+
+function continentOfCountry(country) {
+  const s = String(country || "").trim();
+  if (!s) return "";
+  const k = normalizeKeyString(s);
+  const hit = countryContinentMap.get(k);
+  if (hit) return String(hit);
+  const m = {
+    cn: "亚洲",
+    china: "亚洲",
+    hongkong: "亚洲",
+    hk: "亚洲",
+    japan: "亚洲",
+    jp: "亚洲",
+    singapore: "亚洲",
+    sg: "亚洲",
+    india: "亚洲",
+    in: "亚洲",
+    southkorea: "亚洲",
+    korea: "亚洲",
+    kr: "亚洲",
+    israel: "亚洲",
+    il: "亚洲",
+    us: "北美",
+    usa: "北美",
+    unitedstates: "北美",
+    canada: "北美",
+    ca: "北美",
+    mexico: "北美",
+    mx: "北美",
+    uk: "欧洲",
+    unitedkingdom: "欧洲",
+    england: "欧洲",
+    germany: "欧洲",
+    de: "欧洲",
+    france: "欧洲",
+    fr: "欧洲",
+    switzerland: "欧洲",
+    ch: "欧洲",
+    netherlands: "欧洲",
+    nl: "欧洲",
+    australia: "大洋洲",
+    au: "大洋洲",
+    newzealand: "大洋洲",
+    nz: "大洋洲",
+  };
+  return m[k] || "";
+}
+
+function yearMovesForPeople(personIds, year) {
+  const kmPerDeg = 111.32;
+  const out = { city: [], country: [], intercontinental: [] };
+  for (const pid of personIds) {
+    const timeline = state.byPerson.get(pid);
+    if (!timeline) continue;
+    const cur = timeline.get(year);
+    if (!cur) continue;
+    let prev = null;
+    for (let y = year - 1; y >= 1912; y--) {
+      const v = timeline.get(y);
+      if (v) {
+        prev = v;
+        break;
+      }
+    }
+    if (!prev) continue;
+    const curCity = String(cur.city || "").trim();
+    const prevCity = String(prev.city || "").trim();
+    const curCountry = String(cur.country || "").trim();
+    const prevCountry = String(prev.country || "").trim();
+    if (curCity && prevCity && curCity === prevCity && curCountry === prevCountry) continue;
+    const distDeg = greatCircleDistanceDeg(prev.lat, prev.lon, cur.lat, cur.lon);
+    const km = distDeg * kmPerDeg;
+    if (curCountry && prevCountry && curCountry !== prevCountry) {
+      const c1 = continentOfCountry(prevCountry);
+      const c2 = continentOfCountry(curCountry);
+      if (c1 && c2 && c1 !== c2) out.intercontinental.push(km);
+      else out.country.push(km);
+    } else {
+      out.city.push(km);
+    }
+  }
+  return out;
+}
+
+function quantileSorted(arr, q) {
+  if (!arr.length) return 0;
+  const pos = (arr.length - 1) * q;
+  const base = Math.floor(pos);
+  const rest = pos - base;
+  if (arr[base + 1] == null) return arr[base];
+  return arr[base] + rest * (arr[base + 1] - arr[base]);
+}
+
+function boxStats(values) {
+  const v = values.filter((x) => Number.isFinite(x)).slice().sort((a, b) => a - b);
+  if (!v.length) return null;
+  const q1 = quantileSorted(v, 0.25);
+  const med = quantileSorted(v, 0.5);
+  const q3 = quantileSorted(v, 0.75);
+  const iqr = q3 - q1;
+  const lo = Math.max(v[0], q1 - 1.5 * iqr);
+  const hi = Math.min(v[v.length - 1], q3 + 1.5 * iqr);
+  return { n: v.length, min: lo, q1, med, q3, max: hi };
+}
+
+function clearCanvas(c) {
+  const ctx = c.getContext("2d");
+  ctx.clearRect(0, 0, c.width, c.height);
+  return ctx;
+}
+
+function ensureChordTip() {
+  if (chordTip) return chordTip;
+  const el = document.createElement("div");
+  el.style.position = "fixed";
+  el.style.left = "0";
+  el.style.top = "0";
+  el.style.transform = "translate(-9999px,-9999px)";
+  el.style.pointerEvents = "none";
+  el.style.padding = "8px 10px";
+  el.style.borderRadius = "10px";
+  el.style.border = "1px solid rgba(26,115,232,0.22)";
+  el.style.background = "rgba(255,255,255,0.94)";
+  el.style.color = "rgba(32,33,36,0.96)";
+  el.style.fontSize = "12px";
+  el.style.lineHeight = "1.35";
+  el.style.whiteSpace = "pre-line";
+  el.style.boxShadow = "0 12px 34px rgba(0,0,0,0.18)";
+  el.style.zIndex = "50";
+  document.body.appendChild(el);
+  chordTip = el;
+  return el;
+}
+
+function pointToSegDist2(px, py, ax, ay, bx, by) {
+  const abx = bx - ax;
+  const aby = by - ay;
+  const apx = px - ax;
+  const apy = py - ay;
+  const den = abx * abx + aby * aby || 1;
+  let t = (apx * abx + apy * aby) / den;
+  t = Math.max(0, Math.min(1, t));
+  const cx = ax + abx * t;
+  const cy = ay + aby * t;
+  const dx = px - cx;
+  const dy = py - cy;
+  return dx * dx + dy * dy;
+}
+
+function drawChordFromCache(cache, hover) {
+  const { ctx, cx, cy, rOuter, rInner, angles, nodes, colors, links, maxLink } = cache;
+  clearCanvas(chordCanvas);
+
+  ctx.lineWidth = 8;
+  for (let i = 0; i < nodes.length; i++) {
+    const [s, e] = angles[i];
+    const isArcHover = hover && hover.type === "arc" && hover.i === i;
+    ctx.strokeStyle = colors[i];
+    ctx.globalAlpha = isArcHover ? 1 : hover ? 0.3 : 1;
+    ctx.lineWidth = isArcHover ? 10 : 8;
+    ctx.beginPath();
+    ctx.arc(cx, cy, rInner, s, e);
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  ctx.font = "11px ui-sans-serif, system-ui, -apple-system";
+  for (let i = 0; i < nodes.length; i++) {
+    const [s, e] = angles[i];
+    const mid = (s + e) / 2;
+    const x = cx + Math.cos(mid) * (rOuter + 10);
+    const y = cy + Math.sin(mid) * (rOuter + 10);
+    const label = nodes[i].length > 10 ? nodes[i].slice(0, 9) + "…" : nodes[i];
+    const isArcHover = hover && hover.type === "arc" && hover.i === i;
+    ctx.fillStyle = isArcHover ? "rgba(32,33,36,0.96)" : "rgba(32,33,36,0.78)";
+    ctx.textAlign = mid > Math.PI / 2 || mid < -Math.PI / 2 ? "right" : "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, x, y);
+  }
+
+  for (const l of links) {
+    const isHover = hover && hover.type === "link" && hover.k === l.k;
+    const alpha = 0.22 + 0.55 * (l.v / Math.max(1, maxLink));
+    ctx.strokeStyle = rgbaWithAlpha(colors[l.i], isHover ? 0.92 : hover ? 0.08 : alpha);
+    ctx.lineWidth = isHover ? Math.min(12, l.w + 2.4) : Math.min(10, l.w);
+    ctx.beginPath();
+    ctx.moveTo(l.x1, l.y1);
+    ctx.quadraticCurveTo(cx, cy, l.x2, l.y2);
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function pickChordHover(cache, x, y) {
+  const { cx, cy, rInner, angles, links, nodes } = cache;
+  const dx = x - cx;
+  const dy = y - cy;
+  const r = Math.sqrt(dx * dx + dy * dy);
+
+  let bestLink = null;
+  let bestD2 = Infinity;
+  for (const l of links) {
+    const pts = l.pts;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i];
+      const b = pts[i + 1];
+      const d2 = pointToSegDist2(x, y, a[0], a[1], b[0], b[1]);
+      if (d2 < bestD2) {
+        bestD2 = d2;
+        bestLink = l;
+      }
+    }
+  }
+  if (bestLink && bestD2 <= 64) {
+    return { type: "link", ...bestLink, from: nodes[bestLink.i], to: nodes[bestLink.j] };
+  }
+  if (bestLink && bestD2 <= 144) {
+    return { type: "link", ...bestLink, from: nodes[bestLink.i], to: nodes[bestLink.j] };
+  }
+
+  if (r >= rInner - 14 && r <= rInner + 14) {
+    const start = -Math.PI / 2;
+    let ang = Math.atan2(dy, dx);
+    while (ang < start) ang += Math.PI * 2;
+    while (ang >= start + Math.PI * 2) ang -= Math.PI * 2;
+    for (let i = 0; i < angles.length; i++) {
+      const [s, e] = angles[i];
+      if (ang >= s && ang <= e) return { type: "arc", i, name: nodes[i] };
+    }
+  }
+  return null;
+}
+
+function updateChordTooltip(ev, hover) {
+  const tip = ensureChordTip();
+  if (!hover) {
+    tip.style.transform = "translate(-9999px,-9999px)";
+    return;
+  }
+  if (hover.type === "link") {
+    const rev = chordCache?.matrix?.[hover.j]?.[hover.i] ?? 0;
+    const total = chordCache?.totalFlow ?? 0;
+    const share = total > 0 ? ((hover.v + rev) / total) * 100 : 0;
+    tip.textContent = `${hover.from} ↔ ${hover.to}\n${hover.from} → ${hover.to}: ${hover.v}\n${hover.to} → ${hover.from}: ${rev}\n占比：${share.toFixed(1)}%`;
+  } else {
+    const w = chordCache?.weights?.[hover.i] ?? 0;
+    const mat = chordCache?.matrix;
+    const labels = chordCache?.nodes ?? [];
+    if (!mat || !labels.length) {
+      tip.textContent = `${hover.name}\n总量：${w}`;
+    } else {
+      const i = hover.i;
+      const out = [];
+      const inn = [];
+      for (let j = 0; j < labels.length; j++) {
+        if (j === i) continue;
+        const vOut = mat[i]?.[j] ?? 0;
+        const vIn = mat[j]?.[i] ?? 0;
+        if (vOut > 0) out.push([labels[j], vOut]);
+        if (vIn > 0) inn.push([labels[j], vIn]);
+      }
+      out.sort((a, b) => b[1] - a[1]);
+      inn.sort((a, b) => b[1] - a[1]);
+      const topOut = out.slice(0, 3).map(([name, v]) => `${hover.name} → ${name}: ${v}`).join("\n");
+      const topIn = inn.slice(0, 3).map(([name, v]) => `${name} → ${hover.name}: ${v}`).join("\n");
+      const parts = [`${hover.name}`, `总量：${w}`];
+      if (topOut) parts.push("", "Top 流出：", topOut);
+      if (topIn) parts.push("", "Top 流入：", topIn);
+      tip.textContent = parts.join("\n");
+    }
+  }
+  tip.style.transform = `translate(${ev.clientX + 12}px,${ev.clientY + 12}px)`;
+}
+
+function drawBoxplot(ctx, x0, x1, y, stats, color) {
+  const mapX = (v) => x0 + ((v - stats.min) / Math.max(1e-9, stats.max - stats.min)) * (x1 - x0);
+  const a = mapX(stats.min);
+  const b = mapX(stats.max);
+  const q1 = mapX(stats.q1);
+  const q3 = mapX(stats.q3);
+  const m = mapX(stats.med);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(a, y);
+  ctx.lineTo(b, y);
+  ctx.stroke();
+  const h = 10;
+  ctx.fillStyle = rgbaWithAlpha(color, 0.22);
+  ctx.strokeStyle = rgbaWithAlpha(color, 0.9);
+  ctx.beginPath();
+  ctx.rect(q1, y - h / 2, q3 - q1, h);
+  ctx.fill();
+  ctx.stroke();
+  ctx.strokeStyle = rgbaWithAlpha(color, 0.95);
+  ctx.beginPath();
+  ctx.moveTo(m, y - h / 2);
+  ctx.lineTo(m, y + h / 2);
+  ctx.stroke();
+  ctx.strokeStyle = rgbaWithAlpha(color, 0.75);
+  ctx.beginPath();
+  ctx.moveTo(a, y - 5);
+  ctx.lineTo(a, y + 5);
+  ctx.moveTo(b, y - 5);
+  ctx.lineTo(b, y + 5);
+  ctx.stroke();
+}
+
+function fitPowerLawRank(counts) {
+  const ys = counts.filter((x) => x > 0).slice().sort((a, b) => b - a);
+  const n = ys.length;
+  if (n < 6) return null;
+  const xs = ys.map((_, i) => i + 1);
+  const lx = xs.map((r) => Math.log(r));
+  const ly = ys.map((c) => Math.log(c));
+  const mx = lx.reduce((a, b) => a + b, 0) / n;
+  const my = ly.reduce((a, b) => a + b, 0) / n;
+  let num = 0;
+  let den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (lx[i] - mx) * (ly[i] - my);
+    den += (lx[i] - mx) * (lx[i] - mx);
+  }
+  if (!den) return null;
+  const slope = num / den;
+  const intercept = my - slope * mx;
+  let ssTot = 0;
+  let ssRes = 0;
+  for (let i = 0; i < n; i++) {
+    const pred = intercept + slope * lx[i];
+    ssTot += (ly[i] - my) * (ly[i] - my);
+    ssRes += (ly[i] - pred) * (ly[i] - pred);
+  }
+  const r2 = ssTot ? 1 - ssRes / ssTot : 0;
+  return { alpha: -slope, r2, n };
+}
+
+function normalizeKeyString(s) {
+  const t = String(s || "").trim().toLowerCase();
+  return t
+    .replace(/\s+/g, " ")
+    .replace(/[().,_\-–—'"“”’/]/g, "")
+    .replace(/\s/g, "");
+}
+
+function normalizeCityKey(city) {
+  let cur = normalizeKeyString(city);
+  if (!cur) return "";
+  for (let i = 0; i < 6; i++) {
+    const aliased = cityAliasMap.get(cur);
+    if (!aliased) break;
+    const next = normalizeKeyString(aliased);
+    if (!next || next === cur) break;
+    cur = next;
+  }
+  return cur;
+}
+
+function canonicalCityLabel(city) {
+  const s = String(city || "").trim();
+  if (!s) return "";
+  const key = normalizeCityKey(s);
+  const aliased = cityAliasMap.get(key);
+  return aliased ? String(aliased) : s;
+}
+
+function palette(n) {
+  const base = [
+    "rgba(66,133,244,0.85)",
+    "rgba(219,68,55,0.82)",
+    "rgba(244,180,0,0.82)",
+    "rgba(15,157,88,0.82)",
+    "rgba(66,133,244,0.65)",
+    "rgba(219,68,55,0.62)",
+    "rgba(244,180,0,0.62)",
+    "rgba(15,157,88,0.62)",
+  ];
+  const out = [];
+  for (let i = 0; i < n; i++) out.push(base[i % base.length]);
+  return out;
+}
+
+function renderChord(visiblePersonIds, year, level) {
+  if (!chordCanvas) return;
+  const ctx = clearCanvas(chordCanvas);
+  const topN = level === "continent" ? 8 : level === "country" ? 10 : 12;
+
+  const flow = new Map();
+  const add = (a, b) => {
+    if (!a || !b) return;
+    const k = `${a}→${b}`;
+    flow.set(k, (flow.get(k) || 0) + 1);
+  };
+
+  for (const pid of visiblePersonIds) {
+    const timeline = state.byPerson.get(pid);
+    if (!timeline) continue;
+    const cur = timeline.get(year);
+    if (!cur) continue;
+    let prev = null;
+    for (let y = year - 1; y >= 1912; y--) {
+      const v = timeline.get(y);
+      if (v) {
+        prev = v;
+        break;
+      }
+    }
+    if (!prev) continue;
+    let a = "";
+    let b = "";
+    if (level === "continent") {
+      a = continentOfCountry(prev.country);
+      b = continentOfCountry(cur.country);
+    } else if (level === "country") {
+      a = String(prev.country || "").trim();
+      b = String(cur.country || "").trim();
+    } else {
+      a = canonicalCityLabel(prev.city);
+      b = canonicalCityLabel(cur.city);
+    }
+    add(a, b);
+  }
+
+  const nodeTotalsMap = new Map();
+  for (const [k, v] of flow.entries()) {
+    const [a, b] = k.split("→");
+    nodeTotalsMap.set(a, (nodeTotalsMap.get(a) || 0) + v);
+    if (a !== b) nodeTotalsMap.set(b, (nodeTotalsMap.get(b) || 0) + v);
+  }
+  let nodes = [...nodeTotalsMap.entries()]
+    .sort((x, y) => y[1] - x[1])
+    .slice(0, topN)
+    .map(([name]) => name);
+
+  if (!nodes.length) {
+    ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
+    ctx.fillStyle = "rgba(32,33,36,0.7)";
+    ctx.fillText("无迁移记录", 10, 18);
+    chordCache = null;
+    chordHover = null;
+    updateChordTooltip({ clientX: 0, clientY: 0 }, null);
+    return;
+  }
+  const nodeSet = new Set(nodes);
+
+  const matrix = Array.from({ length: nodes.length }, () => new Array(nodes.length).fill(0));
+  const idx = new Map(nodes.map((n, i) => [n, i]));
+
+  for (const [k, v] of flow.entries()) {
+    let [a, b] = k.split("→");
+    if (!nodeSet.has(a)) continue;
+    if (!nodeSet.has(b)) continue;
+    const i = idx.get(a);
+    const j = idx.get(b);
+    if (i == null || j == null) continue;
+    matrix[i][j] += v;
+  }
+  let totalFlow = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      if (i === j) continue;
+      totalFlow += matrix[i][j] || 0;
+    }
+  }
+
+  const n = nodes.length;
+  const weights = new Array(n).fill(0);
+  for (let i = 0; i < n; i++) {
+    let s = 0;
+    for (let j = 0; j < n; j++) s += matrix[i][j] + matrix[j][i];
+    weights[i] = s;
+  }
+  const totalW = Math.max(1, weights.reduce((a, b) => a + b, 0));
+  const pad = 0.02 * Math.PI;
+  const start = -Math.PI / 2;
+  const angles = [];
+  let a0 = start;
+  for (let i = 0; i < n; i++) {
+    const span = (weights[i] / totalW) * (Math.PI * 2 - n * pad);
+    angles.push([a0, a0 + span]);
+    a0 += span + pad;
+  }
+
+  const W = chordCanvas.width;
+  const H = chordCanvas.height;
+  const cx = W / 2;
+  const cy = H / 2;
+  const rOuter = Math.min(W, H) * 0.42;
+  const rInner = rOuter - 10;
+  const colors = palette(n);
+
+  const links = [];
+  let maxLink = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (i === j) continue;
+      const v = matrix[i][j];
+      if (!v) continue;
+      maxLink = Math.max(maxLink, v);
+      links.push({ i, j, v });
+    }
+  }
+  links.sort((a, b) => b.v - a.v);
+  const keep = links.slice(0, 80);
+
+  const keep2 = [];
+  for (const { i, j, v } of keep) {
+    const [si, ei] = angles[i];
+    const [sj, ej] = angles[j];
+    const ai = (si + ei) / 2;
+    const aj = (sj + ej) / 2;
+    const x1 = cx + Math.cos(ai) * (rInner - 2);
+    const y1 = cy + Math.sin(ai) * (rInner - 2);
+    const x2 = cx + Math.cos(aj) * (rInner - 2);
+    const y2 = cy + Math.sin(aj) * (rInner - 2);
+    const w = 0.6 + Math.sqrt(v) * 0.9;
+    const pts = [];
+    const steps = 18;
+    for (let s = 0; s <= steps; s++) {
+      const t = s / steps;
+      const xa = x1 + (cx - x1) * t;
+      const ya = y1 + (cy - y1) * t;
+      const xb = cx + (x2 - cx) * t;
+      const yb = cy + (y2 - cy) * t;
+      pts.push([xa + (xb - xa) * t, ya + (yb - ya) * t]);
+    }
+    keep2.push({ i, j, v, w, x1, y1, x2, y2, pts, k: `${i}-${j}` });
+  }
+  chordCache = { ctx, cx, cy, rOuter, rInner, angles, nodes, colors, links: keep2, maxLink, weights, matrix, totalFlow };
+  chordHover = null;
+  drawChordFromCache(chordCache, chordHover);
+  updateChordTooltip({ clientX: 0, clientY: 0 }, null);
+}
+
+function renderCharts(visiblePersonIds, year) {
+  if (barCanvas) {
+    const ctx = clearCanvas(barCanvas);
+    const yearList = state.byYear.get(year) ?? [];
+    const focus = getFocusFilter();
+    const q = "";
+    const visible = yearList.filter((m) => matchFocusOrQuery(m, focus, q));
+    const byKey = new Map();
+    for (const r of visible) {
+      const raw = String(r.city || "").trim() || "(unknown)";
+      const key = raw === "(unknown)" ? "(unknown)" : normalizeCityKey(raw) || raw;
+      if (!byKey.has(key)) byKey.set(key, { total: 0, labels: new Map() });
+      const g = byKey.get(key);
+      g.total += 1;
+      g.labels.set(raw, (g.labels.get(raw) || 0) + 1);
+    }
+    const entries = [...byKey.entries()]
+      .map(([key, g]) => {
+        let bestLabel = "";
+        let bestCount = -1;
+        for (const [label, c] of g.labels.entries()) {
+          if (c > bestCount) {
+            bestCount = c;
+            bestLabel = label;
+          }
+        }
+        return { key, city: bestLabel || key, count: g.total, variants: g.labels.size };
+      })
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+    if (!entries.length) {
+      ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
+      ctx.fillStyle = "rgba(32,33,36,0.7)";
+      ctx.fillText(`📊 Top 城市（${year}）`, 10, 14);
+      ctx.fillText("无数据", 10, 32);
+      if (powerLawLabel) powerLawLabel.textContent = "Power law: -";
+      return;
+    }
+    const maxV = Math.max(1, ...entries.map((x) => x.count));
+    ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
+    ctx.fillStyle = "rgba(32,33,36,0.86)";
+    ctx.fillText(`📊 Top 城市（${year}）`, 10, 14);
+
+    const padL = 24;
+    const padR = 10;
+    const padT = 22;
+    const padB = 40;
+    const chartW = Math.max(1, barCanvas.width - padL - padR);
+    const chartH = Math.max(1, barCanvas.height - padT - padB);
+    const step = chartW / Math.max(1, entries.length);
+    const barW = Math.max(6, step * 0.64);
+
+    ctx.strokeStyle = "rgba(32,33,36,0.08)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT + chartH + 0.5);
+    ctx.lineTo(padL + chartW, padT + chartH + 0.5);
+    ctx.stroke();
+
+    for (let i = 0; i < entries.length; i++) {
+      const { city, count: v } = entries[i];
+      const h = (chartH * v) / maxV;
+      const x = padL + i * step + (step - barW) / 2;
+      const y = padT + chartH - h;
+      ctx.fillStyle = "rgba(66,133,244,0.35)";
+      ctx.fillRect(x, y, barW, h);
+      ctx.fillStyle = "rgba(32,33,36,0.62)";
+      ctx.font = "11px ui-sans-serif, system-ui, -apple-system";
+      ctx.fillText(String(v), x + 2, y - 4);
+
+      const name = city.length > 8 ? city.slice(0, 7) + "…" : city;
+      ctx.save();
+      ctx.translate(x + barW / 2, padT + chartH + 10);
+      ctx.rotate(-Math.PI / 2);
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "rgba(32,33,36,0.62)";
+      ctx.fillText(name, 0, 0);
+      ctx.restore();
+    }
+
+    const counts = [...byKey.values()].map((g) => g.total).filter((x) => x > 0);
+    const fit = fitPowerLawRank(counts);
+    if (powerLawLabel) {
+      powerLawLabel.textContent = fit ? `Power law: α=${fit.alpha.toFixed(2)}  R²=${fit.r2.toFixed(2)}  n=${fit.n}` : "Power law: -";
+    }
+  }
+
+  renderChord(visiblePersonIds, year, String(chordLevelSelect?.value || "continent"));
 }
 
 function play() {
@@ -445,11 +1134,27 @@ function resetView({ lat, lng } = DEFAULT_CENTER) {
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
+  const now = performance.now();
+  if (now - lastLodUpdateAt > 240 && camera && globe) {
+    const r = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+    const ratio = camera.position.length() / Math.max(1, r);
+    const nextPrec = ratio < 3.6 ? 0.02 : ratio < 4.9 ? 0.05 : 0.12;
+    const nextBlink = ratio < 3.6 ? 520 : ratio < 4.9 ? 720 : 920;
+    if (nextPrec !== lodPrecisionDeg || nextBlink !== blinkIntervalMs) {
+      lodPrecisionDeg = nextPrec;
+      blinkIntervalMs = nextBlink;
+      lastLodUpdateAt = now;
+      applyData();
+    } else {
+      lastLodUpdateAt = now;
+    }
+  }
   composer.render();
 }
 
 async function init() {
   scene = new THREE.Scene();
+  scene.background = new THREE.Color("#f5f5f7");
 
   camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
   camera.position.set(0, 220, 410);
@@ -458,8 +1163,8 @@ async function init() {
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
-  renderer.setClearColor(0x000000, 0);
+  renderer.toneMappingExposure = 0.9;
+  renderer.setClearColor(0xf5f5f7, 1);
   renderer.domElement.style.width = "100%";
   renderer.domElement.style.height = "100%";
   renderer.domElement.style.display = "block";
@@ -476,26 +1181,38 @@ async function init() {
   controls.target.set(0, 0, 0);
   controls.update();
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.9);
   scene.add(ambient);
-  const sun = new THREE.DirectionalLight(0xffffff, 1.25);
+  const sun = new THREE.DirectionalLight(0xffffff, 0.95);
   sun.position.set(400, 220, 280);
   scene.add(sun);
 
   stars = createStars();
+  stars.visible = false;
   scene.add(stars);
 
   globe = new ThreeGlobe()
-    .globeImageUrl(null)
+    .globeImageUrl(EARTH_TEXTURE_URL)
     .showAtmosphere(true)
-    .atmosphereColor("#7dd3fc")
+    .atmosphereColor("#8ab4f8")
     .atmosphereAltitude(0.15)
     .showGraticules(false);
+  if (typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_BUMP_URL);
 
-  globe.globeMaterial().color = new THREE.Color(OCEAN_COLOR);
-  globe.globeMaterial().emissive = new THREE.Color("#081018");
-  globe.globeMaterial().emissiveIntensity = 0.22;
-  globe.globeMaterial().shininess = 0.3;
+  globe.globeMaterial().color = new THREE.Color("#ffffff");
+  globe.globeMaterial().emissive = new THREE.Color("#1a73e8");
+  globe.globeMaterial().emissiveIntensity = 0.12;
+  globe.globeMaterial().shininess = 0.35;
+
+  if (typeof globe.pointsMaterial === "function") {
+    const m = globe.pointsMaterial();
+    if (m) {
+      m.transparent = true;
+      m.depthWrite = false;
+      m.opacity = 0.92;
+      m.blending = THREE.NormalBlending;
+    }
+  }
 
   if (typeof globe.onPointClick === "function") globe.onPointClick(handlePointClick);
   if (typeof globe.onPointHover === "function") globe.onPointHover(handlePointHover);
@@ -511,11 +1228,13 @@ async function init() {
   resize();
   resetView(DEFAULT_CENTER);
 
+  await loadCityAliases();
   await loadMovements();
   await loadBorders();
 
   currentYear = parseInt(yearSlider.value, 10) || 2023;
   if (yearValue) yearValue.textContent = String(currentYear);
+  playSpeed = parseFloat(speedSlider.value) || playSpeed;
   if (speedValue) speedValue.textContent = `${playSpeed} 年/秒`;
   if (playState) playState.textContent = "已暂停";
   if (hudYear) hudYear.textContent = String(currentYear);
@@ -524,6 +1243,31 @@ async function init() {
   closeInfoCard();
   applyVisualMode(visualMode);
   applyData();
+  if (chordCanvas) {
+    chordCanvas.addEventListener("mousemove", (ev) => {
+      if (!chordCache) return;
+      const rect = chordCanvas.getBoundingClientRect();
+      const x = (ev.clientX - rect.left) * (chordCanvas.width / Math.max(1, rect.width));
+      const y = (ev.clientY - rect.top) * (chordCanvas.height / Math.max(1, rect.height));
+      const next = pickChordHover(chordCache, x, y);
+      const changed =
+        (!next && chordHover) ||
+        (next && !chordHover) ||
+        (next && chordHover && (next.type !== chordHover.type || (next.type === "link" ? next.k !== chordHover.k : next.i !== chordHover.i)));
+      if (changed) {
+        chordHover = next;
+        if (chordCache) drawChordFromCache(chordCache, chordHover);
+      }
+      updateChordTooltip(ev, next);
+      chordCanvas.style.cursor = next ? "pointer" : "default";
+    });
+    chordCanvas.addEventListener("mouseleave", () => {
+      chordHover = null;
+      if (chordCache) drawChordFromCache(chordCache, chordHover);
+      if (chordTip) chordTip.style.transform = "translate(-9999px,-9999px)";
+      chordCanvas.style.cursor = "default";
+    });
+  }
   animate();
 }
 
@@ -537,25 +1281,41 @@ speedSlider.addEventListener("input", (e) => {
     play();
   }
 });
-filterInput.addEventListener("input", () => {
-  lastArcs = [];
-  lastArcsUntil = 0;
-  closeInfoCard();
-  applyData();
-});
+if (filterInput) {
+  filterInput.addEventListener("input", () => {
+    lastArcs = [];
+    lastArcsUntil = 0;
+    closeInfoCard();
+    applyData();
+  });
+}
+if (chordLevelSelect) {
+  chordLevelSelect.addEventListener("change", () => {
+    closeInfoCard();
+    applyData();
+  });
+}
 playBtn.addEventListener("click", play);
 pauseBtn.addEventListener("click", pause);
 pauseBtn.style.display = "none";
 
+window.addEventListener("keydown", (e) => {
+  if (e.code !== "Space") return;
+  const tag = String(document.activeElement?.tagName || "").toUpperCase();
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "BUTTON") return;
+  e.preventDefault();
+  if (playTimer) pause();
+  else play();
+});
+
 const VISUAL_PRESETS = {
   demo: {
-    bloom: 0.85,
-    borderAlpha: 0.46,
-    cyanAlpha: 0.92,
+    bloom: 0.42,
+    borderAlpha: 0.34,
+    cyanAlpha: 1.0,
     pinkAlpha: 0.82,
-    ghostAlpha: 0.18,
-    atmosphereAlt: 0.17,
-    emissive: 0.26,
+    atmosphereAlt: 0.13,
+    emissive: 0.14,
     arcDashLength: 0.42,
     arcDashGap: 0.95,
     arcStrokeBase: 0.52,
@@ -567,13 +1327,12 @@ const VISUAL_PRESETS = {
     arcUseGradient: true,
   },
   balanced: {
-    bloom: 0.65,
-    borderAlpha: 0.36,
-    cyanAlpha: 0.88,
-    pinkAlpha: 0.7,
-    ghostAlpha: 0.14,
-    atmosphereAlt: 0.15,
-    emissive: 0.22,
+    bloom: 0.34,
+    borderAlpha: 0.28,
+    cyanAlpha: 0.95,
+    pinkAlpha: 0.74,
+    atmosphereAlt: 0.12,
+    emissive: 0.12,
     arcDashLength: 0.32,
     arcDashGap: 1.15,
     arcStrokeBase: 0.45,
@@ -585,13 +1344,12 @@ const VISUAL_PRESETS = {
     arcUseGradient: true,
   },
   analysis: {
-    bloom: 0.38,
-    borderAlpha: 0.26,
-    cyanAlpha: 0.78,
-    pinkAlpha: 0.58,
-    ghostAlpha: 0.1,
-    atmosphereAlt: 0.13,
-    emissive: 0.18,
+    bloom: 0.22,
+    borderAlpha: 0.22,
+    cyanAlpha: 0.9,
+    pinkAlpha: 0.62,
+    atmosphereAlt: 0.11,
+    emissive: 0.1,
     arcDashLength: 0.24,
     arcDashGap: 1.6,
     arcStrokeBase: 0.36,
@@ -608,10 +1366,10 @@ function applyVisualMode(nextMode) {
   const preset = VISUAL_PRESETS[nextMode] ?? VISUAL_PRESETS.balanced;
   visualMode = nextMode;
   bloomStrength = preset.bloom;
-  colorBorder = rgbaWithAlpha(COLOR_BORDER_BASE, preset.borderAlpha);
+  borderAlpha = preset.borderAlpha;
+  colorBorder = rgbaWithAlpha(COLOR_BORDER_BASE, borderAlpha);
   colorCyan = rgbaWithAlpha(COLOR_CYAN_BASE, preset.cyanAlpha);
   colorPink = rgbaWithAlpha(COLOR_PINK_BASE, preset.pinkAlpha);
-  colorGhost = rgbaWithAlpha(COLOR_GHOST_BASE, preset.ghostAlpha);
   atmosphereAlt = preset.atmosphereAlt;
   emissiveIntensity = preset.emissive;
   arcDashLength = preset.arcDashLength ?? arcDashLength;
@@ -630,6 +1388,13 @@ function applyVisualMode(nextMode) {
   }
   if (typeof globe?.atmosphereAltitude === "function") {
     globe.atmosphereAltitude(atmosphereAlt);
+  }
+  if (admin1Lines?.material) admin1Lines.material.opacity = Math.min(0.9, borderAlpha * 1.35);
+  if (typeof globe?.polygonStrokeColor === "function") {
+    globe.polygonStrokeColor(() => {
+      if (borderLevel === "admin1") return rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.16));
+      return colorBorder;
+    });
   }
   lastArcs = [];
   lastArcsUntil = 0;

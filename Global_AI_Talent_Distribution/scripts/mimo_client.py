@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+import re
 import urllib.request
 import urllib.error
 from typing import Optional
@@ -55,8 +56,23 @@ def chat_completions(
         "model": model,
         "messages": messages,
         "max_tokens": max_tokens,
+        "max_completion_tokens": max_tokens,
         "temperature": temperature,
+        "stream": False,
+        "chat_template_kwargs": {"enable_thinking": bool(int(os.environ.get("MIMO_ENABLE_THINKING", "0")))},
     }
+
+    def extract_json_substring(text: str) -> str:
+        if not text:
+            return ""
+        m = re.search(r"\{[\s\S]*\}$", text.strip())
+        if m:
+            return m.group(0)
+        start = text.find("{")
+        end = text.rfind("}")
+        if start >= 0 and end > start:
+            return text[start : end + 1]
+        return text
 
     def do_request(url: str) -> dict:
         origin = "https://platform.xiaomimimo.com"
@@ -64,8 +80,7 @@ def chat_completions(
             url,
             data=json.dumps(payload).encode("utf-8"),
             headers={
-                "Authorization": f"Bearer {api_key}",
-                "X-API-Key": api_key,
+                "api-key": api_key,
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "User-Agent": "map-the-world/Global_AI_Talent_Distribution",
@@ -80,26 +95,42 @@ def chat_completions(
     env_base = os.environ.get("MIMO_BASE_URL", "").strip()
     if base_url or env_base:
         chosen = (base_url or env_base).rstrip("/")
-        data = do_request(f"{chosen}/chat/completions")
-        return data["choices"][0]["message"]["content"]
-
-    endpoints = [
-        "https://platform.xiaomimimo.com/v1",
-        "https://api.xiaomimimo.com/v1",
-    ]
-    last_err = None
-    for ep in endpoints:
         try:
-            data = do_request(f"{ep}/chat/completions")
-            return data["choices"][0]["message"]["content"]
+            data = do_request(f"{chosen}/chat/completions")
+            msg = data["choices"][0]["message"] or {}
+            return extract_json_substring(msg.get("content") or msg.get("reasoning_content") or "")
         except urllib.error.HTTPError as e:
             body = ""
             try:
                 body = e.read().decode("utf-8", errors="ignore")
             except Exception:
                 body = ""
-            last_err = RuntimeError(f"MIMO HTTP {e.code}: {body[:1200]}")
+            raise RuntimeError(f"MIMO HTTP {e.code}: {body[:1200]}") from None
+
+    endpoints = [
+        "https://api.xiaomimimo.com/v1",
+        "https://platform.xiaomimimo.com/v1",
+    ]
+    last_err = None
+    last_code = None
+    for ep in endpoints:
+        try:
+            data = do_request(f"{ep}/chat/completions")
+            msg = data["choices"][0]["message"] or {}
+            return extract_json_substring(msg.get("content") or msg.get("reasoning_content") or "")
+        except urllib.error.HTTPError as e:
+            body = ""
+            try:
+                body = e.read().decode("utf-8", errors="ignore")
+            except Exception:
+                body = ""
+            err = RuntimeError(f"MIMO HTTP {e.code}: {body[:1200]}")
+            if last_err is None:
+                last_err, last_code = err, e.code
+            else:
+                if last_code == 403 and e.code == 401:
+                    last_err, last_code = err, e.code
             if e.code in (401, 403):
                 continue
-            raise last_err from None
+            raise err from None
     raise last_err or RuntimeError("MIMO request failed") from None

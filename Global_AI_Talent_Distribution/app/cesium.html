@@ -15,13 +15,7 @@
   <div class="layout">
     <aside class="sidebar">
       <h1 class="brand">AI 人才时空分布</h1>
-      <div class="hint">拖动时间轴，观察 AI 人才的迁移路径。</div>
-      <div class="legend">
-        <div class="legendItem"><span class="dot dotCur"></span><span>当年节点</span></div>
-        <div class="legendItem"><span class="dot dotGhost"></span><span>上一年残影</span></div>
-        <div class="legendItem"><span class="line lineArc"></span><span>迁徙弧线</span></div>
-        <div class="legendItem"><span class="ring ringPulse"></span><span>落点扩散</span></div>
-      </div>
+      <div class="hint">拖动时间轴，观察 AI 人才每年的空间分布。</div>
       <div class="field">
         <div class="valueRow">
           <div class="valueLabel">年份</div>
@@ -38,28 +32,31 @@
           <div class="valueLabel">播放速度</div>
           <div class="valueRight">
             <span class="valueTag">当前</span>
-            <span id="speedValue" class="valueNumber">2 年/秒</span>
+            <span id="speedValue" class="valueNumber">0.5 年/秒</span>
           </div>
         </div>
-        <input id="playSpeed" class="slider" type="range" min="0.5" max="6" step="0.5" value="2" />
+        <input id="playSpeed" class="slider" type="range" min="0.5" max="6" step="0.5" value="0.5" />
         <div class="kv"><span>0.5</span><span>6</span></div>
         <div class="controlsRow">
           <button id="playBtn" class="btn icon" title="播放">▶</button>
           <button id="pauseBtn" class="btn secondary icon" title="暂停">⏸</button>
-          <span id="playState" class="pill" style="padding: 6px 10px; opacity: 0.9">已暂停</span>
         </div>
       </div>
       <div class="field">
-        <label>过滤（人 / 公司 / 城市）</label>
-        <input id="filterInput" type="text" placeholder="例如：Aidan Gomez / OpenAI / San Francisco" />
+        <div class="row" style="align-items:center;justify-content:space-between">
+          <label style="margin:0">迁移关系（Chord）</label>
+          <select id="chordLevel" class="select" style="width:140px">
+            <option value="continent" selected>洲际</option>
+            <option value="country">国家</option>
+            <option value="city">城市</option>
+          </select>
+        </div>
+        <canvas id="chordCanvas" width="280" height="220" style="display:block;width:100%;height:220px;border-radius:12px;background:rgba(255,255,255,0.78);border:1px solid rgba(66,133,244,0.18)"></canvas>
       </div>
       <div class="field">
-        <label>视觉强度</label>
-        <select id="visualMode" class="select">
-          <option value="balanced" selected>平衡</option>
-          <option value="demo">演示（更炫）</option>
-          <option value="analysis">分析（更清爽）</option>
-        </select>
+        <label>各城市 AI 人才数量（Top）</label>
+        <canvas id="barCanvas" width="280" height="170" style="display:block;width:100%;height:170px;border-radius:12px;background:rgba(255,255,255,0.78);border:1px solid rgba(66,133,244,0.18)"></canvas>
+        <div class="kv"><span id="powerLawLabel" style="opacity:0.85">Power law: -</span><span></span></div>
       </div>
       <div class="field">
         <div style="display:flex;gap:8px;">
@@ -75,12 +72,9 @@
           <span class="hudValue" id="hudYear">2023</span>
           <span class="hudSep">·</span>
           <span class="hudLabel">速度</span>
-          <span class="hudValue" id="hudSpeed">2 年/秒</span>
+          <span class="hudValue" id="hudSpeed">0.5 年/秒</span>
         </div>
         <div class="hudRow">
-          <span class="hudLabel">状态</span>
-          <span class="hudValue" id="hudState">已暂停</span>
-          <span class="hudSep">·</span>
           <span class="hudLabel">命中</span>
           <span class="hudValue" id="hudHit">0 人</span>
         </div>

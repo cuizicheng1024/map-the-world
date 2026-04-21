@@ -3,14 +3,12 @@ body {
   height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
-  background: radial-gradient(1200px 800px at 20% 10%, rgba(120, 88, 255, 0.12), rgba(0, 0, 0, 0)),
-    radial-gradient(900px 700px at 80% 30%, rgba(0, 215, 255, 0.1), rgba(0, 0, 0, 0)),
-    #050816;
-  color: #e6edf3;
+  background: #f5f5f7;
+  color: #202124;
 }
 
 a {
-  color: #7dd3fc;
+  color: #4285f4;
   text-decoration: none;
 }
 
@@ -25,10 +23,10 @@ a:hover {
 }
 
 .sidebar {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px;
+  border-right: 1px solid rgba(32, 33, 36, 0.08);
+  padding: 14px;
   overflow: auto;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.0));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
 }
 
 .brand {
@@ -44,14 +42,14 @@ a:hover {
 }
 
 .field {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .field label {
   display: block;
   font-size: 12px;
   opacity: 0.78;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .row {
@@ -79,8 +77,8 @@ a:hover {
   gap: 8px;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .valueTag {
@@ -92,43 +90,46 @@ a:hover {
 .valueNumber {
   font-size: 13px;
   font-weight: 650;
-  color: rgba(230, 237, 243, 0.96);
+  color: rgba(32, 33, 36, 0.95);
 }
 
 .controlsRow {
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 input[type="text"] {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e6edf3;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  color: #202124;
   border-radius: 10px;
   padding: 10px 12px;
   outline: none;
 }
+input[type="text"]::placeholder {
+  color: rgba(95, 99, 104, 0.8);
+}
 
 input[type="text"]:focus {
-  border-color: rgba(125, 211, 252, 0.75);
+  border-color: rgba(66, 133, 244, 0.75);
 }
 
 .select {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e6edf3;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  color: #202124;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 9px 12px;
   outline: none;
   appearance: none;
 }
 
 .select:focus {
-  border-color: rgba(125, 211, 252, 0.75);
+  border-color: rgba(66, 133, 244, 0.75);
 }
 
 .pill {
@@ -137,14 +138,14 @@ input[type="text"]:focus {
   gap: 8px;
   padding: 8px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .btn {
-  background: rgba(125, 211, 252, 0.18);
-  border: 1px solid rgba(125, 211, 252, 0.3);
-  color: #e6edf3;
+  background: rgba(26, 115, 232, 0.12);
+  border: 1px solid rgba(26, 115, 232, 0.28);
+  color: rgba(26, 115, 232, 0.98);
   border-radius: 10px;
   padding: 9px 12px;
   cursor: pointer;
@@ -156,8 +157,9 @@ input[type="text"]:focus {
 }
 
 .btn.secondary {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  color: rgba(32, 33, 36, 0.92);
 }
 
 .btn.icon {
@@ -171,7 +173,7 @@ input[type="text"]:focus {
   height: 100%;
   width: 100%;
   position: relative;
-  background: #020412;
+  background: linear-gradient(180deg, #f5f5f7, #eef2f6);
   overflow: hidden;
 }
 
@@ -181,11 +183,12 @@ input[type="text"]:focus {
   top: 14px;
   z-index: 20;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(11, 16, 32, 0.72);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
   padding: 10px 12px;
   min-width: 200px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 }
 
 .hudRow {
@@ -216,10 +219,11 @@ input[type="text"]:focus {
   z-index: 20;
   width: 320px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(11, 16, 32, 0.86);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
   padding: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
 }
 
 .infoHead {
@@ -235,9 +239,9 @@ input[type="text"]:focus {
 }
 
 .infoClose {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(230, 237, 243, 0.9);
+  border: 1px solid rgba(32, 33, 36, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(32, 33, 36, 0.9);
   border-radius: 10px;
   width: 32px;
   height: 32px;
@@ -262,8 +266,8 @@ input[type="text"]:focus {
 
 .infoItem {
   font-size: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(32, 33, 36, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   padding: 8px 10px;
   line-height: 1.5;
@@ -276,8 +280,8 @@ input[type="text"]:focus {
   gap: 8px 10px;
   padding: 10px 10px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(32, 33, 36, 0.1);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .legendItem {
@@ -295,8 +299,18 @@ input[type="text"]:focus {
 }
 
 .dotCur {
-  background: rgba(0, 229, 255, 0.92);
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+  background: rgba(66, 133, 244, 0.95);
+  box-shadow: 0 0 10px rgba(66, 133, 244, 0.18);
+}
+
+.dotPerson {
+  background: rgba(66, 133, 244, 0.95);
+  box-shadow: 0 0 10px rgba(66, 133, 244, 0.18);
+}
+
+.dotOrg {
+  background: rgba(219, 68, 55, 0.92);
+  box-shadow: 0 0 10px rgba(219, 68, 55, 0.18);
 }
 
 .dotGhost {
@@ -310,18 +324,18 @@ input[type="text"]:focus {
 }
 
 .lineArc {
-  background: linear-gradient(90deg, rgba(0, 229, 255, 0.92), rgba(255, 59, 145, 0.72));
+  background: linear-gradient(90deg, rgba(66, 133, 244, 0.92), rgba(219, 68, 55, 0.78), rgba(15, 157, 88, 0.78), rgba(244, 180, 0, 0.82));
 }
 
 .ring {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  border: 2px solid rgba(0, 229, 255, 0.7);
+  border: 2px solid rgba(66, 133, 244, 0.7);
 }
 
 .ringPulse {
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 12px rgba(66, 133, 244, 0.25);
 }
 
 .map::before {
@@ -330,17 +344,8 @@ input[type="text"]:focus {
   inset: 0;
   pointer-events: none;
   z-index: 5;
-  opacity: 0.28;
-  mix-blend-mode: screen;
-  background-image: radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.85) 0, rgba(255, 255, 255, 0) 2px),
-    radial-gradient(1px 1px at 35% 70%, rgba(176, 216, 255, 0.8) 0, rgba(176, 216, 255, 0) 2px),
-    radial-gradient(1px 1px at 55% 35%, rgba(255, 210, 255, 0.75) 0, rgba(255, 210, 255, 0) 2px),
-    radial-gradient(1px 1px at 75% 60%, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0) 2px),
-    radial-gradient(1px 1px at 88% 18%, rgba(176, 216, 255, 0.75) 0, rgba(176, 216, 255, 0) 2px),
-    radial-gradient(2px 2px at 25% 40%, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0) 3px),
-    radial-gradient(2px 2px at 62% 80%, rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0) 3px),
-    radial-gradient(2px 2px at 80% 42%, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0) 3px);
-  animation: starDrift 16s linear infinite;
+  opacity: 0;
+  background: none;
 }
 
 .map::after {
@@ -349,9 +354,8 @@ input[type="text"]:focus {
   inset: 0;
   pointer-events: none;
   z-index: 6;
-  background: radial-gradient(900px 600px at 60% 35%, rgba(0, 215, 255, 0.06), rgba(0, 0, 0, 0)),
-    radial-gradient(1000px 700px at 25% 70%, rgba(146, 94, 255, 0.07), rgba(0, 0, 0, 0)),
-    radial-gradient(1200px 900px at 50% 50%, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.26) 72%, rgba(0, 0, 0, 0.45) 100%);
+  opacity: 0;
+  background: none;
 }
 
 @keyframes starDrift {
@@ -382,10 +386,11 @@ input[type="text"]:focus {
   z-index: 999;
   width: 310px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(11, 16, 32, 0.86);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
   padding: 12px 12px 10px 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
 }
 
 .panel h3 {

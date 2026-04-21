@@ -1,46 +1,1762 @@
 {
   "北京,CN": {
-    "lat": 39.9042,
-    "lon": 116.4074
+    "city": "北京",
+    "country": "CN",
+    "lat": 30.72608,
+    "lon": 108.67483,
+    "source": "open-meteo"
   },
   "上海,CN": {
+    "city": "上海",
+    "country": "CN",
+    "lat": 31.22222,
+    "lon": 121.45806,
+    "source": "open-meteo"
+  },
+  "深圳,CN": {
+    "city": "深圳",
+    "country": "CN",
+    "lat": 22.54554,
+    "lon": 114.0683,
+    "source": "open-meteo"
+  },
+  "杭州,CN": {
+    "city": "杭州",
+    "country": "CN",
+    "lat": 30.06517,
+    "lon": 102.19527,
+    "source": "open-meteo"
+  },
+  "合肥,CN": {
+    "city": "合肥",
+    "country": "CN",
+    "lat": 31.8665676,
+    "lon": 117.281428,
+    "source": "nominatim"
+  },
+  "广州,CN": {
+    "city": "广州",
+    "country": "CN",
+    "lat": 23.11667,
+    "lon": 113.25,
+    "source": "open-meteo"
+  },
+  "香港,HK": {
+    "city": "Hong Kong",
+    "country": "HK",
+    "lat": 22.25,
+    "lon": 114.16667,
+    "source": "open-meteo"
+  },
+  "San Francisco,US": {
+    "city": "San Francisco",
+    "country": "US",
+    "lat": 37.77493,
+    "lon": -122.41942,
+    "source": "open-meteo"
+  },
+  "New York,US": {
+    "city": "New York",
+    "country": "US",
+    "lat": 40.71427,
+    "lon": -74.00597,
+    "source": "open-meteo"
+  },
+  "London,UK": {
+    "lat": 51.5074,
+    "lon": -0.1278
+  },
+  "Paris,FR": {
+    "city": "Paris",
+    "country": "FR",
+    "lat": 48.85341,
+    "lon": 2.3488,
+    "source": "open-meteo"
+  },
+  "ORG|NUS": {
+    "city": "Singapore",
+    "country": "SG",
+    "lat": 1.2966,
+    "lon": 103.7764
+  },
+  "ORG|商汤科技": {
+    "city": "上海",
+    "country": "CN",
     "lat": 31.2304,
     "lon": 121.4737
   },
-  "深圳,CN": {
+  "ORG|华为": {
+    "city": "Shenzhen",
+    "country": "CN",
     "lat": 22.5431,
     "lon": 114.0579
   },
-  "杭州,CN": {
+  "ORG|美国加州大学默塞德分校（UC Merced）": {
+    "city": "Merced",
+    "country": "US",
+    "lat": 37.3667,
+    "lon": -120.4333
+  },
+  "ORG|新加坡南洋理工大学（NTU）": {
+    "city": "Singapore",
+    "country": "SG",
+    "lat": 1.3483,
+    "lon": 103.6831
+  },
+  "ORG|华为诺亚方舟实验室": {
+    "city": "深圳",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|香港中文大学": {
+    "city": "香港",
+    "country": "HK",
+    "lat": 22.42,
+    "lon": 114.21
+  },
+  "ORG|蔚来汽车": {
+    "city": "上海",
+    "country": "CN",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  "ORG|东壁科技数据平台（dbdata.com）": {
+    "city": "深圳",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|腾讯": {
+    "city": "深圳",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "Adelaide,AU": {
+    "city": "Adelaide",
+    "country": "AU",
+    "lat": -34.92866,
+    "lon": 138.59863,
+    "source": "open-meteo"
+  },
+  "Amsterdam,NL": {
+    "city": "Amsterdam",
+    "country": "NL",
+    "lat": 52.37403,
+    "lon": 4.88969,
+    "source": "open-meteo"
+  },
+  "Boston,US": {
+    "city": "Boston",
+    "country": "US",
+    "lat": 42.35843,
+    "lon": -71.05977,
+    "source": "open-meteo"
+  },
+  "Baltimore,US": {
+    "city": "Baltimore",
+    "country": "US",
+    "lat": 39.29038,
+    "lon": -76.61219,
+    "source": "open-meteo"
+  },
+  "Berkeley,US": {
+    "city": "Berkeley",
+    "country": "US",
+    "lat": 37.87159,
+    "lon": -122.27275,
+    "source": "open-meteo"
+  },
+  "Austin,US": {
+    "city": "Austin",
+    "country": "US",
+    "lat": 30.26715,
+    "lon": -97.74306,
+    "source": "open-meteo"
+  },
+  "Ann Arbor,US": {
+    "city": "Ann Arbor",
+    "country": "US",
+    "lat": 42.27756,
+    "lon": -83.74088,
+    "source": "open-meteo"
+  },
+  "Brisbane,AU": {
+    "city": "Brisbane",
+    "country": "AU",
+    "lat": -27.46794,
+    "lon": 153.02809,
+    "source": "open-meteo"
+  },
+  "Calgary,CA": {
+    "city": "Calgary",
+    "country": "CA",
+    "lat": 51.05011,
+    "lon": -114.08529,
+    "source": "open-meteo"
+  },
+  "Bonn,DE": {
+    "city": "Bonn",
+    "country": "DE",
+    "lat": 50.73438,
+    "lon": 7.09549,
+    "source": "open-meteo"
+  },
+  "Cambridge,US": {
+    "city": "Cambridge",
+    "country": "GB",
+    "lat": 52.2,
+    "lon": 0.11667,
+    "source": "open-meteo"
+  },
+  "Beijing,CN": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9075,
+    "lon": 116.39723,
+    "source": "open-meteo"
+  },
+  "College Park,US": {
+    "city": "College Park",
+    "country": "US",
+    "lat": 38.98067,
+    "lon": -76.93692,
+    "source": "open-meteo"
+  },
+  "Atlanta,US": {
+    "city": "Atlanta",
+    "country": "US",
+    "lat": 33.749,
+    "lon": -84.38798,
+    "source": "open-meteo"
+  },
+  "Darmstadt,DE": {
+    "city": "Darmstadt",
+    "country": "DE",
+    "lat": 49.87167,
+    "lon": 8.65027,
+    "source": "open-meteo"
+  },
+  "Cupertino,US": {
+    "city": "Cupertino",
+    "country": "US",
+    "lat": 37.323,
+    "lon": -122.03218,
+    "source": "open-meteo"
+  },
+  "Dalian,CN": {
+    "city": "Dalian",
+    "country": "CN",
+    "lat": 38.91222,
+    "lon": 121.60222,
+    "source": "open-meteo"
+  },
+  "Hangzhou,CN": {
+    "city": "Hangzhou",
+    "country": "CN",
+    "lat": 30.29365,
+    "lon": 120.16142,
+    "source": "open-meteo"
+  },
+  "Edmonton,CA": {
+    "city": "Edmonton",
+    "country": "CA",
+    "lat": 53.55014,
+    "lon": -113.46871,
+    "source": "open-meteo"
+  },
+  "Emeryville,US": {
+    "city": "Emeryville",
+    "country": "US",
+    "lat": 37.83132,
+    "lon": -122.28525,
+    "source": "open-meteo"
+  },
+  "Freiburg,DE": {
+    "city": "Freiburg im Breisgau",
+    "country": "DE",
+    "lat": 47.9959,
+    "lon": 7.85222,
+    "source": "open-meteo"
+  },
+  "Hefei,CN": {
+    "city": "Hefei",
+    "country": "CN",
+    "lat": 31.86389,
+    "lon": 117.28083,
+    "source": "open-meteo"
+  },
+  "La Jolla,US": {
+    "city": "La Jolla",
+    "country": "US",
+    "lat": 32.84727,
+    "lon": -117.2742,
+    "source": "open-meteo"
+  },
+  "Menlo Park,US": {
+    "city": "Menlo Park",
+    "country": "US",
+    "lat": 37.45383,
+    "lon": -122.18219,
+    "source": "open-meteo"
+  },
+  "Orlando,US": {
+    "city": "Orlando",
+    "country": "US",
+    "lat": 28.53834,
+    "lon": -81.37924,
+    "source": "open-meteo"
+  },
+  "Harbin,CN": {
+    "city": "Harbin",
+    "country": "CN",
+    "lat": 45.75,
+    "lon": 126.65,
+    "source": "open-meteo"
+  },
+  "Durham,US": {
+    "city": "Durham",
+    "country": "US",
+    "lat": 35.99403,
+    "lon": -78.89862,
+    "source": "open-meteo"
+  },
+  "Los Angeles,US": {
+    "city": "Los Angeles",
+    "country": "US",
+    "lat": 34.05223,
+    "lon": -118.24368,
+    "source": "open-meteo"
+  },
+  "Mountain View,US": {
+    "city": "Mountain View",
+    "country": "US",
+    "lat": 35.86841,
+    "lon": -92.11765,
+    "source": "open-meteo"
+  },
+  "Mannheim,DE": {
+    "city": "Mannheim",
+    "country": "DE",
+    "lat": 49.4891,
+    "lon": 8.46694,
+    "source": "open-meteo"
+  },
+  "Montreal,CA": {
+    "city": "Montreal",
+    "country": "CA",
+    "lat": 45.50884,
+    "lon": -73.58781,
+    "source": "open-meteo"
+  },
+  "Nanjing,CN": {
+    "city": "Nanjing",
+    "country": "CN",
+    "lat": 32.06167,
+    "lon": 118.77778,
+    "source": "open-meteo"
+  },
+  "Genoa,IT": {
+    "city": "Genoa",
+    "country": "IT",
+    "lat": 44.40478,
+    "lon": 8.94439,
+    "source": "open-meteo"
+  },
+  "Munich,DE": {
+    "city": "Munich",
+    "country": "DE",
+    "lat": 48.13743,
+    "lon": 11.57549,
+    "source": "open-meteo"
+  },
+  "New Brunswick,US": {
+    "city": "New Brunswick",
+    "country": "US",
+    "lat": 40.48622,
+    "lon": -74.45182,
+    "source": "open-meteo"
+  },
+  "Notre Dame,US": {
+    "city": "Notre Dame",
+    "country": "US",
+    "lat": 41.70019,
+    "lon": -86.23793,
+    "source": "open-meteo"
+  },
+  "Philadelphia,US": {
+    "city": "Philadelphia",
+    "country": "US",
+    "lat": 39.95238,
+    "lon": -75.16362,
+    "source": "open-meteo"
+  },
+  "Pasadena,US": {
+    "city": "Pasadena",
+    "country": "US",
+    "lat": 29.69106,
+    "lon": -95.2091,
+    "source": "open-meteo"
+  },
+  "Oxford,GB": {
+    "city": "Oxford",
+    "country": "GB",
+    "lat": 51.75222,
+    "lon": -1.25596,
+    "source": "open-meteo"
+  },
+  "Pittsburgh,US": {
+    "city": "Pittsburgh",
+    "country": "US",
+    "lat": 40.44062,
+    "lon": -79.99589,
+    "source": "open-meteo"
+  },
+  "Palo Alto,US": {
+    "city": "Palo Alto",
+    "country": "US",
+    "lat": 37.44188,
+    "lon": -122.14302,
+    "source": "open-meteo"
+  },
+  "Princeton,US": {
+    "city": "Princeton",
+    "country": "US",
+    "lat": 38.35532,
+    "lon": -87.56752,
+    "source": "open-meteo"
+  },
+  "Redwood City,US": {
+    "city": "Redwood City",
+    "country": "US",
+    "lat": 37.48522,
+    "lon": -122.23635,
+    "source": "open-meteo"
+  },
+  "Rochester,US": {
+    "city": "Rochester",
+    "country": "US",
+    "lat": 43.15478,
+    "lon": -77.61556,
+    "source": "open-meteo"
+  },
+  "Redmond,US": {
+    "city": "Redmond",
+    "country": "US",
+    "lat": 47.67399,
+    "lon": -122.12151,
+    "source": "open-meteo"
+  },
+  "Saarbrücken,DE": {
+    "city": "Saarbrücken",
+    "country": "DE",
+    "lat": 49.23262,
+    "lon": 7.00982,
+    "source": "open-meteo"
+  },
+  "Salt Lake City,US": {
+    "city": "Salt Lake City",
+    "country": "US",
+    "lat": 40.76078,
+    "lon": -111.89105,
+    "source": "open-meteo"
+  },
+  "San Bruno,US": {
+    "city": "San Bruno",
+    "country": "US",
+    "lat": 37.63049,
+    "lon": -122.41108,
+    "source": "open-meteo"
+  },
+  "Santa Barbara,US": {
+    "city": "Santa Barbara",
+    "country": "US",
+    "lat": 34.42083,
+    "lon": -119.69819,
+    "source": "open-meteo"
+  },
+  "Seattle,US": {
+    "city": "Seattle",
+    "country": "US",
+    "lat": 47.60621,
+    "lon": -122.33207,
+    "source": "open-meteo"
+  },
+  "Shanghai,CN": {
+    "city": "Shanghai",
+    "country": "CN",
+    "lat": 31.22222,
+    "lon": 121.45806,
+    "source": "open-meteo"
+  },
+  "Shenzhen,CN": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.54554,
+    "lon": 114.0683,
+    "source": "open-meteo"
+  },
+  "Singapore,SG": {
+    "city": "Temasek",
+    "country": "SG",
+    "lat": 1.28967,
+    "lon": 103.85007,
+    "source": "open-meteo"
+  },
+  "Stanford,US": {
+    "city": "Burgaw",
+    "country": "US",
+    "lat": 34.55211,
+    "lon": -77.9261,
+    "source": "open-meteo"
+  },
+  "Stony Brook,US": {
+    "city": "Stony Brook",
+    "country": "US",
+    "lat": 40.92565,
+    "lon": -73.14094,
+    "source": "open-meteo"
+  },
+  "Tianjin,CN": {
+    "city": "Tianjin",
+    "country": "CN",
+    "lat": 39.14222,
+    "lon": 117.17667,
+    "source": "open-meteo"
+  },
+  "Tokyo,JP": {
+    "city": "Tokyo",
+    "country": "JP",
+    "lat": 35.6895,
+    "lon": 139.69171,
+    "source": "open-meteo"
+  },
+  "Sydney,AU": {
+    "city": "Sydney",
+    "country": "AU",
+    "lat": -33.86785,
+    "lon": 151.20732,
+    "source": "open-meteo"
+  },
+  "Toronto,CA": {
+    "city": "Toronto",
+    "country": "CA",
+    "lat": 43.70643,
+    "lon": -79.39864,
+    "source": "open-meteo"
+  },
+  "Urbana,US": {
+    "city": "Urbana",
+    "country": "US",
+    "lat": 40.11059,
+    "lon": -88.20727,
+    "source": "open-meteo"
+  },
+  "Waterloo,CA": {
+    "city": "Waterloo",
+    "country": "US",
+    "lat": 42.49276,
+    "lon": -92.34296,
+    "source": "open-meteo"
+  },
+  "West Lafayette,US": {
+    "city": "West Lafayette",
+    "country": "US",
+    "lat": 40.42587,
+    "lon": -86.90807,
+    "source": "open-meteo"
+  },
+  "Xi'an,CN": {
+    "city": "Xi'an",
+    "country": "CN",
+    "lat": 34.25833,
+    "lon": 108.92861,
+    "source": "open-meteo"
+  },
+  "Xiamen,CN": {
+    "city": "Xiamen",
+    "country": "CN",
+    "lat": 24.47979,
+    "lon": 118.08187,
+    "source": "open-meteo"
+  },
+  "Zurich,CH": {
+    "city": "Zurich",
+    "country": "CH",
+    "lat": 47.36667,
+    "lon": 8.55,
+    "source": "open-meteo"
+  },
+  "Chicago,US": {
+    "city": "Chicago",
+    "country": "US",
+    "lat": 41.85003,
+    "lon": -87.65005,
+    "source": "open-meteo"
+  },
+  "Oxford,UK": {
+    "lat": 51.752,
+    "lon": -1.2577
+  },
+  "芝加哥,US": {
+    "city": "芝加哥",
+    "country": "US",
+    "lat": 41.85003,
+    "lon": -87.65005,
+    "source": "open-meteo"
+  },
+  "达勒姆,US": {
+    "city": "达勒姆",
+    "country": "US",
+    "lat": 39.64627,
+    "lon": -121.79998,
+    "source": "open-meteo"
+  },
+  "厄巴纳,US": {
+    "city": "厄巴纳",
+    "country": "US",
+    "lat": 40.11059,
+    "lon": -88.20727,
+    "source": "open-meteo"
+  },
+  "Hong Kong,HK": {
+    "city": "Hong Kong",
+    "country": "HK",
+    "lat": 22.27832,
+    "lon": 114.17469,
+    "source": "open-meteo"
+  },
+  "ORG|Beihang University": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9808,
+    "lon": 116.3481
+  },
+  "ORG|ByteDance": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|Huawei": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|Hefei University of Technology": {
+    "city": "Hefei",
+    "country": "CN",
+    "lat": 31.8257,
+    "lon": 117.2264
+  },
+  "ORG|Google DeepMind": {
+    "city": "London",
+    "country": "GB",
+    "lat": 51.5074,
+    "lon": -0.1278
+  },
+  "ORG|Beijing Jiaotong University": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|Imperial College London": {
+    "city": "London",
+    "country": "GB",
+    "lat": 51.4988,
+    "lon": -0.1749
+  },
+  "ORG|Cainiao Network": {
+    "city": "Hangzhou",
+    "country": "CN",
     "lat": 30.2741,
     "lon": 120.1551
   },
-  "合肥,CN": {
-    "lat": 31.8206,
-    "lon": 117.2272
+  "ORG|Hong Kong University of Science and Technology": {
+    "city": "Hong Kong",
+    "country": "HK",
+    "lat": 22.3364,
+    "lon": 114.2655
   },
-  "广州,CN": {
+  "ORG|Adobe Inc.": {
+    "city": "San Jose",
+    "country": "US",
+    "lat": 37.3382,
+    "lon": -121.8863
+  },
+  "ORG|Hong Kong Polytechnic University": {
+    "city": "Hong Kong",
+    "country": "HK",
+    "lat": 22.302711,
+    "lon": 114.177216
+  },
+  "ORG|Dawson College": {
+    "city": "Montreal",
+    "country": "CA",
+    "lat": 45.5146,
+    "lon": -73.5728
+  },
+  "ORG|Chinese Academy of Sciences": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|National University of Defense Technology": {
+    "city": "Changsha",
+    "country": "CN",
+    "lat": 28.2282,
+    "lon": 112.9388
+  },
+  "ORG|Nankai University": {
+    "city": "Tianjin",
+    "country": "CN",
+    "lat": 39.0942,
+    "lon": 117.1652
+  },
+  "ORG|Fudan University": {
+    "city": "Shanghai",
+    "country": "CN",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  "ORG|Purdue University": {
+    "city": "West Lafayette",
+    "country": "US",
+    "lat": 40.4237,
+    "lon": -86.9212
+  },
+  "ORG|Samsung Inc.": {
+    "city": "Seoul",
+    "country": "KR",
+    "lat": 37.5665,
+    "lon": 126.978
+  },
+  "ORG|Chinese University of Hong Kong, Shenzhen": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|Guangdong University of Technology": {
+    "city": "Guangzhou",
+    "country": "CN",
     "lat": 23.1291,
     "lon": 113.2644
   },
-  "香港,HK": {
+  "ORG|Qingdao University": {
+    "city": "Qingdao",
+    "country": "CN",
+    "lat": 36.0662,
+    "lon": 120.3826
+  },
+  "ORG|Hangzhou Dianzi University": {
+    "city": "Hangzhou",
+    "country": "CN",
+    "lat": 30.2295,
+    "lon": 120.1278
+  },
+  "ORG|Meta": {
+    "city": "Menlo Park",
+    "country": "US",
+    "lat": 37.459,
+    "lon": -122.178
+  },
+  "ORG|University of Hong Kong": {
+    "city": "Hong Kong",
+    "country": "HK",
     "lat": 22.3193,
     "lon": 114.1694
   },
-  "San Francisco,US": {
+  "ORG|Harbin Institute of Technology": {
+    "city": "Harbin",
+    "country": "CN",
+    "lat": 45.803775,
+    "lon": 126.534967
+  },
+  "ORG|Shenzhen Technology University": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.5333,
+    "lon": 114.0667
+  },
+  "ORG|Microsoft Inc.": {
+    "city": "Redmond",
+    "country": "US",
+    "lat": 47.673,
+    "lon": -122.1215
+  },
+  "ORG|Parametrix.ai": {
+    "city": "San Francisco",
+    "country": "US",
     "lat": 37.7749,
     "lon": -122.4194
   },
-  "New York,US": {
-    "lat": 40.7128,
-    "lon": -74.006
+  "ORG|Sun Yat-sen University": {
+    "city": "Guangzhou",
+    "country": "CN",
+    "lat": 23.1291,
+    "lon": 113.2644
   },
-  "London,UK": {
-    "lat": 51.5072,
-    "lon": -0.1276
+  "ORG|Huazhong University of Science and Technology": {
+    "city": "Wuhan",
+    "country": "CN",
+    "lat": 30.5,
+    "lon": 114.3
   },
-  "Paris,FR": {
-    "lat": 48.8566,
-    "lon": 2.3522
+  "ORG|The University of Texas at Austin,The University of Texas System": {
+    "city": "Austin",
+    "country": "US",
+    "lat": 30.2672,
+    "lon": -97.7431
+  },
+  "ORG|Intel Inc.": {
+    "city": "Santa Clara",
+    "country": "US",
+    "lat": 37.3875,
+    "lon": -121.9722
+  },
+  "ORG|University of Delaware": {
+    "city": "Newark",
+    "country": "US",
+    "lat": 39.678,
+    "lon": -75.7572
+  },
+  "ORG|Princeton University": {
+    "city": "Princeton",
+    "country": "US",
+    "lat": 40.3431,
+    "lon": -74.6551
+  },
+  "ORG|University of Science and Technology of China": {
+    "city": "Hefei",
+    "country": "CN",
+    "lat": 31.8206,
+    "lon": 117.2272
+  },
+  "ORG|Tianjin University": {
+    "city": "Tianjin",
+    "country": "CN",
+    "lat": 39.0842,
+    "lon": 117.2009
+  },
+  "ORG|People's Public Security University of China": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|University of Waterloo": {
+    "city": "Waterloo",
+    "country": "CA",
+    "lat": 43.4643,
+    "lon": -80.5204
+  },
+  "ORG|Peking University": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|上海交通大学": {
+    "city": "Shanghai",
+    "country": "CN",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  "ORG|Shanghai Jiao Tong University": {
+    "city": "Shanghai",
+    "country": "CN",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  "ORG|The Chinese University of Hong Kong, Shenzhen": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|东南大学": {
+    "city": "Nanjing",
+    "country": "CN",
+    "lat": 32.0572,
+    "lon": 118.7616
+  },
+  "ORG|University of Electronic Science and Technology of China": {
+    "city": "Chengdu",
+    "country": "CN",
+    "lat": 30.6667,
+    "lon": 104.0667
+  },
+  "ORG|北京超星未来科技有限公司": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|Southeast University": {
+    "city": "Nanjing",
+    "country": "CN",
+    "lat": 32.057,
+    "lon": 118.762
+  },
+  "ORG|University of Houston": {
+    "city": "Houston",
+    "country": "US",
+    "lat": 29.7604,
+    "lon": -95.3698
+  },
+  "ORG|国立清华大学": {
+    "city": "Hsinchu",
+    "country": "TW",
+    "lat": 24.7965,
+    "lon": 120.9935
+  },
+  "ORG|深鉴科技": {
+    "city": "北京",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|Tsinghua University": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9999,
+    "lon": 116.3265
+  },
+  "ORG|Shenzhen University of Advanced Technology": {
+    "city": "Shenzhen",
+    "country": "CN",
+    "lat": 22.5431,
+    "lon": 114.0579
+  },
+  "ORG|Westlake University": {
+    "city": "Hangzhou",
+    "country": "CN",
+    "lat": 30.2741,
+    "lon": 120.1551
+  },
+  "ORG|Xi'an Jiaotong University": {
+    "city": "Xi'an",
+    "country": "CN",
+    "lat": 34.2649,
+    "lon": 108.9739
+  },
+  "ORG|Zhejiang University": {
+    "city": "Hangzhou",
+    "country": "CN",
+    "lat": 30.2741,
+    "lon": 120.1551
+  },
+  "ORG|Xiamen University": {
+    "city": "Xiamen",
+    "country": "CN",
+    "lat": 24.4469,
+    "lon": 118.0822
+  },
+  "ORG|北京大学": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|南京南瑞继保电气有限公司": {
+    "city": "Nanjing",
+    "country": "CN",
+    "lat": 32.0603,
+    "lon": 118.7969
+  },
+  "ORG|悉尼大学": {
+    "city": "Sydney",
+    "country": "AU",
+    "lat": -33.8833,
+    "lon": 151.1833
+  },
+  "ORG|旷视科技": {
+    "city": "北京",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|東京科学大学": {
+    "city": "Tokyo",
+    "country": "JP",
+    "lat": 35.6895,
+    "lon": 139.6917
+  },
+  "ORG|清华大学": {
+    "city": "Beijing",
+    "country": "CN",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  "ORG|澳门大学": {
+    "city": "澳门",
+    "country": "MO",
+    "lat": 22.126,
+    "lon": 113.543
+  },
+  "ORG|电子科技大学": {
+    "city": "成都",
+    "country": "CN",
+    "lat": 30.67,
+    "lon": 104.06
+  },
+  "ORG|阿里巴巴集团": {
+    "city": "杭州",
+    "country": "CN",
+    "lat": 30.2741,
+    "lon": 120.1551
+  },
+  "ORG|香港科技大学": {
+    "city": "香港",
+    "country": "HK",
+    "lat": 22.302711,
+    "lon": 114.264999
+  },
+  "Guangzhou,CN": {
+    "city": "Guangzhou",
+    "country": "CN",
+    "lat": 23.11667,
+    "lon": 113.25,
+    "source": "open-meteo"
+  },
+  "Santa Clara,US": {
+    "city": "Santa Clara",
+    "country": "CU",
+    "lat": 22.40694,
+    "lon": -79.96472,
+    "source": "open-meteo"
+  },
+  "Yorktown Heights,US": {
+    "city": "Yorktown Heights",
+    "country": "US",
+    "lat": 41.27093,
+    "lon": -73.77763,
+    "source": "open-meteo"
+  },
+  "Cambridge,GB": {
+    "city": "Cambridge",
+    "country": "GB",
+    "lat": 52.2,
+    "lon": 0.11667,
+    "source": "open-meteo"
+  },
+  "Murray Hill,US": {
+    "city": "Murray Hill",
+    "country": "US",
+    "lat": 38.29035,
+    "lon": -85.58829,
+    "source": "open-meteo"
+  },
+  "Windsor,GB": {
+    "city": "Windsor",
+    "country": "CA",
+    "lat": 42.30008,
+    "lon": -83.01654,
+    "source": "open-meteo"
+  },
+  "San Diego,US": {
+    "city": "San Diego",
+    "country": "US",
+    "lat": 32.71571,
+    "lon": -117.16472,
+    "source": "open-meteo"
+  },
+  "Jerusalem,IL": {
+    "city": "Jerusalem",
+    "country": "IL",
+    "lat": 31.76904,
+    "lon": 35.21633,
+    "source": "open-meteo"
+  },
+  "Tel Aviv,IL": {
+    "city": "Tel Aviv",
+    "country": "IL",
+    "lat": 32.08088,
+    "lon": 34.78057,
+    "source": "open-meteo"
+  },
+  "Santiago,CL": {
+    "city": "Santiago",
+    "country": "DO",
+    "lat": 19.45083,
+    "lon": -70.69472,
+    "source": "open-meteo"
+  },
+  "London,GB": {
+    "city": "London",
+    "country": "GB",
+    "lat": 51.50853,
+    "lon": -0.12574,
+    "source": "open-meteo"
+  },
+  "Istanbul,TR": {
+    "city": "Istanbul",
+    "country": "TR",
+    "lat": 41.01384,
+    "lon": 28.94966,
+    "source": "open-meteo"
+  },
+  "Daejeon,KR": {
+    "city": "Daejeon",
+    "country": "KR",
+    "lat": 36.34913,
+    "lon": 127.38493,
+    "source": "open-meteo"
+  },
+  "Seoul,KR": {
+    "city": "Seoul",
+    "country": "KR",
+    "lat": 37.566,
+    "lon": 126.9784,
+    "source": "open-meteo"
+  },
+  "New Delhi,IN": {
+    "city": "New Delhi",
+    "country": "IN",
+    "lat": 28.62137,
+    "lon": 77.2148,
+    "source": "open-meteo"
+  },
+  "Delhi,IN": {
+    "city": "Delhi",
+    "country": "IN",
+    "lat": 28.65195,
+    "lon": 77.23149,
+    "source": "open-meteo"
+  },
+  "Reno,US": {
+    "city": "Reno",
+    "country": "US",
+    "lat": 39.52963,
+    "lon": -119.8138,
+    "source": "open-meteo"
+  },
+  "Newark,US": {
+    "city": "Newark",
+    "country": "US",
+    "lat": 40.73566,
+    "lon": -74.17237,
+    "source": "open-meteo"
+  },
+  "Leuven,BE": {
+    "city": "Leuven",
+    "country": "BE",
+    "lat": 50.87959,
+    "lon": 4.70093,
+    "source": "open-meteo"
+  },
+  "Brussels,BE": {
+    "city": "Brussels",
+    "country": "BE",
+    "lat": 50.85045,
+    "lon": 4.34878,
+    "source": "open-meteo"
+  },
+  "Warsaw,PL": {
+    "city": "Warsaw",
+    "country": "PL",
+    "lat": 52.22977,
+    "lon": 21.01178,
+    "source": "open-meteo"
+  },
+  "Buenos Aires,AR": {
+    "city": "Buenos Aires",
+    "country": "AR",
+    "lat": -34.61315,
+    "lon": -58.37723,
+    "source": "open-meteo"
+  },
+  "Rome,IT": {
+    "city": "Rome",
+    "country": "IT",
+    "lat": 41.89193,
+    "lon": 12.51133,
+    "source": "open-meteo"
+  },
+  "Padua,IT": {
+    "city": "Padua",
+    "country": "IT",
+    "lat": 45.40797,
+    "lon": 11.88586,
+    "source": "open-meteo"
+  },
+  "Karlsruhe,DE": {
+    "city": "Karlsruhe",
+    "country": "DE",
+    "lat": 49.00937,
+    "lon": 8.40444,
+    "source": "open-meteo"
+  },
+  "Berlin,DE": {
+    "city": "Berlin",
+    "country": "DE",
+    "lat": 52.52437,
+    "lon": 13.41053,
+    "source": "open-meteo"
+  },
+  "Moscow,RU": {
+    "city": "Moscow",
+    "country": "RU",
+    "lat": 55.75222,
+    "lon": 37.61556,
+    "source": "open-meteo"
+  },
+  "San Jose,US": {
+    "city": "San Jose",
+    "country": "US",
+    "lat": 37.33939,
+    "lon": -121.89496,
+    "source": "open-meteo"
+  },
+  "Frankfurt,DE": {
+    "city": "Frankfurt",
+    "country": "DE",
+    "lat": 52.34714,
+    "lon": 14.55062,
+    "source": "open-meteo"
+  },
+  "Hamburg,DE": {
+    "city": "Hamburg",
+    "country": "DE",
+    "lat": 53.55073,
+    "lon": 9.99302,
+    "source": "open-meteo"
+  },
+  "Stuttgart,DE": {
+    "city": "Stuttgart",
+    "country": "DE",
+    "lat": 48.78232,
+    "lon": 9.17702,
+    "source": "open-meteo"
+  },
+  "Manchester,GB": {
+    "city": "Manchester",
+    "country": "GB",
+    "lat": 53.48095,
+    "lon": -2.23743,
+    "source": "open-meteo"
+  },
+  "Glasgow,GB": {
+    "city": "Glasgow",
+    "country": "GB",
+    "lat": 55.86515,
+    "lon": -4.25763,
+    "source": "open-meteo"
+  },
+  "Leeds,GB": {
+    "city": "Leeds",
+    "country": "GB",
+    "lat": 53.79648,
+    "lon": -1.54785,
+    "source": "open-meteo"
+  },
+  "Birmingham,GB": {
+    "city": "Birmingham",
+    "country": "GB",
+    "lat": 52.48142,
+    "lon": -1.89983,
+    "source": "open-meteo"
+  },
+  "Abu Dhabi,AE": {
+    "city": "Abu Dhabi",
+    "country": "AE",
+    "lat": 24.45118,
+    "lon": 54.39696,
+    "source": "open-meteo"
+  },
+  "Doha,QA": {
+    "city": "Doha",
+    "country": "QA",
+    "lat": 25.28545,
+    "lon": 51.53096,
+    "source": "open-meteo"
+  },
+  "Dubai,AE": {
+    "city": "Dubai",
+    "country": "AE",
+    "lat": 25.07725,
+    "lon": 55.30927,
+    "source": "open-meteo"
+  },
+  "Tehran,IR": {
+    "city": "Tehran",
+    "country": "IR",
+    "lat": 35.69439,
+    "lon": 51.42151,
+    "source": "open-meteo"
+  },
+  "Busan,KR": {
+    "city": "Busan",
+    "country": "KR",
+    "lat": 35.10168,
+    "lon": 129.03004,
+    "source": "open-meteo"
+  },
+  "Incheon,KR": {
+    "city": "Incheon",
+    "country": "KR",
+    "lat": 37.45646,
+    "lon": 126.70515,
+    "source": "open-meteo"
+  },
+  "Gwangju,KR": {
+    "city": "Gwangju",
+    "country": "KR",
+    "lat": 35.15472,
+    "lon": 126.91556,
+    "source": "open-meteo"
+  },
+  "Daegu,KR": {
+    "city": "Daegu",
+    "country": "KR",
+    "lat": 35.87028,
+    "lon": 128.59111,
+    "source": "open-meteo"
+  },
+  "Wuhan,CN": {
+    "city": "Wuhan",
+    "country": "CN",
+    "lat": 30.58333,
+    "lon": 114.26667,
+    "source": "open-meteo"
+  },
+  "Jinan,CN": {
+    "city": "Jinan",
+    "country": "CN",
+    "lat": 36.66833,
+    "lon": 116.99722,
+    "source": "open-meteo"
+  },
+  "Chengdu,CN": {
+    "city": "Chengdu",
+    "country": "CN",
+    "lat": 30.66667,
+    "lon": 104.06667,
+    "source": "open-meteo"
+  },
+  "Chongqing,CN": {
+    "city": "Chongqing",
+    "country": "CN",
+    "lat": 29.56026,
+    "lon": 106.55771,
+    "source": "open-meteo"
+  },
+  "Zhengzhou,CN": {
+    "city": "Zhengzhou",
+    "country": "CN",
+    "lat": 34.75778,
+    "lon": 113.64861,
+    "source": "open-meteo"
+  },
+  "Cairo,EG": {
+    "city": "Cairo",
+    "country": "EG",
+    "lat": 30.06263,
+    "lon": 31.24967,
+    "source": "open-meteo"
+  },
+  "Marseille,FR": {
+    "city": "Marseille",
+    "country": "FR",
+    "lat": 43.29695,
+    "lon": 5.38107,
+    "source": "open-meteo"
+  },
+  "Lyon,FR": {
+    "city": "Lyon",
+    "country": "FR",
+    "lat": 45.74846,
+    "lon": 4.84671,
+    "source": "open-meteo"
+  },
+  "Vancouver,CA": {
+    "city": "Vancouver",
+    "country": "CA",
+    "lat": 49.24966,
+    "lon": -123.11934,
+    "source": "open-meteo"
+  },
+  "Rehovot,IL": {
+    "city": "Rehovot",
+    "country": "IL",
+    "lat": 31.89421,
+    "lon": 34.81199,
+    "source": "open-meteo"
+  },
+  "Dublin,IE": {
+    "city": "Dublin",
+    "country": "IE",
+    "lat": 53.33306,
+    "lon": -6.24889,
+    "source": "open-meteo"
+  },
+  "Ghent,BE": {
+    "city": "Ghent",
+    "country": "BE",
+    "lat": 51.05,
+    "lon": 3.71667,
+    "source": "open-meteo"
+  },
+  "Milan,IT": {
+    "city": "Milan",
+    "country": "IT",
+    "lat": 45.46427,
+    "lon": 9.18951,
+    "source": "open-meteo"
+  },
+  "Lugano,CH": {
+    "city": "Lugano",
+    "country": "CH",
+    "lat": 46.01008,
+    "lon": 8.96004,
+    "source": "open-meteo"
+  },
+  "Changsha,CN": {
+    "city": "Changsha",
+    "country": "CN",
+    "lat": 28.19874,
+    "lon": 112.97087,
+    "source": "open-meteo"
+  },
+  "Houston,US": {
+    "city": "Houston",
+    "country": "US",
+    "lat": 29.76328,
+    "lon": -95.36327,
+    "source": "open-meteo"
+  },
+  "长沙,CN": {
+    "city": "Changsha",
+    "country": "CN",
+    "lat": 18.8093,
+    "lon": 110.017,
+    "source": "open-meteo"
+  },
+  "Hsinchu,TW": {
+    "city": "Hsinchu",
+    "country": "TW",
+    "lat": 24.80361,
+    "lon": 120.96861,
+    "source": "open-meteo"
+  },
+  "Qingdao,CN": {
+    "city": "Qingdao",
+    "country": "CN",
+    "lat": 36.06488,
+    "lon": 120.38042,
+    "source": "open-meteo"
+  },
+  "Merced,US": {
+    "city": "Merced",
+    "country": "US",
+    "lat": 37.30216,
+    "lon": -120.48297,
+    "source": "open-meteo"
+  },
+  "Windsor,CA": {
+    "city": "Windsor",
+    "country": "CA",
+    "lat": 42.30008,
+    "lon": -83.01654,
+    "source": "open-meteo"
+  },
+  "保定,CN": {
+    "city": "Baoding",
+    "country": "CN",
+    "lat": 18.7702,
+    "lon": 110.454,
+    "source": "open-meteo"
+  },
+  "Santiago,DO": {
+    "city": "Santiago",
+    "country": "DO",
+    "lat": 19.45083,
+    "lon": -70.69472,
+    "source": "open-meteo"
+  },
+  "Santa Clara,CU": {
+    "city": "Santa Clara",
+    "country": "CU",
+    "lat": 22.40694,
+    "lon": -79.96472,
+    "source": "open-meteo"
+  },
+  "澳门,MO": {
+    "city": "澳门",
+    "country": "MO",
+    "lat": 22.20056,
+    "lon": 113.54611,
+    "source": "open-meteo"
+  },
+  "珠海,CN": {
+    "city": "珠海",
+    "country": "CN",
+    "lat": 22.27694,
+    "lon": 113.56778,
+    "source": "open-meteo"
+  },
+  "成都,CN": {
+    "city": "成都",
+    "country": "CN",
+    "lat": 26.983,
+    "lon": 114.207,
+    "source": "open-meteo"
+  },
+  "苏州,CN": {
+    "city": "苏州",
+    "country": "CN",
+    "lat": 31.30408,
+    "lon": 120.59538,
+    "source": "open-meteo"
+  },
+  "厦门,CN": {
+    "city": "厦门",
+    "country": "CN",
+    "lat": 24.5438732,
+    "lon": 118.0768065,
+    "source": "nominatim"
+  },
+  "Edinburgh,GB": {
+    "city": "Edinburgh",
+    "country": "GB",
+    "lat": 55.95206,
+    "lon": -3.19648,
+    "source": "open-meteo"
+  },
+  "Boulder,US": {
+    "city": "Boulder",
+    "country": "US",
+    "lat": 40.01499,
+    "lon": -105.27055,
+    "source": "open-meteo"
+  },
+  "Hawthorne,US": {
+    "city": "Hawthorne",
+    "country": "US",
+    "lat": 33.9164,
+    "lon": -118.35257,
+    "source": "open-meteo"
+  },
+  "Pretoria,ZA": {
+    "city": "Pretoria",
+    "country": "ZA",
+    "lat": -25.74486,
+    "lon": 28.18783,
+    "source": "open-meteo"
+  },
+  "Taipei,TW": {
+    "city": "Taipei",
+    "country": "TW",
+    "lat": 25.05306,
+    "lon": 121.52639,
+    "source": "open-meteo"
+  },
+  "Mumbai,IN": {
+    "city": "Mumbai",
+    "country": "IN",
+    "lat": 19.07283,
+    "lon": 72.88261,
+    "source": "open-meteo"
+  },
+  "Kyiv,UA": {
+    "city": "Kyiv",
+    "country": "UA",
+    "lat": 50.45466,
+    "lon": 30.5238,
+    "source": "open-meteo"
+  },
+  "Prague,CZ": {
+    "city": "Prague",
+    "country": "CZ",
+    "lat": 50.08804,
+    "lon": 14.42076,
+    "source": "open-meteo"
+  },
+  "Brno,CZ": {
+    "city": "Brno",
+    "country": "CZ",
+    "lat": 49.19522,
+    "lon": 16.60796,
+    "source": "open-meteo"
+  },
+  "Ramat Gan,IL": {
+    "city": "Ramat Gan",
+    "country": "IL",
+    "lat": 32.08227,
+    "lon": 34.81065,
+    "source": "open-meteo"
+  },
+  "Haifa,IL": {
+    "city": "Haifa",
+    "country": "IL",
+    "lat": 32.81841,
+    "lon": 34.9885,
+    "source": "open-meteo"
+  },
+  "Hyderabad,IN": {
+    "city": "Hyderabad",
+    "country": "IN",
+    "lat": 17.38405,
+    "lon": 78.45636,
+    "source": "open-meteo"
+  },
+  "Bangalore,IN": {
+    "city": "Bengaluru",
+    "country": "IN",
+    "lat": 12.97194,
+    "lon": 77.59369,
+    "source": "open-meteo"
+  },
+  "Sofia,BG": {
+    "city": "Sofia",
+    "country": "BG",
+    "lat": 42.69751,
+    "lon": 23.32415,
+    "source": "open-meteo"
+  },
+  "Bucharest,RO": {
+    "city": "Bucharest",
+    "country": "RO",
+    "lat": 44.43225,
+    "lon": 26.10626,
+    "source": "open-meteo"
+  },
+  "Budapest,HU": {
+    "city": "Budapest",
+    "country": "HU",
+    "lat": 47.49835,
+    "lon": 19.04045,
+    "source": "open-meteo"
+  },
+  "Canberra,AU": {
+    "city": "Canberra",
+    "country": "AU",
+    "lat": -35.28346,
+    "lon": 149.12807,
+    "source": "open-meteo"
+  },
+  "Barcelona,ES": {
+    "city": "Barcelona",
+    "country": "ES",
+    "lat": 41.38879,
+    "lon": 2.15899,
+    "source": "open-meteo"
+  },
+  "Kanpur,IN": {
+    "city": "Kanpur",
+    "country": "IN",
+    "lat": 26.46523,
+    "lon": 80.34975,
+    "source": "open-meteo"
+  },
+  "Bogotá,CO": {
+    "city": "Bogotá",
+    "country": "CO",
+    "lat": 4.60971,
+    "lon": -74.08175,
+    "source": "open-meteo"
+  },
+  "Bengaluru,IN": {
+    "city": "Bengaluru",
+    "country": "IN",
+    "lat": 12.97194,
+    "lon": 77.59369,
+    "source": "open-meteo"
+  },
+  "Baoding,CN": {
+    "city": "Baoding",
+    "country": "CN",
+    "lat": 38.87288,
+    "lon": 115.46246,
+    "source": "open-meteo"
+  },
+  "新加坡,SG": {
+    "city": "新加坡",
+    "country": "SG",
+    "lat": 1.36667,
+    "lon": 103.8,
+    "source": "open-meteo"
+  },
+  "悉尼,AU": {
+    "city": "悉尼",
+    "country": "AU",
+    "lat": -33.86785,
+    "lon": 151.20732,
+    "source": "open-meteo"
+  },
+  "Athens,GR": {
+    "city": "Athens",
+    "country": "GR",
+    "lat": 37.98376,
+    "lon": 23.72784,
+    "source": "open-meteo"
+  },
+  "Tübingen,DE": {
+    "city": "Tübingen",
+    "country": "DE",
+    "lat": 48.52266,
+    "lon": 9.05222,
+    "source": "open-meteo"
+  },
+  "Corvallis,US": {
+    "city": "Norwalk",
+    "country": "US",
+    "lat": 33.90224,
+    "lon": -118.08173,
+    "source": "open-meteo"
+  },
+  "南京,CN": {
+    "city": "南京",
+    "country": "CN",
+    "lat": 23.4071,
+    "lon": 99.7757,
+    "source": "open-meteo"
+  },
+  "Norwalk,US": {
+    "city": "Norwalk",
+    "country": "US",
+    "lat": 33.90224,
+    "lon": -118.08173,
+    "source": "open-meteo"
+  },
+  "Bratislava,SK": {
+    "city": "Bratislava",
+    "country": "SK",
+    "lat": 48.14816,
+    "lon": 17.10674,
+    "source": "open-meteo"
+  },
+  "Freiburg im Breisgau,DE": {
+    "city": "Freiburg im Breisgau",
+    "country": "DE",
+    "lat": 47.9959,
+    "lon": 7.85222,
+    "source": "open-meteo"
+  },
+  "Temasek,SG": {
+    "city": "Temasek",
+    "country": "SG",
+    "lat": 1.28967,
+    "lon": 103.85007,
+    "source": "open-meteo"
+  },
+  "Burgaw,US": {
+    "city": "Burgaw",
+    "country": "US",
+    "lat": 34.55211,
+    "lon": -77.9261,
+    "source": "open-meteo"
+  },
+  "Waterloo,US": {
+    "city": "Waterloo",
+    "country": "US",
+    "lat": 42.49276,
+    "lon": -92.34296,
+    "source": "open-meteo"
   }
 }
