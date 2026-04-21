@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 人才时空分布 · Cesium</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./kimi.css" />
+  <style>
+    html, body { margin: 0; height: 100%; }
+    #cesiumContainer { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1 class="brand">AI 人才时空分布</h1>
+      <div class="hint">拖动时间轴，观察 AI 人才的迁移路径。</div>
+      <div class="legend">
+        <div class="legendItem"><span class="dot dotCur"></span><span>当年节点</span></div>
+        <div class="legendItem"><span class="dot dotGhost"></span><span>上一年残影</span></div>
+        <div class="legendItem"><span class="line lineArc"></span><span>迁徙弧线</span></div>
+        <div class="legendItem"><span class="ring ringPulse"></span><span>落点扩散</span></div>
+      </div>
+      <div class="field">
+        <div class="valueRow">
+          <div class="valueLabel">年份</div>
+          <div class="valueRight">
+            <span class="valueTag">当前</span>
+            <span id="yearValue" class="valueNumber">2023</span>
+          </div>
+        </div>
+        <input id="yearSlider" class="slider" type="range" min="1912" max="2026" step="1" value="2023" />
+        <div class="kv"><span id="minYear">1912</span><span id="maxYear">2026</span></div>
+      </div>
+      <div class="field">
+        <div class="valueRow">
+          <div class="valueLabel">播放速度</div>
+          <div class="valueRight">
+            <span class="valueTag">当前</span>
+            <span id="speedValue" class="valueNumber">2 年/秒</span>
+          </div>
+        </div>
+        <input id="playSpeed" class="slider" type="range" min="0.5" max="6" step="0.5" value="2" />
+        <div class="kv"><span>0.5</span><span>6</span></div>
+        <div class="controlsRow">
+          <button id="playBtn" class="btn icon" title="播放">▶</button>
+          <button id="pauseBtn" class="btn secondary icon" title="暂停">⏸</button>
+          <span id="playState" class="pill" style="padding: 6px 10px; opacity: 0.9">已暂停</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>过滤（人 / 公司 / 城市）</label>
+        <input id="filterInput" type="text" placeholder="例如：Aidan Gomez / OpenAI / San Francisco" />
+      </div>
+      <div class="field">
+        <label>视觉强度</label>
+        <select id="visualMode" class="select">
+          <option value="balanced" selected>平衡</option>
+          <option value="demo">演示（更炫）</option>
+          <option value="analysis">分析（更清爽）</option>
+        </select>
+      </div>
+      <div class="field">
+        <div style="display:flex;gap:8px;">
+          <a class="btn secondary" href="./graph.html">关系网</a>
+        </div>
+      </div>
+    </aside>
+    <main class="map">
+      <div id="cesiumContainer"></div>
+      <div class="hud" id="hud">
+        <div class="hudRow">
+          <span class="hudLabel">年份</span>
+          <span class="hudValue" id="hudYear">2023</span>
+          <span class="hudSep">·</span>
+          <span class="hudLabel">速度</span>
+          <span class="hudValue" id="hudSpeed">2 年/秒</span>
+        </div>
+        <div class="hudRow">
+          <span class="hudLabel">状态</span>
+          <span class="hudValue" id="hudState">已暂停</span>
+          <span class="hudSep">·</span>
+          <span class="hudLabel">命中</span>
+          <span class="hudValue" id="hudHit">0 人</span>
+        </div>
+      </div>
+      <div class="infoCard" id="infoCard" hidden>
+        <div class="infoHead">
+          <div class="infoTitle" id="infoTitle">地点详情</div>
+          <button class="infoClose" id="infoClose" title="关闭">×</button>
+        </div>
+        <div class="infoSub" id="infoSub"></div>
+        <div class="infoList" id="infoList"></div>
+      </div>
+    </main>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.176.0/examples/jsm/",
+        "three-globe": "https://cdn.jsdelivr.net/npm/three-globe@2.45.2/+esm",
+        "topojson-client": "https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/+esm"
+      }
+    }
+  </script>
+  <script type="module" src="./cesium.js"></script>
+</body>
+</html>

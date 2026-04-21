@@ -1,0 +1,79 @@
+:root {
+  --kimi-primary: #1a1a1d;
+  --kimi-secondary: #2d2d31;
+  --kimi-accent: #00e5ff;
+  --kimi-highlight: #ff3b91;
+  --kimi-gold: #ffd60a;
+  --kimi-text: #e6e6ea;
+  --kimi-muted: #8e8e93;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 50%, #0b0c10 0%, #1A1A1D 100%);
+  color: var(--kimi-text);
+}
+
+.sidebar {
+  background: rgba(26, 26, 29, 0.92);
+  border-right: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.btn {
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: var(--kimi-text);
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  background: rgba(0, 229, 255, 0.22);
+  border-color: rgba(0, 229, 255, 0.45);
+}
+.btn.secondary {
+  background: rgba(142, 142, 147, 0.08);
+  border: 1px solid rgba(142, 142, 147, 0.18);
+}
+.btn.secondary:hover {
+  background: rgba(142, 142, 147, 0.18);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--kimi-secondary);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--kimi-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.6);
+}
+
+.cesium-widget-credits {
+  display: none !important;
+}
+.cesium-viewer-bottom {
+  display: none !important;
+}
+
+#cesiumContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="20" r="0.6" fill="%23E6E6EA" opacity="0.7"/><circle cx="30" cy="70" r="0.4" fill="%23E6E6EA" opacity="0.5"/><circle cx="80" cy="40" r="0.5" fill="%23E6E6EA" opacity="0.6"/><circle cx="60" cy="10" r="0.3" fill="%23E6E6EA" opacity="0.4"/></svg>');
+  background-size: 240px 240px;
+  animation: drift 120s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-240px, -240px); }
+}
