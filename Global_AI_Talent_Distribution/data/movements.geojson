@@ -63525,6 +63525,3831 @@
           39.9042
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2016:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2017:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2018:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2019:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2020:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2021:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2022:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2023:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2024:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2024,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2025:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2025,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "alec-radford",
+        "person_name": "Alec Radford",
+        "person_name_cn": "亚历克·拉德福",
+        "org_id": "city@2026:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2026,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "native",
+        "contribution": "推动 GPT 系列早期落地：把“通用续写/通用生成”这条路线打通，让语言模型从 NLP 组件变成通用能力底座。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1976:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1976,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1977:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1977,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1978:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1978,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1979:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1979,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1980:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1980,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1981:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1981,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1982:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1982,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1983:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1983,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1984:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1984,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1985:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1985,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1986:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1986,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1987:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1987,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1988:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1988,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1989:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1989,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1990:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1990,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "andrew-ng",
+        "person_name": "Andrew Ng",
+        "person_name_cn": "吴恩达",
+        "org_id": "city@1991:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1991,
+        "source": "city_matrix",
+        "place_raw": "London, UK / Hong Kong / Singapore",
+        "sources": "mimo,native",
+        "contribution": "把“深度学习要规模化”做成组织与基础设施：训练大模型需要的工程体系、分布式训练和平台化工具开始成型。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1983:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1983,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1984:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1984,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1985:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1985,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1986:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1986,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1987:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1987,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1988:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1988,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1989:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1989,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1990:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1990,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1991:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1991,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1992:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1992,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1993:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1993,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1994:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1994,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1995:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1995,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1996:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1996,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1997:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1997,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1998:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1998,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@1999:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 1999,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2000:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2000,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2016:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2017:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2018:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2019:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2020:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2021:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2022:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2023:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2024:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2024,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2025:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2025,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "dario-amodei",
+        "person_name": "Dario Amodei",
+        "person_name_cn": "达里奥·阿莫迪",
+        "org_id": "city@2026:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2026,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把“安全与可控性”当成一等公民：推动用一套更明确的规则去约束模型行为，并把它产品化。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@1998:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1998,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@1999:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1999,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2000:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2000,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2001:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2001,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2002:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2002,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2003:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2003,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2011:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2011,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2012:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2012,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2013:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2013,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2014:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2014,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2015:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2015,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2016:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2017:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2018:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2019:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2020:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2021:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2022:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2023:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2024:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2024,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2025:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2025,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "david-silver",
+        "person_name": "David Silver",
+        "person_name_cn": "大卫·西尔弗",
+        "org_id": "city@2026:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2026,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1976:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1976,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1977:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1977,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1978:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1978,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1979:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1979,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1980:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1980,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1981:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1981,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1982:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1982,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1983:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1983,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1984:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1984,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1985:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1985,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1986:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1986,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1987:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1987,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1988:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1988,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1989:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1989,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1990:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1990,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1991:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1991,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1998:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1998,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@1999:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 1999,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2000:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2000,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2001:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2001,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2002:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2002,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2003:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2003,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2004:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2004,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2005:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2005,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2006:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2006,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2007:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2007,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2008:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2008,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2009:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2009,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2010:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2010,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2011:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2011,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2012:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2012,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2013:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2013,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2014:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2014,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2015:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2015,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2016:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2017:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2018:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2019:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2020:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2021:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2022:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2023:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2024:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2024,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2025:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2025,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "demis-hassabis",
+        "person_name": "Demis Hassabis",
+        "person_name_cn": "德米斯·哈萨比斯",
+        "org_id": "city@2026:London,UK",
+        "org_name": "London",
+        "role": "工业",
+        "city": "London",
+        "country": "UK",
+        "year": 2026,
+        "source": "city_matrix",
+        "place_raw": "London, UK",
+        "sources": "mimo,native",
+        "contribution": "AlphaGo 把“深度学习 + 强化学习”做成世界级展示：在复杂策略决策上超过顶尖人类，改变了公众与行业预期。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1276,
+          51.5072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2015:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2015,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2016:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2017:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2018:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2019:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2020:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2021:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2022:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "ilya-sutskever",
+        "person_name": "Ilya Sutskever",
+        "person_name_cn": "伊利亚·萨茨克弗",
+        "org_id": "city@2023:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "学术",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "AlexNet 把图像识别的精度拉出断层，行业信心被点燃：神经网络不是“理论玩具”，是真的能打。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2011:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2011,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2012:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2012,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2013:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2013,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2014:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2014,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2015:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2015,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2016:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2016,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2017:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2017,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2018:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2018,
+        "source": "city_matrix",
+        "place_raw": "San Francisco/Mountain View, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2019:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2019,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2020:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2020,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2021:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2021,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2022:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2022,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2023:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2023,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2024:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2024,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2025:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2025,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "sam-altman",
+        "person_name": "Sam Altman",
+        "person_name_cn": "萨姆·奥特曼",
+        "org_id": "city@2026:San Francisco,US",
+        "org_name": "San Francisco",
+        "role": "工业",
+        "city": "San Francisco",
+        "country": "US",
+        "year": 2026,
+        "source": "city_matrix",
+        "place_raw": "San Francisco, CA, USA",
+        "sources": "mimo,native",
+        "contribution": "把大模型从实验室推到大众产品与产业合作：不仅是技术，还有融资、产品、生态、合规等全链路推进。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194,
+          37.7749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jingren-zhou",
+        "person_name": "Jingren Zhou",
+        "person_name_cn": "周靖人",
+        "org_id": "city@1999:New York,US",
+        "org_name": "New York",
+        "role": "Industry",
+        "city": "New York",
+        "country": "US",
+        "year": 1999,
+        "source": "city_matrix",
+        "place_raw": "New York, NY, USA",
+        "sources": "native",
+        "contribution": "阿里云 CTO / 通义实验室负责人；推动通义千问（Qwen）及阿里云大模型战略"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jingren-zhou",
+        "person_name": "Jingren Zhou",
+        "person_name_cn": "周靖人",
+        "org_id": "city@2000:New York,US",
+        "org_name": "New York",
+        "role": "Industry",
+        "city": "New York",
+        "country": "US",
+        "year": 2000,
+        "source": "city_matrix",
+        "place_raw": "New York, NY, USA",
+        "sources": "native",
+        "contribution": "阿里云 CTO / 通义实验室负责人；推动通义千问（Qwen）及阿里云大模型战略"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jingren-zhou",
+        "person_name": "Jingren Zhou",
+        "person_name_cn": "周靖人",
+        "org_id": "city@2001:New York,US",
+        "org_name": "New York",
+        "role": "Industry",
+        "city": "New York",
+        "country": "US",
+        "year": 2001,
+        "source": "city_matrix",
+        "place_raw": "New York, NY, USA",
+        "sources": "native",
+        "contribution": "阿里云 CTO / 通义实验室负责人；推动通义千问（Qwen）及阿里云大模型战略"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jingren-zhou",
+        "person_name": "Jingren Zhou",
+        "person_name_cn": "周靖人",
+        "org_id": "city@2002:New York,US",
+        "org_name": "New York",
+        "role": "Industry",
+        "city": "New York",
+        "country": "US",
+        "year": 2002,
+        "source": "city_matrix",
+        "place_raw": "New York, NY, USA",
+        "sources": "native",
+        "contribution": "阿里云 CTO / 通义实验室负责人；推动通义千问（Qwen）及阿里云大模型战略"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "person_id": "jingren-zhou",
+        "person_name": "Jingren Zhou",
+        "person_name_cn": "周靖人",
+        "org_id": "city@2003:New York,US",
+        "org_name": "New York",
+        "role": "Industry",
+        "city": "New York",
+        "country": "US",
+        "year": 2003,
+        "source": "city_matrix",
+        "place_raw": "New York, NY, USA",
+        "sources": "native",
+        "contribution": "阿里云 CTO / 通义实验室负责人；推动通义千问（Qwen）及阿里云大模型战略"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006,
+          40.7128
+        ]
+      }
     }
   ]
 }

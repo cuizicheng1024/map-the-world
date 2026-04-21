@@ -2,9 +2,11 @@ import { clamp, debounce, fetchJson, getQueryParam, groupBy, setQueryParam, sort
 
 const DATA_PATH = "../data/movements.geojson";
 const YEAR_RANGE = { min: 2000, max: 2026 };
-const DEFAULT_MARKER_SIZE = 8;
-const DEFAULT_LINE_OPACITY = 0.55;
 const DEFAULT_VIEW = { center: [30, 120], zoom: 3 };
+const COLOR_CYAN = "rgba(0, 220, 255, 0.95)";
+const COLOR_CYAN_SOFT = "rgba(0, 220, 255, 0.55)";
+const COLOR_PURPLE = "rgba(160, 110, 255, 0.92)";
+const COLOR_GOLD = "rgba(255, 200, 80, 0.98)";
 
 function normalizeText(s) {
   return String(s ?? "")
@@ -116,18 +118,22 @@ function makePopupHtml(p, year) {
   return parts.join("");
 }
 
-const map = L.map("map", {
-  zoomControl: true,
-  worldCopyJump: true,
-}).setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
+const map = new AMap.Map("map", {
+  zoom: DEFAULT_VIEW.zoom,
+  center: [DEFAULT_VIEW.center[1], DEFAULT_VIEW.center[0]], // [lon, lat]
+  mapStyle: "amap://styles/dark",
+  viewMode: "3D",
+});
 
-L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-}).addTo(map);
+map.setPitch(55);
+map.setRotation(20);
 
-const markerLayer = L.layerGroup().addTo(map);
-const lineLayer = L.layerGroup().addTo(map);
+const loca = new Loca.Container({ map });
+const scatterLayer = new Loca.ScatterLayer({ loca, zIndex: 200 });
+const pulseLineLayer = new Loca.PulseLineLayer({ loca, zIndex: 110 });
+const highlightLineLayer = new Loca.PulseLineLayer({ loca, zIndex: 111 });
+
+let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -10) });
 
 const yearLabelEl = document.getElementById("yearLabel");
 const countLabelEl = document.getElementById("countLabel");
@@ -145,6 +151,11 @@ let minYear = 0;
 let maxYear = 0;
 let playing = false;
 let playTimer = null;
+let selectedPersonId = "";
+let hoverPersonId = "";
+let edgeSourceUrl = "";
+let edgeSource = null;
+const movementSource = new Loca.GeoJSONSource({ url: DATA_PATH });
 
 function getFocusFilterFromQuery() {
   const focus = getQueryParam("focus");
@@ -178,57 +189,132 @@ function currentFilter() {
   return filterInputEl.value.trim();
 }
 
+function extractPickedFeature(res) {
+  if (!res) return null;
+  if (res.feature) return res.feature;
+  if (res.rawData) return res.rawData;
+  if (res.data) return res.data;
+  if (res.properties && res.geometry) return res;
+  return null;
+}
+
+function ensureEdgeSource() {
+  if (edgeSource) return;
+  const edgeFeatures = allEdges.map((e) => {
+    const from = e.from;
+    const to = e.to;
+    const [fromLon, fromLat] = from.geometry.coordinates;
+    const [toLon, toLat] = to.geometry.coordinates;
+    const pts = greatCircle(fromLat, fromLon, toLat, toLon, 36);
+    return {
+      type: "Feature",
+      properties: {
+        person_id: e.person_id,
+        person_name: to.properties.person_name ?? "",
+        org_name: to.properties.org_name ?? "",
+        city: to.properties.city ?? "",
+        country: to.properties.country ?? "",
+        from_year: Number(from.properties.year),
+        to_year: Number(to.properties.year),
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: pts.map((p) => [p[1], p[0]]),
+      },
+    };
+  });
+
+  const fc = { type: "FeatureCollection", features: edgeFeatures };
+  edgeSourceUrl = URL.createObjectURL(new Blob([JSON.stringify(fc)], { type: "application/json" }));
+  edgeSource = new Loca.GeoJSONSource({ url: edgeSourceUrl });
+}
+
+function applyLocaStyles() {
+  const y = currentYear();
+  const filter = currentFilter();
+  const activePersonId = hoverPersonId || selectedPersonId;
+
+  scatterLayer.setSource(movementSource, {
+    unit: "px",
+    size: (i, f) => {
+      const year = Number(f.properties?.year);
+      if (year !== y) return [0, 0];
+      if (!matchesFilter(f, filter)) return [0, 0];
+      const pid = String(f.properties?.person_id ?? "");
+      if (activePersonId && pid === activePersonId) return [14, 14];
+      return [10, 10];
+    },
+    color: (i, f) => {
+      const year = Number(f.properties?.year);
+      if (year !== y) return "rgba(0,0,0,0)";
+      if (!matchesFilter(f, filter)) return "rgba(0,0,0,0)";
+      const pid = String(f.properties?.person_id ?? "");
+      if (activePersonId && pid === activePersonId) return COLOR_GOLD;
+      return COLOR_CYAN;
+    },
+    borderWidth: (i, f) => {
+      const year = Number(f.properties?.year);
+      if (year !== y) return 0;
+      if (!matchesFilter(f, filter)) return 0;
+      const pid = String(f.properties?.person_id ?? "");
+      if (activePersonId && pid === activePersonId) return 2;
+      return 1;
+    },
+    borderColor: "rgba(255, 255, 255, 0.85)",
+    opacity: (i, f) => {
+      const year = Number(f.properties?.year);
+      if (year !== y) return 0;
+      if (!matchesFilter(f, filter)) return 0;
+      return 1;
+    },
+  });
+
+  ensureEdgeSource();
+
+  pulseLineLayer.setSource(edgeSource, {
+    opacity: (i, f) => {
+      const toYear = Number(f.properties?.to_year);
+      if (toYear !== y) return 0;
+      if (!matchesFilter(f, filter)) return 0;
+      return 0.78;
+    },
+    lineWidth: 2.6,
+    color: (i, f) => {
+      const pid = String(f.properties?.person_id ?? "");
+      if (activePersonId && pid === activePersonId) return COLOR_CYAN;
+      return COLOR_PURPLE;
+    },
+    speed: 1.35,
+  });
+
+  highlightLineLayer.setSource(edgeSource, {
+    opacity: (i, f) => {
+      const toYear = Number(f.properties?.to_year);
+      if (toYear !== y) return 0;
+      if (!matchesFilter(f, filter)) return 0;
+      if (!activePersonId) return 0;
+      const pid = String(f.properties?.person_id ?? "");
+      return pid === activePersonId ? 1 : 0;
+    },
+    lineWidth: 5.2,
+    color: COLOR_GOLD,
+    speed: 1.8,
+  });
+
+  loca.requestRender();
+}
+
 function render() {
   const y = currentYear();
   const filter = currentFilter();
   setQueryParam("year", String(y));
   setQueryParam("q", filter || "");
 
-  markerLayer.clearLayers();
-  lineLayer.clearLayers();
-
   const visible = allFeatures.filter((f) => f.properties.year === y).filter((f) => matchesFilter(f, filter));
-  const visibleIds = new Set(visible.map((f) => `${f.properties.person_id}::${f.properties.year}`));
-  const markerSize = DEFAULT_MARKER_SIZE;
-  const lineOpacity = DEFAULT_LINE_OPACITY;
-
-  for (const f of visible) {
-    const [lon, lat] = f.geometry.coordinates;
-    const p = f.properties;
-    const m = L.circleMarker([lat, lon], {
-      radius: markerSize,
-      color: "rgba(125, 211, 252, 0.9)",
-      weight: 1,
-      fillColor: "rgba(34, 211, 238, 0.35)",
-      fillOpacity: 1,
-    });
-    m.bindPopup(makePopupHtml(p, y));
-    m.addTo(markerLayer);
-  }
-
-  for (const e of allEdges) {
-    const from = e.from;
-    const to = e.to;
-    if (to.properties.year !== y) continue;
-    if (!visibleIds.has(`${to.properties.person_id}::${to.properties.year}`)) continue;
-    if (!matchesFilter(to, filter)) continue;
-
-    const [fromLon, fromLat] = from.geometry.coordinates;
-    const [toLon, toLat] = to.geometry.coordinates;
-    const pts = greatCircle(fromLat, fromLon, toLat, toLon, 36);
-    const poly = L.polyline(
-      pts.map((p) => [p[0], p[1]]),
-      {
-        color: `rgba(125, 211, 252, ${lineOpacity})`,
-        weight: 2,
-        opacity: 1,
-      }
-    );
-    poly.addTo(lineLayer);
-  }
-
   yearLabelEl.textContent = String(y);
   countLabelEl.textContent = `${visible.length} 节点`;
+
+  applyLocaStyles();
 }
 
 function stopPlaying() {
@@ -279,6 +365,7 @@ async function main() {
   if (q && !filterInputEl.value) filterInputEl.value = q;
 
   setYearFromQueryOrDefault();
+  loca.animate.start();
   render();
 }
 
@@ -300,6 +387,33 @@ pauseBtnEl.addEventListener("click", () => stopPlaying());
 
 playSpeedEl.addEventListener("input", () => {
   if (playing) startPlaying();
+});
+
+map.on("mousemove", (e) => {
+  const res = scatterLayer.queryFeature([e.pixel.x, e.pixel.y]);
+  const f = extractPickedFeature(res);
+  const next = f ? String(f.properties?.person_id ?? "") : "";
+  if (next !== hoverPersonId) {
+    hoverPersonId = next;
+    applyLocaStyles();
+  }
+});
+
+map.on("click", (e) => {
+  const res = scatterLayer.queryFeature([e.pixel.x, e.pixel.y]);
+  const f = extractPickedFeature(res);
+  if (!f) return;
+  const p = f.properties ?? {};
+  const y = currentYear();
+  const pid = String(p.person_id ?? "");
+  if (pid) {
+    selectedPersonId = pid;
+    setQueryParam("focus", `person:${pid}`);
+    applyLocaStyles();
+  }
+  const [lon, lat] = f.geometry.coordinates ?? [];
+  infoWindow.setContent(makePopupHtml(p, y));
+  infoWindow.open(map, [lon, lat]);
 });
 
 main().catch((e) => {

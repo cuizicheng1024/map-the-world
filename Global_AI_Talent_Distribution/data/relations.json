@@ -1514,6 +1514,76 @@
       "id": "京东探索研究院",
       "label": "京东探索研究院",
       "kind": "org"
+    },
+    {
+      "id": "Alec Radford",
+      "label": "Alec Radford",
+      "kind": "person"
+    },
+    {
+      "id": "Dario Amodei",
+      "label": "Dario Amodei",
+      "kind": "person"
+    },
+    {
+      "id": "David Silver",
+      "label": "David Silver",
+      "kind": "person"
+    },
+    {
+      "id": "Jensen Huang",
+      "label": "Jensen Huang",
+      "kind": "person"
+    },
+    {
+      "id": "Noam Shazeer",
+      "label": "Noam Shazeer",
+      "kind": "person"
+    },
+    {
+      "id": "Richard Sutton",
+      "label": "Richard Sutton",
+      "kind": "person"
+    },
+    {
+      "id": "Sam Altman",
+      "label": "Sam Altman",
+      "kind": "person"
+    },
+    {
+      "id": "Zhilin Yang",
+      "label": "Zhilin Yang",
+      "kind": "person"
+    },
+    {
+      "id": "Junjie Yan",
+      "label": "Junjie Yan",
+      "kind": "person"
+    },
+    {
+      "id": "Wenfeng Liang",
+      "label": "Wenfeng Liang",
+      "kind": "person"
+    },
+    {
+      "id": "Shuang Wu",
+      "label": "Shuang Wu",
+      "kind": "person"
+    },
+    {
+      "id": "Jingren Zhou",
+      "label": "Jingren Zhou",
+      "kind": "person"
+    },
+    {
+      "id": "Junyang Lin",
+      "label": "Junyang Lin",
+      "kind": "person"
+    },
+    {
+      "id": "Baoqiu Cui",
+      "label": "Baoqiu Cui",
+      "kind": "person"
     }
   ],
   "edges": [
@@ -3742,6 +3812,5292 @@
       "to": "京东探索研究院",
       "type": "works_at",
       "label": "首席科学家"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1993:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1994:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1995:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1996:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1997:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1998:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@1999:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2000:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2001:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2002:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2003:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2004:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2005:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2006:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2007:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2008:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2009:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2010:Irving,US",
+      "type": "works_at",
+      "label": "Irving"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2011:Needham,US",
+      "type": "works_at",
+      "label": "Needham"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2012:Needham,US",
+      "type": "works_at",
+      "label": "Needham"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2013:Needham,US",
+      "type": "works_at",
+      "label": "Needham"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2014:Needham,US",
+      "type": "works_at",
+      "label": "Needham"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2015:Needham,US",
+      "type": "works_at",
+      "label": "Needham"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2016:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2017:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2018:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2019:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2020:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2021:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2022:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2023:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2024:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2025:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Alec Radford",
+      "to": "city@2026:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1976:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1977:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1978:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1979:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1980:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1981:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1982:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1983:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1984:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1985:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1986:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1987:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1988:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1989:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1990:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1991:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1992:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1993:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1994:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1995:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1996:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1997:Cambridge,US",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1998:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@1999:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2000:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2001:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2002:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2003:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2004:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2005:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2006:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2007:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2008:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2009:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2010:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2011:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2012:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2013:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2014:Sunnyvale,CN",
+      "type": "works_at",
+      "label": "Sunnyvale"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2015:Sunnyvale,CN",
+      "type": "works_at",
+      "label": "Sunnyvale"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2016:Sunnyvale,CN",
+      "type": "works_at",
+      "label": "Sunnyvale"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2017:Sunnyvale,CN",
+      "type": "works_at",
+      "label": "Sunnyvale"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2018:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2019:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2020:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2021:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2022:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2023:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2024:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2025:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Andrew Ng",
+      "to": "city@2026:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1983:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1984:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1985:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1986:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1987:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1988:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1989:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1990:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1991:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1992:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1993:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1994:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1995:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1996:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1997:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1998:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@1999:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2000:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2001:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2002:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2003:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2004:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2005:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2006:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2007:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2008:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2009:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2010:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2011:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2012:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2013:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2014:Sunnyvale,US",
+      "type": "works_at",
+      "label": "Sunnyvale"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2015:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2016:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2017:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2018:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2019:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2020:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2021:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2022:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2023:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2024:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2025:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Dario Amodei",
+      "to": "city@2026:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1976:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1977:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1978:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1979:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1980:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1981:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1982:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1983:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1984:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1985:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1986:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1987:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1988:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1989:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1990:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1991:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1992:Hannam,UK",
+      "type": "works_at",
+      "label": "Hannam"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1993:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1994:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1995:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1996:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1997:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1998:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@1999:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2000:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2001:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2002:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2003:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2004:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2005:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2006:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2007:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2008:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2009:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2010:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2011:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2012:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2013:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2014:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2015:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2016:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2017:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2018:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2019:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2020:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2021:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2022:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2023:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2024:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2025:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "David Silver",
+      "to": "city@2026:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1976:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1977:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1978:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1979:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1980:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1981:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1982:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1983:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1984:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1985:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1986:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1987:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1988:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1989:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1990:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1991:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1992:Guildford,UK",
+      "type": "works_at",
+      "label": "Guildford"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1993:Guildford,UK",
+      "type": "works_at",
+      "label": "Guildford"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1994:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1995:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1996:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1997:Cambridge,UK",
+      "type": "works_at",
+      "label": "Cambridge"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1998:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@1999:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2000:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2001:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2002:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2003:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2004:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2005:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2006:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2007:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2008:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2009:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2010:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2011:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2012:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2013:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2014:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2015:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2016:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2017:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2018:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2019:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2020:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2021:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2022:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2023:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2024:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2025:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Demis Hassabis",
+      "to": "city@2026:London,UK",
+      "type": "works_at",
+      "label": "London"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1976:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1977:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1978:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1979:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1980:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1981:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1982:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1983:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1984:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1985:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1986:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1987:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1988:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1989:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1990:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1991:Beijing,CN",
+      "type": "works_at",
+      "label": "Beijing"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1992:Parsippany,US",
+      "type": "works_at",
+      "label": "Parsippany"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1993:Parsippany,US",
+      "type": "works_at",
+      "label": "Parsippany"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1994:Parsippany,US",
+      "type": "works_at",
+      "label": "Parsippany"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1995:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1996:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1997:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1998:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@1999:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2000:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2001:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2002:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2003:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2004:Pasadena,US",
+      "type": "works_at",
+      "label": "Pasadena"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2005:Urbana,US",
+      "type": "works_at",
+      "label": "Urbana"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2006:Urbana,US",
+      "type": "works_at",
+      "label": "Urbana"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2007:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2008:Princeton,US",
+      "type": "works_at",
+      "label": "Princeton"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2009:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2010:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2011:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2012:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2013:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2014:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2015:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2016:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2017:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2018:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2019:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2020:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2021:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2022:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2023:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2024:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2025:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Fei-Fei Li",
+      "to": "city@2026:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1986:Nizhny Novgorod,US",
+      "type": "works_at",
+      "label": "Nizhny Novgorod"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1987:Nizhny Novgorod,US",
+      "type": "works_at",
+      "label": "Nizhny Novgorod"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1988:Nizhny Novgorod,US",
+      "type": "works_at",
+      "label": "Nizhny Novgorod"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1989:Nizhny Novgorod,US",
+      "type": "works_at",
+      "label": "Nizhny Novgorod"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1990:Nizhny Novgorod,US",
+      "type": "works_at",
+      "label": "Nizhny Novgorod"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1991:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1992:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1993:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1994:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1995:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1996:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1997:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1998:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@1999:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2000:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2001:Jerusalem,US",
+      "type": "works_at",
+      "label": "Jerusalem"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2002:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2003:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2004:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2005:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2006:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2007:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2008:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2009:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2010:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2011:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2012:Toronto,CA",
+      "type": "works_at",
+      "label": "Toronto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2013:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2014:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2015:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2016:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2017:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2018:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2019:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2020:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2021:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2022:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2023:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2024:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2025:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Ilya Sutskever",
+      "to": "city@2026:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1968:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1969:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1970:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1971:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1972:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1973:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1974:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1975:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1976:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1977:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1978:Honolulu",
+      "type": "works_at",
+      "label": "Honolulu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1979:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1980:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1981:Mogadishu",
+      "type": "works_at",
+      "label": "Mogadishu"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1982:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1983:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1984:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1985:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1986:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1987:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1988:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1989:Minneapolis,US",
+      "type": "works_at",
+      "label": "Minneapolis"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1990:Geneva",
+      "type": "works_at",
+      "label": "Geneva"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1991:Seattle,US",
+      "type": "works_at",
+      "label": "Seattle"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1992:Seattle,US",
+      "type": "works_at",
+      "label": "Seattle"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1993:Seattle,US",
+      "type": "works_at",
+      "label": "Seattle"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1994:Seattle,US",
+      "type": "works_at",
+      "label": "Seattle"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1995:Seattle,US",
+      "type": "works_at",
+      "label": "Seattle"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1996:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1997:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1998:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@1999:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2000:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2001:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2002:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2003:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2004:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2005:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2006:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2007:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2008:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2009:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2010:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2011:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2012:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2013:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2014:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2015:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2016:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2017:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2018:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2019:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2020:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2021:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2022:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2023:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2024:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2025:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jeff Dean",
+      "to": "city@2026:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1963:Tainan",
+      "type": "works_at",
+      "label": "Tainan"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1964:Tainan",
+      "type": "works_at",
+      "label": "Tainan"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1965:Tainan",
+      "type": "works_at",
+      "label": "Tainan"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1966:Tainan",
+      "type": "works_at",
+      "label": "Tainan"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1967:Tainan",
+      "type": "works_at",
+      "label": "Tainan"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1968:Bangkok",
+      "type": "works_at",
+      "label": "Bangkok"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1969:Bangkok",
+      "type": "works_at",
+      "label": "Bangkok"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1970:Bangkok",
+      "type": "works_at",
+      "label": "Bangkok"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1971:Bangkok",
+      "type": "works_at",
+      "label": "Bangkok"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1972:Bangkok",
+      "type": "works_at",
+      "label": "Bangkok"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1973:Oneida,US",
+      "type": "works_at",
+      "label": "Oneida"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1974:Oneida,US",
+      "type": "works_at",
+      "label": "Oneida"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1975:Portland,US",
+      "type": "works_at",
+      "label": "Portland"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1976:Portland,US",
+      "type": "works_at",
+      "label": "Portland"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1977:Portland,US",
+      "type": "works_at",
+      "label": "Portland"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1978:Portland,US",
+      "type": "works_at",
+      "label": "Portland"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1979:Corvallis,US",
+      "type": "works_at",
+      "label": "Corvallis"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1980:Corvallis,US",
+      "type": "works_at",
+      "label": "Corvallis"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1981:Corvallis,US",
+      "type": "works_at",
+      "label": "Corvallis"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1982:Corvallis,US",
+      "type": "works_at",
+      "label": "Corvallis"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1983:Corvallis,US",
+      "type": "works_at",
+      "label": "Corvallis"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1984:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1985:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1986:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1987:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1988:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1989:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1990:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1991:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1992:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1993:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1994:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1995:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1996:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1997:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1998:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@1999:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2000:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2001:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2002:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2003:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2004:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2005:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2006:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2007:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2008:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2009:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2010:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2011:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2012:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2013:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2014:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2015:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2016:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2017:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2018:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2019:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2020:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2021:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2022:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2023:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2024:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2025:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Jensen Huang",
+      "to": "city@2026:Santa Clara,US",
+      "type": "works_at",
+      "label": "Santa Clara"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1976:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1977:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1978:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1979:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1980:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1981:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1982:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1983:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1984:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1985:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1986:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1987:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1988:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1989:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1990:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1991:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1992:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1993:Philadelphia,US",
+      "type": "works_at",
+      "label": "Philadelphia"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1994:Durham,US",
+      "type": "works_at",
+      "label": "Durham"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1995:Durham,US",
+      "type": "works_at",
+      "label": "Durham"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1996:Durham,US",
+      "type": "works_at",
+      "label": "Durham"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1997:Durham,US",
+      "type": "works_at",
+      "label": "Durham"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1998:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@1999:Berkeley,US",
+      "type": "works_at",
+      "label": "Berkeley"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2000:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2001:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2002:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2003:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2004:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2005:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2006:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2007:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2008:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2009:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2010:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2011:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2012:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2013:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2014:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2015:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2016:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2017:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2018:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2019:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2020:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2021:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2022:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2023:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2024:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2025:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Noam Shazeer",
+      "to": "city@2026:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1957:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1958:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1959:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1960:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1961:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1962:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1963:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1964:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1965:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1966:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1967:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1968:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1969:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1970:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1971:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1972:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1973:Oak Brook,US",
+      "type": "works_at",
+      "label": "Oak Brook"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1974:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1975:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1976:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1977:Palo Alto,US",
+      "type": "works_at",
+      "label": "Palo Alto"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1978:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1979:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1980:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1981:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1982:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1983:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1984:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1985:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1986:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1987:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1988:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1989:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1990:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1991:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1992:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1993:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1994:Waltham,US",
+      "type": "works_at",
+      "label": "Waltham"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1995:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1996:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1997:Amherst,US",
+      "type": "works_at",
+      "label": "Amherst"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1998:Florham Park,US",
+      "type": "works_at",
+      "label": "Florham Park"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@1999:Florham Park,US",
+      "type": "works_at",
+      "label": "Florham Park"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2000:Florham Park,US",
+      "type": "works_at",
+      "label": "Florham Park"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2001:Florham Park,US",
+      "type": "works_at",
+      "label": "Florham Park"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2002:Florham Park,US",
+      "type": "works_at",
+      "label": "Florham Park"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2003:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2004:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2005:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2006:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2007:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2008:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2009:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2010:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2011:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2012:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2013:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2014:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2015:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2016:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2017:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2018:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2019:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2020:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2021:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2022:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2023:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2024:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2025:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Richard Sutton",
+      "to": "city@2026:Edmonton,CA",
+      "type": "works_at",
+      "label": "Edmonton"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1985:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1986:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1987:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1988:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1989:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1990:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1991:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1992:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1993:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1994:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1995:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1996:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1997:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1998:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@1999:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2000:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2001:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2002:St. Louis,US",
+      "type": "works_at",
+      "label": "St. Louis"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2003:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2004:Stanford,US",
+      "type": "works_at",
+      "label": "Stanford"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2005:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2006:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2007:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2008:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2009:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2010:Mountain View,US",
+      "type": "works_at",
+      "label": "Mountain View"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2011:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2012:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2013:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2014:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2015:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2016:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2017:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2018:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2019:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2020:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2021:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2022:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2023:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2024:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2025:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Sam Altman",
+      "to": "city@2026:San Francisco,US",
+      "type": "works_at",
+      "label": "San Francisco"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1992:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1993:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1994:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1995:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1996:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1997:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1998:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@1999:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2000:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2001:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2002:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2003:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2004:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2005:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2006:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2007:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2008:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2009:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2010:汕头",
+      "type": "works_at",
+      "label": "汕头"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2011:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2012:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2013:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2014:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2015:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2016:Pittsburgh,US",
+      "type": "works_at",
+      "label": "Pittsburgh"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2017:California,US",
+      "type": "works_at",
+      "label": "California"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2018:California,US",
+      "type": "works_at",
+      "label": "California"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2019:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2020:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2021:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2022:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2023:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2024:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2025:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Zhilin Yang",
+      "to": "city@2026:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1989:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1990:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1991:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1992:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1993:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1994:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1995:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1996:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1997:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1998:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@1999:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2000:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2001:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2002:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2003:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2004:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2005:商丘",
+      "type": "works_at",
+      "label": "商丘"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2006:南京",
+      "type": "works_at",
+      "label": "南京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2007:南京",
+      "type": "works_at",
+      "label": "南京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2008:南京",
+      "type": "works_at",
+      "label": "南京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2009:南京",
+      "type": "works_at",
+      "label": "南京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2010:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2011:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2012:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2013:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2014:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2015:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2016:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2017:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2018:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2019:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2020:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2021:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2022:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2023:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2024:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2025:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Junjie Yan",
+      "to": "city@2026:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1985:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1986:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1987:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1988:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1989:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1990:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1991:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1992:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1993:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1994:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1995:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1996:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1997:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1998:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@1999:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2000:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2001:湛江",
+      "type": "works_at",
+      "label": "湛江"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2002:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2003:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2004:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2005:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2006:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2007:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2008:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2009:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2010:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2011:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2012:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2013:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2014:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2015:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2016:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2017:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2018:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2019:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2020:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2021:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2022:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2023:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2024:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2025:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Wenfeng Liang",
+      "to": "city@2026:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@1995:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@1996:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@1997:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@1998:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@1999:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2000:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2001:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2002:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2003:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2004:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2005:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2006:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2007:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2008:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2009:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2010:Los Angeles,US",
+      "type": "works_at",
+      "label": "Los Angeles"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2011:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2012:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2013:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2014:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2015:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2016:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2017:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2018:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2019:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2020:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2021:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2022:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2023:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2024:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2025:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Shuang Wu",
+      "to": "city@2026:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1976:上海",
+      "type": "works_at",
+      "label": "上海"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1977:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1978:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1979:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1980:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1981:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1982:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1983:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1984:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1985:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1986:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1987:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1988:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1989:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1990:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1991:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1992:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1993:成都",
+      "type": "works_at",
+      "label": "成都"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1994:合肥",
+      "type": "works_at",
+      "label": "合肥"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1995:合肥",
+      "type": "works_at",
+      "label": "合肥"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1996:合肥",
+      "type": "works_at",
+      "label": "合肥"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1997:合肥",
+      "type": "works_at",
+      "label": "合肥"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1998:合肥",
+      "type": "works_at",
+      "label": "合肥"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@1999:New York,US",
+      "type": "works_at",
+      "label": "New York"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2000:New York,US",
+      "type": "works_at",
+      "label": "New York"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2001:New York,US",
+      "type": "works_at",
+      "label": "New York"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2002:New York,US",
+      "type": "works_at",
+      "label": "New York"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2003:New York,US",
+      "type": "works_at",
+      "label": "New York"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2004:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2005:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2006:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2007:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2008:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2009:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2010:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2011:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2012:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2013:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2014:Redmond,US",
+      "type": "works_at",
+      "label": "Redmond"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2015:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2016:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2017:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2018:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2019:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2020:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2021:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2022:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2023:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2024:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2025:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Jingren Zhou",
+      "to": "city@2026:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1993:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1994:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1995:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1996:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1997:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1998:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@1999:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2000:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2001:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2002:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2003:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2004:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2005:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2006:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2007:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2008:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2009:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2010:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2011:惠州",
+      "type": "works_at",
+      "label": "惠州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2012:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2013:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2014:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2015:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2016:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2017:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2018:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2019:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2020:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2021:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2022:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2023:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2024:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2025:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Junyang Lin",
+      "to": "city@2026:杭州",
+      "type": "works_at",
+      "label": "杭州"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1987:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1988:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1989:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1990:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1991:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1992:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1993:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1994:武汉",
+      "type": "works_at",
+      "label": "武汉"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1995:Stony Brook,US",
+      "type": "works_at",
+      "label": "Stony Brook"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1996:Stony Brook,US",
+      "type": "works_at",
+      "label": "Stony Brook"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1997:Stony Brook,US",
+      "type": "works_at",
+      "label": "Stony Brook"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1998:Stony Brook,US",
+      "type": "works_at",
+      "label": "Stony Brook"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@1999:Stony Brook,US",
+      "type": "works_at",
+      "label": "Stony Brook"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2000:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2001:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2002:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2003:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2004:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2005:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2006:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2007:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2008:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2009:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2010:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2011:Silicon Valley,US",
+      "type": "works_at",
+      "label": "Silicon Valley"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2012:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2013:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2014:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2015:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2016:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2017:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2018:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2019:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2020:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2021:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2022:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2023:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2024:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2025:北京",
+      "type": "works_at",
+      "label": "北京"
+    },
+    {
+      "from": "Baoqiu Cui",
+      "to": "city@2026:北京",
+      "type": "works_at",
+      "label": "北京"
     }
   ]
 }

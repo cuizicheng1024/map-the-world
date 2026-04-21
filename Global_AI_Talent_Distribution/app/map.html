@@ -4,20 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Global AI Talent Distribution · MapStory</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {
+        securityJsCode: "1447ba9d24c2b840b8be056867c21730"
+      };
+    </script>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=5fa83d7e29e8a74369f9e81098e3842f"></script>
+    <script src="https://webapi.amap.com/loca?v=2.0.0&key=5fa83d7e29e8a74369f9e81098e3842f"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="layout">
       <aside class="sidebar">
-        <h1 class="brand">MapStory · 时间 + 空间</h1>
+        <h1 class="brand">AI 人才时空分布</h1>
         <div class="hint">
-          拖动时间轴，观察人才节点随年份迁徙与分裂。数据来自 <code>data/movements.geojson</code>。
+          拖动时间轴，观察 AI 人才节点随年份迁徙与分裂（数据：<code>data/movements.geojson</code>）。
         </div>
 
         <div class="field">
           <div class="row">
-            <a class="btn secondary" href="../">Docs</a>
             <a class="btn secondary" href="./graph.html">关系网</a>
           </div>
         </div>
@@ -44,31 +49,23 @@
 
         <div class="field">
           <div class="row">
-            <button id="playBtn" class="btn">播放</button>
-            <button id="pauseBtn" class="btn secondary">暂停</button>
+            <button id="playBtn" class="btn icon" title="播放" aria-label="播放">▶</button>
+            <button id="pauseBtn" class="btn secondary icon" title="暂停" aria-label="暂停">⏸</button>
           </div>
         </div>
 
-        <div class="footer">
-          入口页：<a href="../">项目说明</a><br />
-          数据：<a href="../data/movements.geojson">movements.geojson</a> · <a href="../data/relations.json">relations.json</a>
+        <div class="field">
+          <label>播放速度（年/秒）</label>
+          <input class="slider" id="playSpeed" type="range" min="0.5" max="6" step="0.5" value="2" />
+          <div class="kv"><span>0.5</span><span>6</span></div>
         </div>
       </aside>
 
       <main style="position: relative;">
-        <div class="panel compact" id="tweaksPanel">
-          <div class="field">
-            <label>播放速度（年/秒）</label>
-            <input class="slider" id="playSpeed" type="range" min="0.5" max="6" step="0.5" value="2" />
-            <div class="kv"><span>0.5</span><span>6</span></div>
-          </div>
-        </div>
-
         <div id="map" class="map"></div>
       </main>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="./map.js"></script>
   </body>
 </html>

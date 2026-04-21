@@ -3,7 +3,9 @@ body {
   height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
-  background: #0b1020;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(120, 88, 255, 0.12), rgba(0, 0, 0, 0)),
+    radial-gradient(900px 700px at 80% 30%, rgba(0, 215, 255, 0.1), rgba(0, 0, 0, 0)),
+    #050816;
   color: #e6edf3;
 }
 
@@ -101,9 +103,61 @@ input[type="text"]:focus {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.btn.icon {
+  min-width: 46px;
+  padding: 9px 10px;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
 .map {
   height: 100%;
   width: 100%;
+  position: relative;
+  background: #020412;
+  overflow: hidden;
+}
+
+.map::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.85) 0, rgba(255, 255, 255, 0) 2px),
+    radial-gradient(1px 1px at 35% 70%, rgba(176, 216, 255, 0.8) 0, rgba(176, 216, 255, 0) 2px),
+    radial-gradient(1px 1px at 55% 35%, rgba(255, 210, 255, 0.75) 0, rgba(255, 210, 255, 0) 2px),
+    radial-gradient(1px 1px at 75% 60%, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0) 2px),
+    radial-gradient(1px 1px at 88% 18%, rgba(176, 216, 255, 0.75) 0, rgba(176, 216, 255, 0) 2px),
+    radial-gradient(2px 2px at 25% 40%, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0) 3px),
+    radial-gradient(2px 2px at 62% 80%, rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0) 3px),
+    radial-gradient(2px 2px at 80% 42%, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0) 3px);
+  animation: starDrift 16s linear infinite;
+}
+
+.map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  background: radial-gradient(900px 600px at 60% 35%, rgba(0, 215, 255, 0.06), rgba(0, 0, 0, 0)),
+    radial-gradient(1000px 700px at 25% 70%, rgba(146, 94, 255, 0.07), rgba(0, 0, 0, 0)),
+    radial-gradient(1200px 900px at 50% 50%, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.26) 72%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+@keyframes starDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-10px, 8px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 .topbar {

@@ -1,397 +1,147 @@
-import { debounce, fetchJson } from "./common.js";
+/* graph.js 单击节点弹窗 + 高亮关联节点 */
+import { getQueryParam } from './utils.js';
 
-const DATA_PATH = "../data/relations.json";
+let nodes, edges, g, width, height, svg, simulation, adj, highlightSet;
+const focusParam = getQueryParam('focus');
 
-function normalizeText(s) {
-  return String(s ?? "")
-    .trim()
-    .toLowerCase();
+function initGraph() {
+  fetch('../data/relations.json')
+    .then(r => r.json())
+    .then(data => {
+      nodes = data.nodes;
+      edges = data.edges;
+      buildAdjacency();
+      drawGraph();
+      if (focusParam) applyFocus(focusParam);
+    });
 }
 
-function colorForKind(kind) {
-  if (kind === "person") return { fill: "rgba(34, 211, 238, 0.34)", stroke: "rgba(125, 211, 252, 0.95)" };
-  return { fill: "rgba(34, 211, 238, 0.34)", stroke: "rgba(125, 211, 252, 0.95)" };
-}
-
-function edgeColor(type) {
-  if (type === "co_worked") return "rgba(125, 211, 252, 0.32)";
-  return "rgba(148, 163, 184, 0.38)";
-}
-
-function openMapForNode(node) {
-  const kind = node.kind;
-  const value = node.label ?? node.id;
-  const url = new URL("./map.html", window.location.href);
-  if (kind === "person") url.searchParams.set("focus", `person:${value}`);
-  if (kind === "org") url.searchParams.set("focus", `org:${value}`);
-  window.open(url.toString(), "_blank");
-}
-
-function resizeCanvas(canvas, dpr) {
-  const rect = canvas.getBoundingClientRect();
-  const w = Math.max(1, Math.floor(rect.width * dpr));
-  const h = Math.max(1, Math.floor(rect.height * dpr));
-  if (canvas.width !== w || canvas.height !== h) {
-    canvas.width = w;
-    canvas.height = h;
-    return true;
-  }
-  return false;
-}
-
-function clamp(n, min, max) {
-  return Math.max(min, Math.min(max, n));
-}
-
-function stableSort(arr, keyFn) {
-  return [...arr].sort((a, b) => {
-    const ka = keyFn(a);
-    const kb = keyFn(b);
-    if (ka < kb) return -1;
-    if (ka > kb) return 1;
-    return 0;
+function buildAdjacency() {
+  adj = new Map();
+  nodes.forEach(n => adj.set(n.id, new Set()));
+  edges.forEach(e => {
+    adj.get(e.from).add(e.to);
+    adj.get(e.to).add(e.from);
   });
 }
 
-function ringLayout(nodes, { baseRadius, spacing }) {
-  if (!nodes.length) return;
-  const r = Math.max(baseRadius, Math.round((nodes.length * spacing) / (2 * Math.PI)));
-  for (let i = 0; i < nodes.length; i += 1) {
-    const t = (i / nodes.length) * Math.PI * 2;
-    nodes[i].x = Math.cos(t) * r;
-    nodes[i].y = Math.sin(t) * r;
-  }
+function drawGraph() {
+  const container = document.getElementById('graph');
+  width = container.clientWidth;
+  height = container.clientHeight;
+  svg = d3.select('#graph')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  simulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(edges).id(d => d.id).distance(80))
+    .force('charge', d3.forceManyBody().strength(-200))
+    .force('center', d3.forceCenter(width / 2, height / 2));
+
+  const link = svg.append('g')
+    .selectAll('line')
+    .data(edges)
+    .join('line')
+    .attr('stroke', '#555')
+    .attr('stroke-width', 1);
+
+  const node = svg.append('g')
+    .selectAll('circle')
+    .data(nodes)
+    .join('circle')
+    .attr('r', 6)
+    .attr('fill', d => d.kind === 'person' ? '#00E5FF' : '#FF3B91')
+    .call(drag(simulation))
+    .on('click', showDetail);
+
+  const label = svg.append('g')
+    .selectAll('text')
+    .data(nodes)
+    .join('text')
+    .text(d => d.label)
+    .attr('font-size', 10)
+    .attr('dx', 8)
+    .attr('dy', 3)
+    .attr('fill', '#E6E6EA');
+
+  simulation.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+    node
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y);
+    label
+      .attr('x', d => d.x)
+      .attr('y', d => d.y);
+  });
 }
 
-function applyLayout(nodes) {
-  const persons = stableSort(nodes, (n) => String(n.label ?? n.id));
-  const golden = Math.PI * (3 - Math.sqrt(5));
-  const spacing = 12;
-  for (let i = 0; i < persons.length; i += 1) {
-    const r = spacing * Math.sqrt(i);
-    const t = i * golden;
-    persons[i].x = Math.cos(t) * r;
-    persons[i].y = Math.sin(t) * r;
-  }
-}
+function showDetail(event, d) {
+  // 高亮当前节点与相邻节点/边
+  highlightSet = new Set([d.id, ...adj.get(d.id)]);
+  svg.selectAll('circle').attr('opacity', n => highlightSet.has(n.id) ? 1 : 0.2);
+  svg.selectAll('line').attr('opacity', e => (highlightSet.has(e.from) && highlightSet.has(e.to)) ? 1 : 0.1);
 
-function buildPeopleEdgesFromRelations(raw, { maxDegree, maxEdges, minWeight }) {
-  const people = new Set((raw.nodes ?? []).filter((n) => n?.kind === "person").map((n) => n.id));
-  const orgToPeople = new Map();
-  for (const e of raw.edges ?? []) {
-    if (!e || e.type !== "works_at") continue;
-    if (!people.has(e.from)) continue;
-    const org = e.to;
-    if (!org) continue;
-    if (!orgToPeople.has(org)) orgToPeople.set(org, new Set());
-    orgToPeople.get(org).add(e.from);
-  }
+  // 弹窗：人物详情（AI 贡献）
+  if (d.kind === 'person') {
+    const detail = d.contribution || '暂无简介';
+    const popup = document.createElement('div');
+    popup.id = 'detail-popup';
+    popup.style.position = 'absolute';
+    popup.style.left = (event.pageX + 12) + 'px';
+    popup.style.top  = (event.pageY + 12) + 'px';
+    popup.style.background = 'rgba(26,26,29,0.95)';
+    popup.style.border = '1px solid #00E5FF';
+    popup.style.borderRadius = '8px';
+    popup.style.padding = '10px 14px';
+    popup.style.maxWidth = '260px';
+    popup.style.color = '#E6E6EA';
+    popup.style.fontSize = '13px';
+    popup.style.zIndex = 20;
+    popup.innerHTML = `<strong>${d.label}</strong><br/><span style="opacity:0.8">${detail}</span>`;
+    document.body.appendChild(popup);
 
-  const weights = new Map();
-  const addWeight = (a, b) => {
-    const k = a < b ? `${a}||${b}` : `${b}||${a}`;
-    weights.set(k, (weights.get(k) ?? 0) + 1);
-  };
-
-  for (const set of orgToPeople.values()) {
-    const ps = Array.from(set);
-    if (ps.length < 2) continue;
-    ps.sort();
-    for (let i = 0; i < ps.length; i += 1) {
-      for (let j = i + 1; j < ps.length; j += 1) {
-        addWeight(ps[i], ps[j]);
+    // 点击空白关闭
+    const close = e => {
+      if (popup && !popup.contains(e.target)) {
+        document.body.removeChild(popup);
+        svg.selectAll('circle, line').attr('opacity', 1);
+        document.removeEventListener('click', close);
       }
-    }
+    };
+    setTimeout(() => document.addEventListener('click', close), 100);
   }
-
-  let edgeList = [];
-  for (const [k, w] of weights.entries()) {
-    if (w < minWeight) continue;
-    const [a, b] = k.split("||");
-    edgeList.push([a, b, w]);
-  }
-  edgeList.sort((x, y) => y[2] - x[2] || x[0].localeCompare(y[0]) || x[1].localeCompare(y[1]));
-
-  const degrees = new Map();
-  const chosen = [];
-  const degreeOf = (id) => degrees.get(id) ?? 0;
-  const inc = (id) => degrees.set(id, degreeOf(id) + 1);
-
-  for (const [a, b, w] of edgeList) {
-    if (chosen.length >= maxEdges) break;
-    if (degreeOf(a) >= maxDegree || degreeOf(b) >= maxDegree) continue;
-    chosen.push({ from: a, to: b, type: "co_worked", label: `共同任职×${w}`, color: edgeColor("co_worked") });
-    inc(a);
-    inc(b);
-  }
-
-  if (chosen.length < 60 && minWeight > 1) {
-    return buildPeopleEdgesFromRelations(raw, { maxDegree, maxEdges, minWeight: 1 });
-  }
-
-  return { people, edges: chosen };
 }
 
-function mainLoop({ canvas, ctx, nodes, edges, searchInput }) {
-  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-
-  const state = {
-    zoom: 1,
-    offsetX: 0,
-    offsetY: 0,
-    draggingNode: null,
-    draggingCanvas: false,
-    dragStart: null,
-    hoverNode: null,
-    selectedNode: null,
-  };
-
-  function worldToScreen(p) {
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    return {
-      x: cx + (p.x + state.offsetX) * state.zoom,
-      y: cy + (p.y + state.offsetY) * state.zoom,
-    };
+function drag(sim) {
+  function dragstarted(event, d) {
+    if (!event.active) sim.alphaTarget(0.3).restart();
+    d.fx = d.x; d.fy = d.y;
   }
-
-  function screenToWorld(x, y) {
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    return {
-      x: (x - cx) / state.zoom - state.offsetX,
-      y: (y - cy) / state.zoom - state.offsetY,
-    };
+  function dragged(event, d) {
+    d.fx = event.x; d.fy = event.y;
   }
-
-  function pickNode(screenX, screenY) {
-    const p = screenToWorld(screenX, screenY);
-    let best = null;
-    let bestD2 = Infinity;
-    for (const n of nodes) {
-      const r = n.r / state.zoom;
-      const d2 = (n.x - p.x) * (n.x - p.x) + (n.y - p.y) * (n.y - p.y);
-      if (d2 <= r * r && d2 < bestD2) {
-        best = n;
-        bestD2 = d2;
-      }
-    }
-    return best;
+  function dragended(event, d) {
+    if (!event.active) sim.alphaTarget(0);
+    d.fx = null; d.fy = null;
   }
-
-  function centerOnNode(n) {
-    state.offsetX = -n.x;
-    state.offsetY = -n.y;
-  }
-
-  function draw() {
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#0b1020";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    ctx.translate(cx, cy);
-    ctx.scale(state.zoom, state.zoom);
-    ctx.translate(state.offsetX, state.offsetY);
-
-    ctx.lineWidth = 1 / state.zoom;
-    for (const e of edges) {
-      const a = e.a;
-      const b = e.b;
-      ctx.strokeStyle = e.color;
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.stroke();
-    }
-
-    for (const n of nodes) {
-      const c = n.color;
-      const selected = state.selectedNode && state.selectedNode.id === n.id;
-      const hovered = state.hoverNode && state.hoverNode.id === n.id;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = c.fill;
-      ctx.fill();
-      ctx.lineWidth = (selected ? 3 : hovered ? 2 : 1.2) / state.zoom;
-      ctx.strokeStyle = selected ? "rgba(255,255,255,0.9)" : c.stroke;
-      ctx.stroke();
-    }
-
-    const labelNode = state.hoverNode || state.selectedNode;
-    if (labelNode) {
-      const s = worldToScreen(labelNode);
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      const text = `${labelNode.label}`;
-      ctx.font = "13px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial";
-      const pad = 8;
-      const w = Math.min(canvas.width - 20, ctx.measureText(text).width + pad * 2);
-      const h = 28;
-      const x = clamp(s.x - w / 2, 10, canvas.width - w - 10);
-      const y = clamp(s.y - 44, 10, canvas.height - h - 10);
-      ctx.fillStyle = "rgba(11,16,32,0.92)";
-      ctx.strokeStyle = "rgba(255,255,255,0.14)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      if (typeof ctx.roundRect === "function") {
-        ctx.roundRect(x, y, w, h, 10);
-      } else {
-        ctx.rect(x, y, w, h);
-      }
-      ctx.fill();
-      ctx.stroke();
-      ctx.fillStyle = "rgba(230,237,243,0.92)";
-      ctx.fillText(text, x + pad, y + 18);
-    }
-  }
-
-  let raf = 0;
-  function scheduleDraw() {
-    if (raf) return;
-    raf = window.requestAnimationFrame(() => {
-      raf = 0;
-      resizeCanvas(canvas, dpr);
-      draw();
-    });
-  }
-
-  const onMove = (evt) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = evt.clientX - rect.left;
-    const y = evt.clientY - rect.top;
-    state.hoverNode = pickNode(x * dpr, y * dpr);
-    if (state.draggingNode) {
-      const p = screenToWorld(x * dpr, y * dpr);
-      state.draggingNode.x = p.x;
-      state.draggingNode.y = p.y;
-      return;
-    }
-    if (state.draggingCanvas && state.dragStart) {
-      const dx = (x * dpr - state.dragStart.x) / state.zoom;
-      const dy = (y * dpr - state.dragStart.y) / state.zoom;
-      state.offsetX = state.dragStart.offsetX + dx;
-      state.offsetY = state.dragStart.offsetY + dy;
-    }
-    scheduleDraw();
-  };
-
-  const onDown = (evt) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = (evt.clientX - rect.left) * dpr;
-    const y = (evt.clientY - rect.top) * dpr;
-    const hit = pickNode(x, y);
-    if (hit) {
-      state.selectedNode = hit;
-      state.draggingNode = hit;
-      return;
-    }
-    state.selectedNode = null;
-    state.draggingCanvas = true;
-    state.dragStart = { x, y, offsetX: state.offsetX, offsetY: state.offsetY };
-    scheduleDraw();
-  };
-
-  const onUp = () => {
-    state.draggingNode = null;
-    state.draggingCanvas = false;
-    state.dragStart = null;
-    scheduleDraw();
-  };
-
-  const onWheel = (evt) => {
-    evt.preventDefault();
-    const rect = canvas.getBoundingClientRect();
-    const x = (evt.clientX - rect.left) * dpr;
-    const y = (evt.clientY - rect.top) * dpr;
-    const before = screenToWorld(x, y);
-    const delta = -evt.deltaY;
-    const factor = delta > 0 ? 1.08 : 1 / 1.08;
-    const nextZoom = clamp(state.zoom * factor, 0.25, 3.2);
-    state.zoom = nextZoom;
-    const after = screenToWorld(x, y);
-    state.offsetX += after.x - before.x;
-    state.offsetY += after.y - before.y;
-    scheduleDraw();
-  };
-
-  const onDblClick = () => {
-    const n = state.selectedNode || state.hoverNode;
-    if (!n) return;
-    openMapForNode(n);
-  };
-
-  canvas.addEventListener("mousemove", onMove);
-  canvas.addEventListener("mousedown", onDown);
-  window.addEventListener("mouseup", onUp);
-  canvas.addEventListener("wheel", onWheel, { passive: false });
-  canvas.addEventListener("dblclick", onDblClick);
-
-  const search = debounce(() => {
-    const q = normalizeText(searchInput.value);
-    if (!q) return;
-    const hit = nodes.find((n) => normalizeText(n.label).includes(q) || normalizeText(n.id).includes(q));
-    if (!hit) return;
-    state.selectedNode = hit;
-    centerOnNode(hit);
-    state.zoom = 1.2;
-    scheduleDraw();
-  }, 120);
-
-  searchInput.addEventListener("input", search);
-
-  window.addEventListener("resize", () => scheduleDraw());
-  centerOnNode(nodes[0] ?? { x: 0, y: 0 });
-  scheduleDraw();
+  return d3.drag()
+    .on('start', dragstarted)
+    .on('drag', dragged)
+    .on('end', dragended);
 }
 
-async function main() {
-  const canvas = document.getElementById("graphCanvas");
-  const ctx = canvas.getContext("2d");
-  const searchInput = document.getElementById("searchInput");
-
-  const raw = await fetchJson(DATA_PATH);
-  const rawNodes = raw.nodes ?? [];
-
-  const { people, edges: derivedEdges } = buildPeopleEdgesFromRelations(raw, { maxDegree: 16, maxEdges: 900, minWeight: 2 });
-  const nodes = rawNodes
-    .filter((n) => people.has(n.id))
-    .map((n, idx) => {
-    const kind = "person";
-    const c = colorForKind(kind);
-    const r = 10;
-    return {
-      id: n.id,
-      label: n.label ?? n.id,
-      kind,
-      color: c,
-      x: (Math.random() - 0.5) * 40 + (idx % 9) * 2,
-      y: (Math.random() - 0.5) * 40 + (idx % 7) * 2,
-      vx: 0,
-      vy: 0,
-      fx: 0,
-      fy: 0,
-      r,
-      mass: 1,
-    };
-    });
-  applyLayout(nodes);
-
-  const byId = new Map(nodes.map((n) => [n.id, n]));
-  const edges = derivedEdges
-    .map((e) => {
-      const a = byId.get(e.from);
-      const b = byId.get(e.to);
-      if (!a || !b) return null;
-      return { a, b, type: e.type, color: e.color };
-    })
-    .filter(Boolean);
-
-  mainLoop({ canvas, ctx, nodes, edges, searchInput });
+function applyFocus(focus) {
+  const [type, keyword] = focus.split(':');
+  if (!keyword) return;
+  const target = nodes.find(n => n.label.toLowerCase().includes(keyword.toLowerCase()));
+  if (!target) return;
+  // 模拟点击高亮
+  showDetail({ pageX: width / 2, pageY: height / 2 }, target);
 }
 
-main().catch((e) => {
-  const root = document.getElementById("graph");
-  root.textContent = String(e?.message ?? e);
-});
+initGraph();
