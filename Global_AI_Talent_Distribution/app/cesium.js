@@ -1,10 +1,11 @@
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
-import { feature } from "topojson-client";
+import { feature, mesh } from "topojson-client";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
 
 import { getQueryParam } from "./common.js";
 
@@ -24,12 +25,15 @@ const ARC_TRAIL_MS = 2600;
 const ARC_TRAIL_ALPHA = 0.18;
 
 const OCEAN_COLOR = "#A9D7F5";
-const LAND_COLOR = "rgba(232,229,220,0.92)";
-const EARTH_TEXTURE_URL =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMB/daL8c0AAAAASUVORK5CYII=";
-const EARTH_BUMP_URL = "";
+const LAND_COLOR = "#D6D1C2";
+const EARTH_HQ_DAY_URL = "https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg";
+const EARTH_DAY_URL = "https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-day.jpg";
+const EARTH_NIGHT_URL = "https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg";
+const EARTH_TOPOLOGY_URL = "https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png";
 
 let scene, camera, renderer, composer, controls, globe, stars, bloomPass;
+let bloomComposer = null;
+let finalPass = null;
 let currentYear = 2023;
 let playTimer = null;
 let playSpeed = 0.5;
@@ -37,8 +41,6 @@ let renderedArcs = [];
 let lastArcs = [];
 let lastArcsUntil = 0;
 let visualMode = "balanced";
-let blinkTimer = null;
-let blinkOn = true;
 let renderedPoints = [];
 let chordCache = null;
 let chordHover = null;
@@ -47,10 +49,16 @@ let barCache = null;
 let barHover = -1;
 let barTip = null;
 let lodPrecisionDeg = 0.02;
-let blinkIntervalMs = 520;
 let lastLodUpdateAt = 0;
 let pendingYear = null;
 let yearRaf = 0;
+
+let pulseT0 = 0;
+let pulseSpeed = 0.00135;
+let pulseAmp = 0.12;
+let pulseBase = 0.78;
+
+const pointsCache = new Map();
 
 let colorCyan = "rgba(0,229,255,0.92)";
 let colorPink = "rgba(255,59,145,0.72)";
@@ -90,6 +98,12 @@ const chordCanvas = document.getElementById("chordCanvas");
 const chordLevelSelect = document.getElementById("chordLevel");
 const barCanvas = document.getElementById("barCanvas");
 const powerLawLabel = document.getElementById("powerLawLabel");
+const presetBtnA = document.getElementById("presetBtnA");
+const presetBtnB = document.getElementById("presetBtnB");
+const presetBtnC = document.getElementById("presetBtnC");
+const presetBtnD = document.getElementById("presetBtnD");
+const presetBtnE = document.getElementById("presetBtnE");
+const presetBtnF = document.getElementById("presetBtnF");
 
 const state = {
   byYear: new Map(),
@@ -100,7 +114,31 @@ let cityAliasMap = new Map();
 let countryContinentMap = new Map();
 let cityIndexById = new Map();
 let admin1Lines = null;
+let countryLines = null;
 let borderLevel = "country";
+
+let baseMapMode = "links";
+let dayNightMat = null;
+let dayNightTexDay = null;
+let dayNightTexNight = null;
+let defaultGlobeMat = null;
+let themeBgOverride = "";
+
+const BLOOM_LAYER = 1;
+let pointsGroup = null;
+let pointsLow = null;
+let pointsMid = null;
+let pointsHigh = null;
+let pointsMats = [];
+let pointsSpriteTex = null;
+let pointsMat = null;
+let raycaster = null;
+let mouseNdc = new THREE.Vector2(0, 0);
+let pointsIndexLow = [];
+let pointsIndexMid = [];
+let pointsIndexHigh = [];
+let hoverKey = "";
+const baseMapSelect = document.getElementById("baseMapMode");
 
 async function loadCityAliases() {
   try {
@@ -339,14 +377,54 @@ function rgbaWithAlpha(src, alpha) {
 }
 
 async function loadBorders() {
+  if (!scene || !globe) return;
   const topo = await fetch(WORLD_TOPOJSON_URL, { cache: "force-cache" }).then((r) => r.json());
-  const geo = feature(topo, topo.objects.countries);
-  globe
-    .polygonsData(geo.features)
-    .polygonAltitude(0.0008)
-    .polygonCapColor(() => LAND_COLOR)
-    .polygonSideColor(() => "rgba(232,229,220,0.18)")
-    .polygonStrokeColor(() => rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.18)));
+
+  if (typeof globe.polygonsData === "function") globe.polygonsData([]);
+
+  if (countryLines) {
+    scene.remove(countryLines);
+    if (countryLines.geometry) countryLines.geometry.dispose();
+    if (countryLines.material) countryLines.material.dispose();
+    countryLines = null;
+  }
+
+  const borderGeo = mesh(topo, topo.objects.countries, (a, b) => a !== b);
+  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+  const r = r0 * 1.002;
+
+  const pos = [];
+  const pushLine = (coords) => {
+    if (!Array.isArray(coords) || coords.length < 2) return;
+    for (let i = 1; i < coords.length; i++) {
+      const a = coords[i - 1];
+      const b = coords[i];
+      if (!Array.isArray(a) || !Array.isArray(b) || a.length < 2 || b.length < 2) continue;
+      const v1 = lngLatToVector3(a[0], a[1], r);
+      const v2 = lngLatToVector3(b[0], b[1], r);
+      pos.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
+    }
+  };
+
+  if (borderGeo?.type === "MultiLineString") {
+    for (const line of borderGeo.coordinates ?? []) pushLine(line);
+  } else if (borderGeo?.type === "LineString") {
+    pushLine(borderGeo.coordinates);
+  }
+
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  const mat = new THREE.LineBasicMaterial({
+    color: new THREE.Color("#1f2937"),
+    transparent: true,
+    opacity: Math.max(0.08, borderAlpha * 0.35),
+    depthTest: false,
+    depthWrite: false,
+  });
+  countryLines = new THREE.LineSegments(geom, mat);
+  countryLines.renderOrder = 9;
+  countryLines.visible = true;
+  scene.add(countryLines);
 }
 
 function lngLatToVector3(lng, lat, radius) {
@@ -408,14 +486,10 @@ async function applyBorderLevel(level) {
   if (v === "admin1") {
     await ensureAdmin1Borders();
     if (admin1Lines) admin1Lines.visible = true;
+    if (countryLines) countryLines.visible = false;
   } else {
     if (admin1Lines) admin1Lines.visible = false;
-  }
-  if (typeof globe?.polygonStrokeColor === "function") {
-    globe.polygonStrokeColor(() => {
-      if (borderLevel === "admin1") return rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.16));
-      return colorBorder;
-    });
+    if (countryLines) countryLines.visible = true;
   }
 }
 
@@ -431,42 +505,375 @@ function closeInfoCard() {
 
 function applyData() {
   const focus = getFocusFilter();
-  const q = "";
+  const q = String(filterInput?.value || "").trim().toLowerCase();
   const yearList = state.byYear.get(currentYear) ?? [];
+  const cacheKey = focus || q ? "" : `${currentYear}|${lodPrecisionDeg}`;
+  let pointsCur = cacheKey ? pointsCache.get(cacheKey) : null;
   const visible = yearList.filter((m) => matchFocusOrQuery(m, focus, q));
   const visiblePersonIds = new Set(visible.map((m) => m.person_id));
 
-  const pointsCur = clusterPoints(visible, lodPrecisionDeg);
+  if (!pointsCur) {
+    pointsCur = clusterPoints(visible, lodPrecisionDeg);
+    if (cacheKey) pointsCache.set(cacheKey, pointsCur);
+  }
   renderedPoints = pointsCur;
 
   updateHud(visiblePersonIds.size);
 
   renderCharts(visiblePersonIds, currentYear);
-  globe
-    .pointsData(pointsCur)
-    .pointLat("lat")
-    .pointLng("lng")
-    .pointAltitude(() => CUR_ALT)
-    .pointRadius((d) => {
-      const base = 0.16;
-      const scale = 0.06;
-      const pulse = blinkOn ? 1.18 : 1.0;
-      return (base + Math.log1p(d.count) * scale) * pulse;
-    })
-    .pointColor(() => (blinkOn ? "rgba(249,171,0,0.96)" : "rgba(255,109,0,0.58)"))
-    .pointsMerge(false);
+  ensureSpritePoints();
+  updateSpritePoints(pointsCur);
 
   globe.arcsData([]);
-
-  startBlink();
 }
 
-function startBlink() {
-  if (blinkTimer) clearInterval(blinkTimer);
-  blinkTimer = setInterval(() => {
-    blinkOn = !blinkOn;
-    globe.pointsData(renderedPoints);
-  }, blinkIntervalMs);
+const DAY_NIGHT_SHADER = {
+  vertexShader: `
+    varying vec3 vNormal;
+    varying vec2 vUv;
+    void main() {
+      vNormal = normalize(normalMatrix * normal);
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    #define PI 3.141592653589793
+    uniform sampler2D dayTexture;
+    uniform sampler2D nightTexture;
+    uniform vec2 sunPosition;
+    uniform vec2 globeRotation;
+    varying vec3 vNormal;
+    varying vec2 vUv;
+
+    float toRad(in float a) {
+      return a * PI / 180.0;
+    }
+
+    vec3 Polar2Cartesian(in vec2 c) {
+      float theta = toRad(90.0 - c.x);
+      float phi = toRad(90.0 - c.y);
+      return vec3(
+        sin(phi) * cos(theta),
+        cos(phi),
+        sin(phi) * sin(theta)
+      );
+    }
+
+    void main() {
+      float invLon = toRad(globeRotation.x);
+      float invLat = -toRad(globeRotation.y);
+      mat3 rotX = mat3(
+        1, 0, 0,
+        0, cos(invLat), -sin(invLat),
+        0, sin(invLat), cos(invLat)
+      );
+      mat3 rotY = mat3(
+        cos(invLon), 0, sin(invLon),
+        0, 1, 0,
+        -sin(invLon), 0, cos(invLon)
+      );
+      vec3 rotatedSunDirection = rotX * rotY * Polar2Cartesian(sunPosition);
+      float intensity = dot(normalize(vNormal), normalize(rotatedSunDirection));
+      vec4 dayColor = texture2D(dayTexture, vUv);
+      vec4 nightColor = texture2D(nightTexture, vUv);
+      float blendFactor = smoothstep(-0.08, 0.12, intensity);
+      gl_FragColor = mix(nightColor, dayColor, blendFactor);
+    }
+  `,
+};
+
+async function ensureDayNightMaterial() {
+  if (dayNightMat) return dayNightMat;
+  const loader = new THREE.TextureLoader();
+  const [dayTex, nightTex] = await Promise.all([
+    loader.loadAsync(EARTH_HQ_DAY_URL).catch(() => loader.loadAsync(EARTH_DAY_URL)),
+    loader.loadAsync(EARTH_NIGHT_URL),
+  ]);
+  dayTex.colorSpace = THREE.SRGBColorSpace;
+  nightTex.colorSpace = THREE.SRGBColorSpace;
+  dayNightTexDay = dayTex;
+  dayNightTexNight = nightTex;
+  dayNightMat = new THREE.ShaderMaterial({
+    uniforms: {
+      dayTexture: { value: dayTex },
+      nightTexture: { value: nightTex },
+      sunPosition: { value: new THREE.Vector2(0, 0) },
+      globeRotation: { value: new THREE.Vector2(0, 0) },
+    },
+    vertexShader: DAY_NIGHT_SHADER.vertexShader,
+    fragmentShader: DAY_NIGHT_SHADER.fragmentShader,
+  });
+  return dayNightMat;
+}
+
+function setRendererTheme(mode) {
+  const m = String(mode || "links");
+  if (!renderer || !scene) return;
+  if (themeBgOverride) {
+    scene.background = new THREE.Color(themeBgOverride);
+    renderer.setClearColor(new THREE.Color(themeBgOverride), 1);
+    return;
+  }
+  if (m === "links") {
+    scene.background = new THREE.Color("#070c15");
+    renderer.setClearColor(0x070c15, 1);
+  } else if (m === "dayNight") {
+    scene.background = new THREE.Color("#0b1020");
+    renderer.setClearColor(0x0b1020, 1);
+  } else {
+    scene.background = new THREE.Color("#f5f5f7");
+    renderer.setClearColor(0xf5f5f7, 1);
+  }
+}
+
+async function applyBaseMapMode(mode) {
+  if (!globe) return;
+  const v =
+    mode === "dayNight" || mode === "tiles" || mode === "links" || mode === "hqDay" || mode === "procedural"
+      ? mode
+      : "links";
+  baseMapMode = v;
+  setRendererTheme(v);
+
+  if (stars) stars.visible = v !== "tiles";
+
+  if (v === "procedural") {
+    globe.globeMaterial(defaultGlobeMat);
+    if (defaultGlobeMat) {
+      defaultGlobeMat.map = null;
+      defaultGlobeMat.bumpMap = null;
+      defaultGlobeMat.color = new THREE.Color("#d7e7f4");
+      defaultGlobeMat.emissive = new THREE.Color("#0b1220");
+      defaultGlobeMat.emissiveIntensity = 0.02;
+      defaultGlobeMat.shininess = 0.04;
+      defaultGlobeMat.needsUpdate = true;
+    }
+    return;
+  }
+
+  if (typeof globe.globeTileEngineUrl === "function") {
+    if (v === "tiles") {
+      globe.globeTileEngineUrl((x, y, l) => `https://tile.openstreetmap.org/${l}/${x}/${y}.png`);
+      if (typeof globe.setPointOfView === "function" && camera) globe.setPointOfView(camera);
+      if (typeof globe.globeImageUrl === "function") {
+        try {
+          globe.globeImageUrl(null);
+        } catch {
+          globe.globeImageUrl(EARTH_HQ_DAY_URL);
+        }
+      }
+      if (typeof globe.bumpImageUrl === "function") {
+        try {
+          globe.bumpImageUrl(null);
+        } catch {
+          globe.bumpImageUrl(EARTH_TOPOLOGY_URL);
+        }
+      }
+      if (typeof globe.globeTileEngineMaxLevel === "function" && controls) {
+        const r = typeof globe.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+        const maxLvl = globe.globeTileEngineMaxLevel() || 0;
+        controls.minDistance = r * (1 + 5 / Math.pow(2, maxLvl));
+        controls.maxDistance = r * 10;
+      }
+    } else {
+      try {
+        globe.globeTileEngineUrl(null);
+      } catch {
+        globe.globeTileEngineUrl(() => null);
+      }
+    }
+  }
+
+  if (v === "dayNight") {
+    const mat = await ensureDayNightMaterial();
+    globe.globeMaterial(mat);
+    return;
+  }
+
+  if (defaultGlobeMat) globe.globeMaterial(defaultGlobeMat);
+  if (typeof globe.globeImageUrl === "function") {
+    globe.globeImageUrl(v === "links" ? EARTH_NIGHT_URL : EARTH_HQ_DAY_URL);
+  }
+  if (typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_TOPOLOGY_URL);
+}
+
+function createSpritePointsMaterial() {
+  return new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    depthTest: true,
+    blending: THREE.AdditiveBlending,
+    uniforms: {
+      uOpacity: { value: 0.9 },
+      uPixelRatio: { value: Math.min(2, window.devicePixelRatio || 1) },
+      uSizeScale: { value: 1.0 },
+    },
+    vertexShader: `
+      attribute float aSize;
+      attribute vec3 aColor;
+      varying vec3 vColor;
+      uniform float uPixelRatio;
+      uniform float uSizeScale;
+      void main() {
+        vColor = aColor;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        float dist = max(1.0, -mvPosition.z);
+        gl_PointSize = aSize * uSizeScale * uPixelRatio * (300.0 / dist);
+        gl_Position = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      varying vec3 vColor;
+      uniform float uOpacity;
+      void main() {
+        vec2 p = gl_PointCoord - vec2(0.5);
+        float r = length(p);
+        if (r > 0.5) discard;
+        float core = smoothstep(0.22, 0.0, r);
+        float halo = smoothstep(0.5, 0.18, r);
+        float a = (core + halo * 0.35) * uOpacity;
+        vec3 col = vColor * (core * 1.35 + halo * 0.35);
+        gl_FragColor = vec4(col, a);
+      }
+    `,
+  });
+}
+
+function ensureSpritePoints() {
+  if (!scene || !globe) return;
+  if (!pointsGroup) {
+    pointsGroup = new THREE.Group();
+    pointsGroup.renderOrder = 20;
+    scene.add(pointsGroup);
+  }
+  if (!pointsHigh) {
+    const geom = new THREE.BufferGeometry();
+    pointsMat = createSpritePointsMaterial();
+    pointsHigh = new THREE.Points(geom, pointsMat);
+    pointsHigh.frustumCulled = false;
+    pointsHigh.layers.set(BLOOM_LAYER);
+    pointsGroup.add(pointsHigh);
+  }
+  if (!raycaster) {
+    raycaster = new THREE.Raycaster();
+    raycaster.params.Points.threshold = 0.8;
+  }
+  ensureSpritePointsCapacity(1);
+}
+
+let pointsBufCap = 0;
+let pointsBufPos = null;
+let pointsBufSize = null;
+let pointsBufCol = null;
+
+function ensureSpritePointsCapacity(count) {
+  const need = Math.max(1, Number.isFinite(count) ? Math.floor(count) : 1);
+  if (pointsBufCap >= need && pointsBufPos && pointsBufSize && pointsBufCol) return;
+  let cap = 1;
+  while (cap < need) cap *= 2;
+  pointsBufCap = cap;
+  pointsBufPos = new Float32Array(cap * 3);
+  pointsBufSize = new Float32Array(cap);
+  pointsBufCol = new Float32Array(cap * 3);
+  if (!pointsHigh?.geometry) return;
+  const g = pointsHigh.geometry;
+  g.setAttribute("position", new THREE.BufferAttribute(pointsBufPos, 3));
+  g.setAttribute("aSize", new THREE.BufferAttribute(pointsBufSize, 1));
+  g.setAttribute("aColor", new THREE.BufferAttribute(pointsBufCol, 3));
+  g.setDrawRange(0, 0);
+}
+
+function updateSpritePoints(pointsCur) {
+  if (!pointsHigh || !Array.isArray(pointsCur)) return;
+  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+  const r = r0 * (1 + CUR_ALT);
+  const n = pointsCur.length;
+  ensureSpritePointsCapacity(n);
+  const pos = pointsBufPos;
+  const size = pointsBufSize;
+  const col = pointsBufCol;
+  for (let i = 0; i < n; i++) {
+    const d = pointsCur[i];
+    const v = lngLatToVector3(d.lng, d.lat, r);
+    pos[i * 3 + 0] = v.x;
+    pos[i * 3 + 1] = v.y;
+    pos[i * 3 + 2] = v.z;
+
+    const c = Math.max(1, Number(d?.count) || 1);
+    const s = 4.2 + Math.log1p(c) * 2.4;
+    size[i] = clamp(s, 4.0, 14.0);
+
+    let rgb = [1.0, 0.68, 0.12];
+    const hue = VISUAL_PRESETS?.[visualMode]?.pointsHue || "amber";
+    if (hue === "cyan") {
+      rgb = c >= 18 ? [0.2, 1.0, 0.95] : c >= 9 ? [0.3, 0.92, 1.0] : [0.45, 0.85, 1.0];
+    } else if (hue === "gold") {
+      rgb = c >= 18 ? [1.0, 0.74, 0.25] : c >= 9 ? [1.0, 0.62, 0.18] : [1.0, 0.52, 0.14];
+    } else if (hue === "red") {
+      rgb = c >= 18 ? [1.0, 0.28, 0.24] : c >= 9 ? [1.0, 0.38, 0.28] : [1.0, 0.46, 0.32];
+    } else if (hue === "ink") {
+      rgb = c >= 18 ? [0.08, 0.12, 0.2] : c >= 9 ? [0.12, 0.16, 0.24] : [0.18, 0.2, 0.28];
+    } else if (hue === "aurora") {
+      rgb = c >= 18 ? [0.44, 1.0, 0.62] : c >= 9 ? [0.28, 0.92, 1.0] : [0.58, 0.62, 1.0];
+    } else {
+      rgb = c >= 18 ? [1.0, 0.34, 0.16] : c >= 9 ? [1.0, 0.52, 0.12] : [1.0, 0.68, 0.12];
+    }
+    col[i * 3 + 0] = rgb[0];
+    col[i * 3 + 1] = rgb[1];
+    col[i * 3 + 2] = rgb[2];
+  }
+  const g = pointsHigh.geometry;
+  g.setDrawRange(0, n);
+  if (g.attributes.position) g.attributes.position.needsUpdate = true;
+  if (g.attributes.aSize) g.attributes.aSize.needsUpdate = true;
+  if (g.attributes.aColor) g.attributes.aColor.needsUpdate = true;
+  g.computeBoundingSphere();
+}
+
+function bindPresetButtons() {
+  const bind = (el, key) => {
+    if (!el) return;
+    el.textContent = VISUAL_PRESETS?.[key]?.label || `方案 ${key}`;
+    el.addEventListener("click", () => applyVisualMode(key));
+  };
+  bind(presetBtnA, "A");
+  bind(presetBtnB, "B");
+  bind(presetBtnC, "C");
+  bind(presetBtnD, "D");
+  bind(presetBtnE, "E");
+  bind(presetBtnF, "F");
+}
+
+function updatePickFromEvent(ev) {
+  if (!raycaster || !renderer?.domElement || !camera || !pointsHigh) return null;
+  const rect = renderer.domElement.getBoundingClientRect();
+  const w = Math.max(1, rect.width);
+  const h = Math.max(1, rect.height);
+  mouseNdc.x = ((ev.clientX - rect.left) / w) * 2 - 1;
+  mouseNdc.y = -(((ev.clientY - rect.top) / h) * 2 - 1);
+  updateRaycasterThreshold();
+  raycaster.setFromCamera(mouseNdc, camera);
+  const hits = raycaster.intersectObject(pointsHigh, false);
+  if (!hits.length) return null;
+  const idx = hits[0]?.index;
+  if (idx == null) return null;
+  const d = renderedPoints?.[idx];
+  if (!d) return null;
+  return { idx, d };
+}
+
+let lastRaycasterUpdateAt = 0;
+function updateRaycasterThreshold() {
+  if (!raycaster || !camera || !globe) return;
+  const now = performance.now();
+  if (now - lastRaycasterUpdateAt < 120) return;
+  lastRaycasterUpdateAt = now;
+  const r = typeof globe.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+  const distToSurface = Math.max(0.001, camera.position.length() - r);
+  const t = clamp(distToSurface / Math.max(1e-6, r), 0, 12);
+  const thr = clamp(0.55 + t * 0.35, 0.55, 3.2);
+  raycaster.params.Points.threshold = thr;
 }
 
 function updateYear(nextYear) {
@@ -1193,6 +1600,8 @@ function resize() {
   camera.updateProjectionMatrix();
   renderer.setSize(w, h, true);
   composer.setSize(w, h);
+  if (bloomComposer) bloomComposer.setSize(w, h);
+  if (pointsMat?.uniforms?.uPixelRatio) pointsMat.uniforms.uPixelRatio.value = Math.min(2, window.devicePixelRatio || 1);
 }
 
 function resetView({ lat, lng } = DEFAULT_CENTER) {
@@ -1218,21 +1627,54 @@ function animate() {
   requestAnimationFrame(animate);
   controls.update();
   const now = performance.now();
+  if (!pulseT0) pulseT0 = now;
+  if (pointsMat) {
+    const p = (Math.sin((now - pulseT0) * pulseSpeed) + 1) * 0.5;
+    if (pointsMat.uniforms?.uOpacity) {
+      pointsMat.uniforms.uOpacity.value = Math.max(0.35, Math.min(0.98, pulseBase + p * pulseAmp));
+    } else {
+      pointsMat.opacity = Math.max(0.35, Math.min(0.98, pulseBase + p * pulseAmp));
+    }
+  }
+  if (bloomPass) {
+    const p = (Math.sin((now - pulseT0) * pulseSpeed) + 1) * 0.5;
+    bloomPass.strength = bloomStrength + p * 0.04;
+  }
+  if (baseMapMode === "tiles" && typeof globe?.setPointOfView === "function") {
+    globe.setPointOfView(camera);
+  }
+  if (baseMapMode === "dayNight" && dayNightMat?.uniforms) {
+    const t = now * 0.00002;
+    const lon = ((t * 360) % 360) - 180;
+    const lat = 23.4 * Math.sin(t * 0.8);
+    dayNightMat.uniforms.sunPosition.value.set(lon, lat);
+    if (typeof globe?.toGeoCoords === "function") {
+      const { lng, lat: glat } = globe.toGeoCoords(camera.position);
+      dayNightMat.uniforms.globeRotation.value.set(lng, glat);
+    }
+  }
   if (now - lastLodUpdateAt > 240 && camera && globe) {
     const r = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
     const ratio = camera.position.length() / Math.max(1, r);
     const nextPrec = ratio < 3.6 ? 0.02 : ratio < 4.9 ? 0.05 : 0.12;
-    const nextBlink = ratio < 3.6 ? 520 : ratio < 4.9 ? 720 : 920;
-    if (nextPrec !== lodPrecisionDeg || nextBlink !== blinkIntervalMs) {
+    if (nextPrec !== lodPrecisionDeg) {
       lodPrecisionDeg = nextPrec;
-      blinkIntervalMs = nextBlink;
       lastLodUpdateAt = now;
       applyData();
     } else {
       lastLodUpdateAt = now;
     }
   }
-  composer.render();
+  if (bloomComposer && finalPass) {
+    camera.layers.set(BLOOM_LAYER);
+    bloomComposer.render();
+    camera.layers.set(0);
+    camera.layers.enable(BLOOM_LAYER);
+    finalPass.material.uniforms.bloomTexture.value = bloomComposer.renderTarget2.texture;
+    composer.render();
+  } else {
+    composer.render();
+  }
 }
 
 async function init() {
@@ -1264,9 +1706,9 @@ async function init() {
   controls.target.set(0, 0, 0);
   controls.update();
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.9);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.68);
   scene.add(ambient);
-  const sun = new THREE.DirectionalLight(0xffffff, 0.95);
+  const sun = new THREE.DirectionalLight(0xffffff, 0.38);
   sun.position.set(400, 220, 280);
   scene.add(sun);
 
@@ -1275,42 +1717,86 @@ async function init() {
   scene.add(stars);
 
   globe = new ThreeGlobe()
-    .globeImageUrl(EARTH_TEXTURE_URL)
     .showAtmosphere(true)
     .atmosphereColor("#BFE6FF")
     .atmosphereAltitude(0.12)
     .showGraticules(false);
-  if (EARTH_BUMP_URL && typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_BUMP_URL);
 
-  globe.globeMaterial().color = new THREE.Color(OCEAN_COLOR);
-  globe.globeMaterial().emissive = new THREE.Color("#7cc4ff");
-  globe.globeMaterial().emissiveIntensity = 0.04;
-  globe.globeMaterial().shininess = 0.08;
-
-  if (typeof globe.pointsMaterial === "function") {
-    const m = globe.pointsMaterial();
-    if (m) {
-      m.transparent = true;
-      m.depthWrite = false;
-      m.opacity = 0.92;
-      m.blending = THREE.NormalBlending;
-    }
+  defaultGlobeMat = globe.globeMaterial();
+  if (defaultGlobeMat) {
+    defaultGlobeMat.color = new THREE.Color(OCEAN_COLOR);
+    defaultGlobeMat.emissive = new THREE.Color("#7cc4ff");
+    defaultGlobeMat.emissiveIntensity = 0.04;
+    defaultGlobeMat.shininess = 0.08;
   }
-
-  if (typeof globe.onPointClick === "function") globe.onPointClick(handlePointClick);
-  if (typeof globe.onPointHover === "function") globe.onPointHover(handlePointHover);
+  if (typeof globe.pointsData === "function") globe.pointsData([]);
 
   scene.add(globe);
 
   composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
-  bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), bloomStrength, 0.55, 0.12);
-  composer.addPass(bloomPass);
+
+  bloomComposer = new EffectComposer(renderer);
+  bloomComposer.addPass(new RenderPass(scene, camera));
+  bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), bloomStrength, 0.55, 0.22);
+  bloomComposer.addPass(bloomPass);
+
+  const finalMat = new THREE.ShaderMaterial({
+    uniforms: {
+      baseTexture: { value: null },
+      bloomTexture: { value: bloomComposer.renderTarget2.texture },
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D baseTexture;
+      uniform sampler2D bloomTexture;
+      varying vec2 vUv;
+      void main() {
+        vec4 base = texture2D(baseTexture, vUv);
+        vec4 bloom = texture2D(bloomTexture, vUv);
+        gl_FragColor = base + bloom;
+      }
+    `,
+  });
+  finalPass = new ShaderPass(finalMat, "baseTexture");
+  composer.addPass(finalPass);
+  camera.layers.enable(BLOOM_LAYER);
+
+  ensureSpritePoints();
+  bindPresetButtons();
+
+  if (renderer?.domElement) {
+    renderer.domElement.addEventListener("mousemove", (ev) => {
+      const hit = updatePickFromEvent(ev);
+      const next = hit?.idx != null ? String(hit.idx) : "";
+      if (next === hoverKey) return;
+      hoverKey = next;
+      handlePointHover(hit?.d || null);
+    });
+    renderer.domElement.addEventListener("click", (ev) => {
+      const hit = updatePickFromEvent(ev);
+      if (hit?.d) handlePointClick(hit.d);
+      else closeInfoCard();
+    });
+  }
+
+  if (baseMapSelect) {
+    baseMapSelect.addEventListener("change", () => {
+      applyBaseMapMode(baseMapSelect.value);
+    });
+  }
 
   window.addEventListener("resize", resize);
   resize();
   resetView(DEFAULT_CENTER);
 
+  await applyBaseMapMode(baseMapSelect?.value || "links");
   await loadCityAliases();
   await loadMovements();
   await loadBorders();
@@ -1324,7 +1810,7 @@ async function init() {
   if (hudSpeed) hudSpeed.textContent = `${playSpeed} 年/秒`;
   if (hudState) hudState.textContent = "已暂停";
   closeInfoCard();
-applyVisualMode("balanced");
+  applyVisualMode("A");
   applyData();
   if (chordCanvas) {
     chordCanvas.addEventListener("mousemove", (ev) => {
@@ -1444,34 +1930,81 @@ window.addEventListener("keydown", (e) => {
   else play();
 });
 
+const BASE_MAP_PROFILES = {
+  tilesOsm: { baseMapMode: "tiles" },
+  linksNight: { baseMapMode: "links" },
+  dayNight: { baseMapMode: "dayNight" },
+  hqDay: { baseMapMode: "hqDay" },
+  procedural: { baseMapMode: "procedural" },
+};
+
+const THEME_PROFILES = {
+  light: { bg: "#f5f5f7", borderColor: "#111827" },
+  paper: { bg: "#fbfbfd", borderColor: "#111827" },
+  dark: { bg: "#070c15", borderColor: "#e5e7eb" },
+  deep: { bg: "#0b1020", borderColor: "#cbd5e1" },
+};
+
+const POINT_PROFILES = {
+  amberGlow: { pointsOpacity: 0.86, pointsAdditive: true, pointsHue: "amber" },
+  cyanNeon: { pointsOpacity: 0.9, pointsAdditive: true, pointsHue: "cyan" },
+  goldGlow: { pointsOpacity: 0.88, pointsAdditive: true, pointsHue: "gold" },
+  redClean: { pointsOpacity: 0.78, pointsAdditive: false, pointsHue: "red" },
+  inkClean: { pointsOpacity: 0.82, pointsAdditive: false, pointsHue: "ink" },
+  auroraSoft: { pointsOpacity: 0.78, pointsAdditive: false, pointsHue: "aurora" },
+};
+
 const VISUAL_PRESETS = {
-  demo: {
-    bloom: 0.42,
-    borderAlpha: 0.34,
-    cyanAlpha: 1.0,
-    pinkAlpha: 0.82,
-    atmosphereAlt: 0.13,
-    emissive: 0.14,
-    arcDashLength: 0.42,
-    arcDashGap: 0.95,
-    arcStrokeBase: 0.52,
-    arcStrokeScale: 0.18,
-    arcAltScale: 0.34,
-    arcAltMin: 0.08,
-    arcAltMax: 0.32,
-    arcAnimateBase: 5200,
+  A: {
+    label: "方案 A · Light Atlas",
+    baseMap: "tilesOsm",
+    theme: "light",
+    points: "amberGlow",
+    bloom: 0.26,
+    borderAlpha: 0.18,
+    atmosphereAlt: 0.1,
+    emissive: 0.06,
+    arcDashLength: 0.28,
+    arcDashGap: 1.25,
+    arcStrokeBase: 0.4,
+    arcStrokeScale: 0.13,
+    arcAltScale: 0.24,
+    arcAltMin: 0.06,
+    arcAltMax: 0.24,
+    arcAnimateBase: 7200,
     arcUseGradient: true,
   },
-  balanced: {
-    bloom: 0.34,
-    borderAlpha: 0.28,
-    cyanAlpha: 0.95,
-    pinkAlpha: 0.74,
-    atmosphereAlt: 0.12,
-    emissive: 0.12,
+  B: {
+    label: "方案 B · Night Neon",
+    baseMap: "linksNight",
+    theme: "dark",
+    points: "cyanNeon",
+    bloom: 0.62,
+    borderAlpha: 0.14,
+    atmosphereAlt: 0.14,
+    emissive: 0.02,
+    arcDashLength: 0.34,
+    arcDashGap: 1.05,
+    arcStrokeBase: 0.48,
+    arcStrokeScale: 0.16,
+    arcAltScale: 0.3,
+    arcAltMin: 0.08,
+    arcAltMax: 0.32,
+    arcAnimateBase: 5600,
+    arcUseGradient: true,
+  },
+  C: {
+    label: "方案 C · Day/Night Cinematic",
+    baseMap: "dayNight",
+    theme: "deep",
+    points: "goldGlow",
+    bloom: 0.46,
+    borderAlpha: 0.12,
+    atmosphereAlt: 0.13,
+    emissive: 0.0,
     arcDashLength: 0.32,
     arcDashGap: 1.15,
-    arcStrokeBase: 0.45,
+    arcStrokeBase: 0.44,
     arcStrokeScale: 0.14,
     arcAltScale: 0.28,
     arcAltMin: 0.07,
@@ -1479,33 +2012,82 @@ const VISUAL_PRESETS = {
     arcAnimateBase: 6400,
     arcUseGradient: true,
   },
-  analysis: {
-    bloom: 0.22,
+  D: {
+    label: "方案 D · Minimal Editorial",
+    baseMap: "hqDay",
+    theme: "light",
+    points: "redClean",
+    bloom: 0.18,
     borderAlpha: 0.22,
-    cyanAlpha: 0.9,
-    pinkAlpha: 0.62,
-    atmosphereAlt: 0.11,
-    emissive: 0.1,
-    arcDashLength: 0.24,
-    arcDashGap: 1.6,
-    arcStrokeBase: 0.36,
+    atmosphereAlt: 0.095,
+    emissive: 0.05,
+    arcDashLength: 0.22,
+    arcDashGap: 1.65,
+    arcStrokeBase: 0.34,
     arcStrokeScale: 0.1,
-    arcAltScale: 0.22,
+    arcAltScale: 0.2,
     arcAltMin: 0.05,
-    arcAltMax: 0.22,
-    arcAnimateBase: 8200,
+    arcAltMax: 0.2,
+    arcAnimateBase: 8600,
     arcUseGradient: false,
+  },
+  E: {
+    label: "方案 E · Clean Ink",
+    baseMap: "procedural",
+    theme: "paper",
+    points: "inkClean",
+    bloom: 0.22,
+    borderAlpha: 0.24,
+    atmosphereAlt: 0.085,
+    emissive: 0.02,
+    arcDashLength: 0.24,
+    arcDashGap: 1.55,
+    arcStrokeBase: 0.34,
+    arcStrokeScale: 0.1,
+    arcAltScale: 0.2,
+    arcAltMin: 0.05,
+    arcAltMax: 0.2,
+    arcAnimateBase: 9000,
+    arcUseGradient: false,
+  },
+  F: {
+    label: "方案 F · Aurora",
+    baseMap: "tilesOsm",
+    theme: "light",
+    points: "auroraSoft",
+    bloom: 0.34,
+    borderAlpha: 0.16,
+    atmosphereAlt: 0.11,
+    emissive: 0.02,
+    arcDashLength: 0.32,
+    arcDashGap: 1.05,
+    arcStrokeBase: 0.42,
+    arcStrokeScale: 0.14,
+    arcAltScale: 0.26,
+    arcAltMin: 0.06,
+    arcAltMax: 0.28,
+    arcAnimateBase: 6600,
+    arcUseGradient: true,
   },
 };
 
+function resolveVisualPreset(key) {
+  const raw = VISUAL_PRESETS[key] ?? VISUAL_PRESETS.A;
+  const base = BASE_MAP_PROFILES[raw.baseMap] ?? BASE_MAP_PROFILES.linksNight;
+  const theme = THEME_PROFILES[raw.theme] ?? THEME_PROFILES.light;
+  const points = POINT_PROFILES[raw.points] ?? POINT_PROFILES.amberGlow;
+  return { ...base, ...theme, ...points, ...raw };
+}
+
 function applyVisualMode(nextMode) {
-  const preset = VISUAL_PRESETS[nextMode] ?? VISUAL_PRESETS.balanced;
-  visualMode = nextMode;
+  const preset = resolveVisualPreset(nextMode);
+  visualMode = nextMode in VISUAL_PRESETS ? nextMode : "A";
+  themeBgOverride = preset.bg || "";
   bloomStrength = preset.bloom;
   borderAlpha = preset.borderAlpha;
   colorBorder = rgbaWithAlpha(COLOR_BORDER_BASE, borderAlpha);
-  colorCyan = rgbaWithAlpha(COLOR_CYAN_BASE, preset.cyanAlpha);
-  colorPink = rgbaWithAlpha(COLOR_PINK_BASE, preset.pinkAlpha);
+  colorCyan = rgbaWithAlpha(COLOR_CYAN_BASE, 0.95);
+  colorPink = rgbaWithAlpha(COLOR_PINK_BASE, 0.74);
   atmosphereAlt = preset.atmosphereAlt;
   emissiveIntensity = preset.emissive;
   arcDashLength = preset.arcDashLength ?? arcDashLength;
@@ -1519,19 +2101,20 @@ function applyVisualMode(nextMode) {
   arcUseGradient = preset.arcUseGradient ?? arcUseGradient;
 
   if (bloomPass) bloomPass.strength = bloomStrength;
-  if (globe?.globeMaterial) {
-    globe.globeMaterial().emissiveIntensity = emissiveIntensity;
-  }
+  if (globe?.globeMaterial && defaultGlobeMat && globe.globeMaterial() === defaultGlobeMat) defaultGlobeMat.emissiveIntensity = emissiveIntensity;
   if (typeof globe?.atmosphereAltitude === "function") {
     globe.atmosphereAltitude(atmosphereAlt);
   }
   if (admin1Lines?.material) admin1Lines.material.opacity = Math.min(0.9, borderAlpha * 1.35);
-  if (typeof globe?.polygonStrokeColor === "function") {
-    globe.polygonStrokeColor(() => {
-      if (borderLevel === "admin1") return rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.16));
-      return colorBorder;
-    });
+  if (countryLines?.material) countryLines.material.opacity = Math.max(0.08, borderAlpha * 0.35);
+  if (countryLines?.material?.color && preset.borderColor) countryLines.material.color = new THREE.Color(preset.borderColor);
+  if (admin1Lines?.material?.color && preset.borderColor) admin1Lines.material.color = new THREE.Color(preset.borderColor);
+  if (pointsMat) {
+    if (pointsMat.uniforms?.uOpacity) pointsMat.uniforms.uOpacity.value = preset.pointsOpacity ?? 0.9;
+    if (preset.pointsAdditive === false) pointsMat.blending = THREE.NormalBlending;
+    else pointsMat.blending = THREE.AdditiveBlending;
   }
+  void applyBaseMapMode(preset.baseMapMode || "links");
   lastArcs = [];
   lastArcsUntil = 0;
   closeInfoCard();

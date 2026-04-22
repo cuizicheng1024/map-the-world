@@ -338,6 +338,21 @@ def cleanup_noise_nodes(relations: dict) -> dict:
         "艺人",
         "模特",
     }
+    banned_verify_notes = {
+        "无法确认其为AI领域人才",
+        "未显示其在AI领域",
+        "不属于AI领域",
+        "不是AI领域",
+        "主要身份为企业家",
+        "知名企业家",
+        "娱乐",
+        "演员",
+        "歌手",
+        "综艺",
+        "体育",
+        "足球",
+        "篮球",
+    }
 
     for n in nodes:
         nid = str(n.get("id") or "").strip()
@@ -357,6 +372,11 @@ def cleanup_noise_nodes(relations: dict) -> dict:
             s = str(n.get("summary") or "").strip()
             if s and any(w in s for w in banned_summary):
                 remove_ids.add(nid)
+            v = n.get("verify") if isinstance(n.get("verify"), dict) else {}
+            if str(v.get("status") or "").strip() == "suspect":
+                notes = str(v.get("notes") or "").strip()
+                if notes and any(w in notes for w in banned_verify_notes):
+                    remove_ids.add(nid)
 
     if not remove_ids:
         return {"removed_nodes": 0, "removed_edges": 0}
@@ -1069,6 +1089,7 @@ def verify_ai2000_nodes(
     concurrency: int,
     write_back: bool,
     auto_merge: bool,
+    force_all: bool,
 ) -> dict:
     now = datetime.now(timezone.utc).isoformat()
     deg = compute_degrees(relations)
@@ -1083,6 +1104,10 @@ def verify_ai2000_nodes(
             continue
         if str(n.get("kind") or "").strip() not in {"person", "org"}:
             continue
+        if not force_all:
+            v = n.get("verify") if isinstance(n.get("verify"), dict) else {}
+            if str(v.get("last_checked_at") or "").strip():
+                continue
         candidates.append(n)
     candidates.sort(key=lambda n: deg.get(str(n.get("id") or ""), 0), reverse=True)
     limit = int(max_entities)
@@ -1199,6 +1224,7 @@ def verify_all_nodes(
     concurrency: int,
     write_back: bool,
     auto_merge: bool,
+    force_all: bool,
 ) -> dict:
     now = datetime.now(timezone.utc).isoformat()
     deg = compute_degrees(relations)
@@ -1213,6 +1239,10 @@ def verify_all_nodes(
         nid = str(n.get("id") or "").strip()
         if not nid:
             continue
+        if not force_all:
+            v = n.get("verify") if isinstance(n.get("verify"), dict) else {}
+            if str(v.get("last_checked_at") or "").strip():
+                continue
         candidates.append(n)
     candidates.sort(key=lambda n: deg.get(str(n.get("id") or ""), 0), reverse=True)
     limit = int(max_entities)
@@ -1798,7 +1828,56 @@ def write_person_year_locations(relations: dict, movements: dict, year_min: int,
 
 def apply_known_fixes(relations: dict) -> dict:
     nodes = relations.get("nodes", []) or []
+    edges = relations.get("edges", []) or []
+    node_ids = {str(n.get("id") or "").strip() for n in nodes}
     touched = 0
+    edges_fixed = 0
+    added_nodes = 0
+
+    if "王兴兴" not in node_ids:
+        nodes.append(
+            {
+                "id": "王兴兴",
+                "label": "王兴兴",
+                "kind": "person",
+                "summary": "宇树科技创始人，专注于四足机器人与运动控制。",
+                "aliases": [],
+                "source": {"manual_fix": True},
+            }
+        )
+        node_ids.add("王兴兴")
+        added_nodes += 1
+
+    if "柏林弗雷大学" in node_ids:
+        dst = "柏林自由大学"
+        if dst not in node_ids:
+            nodes.append(
+                {
+                    "id": dst,
+                    "label": dst,
+                    "kind": "org",
+                    "summary": "德国柏林的一所综合性大学（Freie Universität Berlin）。",
+                    "aliases": ["Freie Universität Berlin", "Free University of Berlin"],
+                    "source": {"manual_fix": True},
+                }
+            )
+            node_ids.add(dst)
+            added_nodes += 1
+        if merge_node_ids(relations, "柏林弗雷大学", dst):
+            touched += 1
+
+    for e in edges:
+        a = str(e.get("from") or "").strip()
+        b = str(e.get("to") or "").strip()
+        t = str(e.get("type") or "").strip()
+        if a != "王兴":
+            continue
+        if b not in {"宇树科技", "Unitree", "Unitree Robotics", "Unitree Robotics (宇树科技)"}:
+            continue
+        if t in {"founded", "works_at"}:
+            e["from"] = "王兴兴"
+            edges_fixed += 1
+
     for n in nodes:
         nid = str(n.get("id") or "").strip()
         if nid not in {"宇树科技", "Unitree", "Unitree Robotics", "Unitree Robotics (宇树科技)"}:
@@ -1810,7 +1889,7 @@ def apply_known_fixes(relations: dict) -> dict:
             n["summary"] = s.replace("王兴", "王兴兴")
             touched += 1
             continue
-    return {"touched": touched}
+    return {"touched": touched, "edges_fixed": edges_fixed, "added_nodes": added_nodes}
 
 
 def enforce_ai2000_edge_kinds(relations: dict) -> dict:
@@ -1854,6 +1933,7 @@ def main() -> None:
     ap.add_argument("--verify-ai2000", action="store_true")
     ap.add_argument("--verify-all", action="store_true")
     ap.add_argument("--verify-max", type=int, default=200)
+    ap.add_argument("--verify-force-all", action="store_true")
     ap.add_argument("--write-verify", action="store_true")
     ap.add_argument("--verify-auto-merge", action="store_true")
     ap.add_argument("--no-l2", action="store_true")
@@ -1979,6 +2059,7 @@ def main() -> None:
             concurrency=int(args.concurrency),
             write_back=bool(args.write_verify),
             auto_merge=bool(args.verify_auto_merge),
+            force_all=bool(args.verify_force_all),
         )
     elif args.verify_all:
         verify_report = verify_all_nodes(
@@ -1988,6 +2069,7 @@ def main() -> None:
             concurrency=int(args.concurrency),
             write_back=bool(args.write_verify),
             auto_merge=bool(args.verify_auto_merge),
+            force_all=bool(args.verify_force_all),
         )
 
     l2_updated = 0
