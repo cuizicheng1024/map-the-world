@@ -23,8 +23,8 @@ const ARC_ANIMATE_MS = 7200;
 const ARC_TRAIL_MS = 2600;
 const ARC_TRAIL_ALPHA = 0.18;
 
-const OCEAN_COLOR = "#0b1020";
-const LAND_COLOR = "rgba(0,0,0,0)";
+const OCEAN_COLOR = "#A9D7F5";
+const LAND_COLOR = "rgba(232,229,220,0.92)";
 const EARTH_TEXTURE_URL =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMB/daL8c0AAAAASUVORK5CYII=";
 const EARTH_BUMP_URL = "";
@@ -345,7 +345,7 @@ async function loadBorders() {
     .polygonsData(geo.features)
     .polygonAltitude(0.0008)
     .polygonCapColor(() => LAND_COLOR)
-    .polygonSideColor(() => "rgba(0,0,0,0)")
+    .polygonSideColor(() => "rgba(232,229,220,0.18)")
     .polygonStrokeColor(() => rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.18)));
 }
 
@@ -453,7 +453,7 @@ function applyData() {
       const pulse = blinkOn ? 1.18 : 1.0;
       return (base + Math.log1p(d.count) * scale) * pulse;
     })
-    .pointColor(() => (blinkOn ? "rgba(26,115,232,0.92)" : "rgba(138,180,248,0.72)"))
+    .pointColor(() => (blinkOn ? "rgba(249,171,0,0.96)" : "rgba(255,109,0,0.58)"))
     .pointsMerge(false);
 
   globe.arcsData([]);
@@ -1277,15 +1277,15 @@ async function init() {
   globe = new ThreeGlobe()
     .globeImageUrl(EARTH_TEXTURE_URL)
     .showAtmosphere(true)
-    .atmosphereColor("#8ab4f8")
+    .atmosphereColor("#BFE6FF")
     .atmosphereAltitude(0.12)
     .showGraticules(false);
   if (EARTH_BUMP_URL && typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_BUMP_URL);
 
   globe.globeMaterial().color = new THREE.Color(OCEAN_COLOR);
-  globe.globeMaterial().emissive = new THREE.Color("#1a73e8");
-  globe.globeMaterial().emissiveIntensity = 0.08;
-  globe.globeMaterial().shininess = 0.12;
+  globe.globeMaterial().emissive = new THREE.Color("#7cc4ff");
+  globe.globeMaterial().emissiveIntensity = 0.04;
+  globe.globeMaterial().shininess = 0.08;
 
   if (typeof globe.pointsMaterial === "function") {
     const m = globe.pointsMaterial();

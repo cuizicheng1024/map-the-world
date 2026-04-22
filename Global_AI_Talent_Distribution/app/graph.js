@@ -507,7 +507,18 @@ function startForceAtlas2() {
     }
   }
   if (!startedWorker) {
-    forceState.raf = requestAnimationFrame(stepForceAtlas2);
+    forceState.running = false;
+    if (forceWatchdogTimer) window.clearTimeout(forceWatchdogTimer);
+    forceWatchdogTimer = 0;
+    if (forceOverlayAutoHideTimer) window.clearTimeout(forceOverlayAutoHideTimer);
+    forceOverlayAutoHideTimer = 0;
+    setOverlayVisible(true, "布局不可用", "当前环境不支持后台布局，已切换为环形布局");
+    window.setTimeout(() => setOverlayVisible(false), 900);
+    setForceBtnRunning(false);
+    setForceBtnText("力导向");
+    setLayoutMode("ring");
+    scheduleDraw();
+    return;
   }
   scheduleDraw();
 }

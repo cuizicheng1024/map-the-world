@@ -322,6 +322,23 @@ def cleanup_noise_nodes(relations: dict) -> dict:
     edges = relations.get("edges", []) or []
     remove_ids = set()
 
+    banned_summary = {
+        "歌手",
+        "演员",
+        "主持",
+        "主持人",
+        "综艺",
+        "电视剧",
+        "电影",
+        "在线视频",
+        "娱乐平台",
+        "足球",
+        "篮球",
+        "电竞",
+        "艺人",
+        "模特",
+    }
+
     for n in nodes:
         nid = str(n.get("id") or "").strip()
         label = str(n.get("label") or "").strip()
@@ -335,6 +352,11 @@ def cleanup_noise_nodes(relations: dict) -> dict:
             remove_ids.add(nid)
         if str(n.get("kind") or "") == "org" and label in {"Ltd.", "Ltd"}:
             remove_ids.add(nid)
+        src = n.get("source") if isinstance(n.get("source"), dict) else {}
+        if not bool(src.get("from_ai2000")):
+            s = str(n.get("summary") or "").strip()
+            if s and any(w in s for w in banned_summary):
+                remove_ids.add(nid)
 
     if not remove_ids:
         return {"removed_nodes": 0, "removed_edges": 0}
@@ -363,15 +385,43 @@ def cleanup_bad_org_nodes(relations: dict, movements: dict) -> dict:
     generic = {
         "university",
         "company",
+        "university/company",
+        "university company",
         "researchinstitute",
         "research institute",
         "institute",
         "universitycompanyindependentresearcher",
         "university/company/independent researcher",
+        "independent researcher",
+        "independentresearcher",
+        "self-employed",
+        "self employed",
+        "freelancer",
         "gymnasium",
         "school",
     }
     generic_norm = {normalize_key(x) for x in generic}
+
+    deg = {}
+    for e in edges:
+        a = str(e.get("from") or "").strip()
+        b = str(e.get("to") or "").strip()
+        if a:
+            deg[a] = deg.get(a, 0) + 1
+        if b:
+            deg[b] = deg.get(b, 0) + 1
+
+    def looks_like_meaningless_code(s: str) -> bool:
+        s2 = str(s or "").strip()
+        if not s2:
+            return True
+        if not re.search(r"[A-Za-z\u4e00-\u9fff]", s2):
+            return True
+        if re.fullmatch(r"\d{4,}", s2):
+            return True
+        if len(s2) >= 10 and re.fullmatch(r"[A-Z0-9_-]+", s2) and not re.search(r"[AEIOU]", s2):
+            return True
+        return False
 
     remove_ids = set()
     for n in nodes:
@@ -384,6 +434,9 @@ def cleanup_bad_org_nodes(relations: dict, movements: dict) -> dict:
             remove_ids.add(nid)
             continue
         if normalize_key(nid) in generic_norm:
+            remove_ids.add(nid)
+            continue
+        if looks_like_meaningless_code(nid) and deg.get(nid, 0) <= 1:
             remove_ids.add(nid)
             continue
 
@@ -912,7 +965,12 @@ def build_verify_prompt(kind: str, name: str, summary: str, aliases: list[str], 
     return [
         {
             "role": "system",
-            "content": "你是事实核验与实体归一化助手。输出必须是严格 JSON（不要 Markdown、不要解释）。尽量保守，不确定就输出 unknown + 低置信度。",
+            "content": (
+                "你是事实核验与实体归一化助手。输出必须是严格 JSON（不要 Markdown、不要解释）。"
+                "本项目知识图谱仅关注 AI 领域人才（研究者/工程师/创业者）及其科技公司/研究机构。"
+                "请严格避免把同名的娱乐/体育/其它领域人物当成 AI 人才。"
+                "尽量保守：无法确认属于 AI 领域就输出 unknown 或 suspect + 低置信度。"
+            ),
         },
         {
             "role": "user",
@@ -925,6 +983,7 @@ def build_verify_prompt(kind: str, name: str, summary: str, aliases: list[str], 
                 f"AI2000 机构字段（仅供参考，包含多机构/简称）: {orgs}\n\n"
                 "输出 JSON schema:\n"
                 "{\n"
+                '  "suggested_kind": "person|org|unknown",\n'
                 '  "status": "verified|suspect|unknown",\n'
                 '  "confidence": 0.0,\n'
                 '  "fixed_summary": "",\n'
@@ -934,11 +993,14 @@ def build_verify_prompt(kind: str, name: str, summary: str, aliases: list[str], 
                 '  "notes": ""\n'
                 "}\n"
                 "规则：\n"
+                "- suggested_kind 用于纠正明显类型错误（例如人名被标成 org）；不确定就 unknown。\n"
                 "- fixed_summary 若不需要修改则留空；若修改，尽量不超过 60 字。\n"
+                "- fixed_summary 必须与 AI 领域相关（研究方向/代表贡献/主要机构），不要输出娱乐、体育等信息。\n"
                 "- fixed_aliases 若不需要修改则留空数组；不要输出太多。\n"
                 "- canonical_name 若无需变更可输出原名；若认为应统一为某种写法（例如 Tencent/腾讯），输出建议写法。\n"
                 "- same_as 用于列出你确信是同一实体的其它名字（例如中英文/缩写），不要凭空扩展。\n"
-                "- notes 简短说明（<= 80 字），不要使用“可能/疑似/据称/大概”等措辞；不确定就直接写“无法确认，需进一步核实”。"
+                "- notes 简短说明（<= 80 字），不要使用“可能/疑似/据称/大概”等措辞；不确定就直接写“无法确认，需进一步核实”。\n"
+                "- 若发现当前 summary 明显与 AI 无关（例如歌手/演员/运动员），应当输出 suspect 或 unknown，并给出 AI 领域方向的修正或清空建议。"
             ),
         },
     ]
@@ -1083,6 +1145,7 @@ def verify_ai2000_nodes(
             canonical = str(r.get("canonical_name") or nid).strip() or nid
             same_as = r.get("same_as") if isinstance(r.get("same_as"), list) else []
             same_as = [str(x).strip() for x in same_as if str(x).strip()][:12]
+            suggested_kind = str(r.get("suggested_kind") or "").strip()
 
             if status == "verified":
                 verified += 1
@@ -1093,6 +1156,8 @@ def verify_ai2000_nodes(
 
             if write_back:
                 n["verify"] = {"status": status, "confidence": conf, "notes": notes, "last_checked_at": now, "model": model}
+                if suggested_kind in {"person", "org"} and suggested_kind != kind and conf >= 0.9:
+                    n["kind"] = suggested_kind
                 if fixed_summary and conf >= 0.6:
                     n["summary"] = fixed_summary
                 if fixed_aliases and conf >= 0.6:
@@ -1206,6 +1271,9 @@ def verify_all_nodes(
                     "last_checked_at": now,
                     "model": model,
                 }
+                suggested_kind = str(r.get("suggested_kind") or "").strip()
+                if suggested_kind in {"person", "org"} and suggested_kind != kind and conf >= 0.9:
+                    n["kind"] = suggested_kind
                 fixed_summary = str(r.get("fixed_summary") or "").strip()
                 if fixed_summary:
                     n["summary"] = fixed_summary
@@ -1728,6 +1796,46 @@ def write_person_year_locations(relations: dict, movements: dict, year_min: int,
     return {"people": len(out), "filled_records": filled}
 
 
+def apply_known_fixes(relations: dict) -> dict:
+    nodes = relations.get("nodes", []) or []
+    touched = 0
+    for n in nodes:
+        nid = str(n.get("id") or "").strip()
+        if nid not in {"宇树科技", "Unitree", "Unitree Robotics", "Unitree Robotics (宇树科技)"}:
+            continue
+        s = str(n.get("summary") or "").strip()
+        if "王兴兴" in s:
+            continue
+        if "王兴" in s and "宇树" in s:
+            n["summary"] = s.replace("王兴", "王兴兴")
+            touched += 1
+            continue
+    return {"touched": touched}
+
+
+def enforce_ai2000_edge_kinds(relations: dict) -> dict:
+    nodes = relations.get("nodes", []) or []
+    edges = relations.get("edges", []) or []
+    by_id = {str(n.get("id") or "").strip(): n for n in nodes}
+    updated = 0
+    for e in edges:
+        if str(e.get("type") or "").strip() != "affiliated_with":
+            continue
+        if str(e.get("label") or "").strip() != "AI2000":
+            continue
+        a = str(e.get("from") or "").strip()
+        b = str(e.get("to") or "").strip()
+        na = by_id.get(a)
+        nb = by_id.get(b)
+        if na and str(na.get("kind") or "").strip() != "person":
+            na["kind"] = "person"
+            updated += 1
+        if nb and str(nb.get("kind") or "").strip() != "org":
+            nb["kind"] = "org"
+            updated += 1
+    return {"updated": updated}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--relations", default="data/relations.json")
@@ -1846,6 +1954,8 @@ def main() -> None:
                 flush=True,
             )
 
+    ai2000_kind_report = enforce_ai2000_edge_kinds(relations)
+
     sanitize_report = {}
     if args.sanitize_summaries:
         sanitize_report = sanitize_summaries(relations)
@@ -1945,6 +2055,8 @@ def main() -> None:
         movements = load_json(args.movements)
         person_year_report = write_person_year_locations(relations, movements, args.year_min, args.year_max)
 
+    known_fix_report = apply_known_fixes(relations)
+
     save_json(args.relations, relations)
     out = {
         "seed": seed_report,
@@ -1964,6 +2076,8 @@ def main() -> None:
         "year_location_counts": year_loc_report,
         "person_year_locations": person_year_report,
         "cleanup_bad_orgs": bad_org_report,
+        "ai2000_kind_enforced": ai2000_kind_report,
+        "known_fixes": known_fix_report,
     }
     print(json.dumps(out, ensure_ascii=False, indent=2))
 
