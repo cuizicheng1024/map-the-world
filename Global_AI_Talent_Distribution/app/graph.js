@@ -58,6 +58,7 @@ let overlayMode = "";
 let forceWorker = null;
 let forceWorkerRunId = 0;
 let forceWatchdogTimer = 0;
+let forceOverlayAutoHideTimer = 0;
 
 function scheduleDraw() {
   if (drawRaf) return;
@@ -84,6 +85,16 @@ function setOverlayMode(mode) {
 function showErrorOverlay(title, sub) {
   setOverlayMode("error");
   setOverlayVisible(true, title || "加载失败", sub || "请点击重试");
+}
+
+function setForceBtnText(text) {
+  if (!layoutForceBtn) return;
+  layoutForceBtn.textContent = text;
+}
+
+function setForceBtnRunning(isRunning) {
+  if (!layoutForceBtn) return;
+  layoutForceBtn.classList.toggle("secondary", !isRunning);
 }
 
 function createForceWorker() {
@@ -318,7 +329,8 @@ function startForceWorker() {
         nodes[i].y = arr[i * 2 + 1];
       }
       const pct = Number.isFinite(m.pct) ? m.pct : Math.min(99, Math.floor((m.iter / Math.max(1, m.maxIter)) * 100));
-      setOverlayVisible(true, "布局计算中…", `迭代 ${m.iter}/${m.maxIter} · ${pct}%`);
+      setForceBtnText(`力导向 · ${pct}%`);
+      if (!graphOverlay.hidden) setOverlayVisible(true, "布局计算中…", `迭代 ${m.iter}/${m.maxIter} · ${pct}%`);
       scheduleDraw();
       return;
     }
@@ -470,6 +482,13 @@ function startForceAtlas2() {
   forceLastTickAt = forceStartedAt;
   setOverlayMode("layout");
   setOverlayVisible(true, "布局计算中…", "正在计算力导向布局");
+  setForceBtnRunning(true);
+  setForceBtnText("力导向 · 0%");
+  if (forceOverlayAutoHideTimer) window.clearTimeout(forceOverlayAutoHideTimer);
+  forceOverlayAutoHideTimer = window.setTimeout(() => {
+    if (!forceState.running) return;
+    setOverlayVisible(false);
+  }, 900);
   if (forceWatchdogTimer) window.clearTimeout(forceWatchdogTimer);
   forceWatchdogTimer = window.setTimeout(() => {
     if (!forceState.running) return;
@@ -501,8 +520,12 @@ function stopForceAtlas2() {
   stopForceWorker();
   if (forceWatchdogTimer) window.clearTimeout(forceWatchdogTimer);
   forceWatchdogTimer = 0;
+  if (forceOverlayAutoHideTimer) window.clearTimeout(forceOverlayAutoHideTimer);
+  forceOverlayAutoHideTimer = 0;
   setOverlayMode("");
   setOverlayVisible(false);
+  setForceBtnRunning(false);
+  setForceBtnText("力导向");
   scheduleDraw();
 }
 
@@ -1367,7 +1390,14 @@ function setShowEdges(next) {
 layoutRingBtn?.addEventListener("click", () => setLayoutMode("ring"));
 layoutRadialBtn?.addEventListener("click", () => setLayoutMode("radial"));
 layoutGeoBtn?.addEventListener("click", () => setLayoutMode("geo"));
-layoutForceBtn?.addEventListener("click", () => setLayoutMode("force"));
+layoutForceBtn?.addEventListener("click", () => {
+  if (forceState.running) {
+    stopForceAtlas2();
+    scheduleDraw();
+    return;
+  }
+  setLayoutMode("force");
+});
 toggleEdgesBtn?.addEventListener("click", () => setShowEdges(!showEdges));
 
 geoYearInput?.addEventListener("input", (ev) => {
