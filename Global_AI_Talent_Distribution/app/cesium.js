@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
-import { feature, mesh } from "topojson-client";
+import { mesh } from "topojson-client";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
@@ -20,6 +20,8 @@ const COLOR_GREEN_BASE = "rgb(15,157,88)";
 const COLOR_YELLOW_BASE = "rgb(244,180,0)";
 const DEFAULT_CENTER = { lat: 35.8617, lng: 104.1954 };
 const CUR_ALT = 0.002;
+const BORDER_ALT = 0.002;
+const ADMIN1_ALT = 0.012;
 const ARC_ANIMATE_MS = 7200;
 const ARC_TRAIL_MS = 2600;
 const ARC_TRAIL_ALPHA = 0.18;
@@ -195,7 +197,7 @@ function matchFocusOrQuery(m, focus, query) {
 }
 
 function createStars() {
-  const n = 420;
+  const n = 1400;
   const pos = new Float32Array(n * 3);
   for (let i = 0; i < n; i++) {
     const r = 240 + Math.random() * 520;
@@ -209,7 +211,14 @@ function createStars() {
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-  const m = new THREE.PointsMaterial({ color: 0x9aa0a6, size: 0.55, transparent: true, opacity: 0.045, depthWrite: false });
+  const m = new THREE.PointsMaterial({
+    color: 0xcfe7ff,
+    size: 0.75,
+    transparent: true,
+    opacity: 0.16,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
   return new THREE.Points(g, m);
 }
 
@@ -383,8 +392,6 @@ async function loadBorders() {
   }
 
   const borderGeo = mesh(topo, topo.objects.countries, (a, b) => a !== b);
-  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
-  const r = r0 * 1.002;
 
   const pos = [];
   const pushLine = (coords) => {
@@ -393,8 +400,8 @@ async function loadBorders() {
       const a = coords[i - 1];
       const b = coords[i];
       if (!Array.isArray(a) || !Array.isArray(b) || a.length < 2 || b.length < 2) continue;
-      const v1 = lngLatToVector3(a[0], a[1], r);
-      const v2 = lngLatToVector3(b[0], b[1], r);
+      const v1 = geoToVector3(a[0], a[1], BORDER_ALT);
+      const v2 = geoToVector3(b[0], b[1], BORDER_ALT);
       pos.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
     }
   };
@@ -429,11 +436,19 @@ function lngLatToVector3(lng, lat, radius) {
   return new THREE.Vector3(x, y, z);
 }
 
+function geoToVector3(lng, lat, altitude) {
+  if (globe && typeof globe.getCoords === "function") {
+    const v = globe.getCoords(lat, lng, altitude || 0);
+    return new THREE.Vector3(v.x, v.y, v.z);
+  }
+  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
+  const r = r0 * (1 + (altitude || 0));
+  return lngLatToVector3(lng, lat, r);
+}
+
 async function ensureAdmin1Borders() {
   if (admin1Lines || !scene || !globe) return;
   const gj = await fetch(ADMIN1_BORDERS_URL, { cache: "force-cache" }).then((r) => r.json());
-  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
-  const r = r0 * 1.012;
   const pos = [];
 
   const pushLine = (coords) => {
@@ -442,8 +457,8 @@ async function ensureAdmin1Borders() {
       const a = coords[i - 1];
       const b = coords[i];
       if (!Array.isArray(a) || !Array.isArray(b) || a.length < 2 || b.length < 2) continue;
-      const v1 = lngLatToVector3(a[0], a[1], r);
-      const v2 = lngLatToVector3(b[0], b[1], r);
+      const v1 = geoToVector3(a[0], a[1], ADMIN1_ALT);
+      const v2 = geoToVector3(b[0], b[1], ADMIN1_ALT);
       pos.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
     }
   };
@@ -686,9 +701,28 @@ async function applyBaseMapMode(mode) {
 
   if (defaultGlobeMat) globe.globeMaterial(defaultGlobeMat);
   if (typeof globe.globeImageUrl === "function") {
-    globe.globeImageUrl(v === "links" ? EARTH_NIGHT_URL : EARTH_HQ_DAY_URL);
+    if (v === "hqDay") globe.globeImageUrl(EARTH_DAY_URL);
+    else globe.globeImageUrl(v === "links" ? EARTH_NIGHT_URL : EARTH_HQ_DAY_URL);
   }
-  if (typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_TOPOLOGY_URL);
+  if (typeof globe.bumpImageUrl === "function") {
+    if (v === "hqDay") {
+      try {
+        globe.bumpImageUrl(null);
+      } catch {
+        globe.bumpImageUrl(EARTH_TOPOLOGY_URL);
+      }
+    } else {
+      globe.bumpImageUrl(EARTH_TOPOLOGY_URL);
+    }
+  }
+  if (v === "hqDay" && defaultGlobeMat) {
+    defaultGlobeMat.color = new THREE.Color("#ffffff");
+    defaultGlobeMat.emissive = new THREE.Color("#000000");
+    defaultGlobeMat.emissiveIntensity = 0.0;
+    defaultGlobeMat.shininess = 0.02;
+    if (defaultGlobeMat.specular) defaultGlobeMat.specular = new THREE.Color("#000000");
+    defaultGlobeMat.needsUpdate = true;
+  }
 }
 
 function createSpritePointsMaterial() {
@@ -779,8 +813,6 @@ function ensureSpritePointsCapacity(count) {
 
 function updateSpritePoints(pointsCur) {
   if (!pointsHigh || !Array.isArray(pointsCur)) return;
-  const r0 = typeof globe?.getGlobeRadius === "function" ? globe.getGlobeRadius() : 100;
-  const r = r0 * (1 + CUR_ALT);
   const n = pointsCur.length;
   ensureSpritePointsCapacity(n);
   const pos = pointsBufPos;
@@ -788,7 +820,7 @@ function updateSpritePoints(pointsCur) {
   const col = pointsBufCol;
   for (let i = 0; i < n; i++) {
     const d = pointsCur[i];
-    const v = lngLatToVector3(d.lng, d.lat, r);
+    const v = geoToVector3(d.lng, d.lat, CUR_ALT);
     pos[i * 3 + 0] = v.x;
     pos[i * 3 + 1] = v.y;
     pos[i * 3 + 2] = v.z;
@@ -1667,7 +1699,7 @@ async function init() {
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.9;
+  renderer.toneMappingExposure = 0.84;
   renderer.setClearColor(0xf5f5f7, 1);
   renderer.domElement.style.width = "100%";
   renderer.domElement.style.height = "100%";
@@ -1685,28 +1717,26 @@ async function init() {
   controls.target.set(0, 0, 0);
   controls.update();
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.68);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.92);
   scene.add(ambient);
-  const sun = new THREE.DirectionalLight(0xffffff, 0.38);
+  const sun = new THREE.DirectionalLight(0xffffff, 0.62);
   sun.position.set(400, 220, 280);
   scene.add(sun);
 
   stars = createStars();
-  stars.visible = false;
+  stars.visible = true;
   scene.add(stars);
 
   globe = new ThreeGlobe()
-    .showAtmosphere(true)
-    .atmosphereColor("#BFE6FF")
-    .atmosphereAltitude(0.12)
+    .showAtmosphere(false)
     .showGraticules(false);
 
   defaultGlobeMat = globe.globeMaterial();
   if (defaultGlobeMat) {
-    defaultGlobeMat.color = new THREE.Color(OCEAN_COLOR);
-    defaultGlobeMat.emissive = new THREE.Color("#7cc4ff");
-    defaultGlobeMat.emissiveIntensity = 0.04;
-    defaultGlobeMat.shininess = 0.08;
+    defaultGlobeMat.color = new THREE.Color("#ffffff");
+    defaultGlobeMat.emissive = new THREE.Color("#000000");
+    defaultGlobeMat.emissiveIntensity = 0.0;
+    defaultGlobeMat.shininess = 0.04;
   }
   if (typeof globe.pointsData === "function") globe.pointsData([]);
 
@@ -1901,25 +1931,25 @@ window.addEventListener("keydown", (e) => {
 });
 
 const ACTIVE_SCHEME = {
-  bg: "#0b1020",
-  borderColor: "#cbd5e1",
-  baseMapMode: "dayNight",
-  bloom: 0.46,
-  borderAlpha: 0.12,
-  pointsOpacity: 0.88,
-  pointsAdditive: true,
-  pointsHue: "gold",
-  atmosphereAlt: 0.13,
-  emissive: 0.0,
-  arcDashLength: 0.32,
-  arcDashGap: 1.15,
-  arcStrokeBase: 0.44,
-  arcStrokeScale: 0.14,
-  arcAltScale: 0.28,
-  arcAltMin: 0.07,
-  arcAltMax: 0.28,
-  arcAnimateBase: 6400,
-  arcUseGradient: true,
+  bg: "#05070c",
+  borderColor: "#111827",
+  baseMapMode: "hqDay",
+  bloom: 0.18,
+  borderAlpha: 0.22,
+  pointsOpacity: 0.78,
+  pointsAdditive: false,
+  pointsHue: "red",
+  atmosphereAlt: 0.02,
+  emissive: 0.05,
+  arcDashLength: 0.22,
+  arcDashGap: 1.65,
+  arcStrokeBase: 0.34,
+  arcStrokeScale: 0.1,
+  arcAltScale: 0.2,
+  arcAltMin: 0.05,
+  arcAltMax: 0.2,
+  arcAnimateBase: 8600,
+  arcUseGradient: false,
 };
 
 async function applyActiveScheme() {

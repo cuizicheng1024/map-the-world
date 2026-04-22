@@ -406,7 +406,7 @@ function computePageRank({ damping = 0.85, iterations = 24 } = {}) {
   for (const node of nodes) {
     const v = pr[idx.get(node.id)] ?? (1 / n);
     const norm = (v - min) / span;
-    const gamma = 0.55;
+    const gamma = 1.6;
     node.pr = v;
     node.prNorm = Math.pow(norm, gamma);
   }
@@ -440,6 +440,21 @@ function buildIndex() {
   const deg = new Float32Array(nodes.length);
   for (let i = 0; i < nodes.length; i++) {
     deg[i] = neighbors.get(nodes[i].id)?.size ?? 0;
+  }
+  let degMin = Infinity;
+  let degMax = -Infinity;
+  for (let i = 0; i < deg.length; i++) {
+    const v = deg[i];
+    if (v < degMin) degMin = v;
+    if (v > degMax) degMax = v;
+  }
+  const degSpan = Math.max(1e-9, degMax - degMin);
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    const dv = deg[i];
+    const dn = (dv - degMin) / degSpan;
+    n.deg = dv;
+    n.degNorm = Math.pow(Math.max(0, Math.min(1, dn)), 1.35);
   }
   const edgeFrom = new Int32Array(edges.length);
   const edgeTo = new Int32Array(edges.length);
@@ -1101,11 +1116,13 @@ function draw() {
     const alpha = hl ? (isHL ? 1 : 0.18) : 1;
     const baseAlpha = selectedId ? alpha : n.kind === "person" ? 0.86 : 0.52;
     ctx.globalAlpha = isSelected || isHover ? 1 : baseAlpha;
-    const pr = Math.max(0, Math.min(1, n.prNorm ?? 0.4));
-    const baseR = n.kind === "person" ? 4.4 : 4.0;
-    const prAdd = 1.2 + pr * 5.2;
-    const kindScale = n.kind === "person" ? 1 : 0.86;
-    const r = (isSelected ? 8.8 : isHover ? 8.2 : (baseR + prAdd) * kindScale) / view.k;
+    const pr = Math.max(0, Math.min(1, n.prNorm ?? 0.0));
+    const dg = Math.max(0, Math.min(1, n.degNorm ?? 0.0));
+    const importance = 0.68 * pr + 0.32 * dg;
+    const baseR = n.kind === "person" ? 3.6 : 3.2;
+    const boost = 1.2 + Math.pow(importance, 1.15) * 16.5;
+    const kindScale = n.kind === "person" ? 1 : 0.9;
+    const r = (isSelected ? 11.0 : isHover ? 10.0 : (baseR + boost) * kindScale) / view.k;
     if (isSelected || isHover) {
       ctx.globalAlpha = 0.22;
       ctx.beginPath();
