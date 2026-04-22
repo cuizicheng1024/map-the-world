@@ -51,6 +51,8 @@ let overlayHideTimer = 0;
 let pointerRaf = 0;
 let pointerState = { x: 0, y: 0, clientX: 0, clientY: 0, dirty: false };
 let sim = null;
+let forceStartedAt = 0;
+let forceLastTickAt = 0;
 
 function scheduleDraw() {
   if (drawRaf) return;
@@ -197,6 +199,8 @@ function startForceAtlas2() {
   const n = nodes.length;
   forceState.maxIter = Math.max(140, Math.min(320, 160 + Math.floor(Math.log1p(n) * 44)));
   settleFrames = 0;
+  forceStartedAt = performance.now();
+  forceLastTickAt = forceStartedAt;
   setOverlayVisible(true, "布局计算中…", "正在计算力导向布局");
   forceState.raf = requestAnimationFrame(stepForceAtlas2);
   scheduleDraw();
@@ -230,6 +234,15 @@ function setForceLayout() {
 
 function stepForceAtlas2() {
   if (!forceState.running) return;
+  const now0 = performance.now();
+  if (forceState.iter >= forceState.maxIter) {
+    stopForceAtlas2();
+    return;
+  }
+  if (forceStartedAt && now0 - forceStartedAt > 12000) {
+    stopForceAtlas2();
+    return;
+  }
   if (!sim || sim.fx.length !== nodes.length) buildIndex();
   const cx = width / 2;
   const cy = height / 2;
@@ -243,103 +256,110 @@ function stepForceAtlas2() {
   const cellSize = 84;
   const deg = sim.deg;
 
-  for (let s = 0; s < stepsPerFrame; s++) {
-    const fx = sim.fx;
-    const fy = sim.fy;
-    fx.fill(0);
-    fy.fill(0);
+  try {
+    for (let s = 0; s < stepsPerFrame; s++) {
+      const fx = sim.fx;
+      const fy = sim.fy;
+      fx.fill(0);
+      fy.fill(0);
 
-    const grid = new Map();
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-      const gx = Math.floor(n.x / cellSize);
-      const gy = Math.floor(n.y / cellSize);
-      const k = `${gx},${gy}`;
-      if (!grid.has(k)) grid.set(k, []);
-      grid.get(k).push(i);
-    }
+      const grid = new Map();
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const gx = Math.floor(n.x / cellSize);
+        const gy = Math.floor(n.y / cellSize);
+        const k = `${gx},${gy}`;
+        if (!grid.has(k)) grid.set(k, []);
+        grid.get(k).push(i);
+      }
 
-    for (let i = 0; i < nodes.length; i++) {
-      const a = nodes[i];
-      const ma = 1 + Math.log1p(deg[i] ?? 0);
-      const ax = Math.floor(a.x / cellSize);
-      const ay = Math.floor(a.y / cellSize);
-      for (let dxCell = -1; dxCell <= 1; dxCell++) {
-        for (let dyCell = -1; dyCell <= 1; dyCell++) {
-          const k = `${ax + dxCell},${ay + dyCell}`;
-          const bucket = grid.get(k);
-          if (!bucket) continue;
-          for (const j of bucket) {
-            if (j <= i) continue;
-            const b = nodes[j];
-            const mb = 1 + Math.log1p(deg[j] ?? 0);
-            let dx = a.x - b.x;
-            let dy = a.y - b.y;
-            let d2 = dx * dx + dy * dy;
-            if (d2 < 1e-4) {
-              dx = (Math.random() - 0.5) * 0.01;
-              dy = (Math.random() - 0.5) * 0.01;
-              d2 = dx * dx + dy * dy;
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        const ma = 1 + Math.log1p(deg[i] ?? 0);
+        const ax = Math.floor(a.x / cellSize);
+        const ay = Math.floor(a.y / cellSize);
+        for (let dxCell = -1; dxCell <= 1; dxCell++) {
+          for (let dyCell = -1; dyCell <= 1; dyCell++) {
+            const k = `${ax + dxCell},${ay + dyCell}`;
+            const bucket = grid.get(k);
+            if (!bucket) continue;
+            for (const j of bucket) {
+              if (j <= i) continue;
+              const b = nodes[j];
+              const mb = 1 + Math.log1p(deg[j] ?? 0);
+              let dx = a.x - b.x;
+              let dy = a.y - b.y;
+              let d2 = dx * dx + dy * dy;
+              if (d2 < 1e-4) {
+                dx = (Math.random() - 0.5) * 0.01;
+                dy = (Math.random() - 0.5) * 0.01;
+                d2 = dx * dx + dy * dy;
+              }
+              const f = (scalingRatio * ma * mb) / d2;
+              fx[i] += dx * f;
+              fy[i] += dy * f;
+              fx[j] -= dx * f;
+              fy[j] -= dy * f;
             }
-            const f = (scalingRatio * ma * mb) / d2;
-            fx[i] += dx * f;
-            fy[i] += dy * f;
-            fx[j] -= dx * f;
-            fy[j] -= dy * f;
           }
         }
       }
-    }
 
-    for (let ei = 0; ei < edges.length; ei++) {
-      const ia = sim.edgeFrom[ei];
-      const ib = sim.edgeTo[ei];
-      if (ia < 0 || ib < 0) continue;
-      const a = nodes[ia];
-      const b = nodes[ib];
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-      const f = edgeWeight * dist;
-      fx[ia] += dx * f;
-      fy[ia] += dy * f;
-      fx[ib] -= dx * f;
-      fy[ib] -= dy * f;
-    }
+      for (let ei = 0; ei < edges.length; ei++) {
+        const ia = sim.edgeFrom[ei];
+        const ib = sim.edgeTo[ei];
+        if (ia < 0 || ib < 0) continue;
+        const a = nodes[ia];
+        const b = nodes[ib];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const f = edgeWeight * dist;
+        fx[ia] += dx * f;
+        fy[ia] += dy * f;
+        fx[ib] -= dx * f;
+        fy[ib] -= dy * f;
+      }
 
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-      const m = 1 + Math.log1p(deg[i] ?? 0);
-      const gx = (cx - n.x) * gravity * m;
-      const gy = (cy - n.y) * gravity * m;
-      const dx = (fx[i] + gx) * 0.0022;
-      const dy = (fy[i] + gy) * 0.0022;
-      n.vx = (n.vx + dx) * damping;
-      n.vy = (n.vy + dy) * damping;
-      const step = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
-      const k = step > maxStep ? maxStep / step : 1;
-      n.x += n.vx * k;
-      n.y += n.vy * k;
-    }
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const m = 1 + Math.log1p(deg[i] ?? 0);
+        const gx = (cx - n.x) * gravity * m;
+        const gy = (cy - n.y) * gravity * m;
+        const dx = (fx[i] + gx) * 0.0022;
+        const dy = (fy[i] + gy) * 0.0022;
+        n.vx = (n.vx + dx) * damping;
+        n.vy = (n.vy + dy) * damping;
+        const step = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+        const k = step > maxStep ? maxStep / step : 1;
+        n.x += n.vx * k;
+        n.y += n.vy * k;
+      }
 
-    forceState.iter += 1;
-    if (forceState.iter % 10 === 0) {
-      const pct = Math.min(99, Math.floor((forceState.iter / Math.max(1, forceState.maxIter)) * 100));
-      setOverlayVisible(true, "布局计算中…", `迭代 ${forceState.iter}/${forceState.maxIter} · ${pct}%`);
+      forceState.iter += 1;
+      forceLastTickAt = performance.now();
+      if (forceState.iter % 10 === 0) {
+        const pct = Math.min(99, Math.floor((forceState.iter / Math.max(1, forceState.maxIter)) * 100));
+        setOverlayVisible(true, "布局计算中…", `迭代 ${forceState.iter}/${forceState.maxIter} · ${pct}%`);
+      }
+      const avgSpeed = nodes.length
+        ? nodes.reduce((acc, n) => acc + Math.sqrt((n.vx || 0) * (n.vx || 0) + (n.vy || 0) * (n.vy || 0)), 0) / nodes.length
+        : 0;
+      if (forceState.iter > 40 && avgSpeed < 0.06) settleFrames += 1;
+      else settleFrames = 0;
+      if (settleFrames >= 18) {
+        stopForceAtlas2();
+        return;
+      }
+      if (forceState.iter >= forceState.maxIter) {
+        stopForceAtlas2();
+        return;
+      }
     }
-    const avgSpeed = nodes.length
-      ? nodes.reduce((acc, n) => acc + Math.sqrt((n.vx || 0) * (n.vx || 0) + (n.vy || 0) * (n.vy || 0)), 0) / nodes.length
-      : 0;
-    if (forceState.iter > 40 && avgSpeed < 0.06) settleFrames += 1;
-    else settleFrames = 0;
-    if (settleFrames >= 18) {
-      stopForceAtlas2();
-      return;
-    }
-    if (forceState.iter >= forceState.maxIter) {
-      stopForceAtlas2();
-      return;
-    }
+  } catch (e) {
+    console.error(e);
+    stopForceAtlas2();
+    return;
   }
 
   if (!forceState.running) return;
