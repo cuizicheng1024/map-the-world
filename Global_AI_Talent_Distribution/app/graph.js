@@ -22,6 +22,7 @@ const toggleEdgesBtn = document.getElementById("toggleEdgesBtn");
 const graphOverlay = document.getElementById("graphOverlay");
 const graphOverlayTitle = document.getElementById("graphOverlayTitle");
 const graphOverlaySub = document.getElementById("graphOverlaySub");
+const graphOverlaySkip = document.getElementById("graphOverlaySkip");
 const hoverTip = document.getElementById("hoverTip");
 const ctx = canvas.getContext("2d");
 
@@ -47,7 +48,6 @@ let showEdges = false;
 let settleFrames = 0;
 let drawRaf = 0;
 let lastHoverId = "";
-let overlayHideTimer = 0;
 let pointerRaf = 0;
 let pointerState = { x: 0, y: 0, clientX: 0, clientY: 0, dirty: false };
 let sim = null;
@@ -64,19 +64,8 @@ function scheduleDraw() {
 
 function setOverlayVisible(isVisible, title, sub) {
   if (!graphOverlay) return;
-  if (overlayHideTimer) window.clearTimeout(overlayHideTimer);
-  overlayHideTimer = 0;
-  if (isVisible) {
-    graphOverlay.classList.remove("overlayFadeOut");
-    graphOverlay.hidden = false;
-  } else {
-    graphOverlay.classList.add("overlayFadeOut");
-    overlayHideTimer = window.setTimeout(() => {
-      graphOverlay.hidden = true;
-      graphOverlay.classList.remove("overlayFadeOut");
-      overlayHideTimer = 0;
-    }, 170);
-  }
+  graphOverlay.hidden = !isVisible;
+  graphOverlay.classList.remove("overlayFadeOut");
   if (graphOverlayTitle && title != null) graphOverlayTitle.textContent = String(title);
   if (graphOverlaySub && sub != null) graphOverlaySub.textContent = String(sub);
 }
@@ -1075,6 +1064,11 @@ geoYearInput?.addEventListener("input", (ev) => {
   if (geoYearLabel) geoYearLabel.textContent = String(geoYear);
   if (layoutMode === "geo") setGeoLayout();
   scheduleDraw();
+});
+
+graphOverlaySkip?.addEventListener("click", () => {
+  stopForceAtlas2();
+  setLayoutMode("ring");
 });
 
 toggleSidebarBtn?.addEventListener("click", () => {
