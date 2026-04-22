@@ -227,13 +227,14 @@ input[type="text"]:focus {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(245, 245, 247, 0.65);
-  backdrop-filter: blur(6px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0);
   z-index: 12;
   opacity: 1;
   transition: opacity 160ms var(--ease);
+  pointer-events: none;
 }
 
 .overlay.overlayFadeOut {
@@ -248,6 +249,7 @@ input[type="text"]:focus {
   box-shadow: var(--shadow);
   min-width: 220px;
   animation: overlayPop 180ms ease-out;
+  pointer-events: auto;
 }
 
 .overlayTitle {

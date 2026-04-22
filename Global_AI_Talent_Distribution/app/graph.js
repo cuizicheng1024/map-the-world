@@ -23,6 +23,7 @@ const graphOverlay = document.getElementById("graphOverlay");
 const graphOverlayTitle = document.getElementById("graphOverlayTitle");
 const graphOverlaySub = document.getElementById("graphOverlaySub");
 const graphOverlaySkip = document.getElementById("graphOverlaySkip");
+const graphOverlayRetry = document.getElementById("graphOverlayRetry");
 const hoverTip = document.getElementById("hoverTip");
 const ctx = canvas.getContext("2d");
 
@@ -53,6 +54,9 @@ let pointerState = { x: 0, y: 0, clientX: 0, clientY: 0, dirty: false };
 let sim = null;
 let forceStartedAt = 0;
 let forceLastTickAt = 0;
+let overlayMode = "";
+let forceWorker = null;
+let forceWorkerRunId = 0;
 
 function scheduleDraw() {
   if (drawRaf) return;
@@ -68,6 +72,278 @@ function setOverlayVisible(isVisible, title, sub) {
   graphOverlay.classList.remove("overlayFadeOut");
   if (graphOverlayTitle && title != null) graphOverlayTitle.textContent = String(title);
   if (graphOverlaySub && sub != null) graphOverlaySub.textContent = String(sub);
+}
+
+function setOverlayMode(mode) {
+  overlayMode = String(mode || "");
+  if (graphOverlayRetry) graphOverlayRetry.hidden = overlayMode !== "error";
+  if (graphOverlaySkip) graphOverlaySkip.hidden = overlayMode !== "layout";
+}
+
+function showErrorOverlay(title, sub) {
+  setOverlayMode("error");
+  setOverlayVisible(true, title || "加载失败", sub || "请点击重试");
+}
+
+function createForceWorker() {
+  const src = `
+    let running = false;
+    let runId = 0;
+    let iter = 0;
+    let maxIter = 240;
+    let settleFrames = 0;
+    let startedAt = 0;
+    let lastTickAt = 0;
+    let x = null;
+    let y = null;
+    let vx = null;
+    let vy = null;
+    let deg = null;
+    let edgeFrom = null;
+    let edgeTo = null;
+    let n = 0;
+    let cx = 0;
+    let cy = 0;
+    let stepsPerFrame = 2;
+    let scalingRatio = 18;
+    let gravity = 0.085;
+    let damping = 0.72;
+    let maxStep = 3.2;
+    let edgeWeight = 0.06;
+    let cellSize = 84;
+
+    function stepOnce() {
+      const fx = new Float32Array(n);
+      const fy = new Float32Array(n);
+      const grid = new Map();
+      for (let i = 0; i < n; i++) {
+        const gx = Math.floor(x[i] / cellSize);
+        const gy = Math.floor(y[i] / cellSize);
+        const k = gx + "," + gy;
+        let arr = grid.get(k);
+        if (!arr) {
+          arr = [];
+          grid.set(k, arr);
+        }
+        arr.push(i);
+      }
+      for (let i = 0; i < n; i++) {
+        const ax = x[i];
+        const ay = y[i];
+        const ma = 1 + Math.log1p(deg[i] || 0);
+        const cxCell = Math.floor(ax / cellSize);
+        const cyCell = Math.floor(ay / cellSize);
+        for (let dxCell = -1; dxCell <= 1; dxCell++) {
+          for (let dyCell = -1; dyCell <= 1; dyCell++) {
+            const k = (cxCell + dxCell) + "," + (cyCell + dyCell);
+            const bucket = grid.get(k);
+            if (!bucket) continue;
+            for (let bi = 0; bi < bucket.length; bi++) {
+              const j = bucket[bi];
+              if (j <= i) continue;
+              let dx = ax - x[j];
+              let dy = ay - y[j];
+              let d2 = dx * dx + dy * dy;
+              if (d2 < 1e-4) {
+                dx = (Math.random() - 0.5) * 0.01;
+                dy = (Math.random() - 0.5) * 0.01;
+                d2 = dx * dx + dy * dy;
+              }
+              const mb = 1 + Math.log1p(deg[j] || 0);
+              const f = (scalingRatio * ma * mb) / d2;
+              fx[i] += dx * f;
+              fy[i] += dy * f;
+              fx[j] -= dx * f;
+              fy[j] -= dy * f;
+            }
+          }
+        }
+      }
+      for (let ei = 0; ei < edgeFrom.length; ei++) {
+        const ia = edgeFrom[ei];
+        const ib = edgeTo[ei];
+        if (ia < 0 || ib < 0) continue;
+        const dx = x[ib] - x[ia];
+        const dy = y[ib] - y[ia];
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const f = edgeWeight * dist;
+        fx[ia] += dx * f;
+        fy[ia] += dy * f;
+        fx[ib] -= dx * f;
+        fy[ib] -= dy * f;
+      }
+      let speedSum = 0;
+      for (let i = 0; i < n; i++) {
+        const m = 1 + Math.log1p(deg[i] || 0);
+        const gx = (cx - x[i]) * gravity * m;
+        const gy = (cy - y[i]) * gravity * m;
+        const dx = (fx[i] + gx) * 0.0022;
+        const dy = (fy[i] + gy) * 0.0022;
+        vx[i] = (vx[i] + dx) * damping;
+        vy[i] = (vy[i] + dy) * damping;
+        const step = Math.sqrt(vx[i] * vx[i] + vy[i] * vy[i]);
+        speedSum += step;
+        const k = step > maxStep ? maxStep / step : 1;
+        x[i] += vx[i] * k;
+        y[i] += vy[i] * k;
+      }
+      return speedSum / Math.max(1, n);
+    }
+
+    function emitProgress() {
+      const out = new Float32Array(n * 2);
+      for (let i = 0; i < n; i++) {
+        out[i * 2] = x[i];
+        out[i * 2 + 1] = y[i];
+      }
+      const pct = Math.min(99, Math.floor((iter / Math.max(1, maxIter)) * 100));
+      postMessage({ type: "progress", runId, iter, maxIter, pct, positions: out.buffer }, [out.buffer]);
+    }
+
+    function tick() {
+      if (!running) return;
+      const now = performance.now();
+      if (startedAt && now - startedAt > 12000) {
+        running = false;
+        postMessage({ type: "done", runId, reason: "timeout" });
+        return;
+      }
+      if (iter >= maxIter) {
+        running = false;
+        postMessage({ type: "done", runId, reason: "maxIter" });
+        return;
+      }
+      const t0 = performance.now();
+      while (running && performance.now() - t0 < 10) {
+        for (let s = 0; s < stepsPerFrame; s++) {
+          const avgSpeed = stepOnce();
+          iter += 1;
+          lastTickAt = performance.now();
+          if (iter > 40 && avgSpeed < 0.06) settleFrames += 1;
+          else settleFrames = 0;
+          if (settleFrames >= 18) {
+            running = false;
+            postMessage({ type: "done", runId, reason: "settled", iter, maxIter });
+            return;
+          }
+          if (iter >= maxIter) break;
+        }
+        if (iter >= maxIter) break;
+      }
+      if (iter % 10 === 0) emitProgress();
+      setTimeout(tick, 0);
+    }
+
+    onmessage = (ev) => {
+      const msg = ev.data || {};
+      if (msg.type === "init") {
+        runId = msg.runId || 0;
+        iter = 0;
+        settleFrames = 0;
+        startedAt = performance.now();
+        lastTickAt = startedAt;
+        maxIter = msg.maxIter || 240;
+        n = msg.n || 0;
+        cx = msg.cx || 0;
+        cy = msg.cy || 0;
+        stepsPerFrame = msg.params?.stepsPerFrame ?? stepsPerFrame;
+        scalingRatio = msg.params?.scalingRatio ?? scalingRatio;
+        gravity = msg.params?.gravity ?? gravity;
+        damping = msg.params?.damping ?? damping;
+        maxStep = msg.params?.maxStep ?? maxStep;
+        edgeWeight = msg.params?.edgeWeight ?? edgeWeight;
+        cellSize = msg.params?.cellSize ?? cellSize;
+        x = new Float32Array(msg.x);
+        y = new Float32Array(msg.y);
+        vx = new Float32Array(n);
+        vy = new Float32Array(n);
+        deg = new Float32Array(msg.deg);
+        edgeFrom = new Int32Array(msg.edgeFrom);
+        edgeTo = new Int32Array(msg.edgeTo);
+        postMessage({ type: "ready", runId });
+        return;
+      }
+      if (msg.type === "start") {
+        if (running) return;
+        running = true;
+        emitProgress();
+        tick();
+        return;
+      }
+      if (msg.type === "stop") {
+        running = false;
+        postMessage({ type: "stopped", runId });
+      }
+    };
+  `;
+  const url = URL.createObjectURL(new Blob([src], { type: "application/javascript" }));
+  const w = new Worker(url);
+  URL.revokeObjectURL(url);
+  return w;
+}
+
+function stopForceWorker() {
+  if (!forceWorker) return;
+  try {
+    forceWorker.postMessage({ type: "stop" });
+  } catch {}
+  forceWorker.terminate();
+  forceWorker = null;
+}
+
+function startForceWorker() {
+  stopForceWorker();
+  forceWorkerRunId += 1;
+  const runId = forceWorkerRunId;
+  forceWorker = createForceWorker();
+  const cx = width / 2;
+  const cy = height / 2;
+  const x = new Float32Array(nodes.length);
+  const y = new Float32Array(nodes.length);
+  for (let i = 0; i < nodes.length; i++) {
+    x[i] = nodes[i].x;
+    y[i] = nodes[i].y;
+  }
+  const params = { stepsPerFrame: 2, scalingRatio: 18, gravity: 0.085, damping: 0.72, maxStep: 3.2, edgeWeight: 0.06, cellSize: 84 };
+  forceWorker.onmessage = (ev) => {
+    const m = ev.data || {};
+    if (m.runId !== runId) return;
+    if (m.type === "progress" && m.positions) {
+      const arr = new Float32Array(m.positions);
+      const nn = Math.min(nodes.length, Math.floor(arr.length / 2));
+      for (let i = 0; i < nn; i++) {
+        nodes[i].x = arr[i * 2];
+        nodes[i].y = arr[i * 2 + 1];
+      }
+      const pct = Number.isFinite(m.pct) ? m.pct : Math.min(99, Math.floor((m.iter / Math.max(1, m.maxIter)) * 100));
+      setOverlayVisible(true, "布局计算中…", `迭代 ${m.iter}/${m.maxIter} · ${pct}%`);
+      scheduleDraw();
+      return;
+    }
+    if (m.type === "done") {
+      stopForceAtlas2();
+      return;
+    }
+  };
+  forceWorker.onerror = () => {
+    stopForceWorker();
+    stopForceAtlas2();
+  };
+  forceWorker.postMessage({
+    type: "init",
+    runId,
+    n: nodes.length,
+    cx,
+    cy,
+    maxIter: forceState.maxIter,
+    x: x.buffer,
+    y: y.buffer,
+    deg: sim?.deg?.buffer,
+    edgeFrom: sim?.edgeFrom?.buffer,
+    edgeTo: sim?.edgeTo?.buffer,
+    params,
+  });
+  forceWorker.postMessage({ type: "start", runId });
 }
 
 function computePageRank({ damping = 0.85, iterations = 24 } = {}) {
@@ -190,7 +466,13 @@ function startForceAtlas2() {
   settleFrames = 0;
   forceStartedAt = performance.now();
   forceLastTickAt = forceStartedAt;
+  setOverlayMode("layout");
   setOverlayVisible(true, "布局计算中…", "正在计算力导向布局");
+  if (typeof Worker !== "undefined" && sim && sim.edgeFrom && sim.edgeTo) {
+    startForceWorker();
+    scheduleDraw();
+    return;
+  }
   forceState.raf = requestAnimationFrame(stepForceAtlas2);
   scheduleDraw();
 }
@@ -200,6 +482,8 @@ function stopForceAtlas2() {
   forceState.running = false;
   if (forceState.raf) cancelAnimationFrame(forceState.raf);
   forceState.raf = 0;
+  stopForceWorker();
+  setOverlayMode("");
   setOverlayVisible(false);
   scheduleDraw();
 }
@@ -963,15 +1247,24 @@ async function main() {
     setLayout();
   }, 120));
 
+  setOverlayMode("loading");
   setOverlayVisible(true, "加载中…", "正在加载关系数据");
-  const data = await fetchJson(DATA_PATH);
-  nodes = (data.nodes ?? []).map((n) => ({ ...n, x: 0, y: 0 }));
-  edges = (data.edges ?? []).map((e) => ({ ...e }));
-  buildIndex();
-  computePageRank();
-  setLayout();
-  applyFocusFromQuery();
-  if (layoutMode !== "force") setOverlayVisible(false);
+  try {
+    const data = await fetchJson(DATA_PATH);
+    nodes = (data.nodes ?? []).map((n) => ({ ...n, x: 0, y: 0 }));
+    edges = (data.edges ?? []).map((e) => ({ ...e }));
+    buildIndex();
+    computePageRank();
+    setLayout();
+    applyFocusFromQuery();
+    if (layoutMode !== "force") {
+      setOverlayMode("");
+      setOverlayVisible(false);
+    }
+  } catch (e) {
+    showErrorOverlay("加载失败", String(e?.message ?? e));
+    return;
+  }
 
   canvas.addEventListener("click", onClick);
   canvas.addEventListener("dblclick", onDoubleClick);
@@ -1069,6 +1362,10 @@ geoYearInput?.addEventListener("input", (ev) => {
 graphOverlaySkip?.addEventListener("click", () => {
   stopForceAtlas2();
   setLayoutMode("ring");
+});
+
+graphOverlayRetry?.addEventListener("click", () => {
+  location.reload();
 });
 
 toggleSidebarBtn?.addEventListener("click", () => {
