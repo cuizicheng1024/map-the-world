@@ -40,7 +40,7 @@ let playSpeed = 0.5;
 let renderedArcs = [];
 let lastArcs = [];
 let lastArcsUntil = 0;
-let visualMode = "balanced";
+let pointsHue = "gold";
 let renderedPoints = [];
 let chordCache = null;
 let chordHover = null;
@@ -98,12 +98,6 @@ const chordCanvas = document.getElementById("chordCanvas");
 const chordLevelSelect = document.getElementById("chordLevel");
 const barCanvas = document.getElementById("barCanvas");
 const powerLawLabel = document.getElementById("powerLawLabel");
-const presetBtnA = document.getElementById("presetBtnA");
-const presetBtnB = document.getElementById("presetBtnB");
-const presetBtnC = document.getElementById("presetBtnC");
-const presetBtnD = document.getElementById("presetBtnD");
-const presetBtnE = document.getElementById("presetBtnE");
-const presetBtnF = document.getElementById("presetBtnF");
 
 const state = {
   byYear: new Map(),
@@ -138,7 +132,6 @@ let pointsIndexLow = [];
 let pointsIndexMid = [];
 let pointsIndexHigh = [];
 let hoverKey = "";
-const baseMapSelect = document.getElementById("baseMapMode");
 
 async function loadCityAliases() {
   try {
@@ -805,7 +798,7 @@ function updateSpritePoints(pointsCur) {
     size[i] = clamp(s, 4.0, 14.0);
 
     let rgb = [1.0, 0.68, 0.12];
-    const hue = VISUAL_PRESETS?.[visualMode]?.pointsHue || "amber";
+    const hue = pointsHue || "gold";
     if (hue === "cyan") {
       rgb = c >= 18 ? [0.2, 1.0, 0.95] : c >= 9 ? [0.3, 0.92, 1.0] : [0.45, 0.85, 1.0];
     } else if (hue === "gold") {
@@ -829,20 +822,6 @@ function updateSpritePoints(pointsCur) {
   if (g.attributes.aSize) g.attributes.aSize.needsUpdate = true;
   if (g.attributes.aColor) g.attributes.aColor.needsUpdate = true;
   g.computeBoundingSphere();
-}
-
-function bindPresetButtons() {
-  const bind = (el, key) => {
-    if (!el) return;
-    el.textContent = VISUAL_PRESETS?.[key]?.label || `方案 ${key}`;
-    el.addEventListener("click", () => applyVisualMode(key));
-  };
-  bind(presetBtnA, "A");
-  bind(presetBtnB, "B");
-  bind(presetBtnC, "C");
-  bind(presetBtnD, "D");
-  bind(presetBtnE, "E");
-  bind(presetBtnF, "F");
 }
 
 function updatePickFromEvent(ev) {
@@ -1769,7 +1748,6 @@ async function init() {
   camera.layers.enable(BLOOM_LAYER);
 
   ensureSpritePoints();
-  bindPresetButtons();
 
   if (renderer?.domElement) {
     renderer.domElement.addEventListener("mousemove", (ev) => {
@@ -1786,17 +1764,10 @@ async function init() {
     });
   }
 
-  if (baseMapSelect) {
-    baseMapSelect.addEventListener("change", () => {
-      applyBaseMapMode(baseMapSelect.value);
-    });
-  }
-
   window.addEventListener("resize", resize);
   resize();
   resetView(DEFAULT_CENTER);
 
-  await applyBaseMapMode(baseMapSelect?.value || "links");
   await loadCityAliases();
   await loadMovements();
   await loadBorders();
@@ -1810,8 +1781,7 @@ async function init() {
   if (hudSpeed) hudSpeed.textContent = `${playSpeed} 年/秒`;
   if (hudState) hudState.textContent = "已暂停";
   closeInfoCard();
-  applyVisualMode("A");
-  applyData();
+  await applyActiveScheme();
   if (chordCanvas) {
     chordCanvas.addEventListener("mousemove", (ev) => {
       if (!chordCache) return;
@@ -1930,191 +1900,68 @@ window.addEventListener("keydown", (e) => {
   else play();
 });
 
-const BASE_MAP_PROFILES = {
-  tilesOsm: { baseMapMode: "tiles" },
-  linksNight: { baseMapMode: "links" },
-  dayNight: { baseMapMode: "dayNight" },
-  hqDay: { baseMapMode: "hqDay" },
-  procedural: { baseMapMode: "procedural" },
+const ACTIVE_SCHEME = {
+  bg: "#0b1020",
+  borderColor: "#cbd5e1",
+  baseMapMode: "dayNight",
+  bloom: 0.46,
+  borderAlpha: 0.12,
+  pointsOpacity: 0.88,
+  pointsAdditive: true,
+  pointsHue: "gold",
+  atmosphereAlt: 0.13,
+  emissive: 0.0,
+  arcDashLength: 0.32,
+  arcDashGap: 1.15,
+  arcStrokeBase: 0.44,
+  arcStrokeScale: 0.14,
+  arcAltScale: 0.28,
+  arcAltMin: 0.07,
+  arcAltMax: 0.28,
+  arcAnimateBase: 6400,
+  arcUseGradient: true,
 };
 
-const THEME_PROFILES = {
-  light: { bg: "#f5f5f7", borderColor: "#111827" },
-  paper: { bg: "#fbfbfd", borderColor: "#111827" },
-  dark: { bg: "#070c15", borderColor: "#e5e7eb" },
-  deep: { bg: "#0b1020", borderColor: "#cbd5e1" },
-};
-
-const POINT_PROFILES = {
-  amberGlow: { pointsOpacity: 0.86, pointsAdditive: true, pointsHue: "amber" },
-  cyanNeon: { pointsOpacity: 0.9, pointsAdditive: true, pointsHue: "cyan" },
-  goldGlow: { pointsOpacity: 0.88, pointsAdditive: true, pointsHue: "gold" },
-  redClean: { pointsOpacity: 0.78, pointsAdditive: false, pointsHue: "red" },
-  inkClean: { pointsOpacity: 0.82, pointsAdditive: false, pointsHue: "ink" },
-  auroraSoft: { pointsOpacity: 0.78, pointsAdditive: false, pointsHue: "aurora" },
-};
-
-const VISUAL_PRESETS = {
-  A: {
-    label: "方案 A · Light Atlas",
-    baseMap: "tilesOsm",
-    theme: "light",
-    points: "amberGlow",
-    bloom: 0.26,
-    borderAlpha: 0.18,
-    atmosphereAlt: 0.1,
-    emissive: 0.06,
-    arcDashLength: 0.28,
-    arcDashGap: 1.25,
-    arcStrokeBase: 0.4,
-    arcStrokeScale: 0.13,
-    arcAltScale: 0.24,
-    arcAltMin: 0.06,
-    arcAltMax: 0.24,
-    arcAnimateBase: 7200,
-    arcUseGradient: true,
-  },
-  B: {
-    label: "方案 B · Night Neon",
-    baseMap: "linksNight",
-    theme: "dark",
-    points: "cyanNeon",
-    bloom: 0.62,
-    borderAlpha: 0.14,
-    atmosphereAlt: 0.14,
-    emissive: 0.02,
-    arcDashLength: 0.34,
-    arcDashGap: 1.05,
-    arcStrokeBase: 0.48,
-    arcStrokeScale: 0.16,
-    arcAltScale: 0.3,
-    arcAltMin: 0.08,
-    arcAltMax: 0.32,
-    arcAnimateBase: 5600,
-    arcUseGradient: true,
-  },
-  C: {
-    label: "方案 C · Day/Night Cinematic",
-    baseMap: "dayNight",
-    theme: "deep",
-    points: "goldGlow",
-    bloom: 0.46,
-    borderAlpha: 0.12,
-    atmosphereAlt: 0.13,
-    emissive: 0.0,
-    arcDashLength: 0.32,
-    arcDashGap: 1.15,
-    arcStrokeBase: 0.44,
-    arcStrokeScale: 0.14,
-    arcAltScale: 0.28,
-    arcAltMin: 0.07,
-    arcAltMax: 0.28,
-    arcAnimateBase: 6400,
-    arcUseGradient: true,
-  },
-  D: {
-    label: "方案 D · Minimal Editorial",
-    baseMap: "hqDay",
-    theme: "light",
-    points: "redClean",
-    bloom: 0.18,
-    borderAlpha: 0.22,
-    atmosphereAlt: 0.095,
-    emissive: 0.05,
-    arcDashLength: 0.22,
-    arcDashGap: 1.65,
-    arcStrokeBase: 0.34,
-    arcStrokeScale: 0.1,
-    arcAltScale: 0.2,
-    arcAltMin: 0.05,
-    arcAltMax: 0.2,
-    arcAnimateBase: 8600,
-    arcUseGradient: false,
-  },
-  E: {
-    label: "方案 E · Clean Ink",
-    baseMap: "procedural",
-    theme: "paper",
-    points: "inkClean",
-    bloom: 0.22,
-    borderAlpha: 0.24,
-    atmosphereAlt: 0.085,
-    emissive: 0.02,
-    arcDashLength: 0.24,
-    arcDashGap: 1.55,
-    arcStrokeBase: 0.34,
-    arcStrokeScale: 0.1,
-    arcAltScale: 0.2,
-    arcAltMin: 0.05,
-    arcAltMax: 0.2,
-    arcAnimateBase: 9000,
-    arcUseGradient: false,
-  },
-  F: {
-    label: "方案 F · Aurora",
-    baseMap: "tilesOsm",
-    theme: "light",
-    points: "auroraSoft",
-    bloom: 0.34,
-    borderAlpha: 0.16,
-    atmosphereAlt: 0.11,
-    emissive: 0.02,
-    arcDashLength: 0.32,
-    arcDashGap: 1.05,
-    arcStrokeBase: 0.42,
-    arcStrokeScale: 0.14,
-    arcAltScale: 0.26,
-    arcAltMin: 0.06,
-    arcAltMax: 0.28,
-    arcAnimateBase: 6600,
-    arcUseGradient: true,
-  },
-};
-
-function resolveVisualPreset(key) {
-  const raw = VISUAL_PRESETS[key] ?? VISUAL_PRESETS.A;
-  const base = BASE_MAP_PROFILES[raw.baseMap] ?? BASE_MAP_PROFILES.linksNight;
-  const theme = THEME_PROFILES[raw.theme] ?? THEME_PROFILES.light;
-  const points = POINT_PROFILES[raw.points] ?? POINT_PROFILES.amberGlow;
-  return { ...base, ...theme, ...points, ...raw };
-}
-
-function applyVisualMode(nextMode) {
-  const preset = resolveVisualPreset(nextMode);
-  visualMode = nextMode in VISUAL_PRESETS ? nextMode : "A";
-  themeBgOverride = preset.bg || "";
-  bloomStrength = preset.bloom;
-  borderAlpha = preset.borderAlpha;
+async function applyActiveScheme() {
+  themeBgOverride = ACTIVE_SCHEME.bg || "";
+  bloomStrength = ACTIVE_SCHEME.bloom;
+  borderAlpha = ACTIVE_SCHEME.borderAlpha;
   colorBorder = rgbaWithAlpha(COLOR_BORDER_BASE, borderAlpha);
   colorCyan = rgbaWithAlpha(COLOR_CYAN_BASE, 0.95);
   colorPink = rgbaWithAlpha(COLOR_PINK_BASE, 0.74);
-  atmosphereAlt = preset.atmosphereAlt;
-  emissiveIntensity = preset.emissive;
-  arcDashLength = preset.arcDashLength ?? arcDashLength;
-  arcDashGap = preset.arcDashGap ?? arcDashGap;
-  arcStrokeBase = preset.arcStrokeBase ?? arcStrokeBase;
-  arcStrokeScale = preset.arcStrokeScale ?? arcStrokeScale;
-  arcAltScale = preset.arcAltScale ?? arcAltScale;
-  arcAltMin = preset.arcAltMin ?? arcAltMin;
-  arcAltMax = preset.arcAltMax ?? arcAltMax;
-  arcAnimateBase = preset.arcAnimateBase ?? arcAnimateBase;
-  arcUseGradient = preset.arcUseGradient ?? arcUseGradient;
+  atmosphereAlt = ACTIVE_SCHEME.atmosphereAlt;
+  emissiveIntensity = ACTIVE_SCHEME.emissive;
+  arcDashLength = ACTIVE_SCHEME.arcDashLength ?? arcDashLength;
+  arcDashGap = ACTIVE_SCHEME.arcDashGap ?? arcDashGap;
+  arcStrokeBase = ACTIVE_SCHEME.arcStrokeBase ?? arcStrokeBase;
+  arcStrokeScale = ACTIVE_SCHEME.arcStrokeScale ?? arcStrokeScale;
+  arcAltScale = ACTIVE_SCHEME.arcAltScale ?? arcAltScale;
+  arcAltMin = ACTIVE_SCHEME.arcAltMin ?? arcAltMin;
+  arcAltMax = ACTIVE_SCHEME.arcAltMax ?? arcAltMax;
+  arcAnimateBase = ACTIVE_SCHEME.arcAnimateBase ?? arcAnimateBase;
+  arcUseGradient = ACTIVE_SCHEME.arcUseGradient ?? arcUseGradient;
+
+  pointsHue = ACTIVE_SCHEME.pointsHue || "gold";
+  if (pointsMat) {
+    if (pointsMat.uniforms?.uOpacity) pointsMat.uniforms.uOpacity.value = ACTIVE_SCHEME.pointsOpacity ?? 0.9;
+    if (ACTIVE_SCHEME.pointsAdditive === false) pointsMat.blending = THREE.NormalBlending;
+    else pointsMat.blending = THREE.AdditiveBlending;
+  }
 
   if (bloomPass) bloomPass.strength = bloomStrength;
   if (globe?.globeMaterial && defaultGlobeMat && globe.globeMaterial() === defaultGlobeMat) defaultGlobeMat.emissiveIntensity = emissiveIntensity;
-  if (typeof globe?.atmosphereAltitude === "function") {
-    globe.atmosphereAltitude(atmosphereAlt);
+  if (typeof globe?.atmosphereAltitude === "function") globe.atmosphereAltitude(atmosphereAlt);
+
+  if (admin1Lines?.material) {
+    admin1Lines.material.opacity = Math.min(0.9, borderAlpha * 1.35);
+    if (ACTIVE_SCHEME.borderColor) admin1Lines.material.color = new THREE.Color(ACTIVE_SCHEME.borderColor);
   }
-  if (admin1Lines?.material) admin1Lines.material.opacity = Math.min(0.9, borderAlpha * 1.35);
-  if (countryLines?.material) countryLines.material.opacity = Math.max(0.08, borderAlpha * 0.35);
-  if (countryLines?.material?.color && preset.borderColor) countryLines.material.color = new THREE.Color(preset.borderColor);
-  if (admin1Lines?.material?.color && preset.borderColor) admin1Lines.material.color = new THREE.Color(preset.borderColor);
-  if (pointsMat) {
-    if (pointsMat.uniforms?.uOpacity) pointsMat.uniforms.uOpacity.value = preset.pointsOpacity ?? 0.9;
-    if (preset.pointsAdditive === false) pointsMat.blending = THREE.NormalBlending;
-    else pointsMat.blending = THREE.AdditiveBlending;
+  if (countryLines?.material) {
+    countryLines.material.opacity = Math.max(0.08, borderAlpha * 0.35);
+    if (ACTIVE_SCHEME.borderColor) countryLines.material.color = new THREE.Color(ACTIVE_SCHEME.borderColor);
   }
-  void applyBaseMapMode(preset.baseMapMode || "links");
+
+  await applyBaseMapMode(ACTIVE_SCHEME.baseMapMode || "dayNight");
   lastArcs = [];
   lastArcsUntil = 0;
   closeInfoCard();
