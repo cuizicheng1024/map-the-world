@@ -410,6 +410,7 @@ def check_movements_consistency(relations: dict, movements: dict, year_min: int,
         "bad_country": 0,
         "missing_city": 0,
         "missing_city_id": 0,
+        "missing_prov_id": 0,
         "missing_geocode_source": 0,
         "missing_coords": 0,
         "coord_mismatch": 0,
@@ -458,6 +459,9 @@ def check_movements_consistency(relations: dict, movements: dict, year_min: int,
         if city and not str(p.get("city_id") or "").strip():
             bad["missing_city_id"] += 1
             add_example("missing_city_id", ft)
+        if city and not str(p.get("prov_id") or "").strip():
+            bad["missing_prov_id"] += 1
+            add_example("missing_prov_id", ft)
         if city and not str(p.get("geocode_source") or "").strip():
             bad["missing_geocode_source"] += 1
             add_example("missing_geocode_source", ft)

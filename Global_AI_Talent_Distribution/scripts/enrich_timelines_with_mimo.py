@@ -192,6 +192,7 @@ def to_feature(person_id: str, seg: dict, year: int) -> dict:
             "source": seg.get("source") or "mimo",
             "confidence": seg.get("confidence"),
             "evidence": evidence,
+            "prov_id": seg.get("prov_id"),
             "geocode_source": seg.get("geocode_source"),
             "city_id": seg.get("city_id"),
             "lat": lat,
@@ -255,7 +256,10 @@ def merge_relations(existing: dict, segments_by_person: dict[str, list[dict]]) -
             edges.append({"from": person, "to": org_id, "type": etype, "label": label})
             edge_keys.add(ek)
 
-    return {"nodes": nodes, "edges": edges}
+    out = dict(existing)
+    out["nodes"] = nodes
+    out["edges"] = edges
+    return out
 
 
 def normalize_segment(seg: dict, year_min: int, year_max: int) -> dict:
@@ -339,6 +343,8 @@ def main() -> None:
     ap.add_argument("--mode", choices=["timelines", "current"], default="timelines")
     ap.add_argument("--only-missing", action="store_true")
     ap.add_argument("--refresh-geocode-only", action="store_true")
+    ap.add_argument("--backfill-provenance", action="store_true")
+    ap.add_argument("--rebuild-provenance", action="store_true")
     ap.add_argument("--max-people", type=int, default=0)
     ap.add_argument("--fallback-batch-size", type=int, default=22)
     ap.add_argument("--ai2000-md", default="")
@@ -469,6 +475,57 @@ def main() -> None:
 
     node_by_id = {str(n.get("id") or "").strip(): n for n in relations.get("nodes", []) if str(n.get("id") or "").strip()}
     org_label_by_id = {nid: str(n.get("label") or nid).strip() for nid, n in node_by_id.items() if n.get("kind") == "org"}
+
+    stats = relations.get("stats")
+    if not isinstance(stats, dict):
+        stats = {}
+        relations["stats"] = stats
+    prov_index = stats.get("provenance_index")
+    if not isinstance(prov_index, list):
+        prov_index = []
+        stats["provenance_index"] = prov_index
+    prov_key_to_id = {}
+    for it in prov_index:
+        if not isinstance(it, dict):
+            continue
+        pid = str(it.get("id") or "").strip()
+        k = str(it.get("key") or "").strip()
+        if pid and k:
+            prov_key_to_id[k] = pid
+
+    def prov_key_of(obj: dict) -> str:
+        return json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+    def get_prov_id(obj: dict) -> str:
+        clean = {k: v for k, v in obj.items() if v is not None and v != ""}
+        k = prov_key_of(clean)
+        hit = prov_key_to_id.get(k)
+        if hit:
+            return hit
+        pid = f"prov_{len(prov_index) + 1}"
+        item = dict(clean)
+        item["id"] = pid
+        item["key"] = k
+        prov_index.append(item)
+        prov_key_to_id[k] = pid
+        return pid
+
+    def infer_geocode_source(city: str, country: str) -> str:
+        c = str(city or "").strip()
+        cc = normalize_country_code(country)
+        if not c or not cc:
+            return ""
+        k = f"{c},{cc}"
+        hit = geocode_cache.get(k)
+        if isinstance(hit, dict):
+            return str(hit.get("source") or "").strip()
+        return ""
+
+    def make_city_id(lat: float, lon: float, country: str) -> str:
+        cc = normalize_country_code(country)
+        if not cc:
+            return ""
+        return f"{cc}:{round(float(lat), 4)},{round(float(lon), 4)}"
 
     outgoing = defaultdict(list)
     for e in relations.get("edges", []) or []:
@@ -655,6 +712,67 @@ def main() -> None:
         print("refresh_done")
         return
 
+    if args.backfill_provenance:
+        updated = 0
+        for ft in movements.get("features", []) or []:
+            p = ft.get("properties", {}) or {}
+            src = str(p.get("source") or "").strip()
+            if not src:
+                continue
+            if str(p.get("prov_id") or "").strip():
+                continue
+            mode = "unknown"
+            gen = "unknown"
+            if src.startswith("mimo"):
+                gen = "mimo"
+                if src == "mimo":
+                    mode = "timelines"
+                elif src == "mimo_current_city":
+                    mode = "current"
+            else:
+                gen = "pipeline"
+            prov_id = get_prov_id({"generator": gen, "mode": mode, "model": None, "source": src})
+            p["prov_id"] = prov_id
+            updated += 1
+        with open(args.movements, "w", encoding="utf-8") as f:
+            json.dump(movements, f, ensure_ascii=False, indent=2)
+        with open(args.relations, "w", encoding="utf-8") as f:
+            json.dump(relations, f, ensure_ascii=False, indent=2)
+        print(f"backfill_provenance_updated={updated}")
+        return
+
+    if args.rebuild_provenance:
+        stats["provenance_index"] = []
+        prov_index = stats["provenance_index"]
+        prov_key_to_id.clear()
+        updated = 0
+        for ft in movements.get("features", []) or []:
+            p = ft.get("properties", {}) or {}
+            if "prov_id" in p:
+                p.pop("prov_id", None)
+        for ft in movements.get("features", []) or []:
+            p = ft.get("properties", {}) or {}
+            src = str(p.get("source") or "").strip()
+            if not src:
+                continue
+            mode = "unknown"
+            gen = "pipeline"
+            if src.startswith("mimo"):
+                gen = "mimo"
+                if src == "mimo":
+                    mode = "timelines"
+                elif src == "mimo_current_city":
+                    mode = "current"
+            prov_id = get_prov_id({"generator": gen, "mode": mode, "model": None, "source": src})
+            p["prov_id"] = prov_id
+            updated += 1
+        with open(args.movements, "w", encoding="utf-8") as f:
+            json.dump(movements, f, ensure_ascii=False, indent=2)
+        with open(args.relations, "w", encoding="utf-8") as f:
+            json.dump(relations, f, ensure_ascii=False, indent=2)
+        print(f"rebuild_provenance_updated={updated} provenance_index={len(prov_index)}")
+        return
+
     if (not args.only_missing) and len(people) < args.target_people:
         need = args.target_people - len(people)
         raw_more = chat_completions(model=args.model, messages=prompt_for_more_people(need), max_tokens=4096, temperature=0.2)
@@ -669,10 +787,22 @@ def main() -> None:
             people.append(name)
 
     now = datetime.now(timezone.utc).isoformat()
+    run_id = f"{args.mode}:{now}"
     segments_by_person: dict[str, list[dict]] = {}
     new_features: list[dict] = []
 
     if args.mode == "current":
+        prov_id_current = get_prov_id(
+            {
+                "generator": "mimo",
+                "mode": "current",
+                "model": args.model,
+                "run_id": run_id,
+                "year_min": args.year_min,
+                "year_max": args.year_max,
+                "prompt_version": "current_city_v1",
+            }
+        )
         fallback_current = {}
         unresolved = []
         org_hints: dict[str, str] = {}
@@ -838,6 +968,9 @@ def main() -> None:
                 "generated_at": now,
                 "person_name": str(n.get("label") or pid).strip() or pid,
             }
+            seg["geocode_source"] = infer_geocode_source(city2, country2)
+            seg["city_id"] = make_city_id(lat, lon, country2)
+            seg["prov_id"] = prov_id_current
             segments_by_person[pid] = [seg]
             for y in range(int(seg["start_year"]), int(seg["end_year"]) + 1):
                 new_features.append(to_feature(pid, seg, y))
@@ -847,6 +980,17 @@ def main() -> None:
         if skipped:
             print(f"skipped_people={skipped}")
     else:
+        prov_id_timeline = get_prov_id(
+            {
+                "generator": "mimo",
+                "mode": "timelines",
+                "model": args.model,
+                "run_id": run_id,
+                "year_min": args.year_min,
+                "year_max": args.year_max,
+                "prompt_version": "timeline_v1_no_latlon",
+            }
+        )
         for group in chunk(people, args.batch_size):
             raw = chat_completions(
                 model=args.model,
@@ -883,6 +1027,7 @@ def main() -> None:
                     s["source"] = "mimo"
                     s["confidence"] = 0.45
                     s["person_name"] = str(node_by_id.get(person, {}).get("label") or person).strip() or person
+                    s["prov_id"] = prov_id_timeline
                 segments_by_person[person] = normalized
                 added_any = False
                 for s in normalized:
@@ -893,6 +1038,8 @@ def main() -> None:
                     s["country"] = country2
                     s["lat"] = float(lat)
                     s["lon"] = float(lon)
+                    s["geocode_source"] = infer_geocode_source(city2, country2)
+                    s["city_id"] = make_city_id(lat, lon, country2)
                     for y in range(int(s["start_year"]), int(s["end_year"]) + 1):
                         new_features.append(to_feature(person, s, y))
                         added_any = True
@@ -927,6 +1074,26 @@ def main() -> None:
             p["lat"] = float(lat)
             p["lng"] = float(lon)
             ft["geometry"] = {"type": "Point", "coordinates": [float(lon), float(lat)]}
+    for ft in merged_mov.get("features", []) or []:
+        p = ft.get("properties", {}) or {}
+        lat = p.get("lat")
+        lng = p.get("lng")
+        city = str(p.get("city") or "").strip()
+        country = str(p.get("country") or "").strip().upper()
+        if lat is not None and lng is not None and country:
+            if not str(p.get("city_id") or "").strip():
+                p["city_id"] = make_city_id(float(lat), float(lng), country)
+        if city and country and not str(p.get("geocode_source") or "").strip():
+            p["geocode_source"] = infer_geocode_source(city, country)
+        if str(p.get("source") or "").strip() and not str(p.get("prov_id") or "").strip():
+            src = str(p.get("source") or "").strip()
+            mode = "unknown"
+            gen = "unknown"
+            model = None
+            if src in {"mimo", "mimo_current_city"} or src.startswith("mimo"):
+                gen = "mimo"
+                mode = "timelines" if src == "mimo" else "current" if src == "mimo_current_city" else "unknown"
+            p["prov_id"] = get_prov_id({"generator": gen, "mode": mode, "model": model, "source": src})
     with open(args.movements, "w", encoding="utf-8") as f:
         json.dump(merged_mov, f, ensure_ascii=False, indent=2)
 

@@ -23,10 +23,11 @@ const ARC_ANIMATE_MS = 7200;
 const ARC_TRAIL_MS = 2600;
 const ARC_TRAIL_ALPHA = 0.18;
 
-const OCEAN_COLOR = "#5ba3c9";
-const LAND_COLOR = "rgba(175, 218, 190, 0.85)";
-const EARTH_TEXTURE_URL = "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg";
-const EARTH_BUMP_URL = "https://unpkg.com/three-globe/example/img/earth-topology.png";
+const OCEAN_COLOR = "#0b1020";
+const LAND_COLOR = "rgba(0,0,0,0)";
+const EARTH_TEXTURE_URL =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMB/daL8c0AAAAASUVORK5CYII=";
+const EARTH_BUMP_URL = "";
 
 let scene, camera, renderer, composer, controls, globe, stars, bloomPass;
 let currentYear = 2023;
@@ -42,9 +43,14 @@ let renderedPoints = [];
 let chordCache = null;
 let chordHover = null;
 let chordTip = null;
+let barCache = null;
+let barHover = -1;
+let barTip = null;
 let lodPrecisionDeg = 0.02;
 let blinkIntervalMs = 520;
 let lastLodUpdateAt = 0;
+let pendingYear = null;
+let yearRaf = 0;
 
 let colorCyan = "rgba(0,229,255,0.92)";
 let colorPink = "rgba(255,59,145,0.72)";
@@ -337,10 +343,10 @@ async function loadBorders() {
   const geo = feature(topo, topo.objects.countries);
   globe
     .polygonsData(geo.features)
-    .polygonAltitude(0.0025)
-    .polygonCapColor(() => "rgba(230,236,242,0.1)")
+    .polygonAltitude(0.0008)
+    .polygonCapColor(() => LAND_COLOR)
     .polygonSideColor(() => "rgba(0,0,0,0)")
-    .polygonStrokeColor(() => colorBorder);
+    .polygonStrokeColor(() => rgbaWithAlpha(COLOR_BORDER_BASE, Math.max(0.06, borderAlpha * 0.18)));
 }
 
 function lngLatToVector3(lng, lat, radius) {
@@ -585,24 +591,74 @@ function clearCanvas(c) {
 function ensureChordTip() {
   if (chordTip) return chordTip;
   const el = document.createElement("div");
-  el.style.position = "fixed";
-  el.style.left = "0";
-  el.style.top = "0";
-  el.style.transform = "translate(-9999px,-9999px)";
-  el.style.pointerEvents = "none";
-  el.style.padding = "8px 10px";
-  el.style.borderRadius = "10px";
-  el.style.border = "1px solid rgba(26,115,232,0.22)";
-  el.style.background = "rgba(255,255,255,0.94)";
-  el.style.color = "rgba(32,33,36,0.96)";
-  el.style.fontSize = "12px";
-  el.style.lineHeight = "1.35";
+  el.className = "tipCard";
   el.style.whiteSpace = "pre-line";
-  el.style.boxShadow = "0 12px 34px rgba(0,0,0,0.18)";
-  el.style.zIndex = "50";
   document.body.appendChild(el);
   chordTip = el;
   return el;
+}
+
+function ensureBarTip() {
+  if (barTip) return barTip;
+  const el = document.createElement("div");
+  el.className = "tipCard";
+  el.style.whiteSpace = "pre-line";
+  document.body.appendChild(el);
+  barTip = el;
+  return el;
+}
+
+function hideBarTip() {
+  if (!barTip) return;
+  barTip.style.transform = "translate(-9999px,-9999px)";
+}
+
+function drawBarFromCache(cache, hoverIndex) {
+  if (!barCanvas || !cache) return;
+  const ctx = clearCanvas(barCanvas);
+  const { year, entries, maxV, padL, padR, padT, padB, chartW, chartH, step, barW } = cache;
+  ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
+  ctx.fillStyle = "rgba(32,33,36,0.86)";
+  ctx.fillText(`📊 Top 城市（${year}）`, 10, 14);
+
+  ctx.strokeStyle = "rgba(32,33,36,0.08)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padL, padT + chartH + 0.5);
+  ctx.lineTo(padL + chartW, padT + chartH + 0.5);
+  ctx.stroke();
+
+  cache.bars = [];
+  for (let i = 0; i < entries.length; i++) {
+    const { city, count: v } = entries[i];
+    const isHover = i === hoverIndex;
+    const h = (chartH * v) / maxV;
+    const x = padL + i * step + (step - barW) / 2;
+    const y = padT + chartH - h;
+    cache.bars.push({ x, y, w: barW, h });
+
+    ctx.fillStyle = isHover ? "rgba(26,115,232,0.55)" : "rgba(66,133,244,0.35)";
+    ctx.fillRect(x, y, barW, h);
+    if (isHover) {
+      ctx.strokeStyle = "rgba(26,115,232,0.9)";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(x + 0.5, y + 0.5, barW - 1, h - 1);
+    }
+
+    ctx.fillStyle = isHover ? "rgba(26,115,232,0.95)" : "rgba(32,33,36,0.62)";
+    ctx.font = "11px ui-sans-serif, system-ui, -apple-system";
+    ctx.fillText(String(v), x + 2, y - 4);
+
+    const name = city.length > 8 ? city.slice(0, 7) + "…" : city;
+    ctx.save();
+    ctx.translate(x + barW / 2, padT + chartH + 10);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = isHover ? "rgba(26,115,232,0.95)" : "rgba(32,33,36,0.62)";
+    ctx.fillText(name, 0, 0);
+    ctx.restore();
+  }
 }
 
 function pointToSegDist2(px, py, ax, ay, bx, by) {
@@ -1063,14 +1119,16 @@ function renderCharts(visiblePersonIds, year) {
       ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
       ctx.fillStyle = "rgba(32,33,36,0.7)";
       ctx.fillText(`📊 Top 城市（${year}）`, 10, 14);
-      ctx.fillText("无数据", 10, 32);
+      ctx.fillText("该年份暂无城市记录", 10, 32);
+      ctx.fillStyle = "rgba(32,33,36,0.52)";
+      ctx.fillText("试试拖动到有数据的年份", 10, 50);
       if (powerLawLabel) powerLawLabel.textContent = "Power law: -";
+      barCache = null;
+      barHover = -1;
+      hideBarTip();
       return;
     }
     const maxV = Math.max(1, ...entries.map((x) => x.count));
-    ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
-    ctx.fillStyle = "rgba(32,33,36,0.86)";
-    ctx.fillText(`📊 Top 城市（${year}）`, 10, 14);
 
     const padL = 24;
     const padR = 10;
@@ -1081,40 +1139,18 @@ function renderCharts(visiblePersonIds, year) {
     const step = chartW / Math.max(1, entries.length);
     const barW = Math.max(6, step * 0.64);
 
-    ctx.strokeStyle = "rgba(32,33,36,0.08)";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padL, padT + chartH + 0.5);
-    ctx.lineTo(padL + chartW, padT + chartH + 0.5);
-    ctx.stroke();
-
-    for (let i = 0; i < entries.length; i++) {
-      const { city, count: v } = entries[i];
-      const h = (chartH * v) / maxV;
-      const x = padL + i * step + (step - barW) / 2;
-      const y = padT + chartH - h;
-      ctx.fillStyle = "rgba(66,133,244,0.35)";
-      ctx.fillRect(x, y, barW, h);
-      ctx.fillStyle = "rgba(32,33,36,0.62)";
-      ctx.font = "11px ui-sans-serif, system-ui, -apple-system";
-      ctx.fillText(String(v), x + 2, y - 4);
-
-      const name = city.length > 8 ? city.slice(0, 7) + "…" : city;
-      ctx.save();
-      ctx.translate(x + barW / 2, padT + chartH + 10);
-      ctx.rotate(-Math.PI / 2);
-      ctx.textAlign = "left";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgba(32,33,36,0.62)";
-      ctx.fillText(name, 0, 0);
-      ctx.restore();
-    }
-
     const counts = [...byKey.values()].map((g) => g.total).filter((x) => x > 0);
     const fit = fitPowerLawRank(counts);
     if (powerLawLabel) {
       powerLawLabel.textContent = fit ? `Power law: α=${fit.alpha.toFixed(2)}  R²=${fit.r2.toFixed(2)}  n=${fit.n}` : "Power law: -";
     }
+
+    if (!barCache || barCache.year !== year) {
+      barHover = -1;
+      hideBarTip();
+    }
+    barCache = { ctx, year, entries, maxV, padL, padR, padT, padB, chartW, chartH, step, barW, bars: [] };
+    drawBarFromCache(barCache, barHover);
   }
 
   renderChord(visiblePersonIds, year, String(chordLevelSelect?.value || "continent"));
@@ -1127,6 +1163,7 @@ function play() {
   if (playToggle) {
     playToggle.textContent = "⏸";
     playToggle.title = "暂停";
+    playToggle.classList.add("playing");
   }
   playTimer = setInterval(() => {
     let y = currentYear + 1;
@@ -1144,6 +1181,7 @@ function pause() {
   if (playToggle) {
     playToggle.textContent = "▶";
     playToggle.title = "播放";
+    playToggle.classList.remove("playing");
   }
 }
 
@@ -1240,14 +1278,14 @@ async function init() {
     .globeImageUrl(EARTH_TEXTURE_URL)
     .showAtmosphere(true)
     .atmosphereColor("#8ab4f8")
-    .atmosphereAltitude(0.15)
+    .atmosphereAltitude(0.12)
     .showGraticules(false);
-  if (typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_BUMP_URL);
+  if (EARTH_BUMP_URL && typeof globe.bumpImageUrl === "function") globe.bumpImageUrl(EARTH_BUMP_URL);
 
-  globe.globeMaterial().color = new THREE.Color("#ffffff");
+  globe.globeMaterial().color = new THREE.Color(OCEAN_COLOR);
   globe.globeMaterial().emissive = new THREE.Color("#1a73e8");
-  globe.globeMaterial().emissiveIntensity = 0.12;
-  globe.globeMaterial().shininess = 0.35;
+  globe.globeMaterial().emissiveIntensity = 0.08;
+  globe.globeMaterial().shininess = 0.12;
 
   if (typeof globe.pointsMaterial === "function") {
     const m = globe.pointsMaterial();
@@ -1313,10 +1351,58 @@ applyVisualMode("balanced");
       chordCanvas.style.cursor = "default";
     });
   }
+  if (barCanvas) {
+    barCanvas.addEventListener("mousemove", (ev) => {
+      if (!barCache || !Array.isArray(barCache.bars) || !barCache.bars.length) return;
+      const rect = barCanvas.getBoundingClientRect();
+      const x = (ev.clientX - rect.left) * (barCanvas.width / Math.max(1, rect.width));
+      const y = (ev.clientY - rect.top) * (barCanvas.height / Math.max(1, rect.height));
+      let next = -1;
+      for (let i = 0; i < barCache.bars.length; i++) {
+        const b = barCache.bars[i];
+        if (x >= b.x && x <= b.x + b.w && y >= b.y - 8 && y <= b.y + b.h + 6) {
+          next = i;
+          break;
+        }
+      }
+      if (next !== barHover) {
+        barHover = next;
+        drawBarFromCache(barCache, barHover);
+      }
+      if (barHover >= 0) {
+        const tip = ensureBarTip();
+        const it = barCache.entries?.[barHover];
+        const title = it ? String(it.city || "") : "";
+        const v = it ? Number(it.count || 0) : 0;
+        tip.textContent = `${title}\n${barCache.year} · ${v} 人`;
+        tip.style.transform = `translate(${ev.clientX + 12}px,${ev.clientY + 12}px)`;
+        barCanvas.style.cursor = "pointer";
+      } else {
+        hideBarTip();
+        barCanvas.style.cursor = "default";
+      }
+    });
+    barCanvas.addEventListener("mouseleave", () => {
+      barHover = -1;
+      if (barCache) drawBarFromCache(barCache, barHover);
+      hideBarTip();
+      barCanvas.style.cursor = "default";
+    });
+  }
   animate();
 }
 
-yearSlider.addEventListener("input", (e) => updateYear(parseInt(e.target.value, 10)));
+yearSlider.addEventListener("input", (e) => {
+  pendingYear = parseInt(e.target.value, 10);
+  if (yearRaf) return;
+  yearRaf = requestAnimationFrame(() => {
+    yearRaf = 0;
+    const y = pendingYear;
+    pendingYear = null;
+    if (!Number.isFinite(y)) return;
+    updateYear(y);
+  });
+});
 speedSlider.addEventListener("input", (e) => {
   playSpeed = parseFloat(e.target.value);
   if (speedValue) speedValue.textContent = `${playSpeed} 年/秒`;
@@ -1474,6 +1560,5 @@ function handlePointHover(d) {
 }
 
 if (infoClose) infoClose.addEventListener("click", closeInfoCard);
-if (visualModeSelect) visualModeSelect.hidden = true;
 
 init();

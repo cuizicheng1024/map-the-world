@@ -6,22 +6,18 @@ title: Global AI Talent Distribution
 
 ## 目标
 
-### 时间 + 空间（MapStory）
-
-把大牛们的职业履历和行踪，变成一张带时间轴的全球地图：拖动年份，看到每一年、谁、在哪个城市的哪个公司。
-
 ### 人 + 公司实体（知识图谱）
 
 把人、公司、投资机构抽象为节点（Node），用边（Edge）表达关系：任职、共事、衍生创业、投资等。点击节点可跳转到迁徙地图并自动过滤。
 
 ## Demo
 
-- 时间轴地图：[`app/map.html`](file:///Users/cui/Documents/trae_projects/myresume/map-the-world/Global_AI_Talent_Distribution/app/map.html)
-- 关系网：[`app/graph.html`](file:///Users/cui/Documents/trae_projects/myresume/map-the-world/Global_AI_Talent_Distribution/app/graph.html)
+- 3D 地球：[`app/cesium.html`](file:///Users/bytedance/Desktop/Trae/resume/map-the-world/Global_AI_Talent_Distribution/app/cesium.html)
+- 关系网：[`app/graph.html`](file:///Users/bytedance/Desktop/Trae/resume/map-the-world/Global_AI_Talent_Distribution/app/graph.html)
 
 GitHub Pages 部署后，访问路径通常为：
 
-- `/Global_AI_Talent_Distribution/app/map.html`
+- `/Global_AI_Talent_Distribution/app/cesium.html`
 - `/Global_AI_Talent_Distribution/app/graph.html`
 
 ## 数据协议

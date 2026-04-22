@@ -19,6 +19,10 @@ const geoYearField = document.getElementById("geoYearField");
 const geoYearInput = document.getElementById("geoYear");
 const geoYearLabel = document.getElementById("geoYearLabel");
 const toggleEdgesBtn = document.getElementById("toggleEdgesBtn");
+const graphOverlay = document.getElementById("graphOverlay");
+const graphOverlayTitle = document.getElementById("graphOverlayTitle");
+const graphOverlaySub = document.getElementById("graphOverlaySub");
+const hoverTip = document.getElementById("hoverTip");
 const ctx = canvas.getContext("2d");
 
 let width = 0;
@@ -40,6 +44,40 @@ let forceState = { running: false, raf: 0, iter: 0, maxIter: 320 };
 let dragNodeId = "";
 let dragStart = { x: 0, y: 0, px: 0, py: 0, moved: false };
 let showEdges = false;
+let settleFrames = 0;
+let drawRaf = 0;
+let lastHoverId = "";
+let overlayHideTimer = 0;
+let pointerRaf = 0;
+let pointerState = { x: 0, y: 0, clientX: 0, clientY: 0, dirty: false };
+let sim = null;
+
+function scheduleDraw() {
+  if (drawRaf) return;
+  drawRaf = requestAnimationFrame(() => {
+    drawRaf = 0;
+    draw();
+  });
+}
+
+function setOverlayVisible(isVisible, title, sub) {
+  if (!graphOverlay) return;
+  if (overlayHideTimer) window.clearTimeout(overlayHideTimer);
+  overlayHideTimer = 0;
+  if (isVisible) {
+    graphOverlay.classList.remove("overlayFadeOut");
+    graphOverlay.hidden = false;
+  } else {
+    graphOverlay.classList.add("overlayFadeOut");
+    overlayHideTimer = window.setTimeout(() => {
+      graphOverlay.hidden = true;
+      graphOverlay.classList.remove("overlayFadeOut");
+      overlayHideTimer = 0;
+    }, 170);
+  }
+  if (graphOverlayTitle && title != null) graphOverlayTitle.textContent = String(title);
+  if (graphOverlaySub && sub != null) graphOverlaySub.textContent = String(sub);
+}
 
 function computePageRank({ damping = 0.85, iterations = 24 } = {}) {
   const ids = nodes.map((n) => n.id);
@@ -112,31 +150,56 @@ function buildIndex() {
     neighbors.get(e.from).add(e.to);
     neighbors.get(e.to).add(e.from);
   }
+  const idToIndex = new Map();
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    n._i = i;
+    idToIndex.set(n.id, i);
+  }
+  const deg = new Float32Array(nodes.length);
+  for (let i = 0; i < nodes.length; i++) {
+    deg[i] = neighbors.get(nodes[i].id)?.size ?? 0;
+  }
+  const edgeFrom = new Int32Array(edges.length);
+  const edgeTo = new Int32Array(edges.length);
+  for (let i = 0; i < edges.length; i++) {
+    edgeFrom[i] = idToIndex.get(edges[i].from) ?? -1;
+    edgeTo[i] = idToIndex.get(edges[i].to) ?? -1;
+  }
+  sim = { idToIndex, deg, edgeFrom, edgeTo, fx: new Float32Array(nodes.length), fy: new Float32Array(nodes.length) };
 }
 
 function setLayout() {
   if (layoutMode !== "force") stopForceAtlas2();
   if (layoutMode === "radial") {
     setRadialLayout();
+    scheduleDraw();
     return;
   }
   if (layoutMode === "geo") {
     setGeoLayout();
+    scheduleDraw();
     return;
   }
   if (layoutMode === "force") {
     setForceLayout();
+    scheduleDraw();
     return;
   }
   setRingLayout();
+  scheduleDraw();
 }
 
 function startForceAtlas2() {
   if (forceState.running) return;
   forceState.running = true;
   forceState.iter = 0;
-  forceState.maxIter = 320;
+  const n = nodes.length;
+  forceState.maxIter = Math.max(140, Math.min(320, 160 + Math.floor(Math.log1p(n) * 44)));
+  settleFrames = 0;
+  setOverlayVisible(true, "布局计算中…", "正在计算力导向布局");
   forceState.raf = requestAnimationFrame(stepForceAtlas2);
+  scheduleDraw();
 }
 
 function stopForceAtlas2() {
@@ -144,6 +207,8 @@ function stopForceAtlas2() {
   forceState.running = false;
   if (forceState.raf) cancelAnimationFrame(forceState.raf);
   forceState.raf = 0;
+  setOverlayVisible(false);
+  scheduleDraw();
 }
 
 function setForceLayout() {
@@ -165,6 +230,7 @@ function setForceLayout() {
 
 function stepForceAtlas2() {
   if (!forceState.running) return;
+  if (!sim || sim.fx.length !== nodes.length) buildIndex();
   const cx = width / 2;
   const cy = height / 2;
 
@@ -175,13 +241,13 @@ function stepForceAtlas2() {
   const maxStep = 3.2;
   const edgeWeight = 0.06;
   const cellSize = 84;
-
-  const deg = new Map();
-  for (const n of nodes) deg.set(n.id, neighbors.get(n.id)?.size ?? 0);
+  const deg = sim.deg;
 
   for (let s = 0; s < stepsPerFrame; s++) {
-    const fx = new Map(nodes.map((n) => [n.id, 0]));
-    const fy = new Map(nodes.map((n) => [n.id, 0]));
+    const fx = sim.fx;
+    const fy = sim.fy;
+    fx.fill(0);
+    fy.fill(0);
 
     const grid = new Map();
     for (let i = 0; i < nodes.length; i++) {
@@ -195,7 +261,7 @@ function stepForceAtlas2() {
 
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
-      const ma = 1 + Math.log1p(deg.get(a.id) ?? 0);
+      const ma = 1 + Math.log1p(deg[i] ?? 0);
       const ax = Math.floor(a.x / cellSize);
       const ay = Math.floor(a.y / cellSize);
       for (let dxCell = -1; dxCell <= 1; dxCell++) {
@@ -206,7 +272,7 @@ function stepForceAtlas2() {
           for (const j of bucket) {
             if (j <= i) continue;
             const b = nodes[j];
-            const mb = 1 + Math.log1p(deg.get(b.id) ?? 0);
+            const mb = 1 + Math.log1p(deg[j] ?? 0);
             let dx = a.x - b.x;
             let dy = a.y - b.y;
             let d2 = dx * dx + dy * dy;
@@ -216,35 +282,38 @@ function stepForceAtlas2() {
               d2 = dx * dx + dy * dy;
             }
             const f = (scalingRatio * ma * mb) / d2;
-            fx.set(a.id, fx.get(a.id) + dx * f);
-            fy.set(a.id, fy.get(a.id) + dy * f);
-            fx.set(b.id, fx.get(b.id) - dx * f);
-            fy.set(b.id, fy.get(b.id) - dy * f);
+            fx[i] += dx * f;
+            fy[i] += dy * f;
+            fx[j] -= dx * f;
+            fy[j] -= dy * f;
           }
         }
       }
     }
 
-    for (const e of edges) {
-      const a = nodeById.get(e.from);
-      const b = nodeById.get(e.to);
-      if (!a || !b) continue;
+    for (let ei = 0; ei < edges.length; ei++) {
+      const ia = sim.edgeFrom[ei];
+      const ib = sim.edgeTo[ei];
+      if (ia < 0 || ib < 0) continue;
+      const a = nodes[ia];
+      const b = nodes[ib];
       const dx = b.x - a.x;
       const dy = b.y - a.y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const f = edgeWeight * dist;
-      fx.set(a.id, fx.get(a.id) + dx * f);
-      fy.set(a.id, fy.get(a.id) + dy * f);
-      fx.set(b.id, fx.get(b.id) - dx * f);
-      fy.set(b.id, fy.get(b.id) - dy * f);
+      fx[ia] += dx * f;
+      fy[ia] += dy * f;
+      fx[ib] -= dx * f;
+      fy[ib] -= dy * f;
     }
 
-    for (const n of nodes) {
-      const m = 1 + Math.log1p(deg.get(n.id) ?? 0);
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const m = 1 + Math.log1p(deg[i] ?? 0);
       const gx = (cx - n.x) * gravity * m;
       const gy = (cy - n.y) * gravity * m;
-      const dx = (fx.get(n.id) + gx) * 0.0022;
-      const dy = (fy.get(n.id) + gy) * 0.0022;
+      const dx = (fx[i] + gx) * 0.0022;
+      const dy = (fy[i] + gy) * 0.0022;
       n.vx = (n.vx + dx) * damping;
       n.vy = (n.vy + dy) * damping;
       const step = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
@@ -254,6 +323,19 @@ function stepForceAtlas2() {
     }
 
     forceState.iter += 1;
+    if (forceState.iter % 10 === 0) {
+      const pct = Math.min(99, Math.floor((forceState.iter / Math.max(1, forceState.maxIter)) * 100));
+      setOverlayVisible(true, "布局计算中…", `迭代 ${forceState.iter}/${forceState.maxIter} · ${pct}%`);
+    }
+    const avgSpeed = nodes.length
+      ? nodes.reduce((acc, n) => acc + Math.sqrt((n.vx || 0) * (n.vx || 0) + (n.vy || 0) * (n.vy || 0)), 0) / nodes.length
+      : 0;
+    if (forceState.iter > 40 && avgSpeed < 0.06) settleFrames += 1;
+    else settleFrames = 0;
+    if (settleFrames >= 18) {
+      stopForceAtlas2();
+      break;
+    }
     if (forceState.iter >= forceState.maxIter) {
       stopForceAtlas2();
       break;
@@ -261,6 +343,7 @@ function stepForceAtlas2() {
   }
 
   forceState.raf = requestAnimationFrame(stepForceAtlas2);
+  scheduleDraw();
 }
 
 function setRingLayout() {
@@ -436,6 +519,7 @@ function setGeoLayout() {
     });
 
     view = { x: 0, y: 0, k: 1 };
+    scheduleDraw();
   });
 }
 
@@ -503,7 +587,21 @@ function sanitizeUncertainText(s) {
     .trim();
 }
 
-function showPopup(node, pageX, pageY) {
+function placeTip(el, x, y) {
+  const pad = 12;
+  const vw = Math.max(1, window.innerWidth || 1);
+  const vh = Math.max(1, window.innerHeight || 1);
+  const r = el.getBoundingClientRect();
+  let px = x;
+  let py = y;
+  if (px + r.width + pad > vw) px = vw - r.width - pad;
+  if (py + r.height + pad > vh) py = vh - r.height - pad;
+  px = Math.max(pad, px);
+  py = Math.max(pad, py);
+  el.style.transform = `translate(${Math.round(px)}px,${Math.round(py)}px)`;
+}
+
+function showPopup(node, clientX, clientY) {
   clearPopup();
   const detail = getNodeSummaryText(node);
   const verify = node.verify && typeof node.verify === "object" ? node.verify : null;
@@ -518,23 +616,15 @@ function showPopup(node, pageX, pageY) {
 
   const el = document.createElement("div");
   el.dataset.nodeId = String(node.id || "");
-  el.style.position = "absolute";
-  el.style.left = `${pageX + 12}px`;
-  el.style.top = `${pageY + 12}px`;
-  el.style.background = "rgba(255,255,255,0.94)";
-  el.style.border = `1px solid ${node.kind === "person" ? PERSON_COLOR : ORG_COLOR}`;
-  el.style.borderRadius = "10px";
-  el.style.padding = "10px 12px";
-  el.style.maxWidth = "320px";
-  el.style.color = "rgba(32,33,36,0.96)";
-  el.style.fontSize = "13px";
-  el.style.lineHeight = "1.45";
-  el.style.zIndex = "20";
-  el.style.boxShadow = "0 12px 34px rgba(0,0,0,0.18)";
+  el.className = "tipCard";
+  el.style.maxWidth = "360px";
+  el.style.borderColor = node.kind === "person" ? PERSON_COLOR : ORG_COLOR;
+  el.style.pointerEvents = "none";
   const subtitle = node.kind === "person" ? "人物" : "公司/机构";
-  const badgeHtml = badge ? `<div style="opacity:0.7;font-size:12px;margin-bottom:6px;">${escapeHtml(badge)}</div>` : "";
-  el.innerHTML = `<div style=\"font-weight:700;margin-bottom:4px;\">${escapeHtml(node.label)}</div><div style=\"opacity:0.7;font-size:12px;margin-bottom:6px;\">${escapeHtml(subtitle)}</div>${badgeHtml}<div style=\"opacity:0.9\" id=\"popupBody\">${escapeHtml(bodyText)}</div>`;
+  const badgeHtml = badge ? `<div class="tipSub">${escapeHtml(badge)}</div>` : "";
+  el.innerHTML = `<div class="tipTitle">${escapeHtml(node.label)}</div><div class="tipSub">${escapeHtml(subtitle)}</div>${badgeHtml}<div style="opacity:0.92" id="popupBody">${escapeHtml(bodyText)}</div>`;
   document.body.appendChild(el);
+  placeTip(el, clientX + 12, clientY + 12);
   popupEl = el;
 
   if (hasVerify && !shouldTrustSummary) return;
@@ -553,6 +643,55 @@ function showPopup(node, pageX, pageY) {
 
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>\"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
+}
+
+function roundRectPath(c, x, y, w, h, r) {
+  const rr = Math.max(0, Math.min(r, Math.min(w, h) / 2));
+  c.beginPath();
+  c.moveTo(x + rr, y);
+  c.arcTo(x + w, y, x + w, y + h, rr);
+  c.arcTo(x + w, y + h, x, y + h, rr);
+  c.arcTo(x, y + h, x, y, rr);
+  c.arcTo(x, y, x + w, y, rr);
+  c.closePath();
+}
+
+function setHoverTip(node) {
+  if (!hoverTip) return;
+  if (!node || isPanning || dragNodeId) {
+    hoverTip.hidden = true;
+    return;
+  }
+  const subtitle = node.kind === "person" ? "人物" : "公司/机构";
+  hoverTip.style.borderColor = node.kind === "person" ? PERSON_COLOR : ORG_COLOR;
+  hoverTip.style.maxWidth = "260px";
+  hoverTip.textContent = "";
+  hoverTip.innerHTML = `<div class="tipTitle">${escapeHtml(node.label)}</div><div class="tipSub">${escapeHtml(subtitle)}</div>`;
+  hoverTip.hidden = false;
+  placeTip(hoverTip, pointerState.clientX + 12, pointerState.clientY + 12);
+}
+
+function schedulePointerUpdate(ev) {
+  const rect = canvas.getBoundingClientRect();
+  pointerState.x = ev.clientX - rect.left;
+  pointerState.y = ev.clientY - rect.top;
+  pointerState.clientX = ev.clientX;
+  pointerState.clientY = ev.clientY;
+  pointerState.dirty = true;
+  if (pointerRaf) return;
+  pointerRaf = requestAnimationFrame(() => {
+    pointerRaf = 0;
+    if (!pointerState.dirty) return;
+    pointerState.dirty = false;
+    const n = pickNodeAt(pointerState.x, pointerState.y);
+    hoveredId = n ? n.id : "";
+    if (hoveredId !== lastHoverId) {
+      lastHoverId = hoveredId;
+      scheduleDraw();
+    }
+    setHoverTip(n);
+    canvas.style.cursor = n ? "pointer" : isPanning ? "grabbing" : "default";
+  });
 }
 
 function draw() {
@@ -591,6 +730,23 @@ function draw() {
       ctx.stroke();
     }
   }
+  if (!showEdges && activeId) {
+    const a = nodeById.get(activeId);
+    const nb = neighbors.get(activeId);
+    if (a && nb) {
+      ctx.globalAlpha = 0.96;
+      ctx.strokeStyle = EDGE_HL;
+      ctx.lineWidth = 1.6 / view.k;
+      for (const id of nb) {
+        const b = nodeById.get(id);
+        if (!b) continue;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
 
   for (const n of nodes) {
     const isSelected = n.id === selectedId;
@@ -604,6 +760,14 @@ function draw() {
     const prAdd = 1.2 + pr * 5.2;
     const kindScale = n.kind === "person" ? 1 : 0.86;
     const r = (isSelected ? 8.8 : isHover ? 8.2 : (baseR + prAdd) * kindScale) / view.k;
+    if (isSelected || isHover) {
+      ctx.globalAlpha = 0.22;
+      ctx.beginPath();
+      ctx.fillStyle = n.kind === "person" ? "rgba(66,133,244,0.95)" : "rgba(219,68,55,0.95)";
+      ctx.arc(n.x, n.y, r * 2.15, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = isSelected || isHover ? 1 : baseAlpha;
+    }
     ctx.beginPath();
     ctx.fillStyle = n.kind === "person" ? PERSON_COLOR : ORG_COLOR;
     ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
@@ -614,17 +778,39 @@ function draw() {
 
     if (view.k > 0.9 && (isSelected || isHover || (hl && isHL))) {
       ctx.globalAlpha = alpha * 0.9;
-      ctx.fillStyle = n.kind === "person" ? "rgba(66,133,244,0.95)" : "rgba(219,68,55,0.9)";
       ctx.font = `${11 / view.k}px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`;
       const prefix = n.kind === "person" ? "P · " : "O · ";
-      ctx.fillText(prefix + n.label, n.x + 9 / view.k, n.y + 4 / view.k);
+      const text = prefix + n.label;
+      const tx = n.x + 9 / view.k;
+      const ty = n.y + 4 / view.k;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      const labelColor = n.kind === "person" ? "rgba(66,133,244,0.95)" : "rgba(219,68,55,0.9)";
+      if (isHover) {
+        const m = ctx.measureText(text);
+        const padX = 6 / view.k;
+        const boxH = 16 / view.k;
+        const boxW = m.width + padX * 2;
+        const boxX = tx - padX;
+        const boxY = ty - boxH / 2;
+        ctx.globalAlpha = 0.96;
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        ctx.strokeStyle = labelColor;
+        ctx.lineWidth = 1.1 / view.k;
+        roundRectPath(ctx, boxX, boxY, boxW, boxH, 8 / view.k);
+        ctx.fill();
+        ctx.globalAlpha = 0.22;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+      ctx.globalAlpha = alpha * (isHover ? 1 : 0.9);
+      ctx.fillStyle = labelColor;
+      ctx.fillText(text, tx, ty);
     }
   }
 
   ctx.restore();
   ctx.globalAlpha = 1;
-
-  requestAnimationFrame(draw);
 }
 
 function focusOnNode(node) {
@@ -663,13 +849,16 @@ function onClick(ev) {
   if (!n) {
     selectedId = "";
     clearPopup();
+    if (hoverTip) hoverTip.hidden = true;
     setFocusQuery("");
+    scheduleDraw();
     return;
   }
   selectedId = n.id;
   setFocusQuery(n.id);
-  showPopup(n, ev.pageX, ev.pageY);
+  showPopup(n, ev.clientX, ev.clientY);
   if (layoutMode === "radial") setRadialLayout();
+  scheduleDraw();
 }
 
 function onDoubleClick(ev) {
@@ -677,12 +866,7 @@ function onDoubleClick(ev) {
 }
 
 function onMouseMove(ev) {
-  const rect = canvas.getBoundingClientRect();
-  const x = ev.clientX - rect.left;
-  const y = ev.clientY - rect.top;
-  const n = pickNodeAt(x, y);
-  hoveredId = n ? n.id : "";
-  canvas.style.cursor = n ? "pointer" : isPanning ? "grabbing" : "default";
+  schedulePointerUpdate(ev);
 }
 
 function onWheel(ev) {
@@ -697,6 +881,7 @@ function onWheel(ev) {
   const after = screenToWorld(sx, sy);
   view.x += (after.x - before.x) * view.k;
   view.y += (after.y - before.y) * view.k;
+  scheduleDraw();
 }
 
 function onMouseDown(ev) {
@@ -705,15 +890,18 @@ function onMouseDown(ev) {
   const y = ev.clientY - rect.top;
   const n = pickNodeAt(x, y);
   dragStart = { x: ev.clientX, y: ev.clientY, px: x, py: y, moved: false };
+  if (hoverTip) hoverTip.hidden = true;
   if (n) {
     dragNodeId = n.id;
     canvas.style.cursor = "grabbing";
+    scheduleDraw();
     return;
   }
   dragNodeId = "";
   isPanning = true;
   panStart = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y };
   canvas.style.cursor = "grabbing";
+  scheduleDraw();
 }
 
 function onMouseUp() {
@@ -722,6 +910,7 @@ function onMouseUp() {
   setTimeout(() => {
     dragStart.moved = false;
   }, 0);
+  scheduleDraw();
 }
 
 function onMouseDrag(ev) {
@@ -741,12 +930,14 @@ function onMouseDrag(ev) {
       n.vx = 0;
       n.vy = 0;
     }
+    scheduleDraw();
     return;
   }
 
   if (!isPanning) return;
   view.x = panStart.vx + dxPage;
   view.y = panStart.vy + dyPage;
+  scheduleDraw();
 }
 
 async function main() {
@@ -762,6 +953,7 @@ async function main() {
     setLayout();
   }, 120));
 
+  setOverlayVisible(true, "加载中…", "正在加载关系数据");
   const data = await fetchJson(DATA_PATH);
   nodes = (data.nodes ?? []).map((n) => ({ ...n, x: 0, y: 0 }));
   edges = (data.edges ?? []).map((e) => ({ ...e }));
@@ -769,6 +961,7 @@ async function main() {
   computePageRank();
   setLayout();
   applyFocusFromQuery();
+  if (layoutMode !== "force") setOverlayVisible(false);
 
   canvas.addEventListener("click", onClick);
   canvas.addEventListener("dblclick", onDoubleClick);
@@ -791,11 +984,29 @@ async function main() {
       setFocusQuery(hit.id);
       focusOnNode(hit);
       clearPopup();
+      if (hoverTip) hoverTip.hidden = true;
       if (layoutMode === "radial") setRadialLayout();
+      scheduleDraw();
     }, 160),
   );
 
-  requestAnimationFrame(draw);
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      selectedId = "";
+      clearPopup();
+      if (hoverTip) hoverTip.hidden = true;
+      setFocusQuery("");
+      scheduleDraw();
+    }
+    if (e.key === "/") {
+      const tag = String(document.activeElement?.tagName || "").toUpperCase();
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      e.preventDefault();
+      searchInput?.focus();
+    }
+  });
+
+  scheduleDraw();
 }
 
 function setGeoYearVisible(isVisible) {
@@ -829,6 +1040,7 @@ function setShowEdges(next) {
     toggleEdgesBtn.textContent = showEdges ? "关联线：开" : "关联线：关";
     toggleEdgesBtn.classList.toggle("secondary", !showEdges);
   }
+  scheduleDraw();
 }
 
 layoutRingBtn?.addEventListener("click", () => setLayoutMode("ring"));
@@ -841,6 +1053,7 @@ geoYearInput?.addEventListener("input", (ev) => {
   geoYear = parseInt(ev.target.value, 10);
   if (geoYearLabel) geoYearLabel.textContent = String(geoYear);
   if (layoutMode === "geo") setGeoLayout();
+  scheduleDraw();
 });
 
 toggleSidebarBtn?.addEventListener("click", () => {
