@@ -334,14 +334,15 @@ function stepForceAtlas2() {
     else settleFrames = 0;
     if (settleFrames >= 18) {
       stopForceAtlas2();
-      break;
+      return;
     }
     if (forceState.iter >= forceState.maxIter) {
       stopForceAtlas2();
-      break;
+      return;
     }
   }
 
+  if (!forceState.running) return;
   forceState.raf = requestAnimationFrame(stepForceAtlas2);
   scheduleDraw();
 }
