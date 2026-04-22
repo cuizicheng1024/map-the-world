@@ -95,9 +95,9 @@ a:hover {
 
 .controlsRow {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 input[type="text"] {
@@ -150,10 +150,20 @@ input[type="text"]:focus {
   padding: 9px 12px;
   cursor: pointer;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
 }
 
 .btn:active {
   transform: translateY(1px);
+}
+
+.btn:hover {
+  border-color: rgba(26, 115, 232, 0.38);
+  background: rgba(26, 115, 232, 0.16);
 }
 
 .btn.secondary {
@@ -162,11 +172,18 @@ input[type="text"]:focus {
   color: rgba(32, 33, 36, 0.92);
 }
 
+.btn.secondary:hover {
+  border-color: rgba(32, 33, 36, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+}
+
 .btn.icon {
-  min-width: 46px;
-  padding: 9px 10px;
-  font-size: 14px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 16px;
   letter-spacing: 0;
+  border-radius: 14px;
 }
 
 .map {

@@ -33,13 +33,13 @@ let view = { x: 0, y: 0, k: 1 };
 let isPanning = false;
 let panStart = { x: 0, y: 0, vx: 0, vy: 0 };
 let popupEl = null;
-let layoutMode = "ring";
+let layoutMode = "force";
 let geoYear = 2026;
 let movementByPersonYear = null;
 let forceState = { running: false, raf: 0, iter: 0, maxIter: 320 };
 let dragNodeId = "";
 let dragStart = { x: 0, y: 0, px: 0, py: 0, moved: false };
-let showEdges = true;
+let showEdges = false;
 
 function computePageRank({ damping = 0.85, iterations = 24 } = {}) {
   const ids = nodes.map((n) => n.id);
@@ -168,12 +168,13 @@ function stepForceAtlas2() {
   const cx = width / 2;
   const cy = height / 2;
 
-  const stepsPerFrame = 3;
+  const stepsPerFrame = 2;
   const scalingRatio = 18;
-  const gravity = 0.08;
+  const gravity = 0.085;
   const damping = 0.72;
   const maxStep = 3.2;
   const edgeWeight = 0.06;
+  const cellSize = 84;
 
   const deg = new Map();
   for (const n of nodes) deg.set(n.id, neighbors.get(n.id)?.size ?? 0);
@@ -182,25 +183,45 @@ function stepForceAtlas2() {
     const fx = new Map(nodes.map((n) => [n.id, 0]));
     const fy = new Map(nodes.map((n) => [n.id, 0]));
 
+    const grid = new Map();
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const gx = Math.floor(n.x / cellSize);
+      const gy = Math.floor(n.y / cellSize);
+      const k = `${gx},${gy}`;
+      if (!grid.has(k)) grid.set(k, []);
+      grid.get(k).push(i);
+    }
+
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       const ma = 1 + Math.log1p(deg.get(a.id) ?? 0);
-      for (let j = i + 1; j < nodes.length; j++) {
-        const b = nodes[j];
-        const mb = 1 + Math.log1p(deg.get(b.id) ?? 0);
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        let d2 = dx * dx + dy * dy;
-        if (d2 < 1e-4) {
-          dx = (Math.random() - 0.5) * 0.01;
-          dy = (Math.random() - 0.5) * 0.01;
-          d2 = dx * dx + dy * dy;
+      const ax = Math.floor(a.x / cellSize);
+      const ay = Math.floor(a.y / cellSize);
+      for (let dxCell = -1; dxCell <= 1; dxCell++) {
+        for (let dyCell = -1; dyCell <= 1; dyCell++) {
+          const k = `${ax + dxCell},${ay + dyCell}`;
+          const bucket = grid.get(k);
+          if (!bucket) continue;
+          for (const j of bucket) {
+            if (j <= i) continue;
+            const b = nodes[j];
+            const mb = 1 + Math.log1p(deg.get(b.id) ?? 0);
+            let dx = a.x - b.x;
+            let dy = a.y - b.y;
+            let d2 = dx * dx + dy * dy;
+            if (d2 < 1e-4) {
+              dx = (Math.random() - 0.5) * 0.01;
+              dy = (Math.random() - 0.5) * 0.01;
+              d2 = dx * dx + dy * dy;
+            }
+            const f = (scalingRatio * ma * mb) / d2;
+            fx.set(a.id, fx.get(a.id) + dx * f);
+            fy.set(a.id, fy.get(a.id) + dy * f);
+            fx.set(b.id, fx.get(b.id) - dx * f);
+            fy.set(b.id, fy.get(b.id) - dy * f);
+          }
         }
-        const f = (scalingRatio * ma * mb) / d2;
-        fx.set(a.id, fx.get(a.id) + dx * f);
-        fy.set(a.id, fy.get(a.id) + dy * f);
-        fx.set(b.id, fx.get(b.id) - dx * f);
-        fy.set(b.id, fy.get(b.id) - dy * f);
       }
     }
 
@@ -735,6 +756,7 @@ async function main() {
     if (geoYearLabel) geoYearLabel.textContent = String(geoYear);
   }
   setGeoYearVisible(layoutMode === "geo");
+  setShowEdges(showEdges);
   window.addEventListener("resize", debounce(() => {
     resize();
     setLayout();

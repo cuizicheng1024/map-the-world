@@ -14,7 +14,7 @@
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <h1 class="brand">AI 人才时空分布</h1>
+      <h1 class="brand">🌍 AI 人才时空分布</h1>
       <div class="hint">拖动时间轴，观察 AI 人才每年的空间分布。</div>
       <div class="field">
         <div class="valueRow">
@@ -38,13 +38,12 @@
         <input id="playSpeed" class="slider" type="range" min="0.5" max="6" step="0.5" value="0.5" />
         <div class="kv"><span>0.5</span><span>6</span></div>
         <div class="controlsRow">
-          <button id="playBtn" class="btn icon" title="播放">▶</button>
-          <button id="pauseBtn" class="btn secondary icon" title="暂停">⏸</button>
+          <button id="playToggle" class="btn icon" title="播放">▶</button>
         </div>
       </div>
       <div class="field">
         <div class="row" style="align-items:center;justify-content:space-between">
-          <label style="margin:0">迁移关系（Chord）</label>
+          <label style="margin:0">🧭 迁移关系（Chord）</label>
           <select id="chordLevel" class="select" style="width:140px">
             <option value="continent" selected>洲际</option>
             <option value="country">国家</option>
@@ -60,7 +59,7 @@
       </div>
       <div class="field">
         <div style="display:flex;gap:8px;">
-          <a class="btn secondary" href="./graph.html">关系网</a>
+          <a class="btn secondary" href="./graph.html">🕸️ 关系网</a>
         </div>
       </div>
     </aside>
@@ -73,10 +72,6 @@
           <span class="hudSep">·</span>
           <span class="hudLabel">速度</span>
           <span class="hudValue" id="hudSpeed">0.5 年/秒</span>
-        </div>
-        <div class="hudRow">
-          <span class="hudLabel">命中</span>
-          <span class="hudValue" id="hudHit">0 人</span>
         </div>
       </div>
       <div class="infoCard" id="infoCard" hidden>

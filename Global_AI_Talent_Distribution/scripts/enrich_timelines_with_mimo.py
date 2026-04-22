@@ -175,6 +175,9 @@ def prompt_for_current_locations(people: list[str], org_hints: dict[str, str]) -
 def to_feature(person_id: str, seg: dict, year: int) -> dict:
     lat = float(seg["lat"])
     lon = float(seg["lon"])
+    evidence = seg.get("evidence")
+    if not isinstance(evidence, list):
+        evidence = None
     return {
         "type": "Feature",
         "properties": {
@@ -188,6 +191,9 @@ def to_feature(person_id: str, seg: dict, year: int) -> dict:
             "year": year,
             "source": seg.get("source") or "mimo",
             "confidence": seg.get("confidence"),
+            "evidence": evidence,
+            "geocode_source": seg.get("geocode_source"),
+            "city_id": seg.get("city_id"),
             "lat": lat,
             "lng": lon,
         },
@@ -326,7 +332,7 @@ def fill_gaps(segs: list[dict], year_min: int, year_max: int) -> list[dict]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=os.environ.get("MIMO_MODEL", "mimo-v2-flash"))
-    ap.add_argument("--year-min", type=int, default=2000)
+    ap.add_argument("--year-min", type=int, default=1912)
     ap.add_argument("--year-max", type=int, default=2026)
     ap.add_argument("--target-people", type=int, default=110)
     ap.add_argument("--batch-size", type=int, default=18)
@@ -587,10 +593,57 @@ def main() -> None:
                     key = (country, round(float(lat), 3), round(float(lng), 3), city)
                     canon = canonical_by_key.get(key)
                     if canon and canon != city:
+                        if not str(p.get("city_variant") or "").strip():
+                            p["city_variant"] = city
                         p["city"] = canon
                         merged_city += 1
+
+            city_index = {}
+            stats = relations.get("stats") if isinstance(relations.get("stats"), dict) else {}
+            country_continent_map = stats.get("country_continent_map") if isinstance(stats.get("country_continent_map"), dict) else {}
+            for ft in movements.get("features", []) or []:
+                p = ft.get("properties", {}) or {}
+                city = str(p.get("city") or "").strip()
+                city_variant = str(p.get("city_variant") or "").strip()
+                country = str(p.get("country") or "").strip().upper()
+                lat = p.get("lat")
+                lng = p.get("lng")
+                if not city or not country or lat is None or lng is None:
+                    continue
+                city_id = f"{country}:{round(float(lat), 4)},{round(float(lng), 4)}"
+                p["city_id"] = city_id
+                key = normalize_key(country)
+                continent = str(country_continent_map.get(key) or "").strip()
+                item = city_index.get(city_id)
+                if item is None:
+                    item = {
+                        "city_id": city_id,
+                        "country": country,
+                        "continent": continent,
+                        "lat": float(lat),
+                        "lng": float(lng),
+                        "names": {"en": [], "zh": [], "other": []},
+                        "canonical": city,
+                        "count": 0,
+                    }
+                    city_index[city_id] = item
+                item["count"] = int(item.get("count", 0)) + 1
+                for name in [city, city_variant]:
+                    if not name:
+                        continue
+                    bucket = "zh" if re.search(r"[\u4e00-\u9fff]", name) else "en" if re.search(r"[A-Za-z]", name) else "other"
+                    lst = item["names"].get(bucket) or []
+                    if name not in lst:
+                        lst.append(name)
+                    item["names"][bucket] = lst[:16]
+            ranked = sorted(city_index.values(), key=lambda x: (-int(x.get("count", 0)), str(x.get("canonical") or "")))
+            relations.setdefault("stats", {})["city_index"] = ranked
+            relations["stats"]["city_index_updated_at"] = datetime.now(timezone.utc).isoformat()
+
             with open(args.movements, "w", encoding="utf-8") as f:
                 json.dump(movements, f, ensure_ascii=False, indent=2)
+            with open(args.relations, "w", encoding="utf-8") as f:
+                json.dump(relations, f, ensure_ascii=False, indent=2)
         try:
             geocode_path.parent.mkdir(parents=True, exist_ok=True)
             geocode_path.write_text(json.dumps(geocode_cache, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -740,6 +793,18 @@ def main() -> None:
                 org_id = org_name
             source = "mimo_current_city"
             confidence = 0.55
+            evidence = None
+            if isinstance(fc, dict):
+                ev = fc.get("evidence")
+                if isinstance(ev, list):
+                    evidence = [str(x).strip() for x in ev if str(x).strip()][:6]
+                c2 = fc.get("confidence")
+                try:
+                    c2 = float(c2) if c2 is not None else None
+                except Exception:
+                    c2 = None
+                if c2 is not None:
+                    confidence = c2
             if city:
                 lat, lon, city2, country2 = geocode_city(city, country)
                 if lat is None or lon is None or not city2 or not country2:
@@ -769,6 +834,7 @@ def main() -> None:
                 "lon": lon,
                 "source": source,
                 "confidence": confidence,
+                "evidence": evidence,
                 "generated_at": now,
                 "person_name": str(n.get("label") or pid).strip() or pid,
             }

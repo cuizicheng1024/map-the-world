@@ -65,8 +65,7 @@ let arcUseGradient = true;
 
 const container = document.getElementById("cesiumContainer");
 const yearSlider = document.getElementById("yearSlider");
-const playBtn = document.getElementById("playBtn");
-const pauseBtn = document.getElementById("pauseBtn");
+const playToggle = document.getElementById("playToggle");
 const speedSlider = document.getElementById("playSpeed");
 const filterInput = document.getElementById("filterInput");
 const yearValue = document.getElementById("yearValue");
@@ -75,13 +74,11 @@ const playState = document.getElementById("playState");
 const hudYear = document.getElementById("hudYear");
 const hudSpeed = document.getElementById("hudSpeed");
 const hudState = document.getElementById("hudState");
-const hudHit = document.getElementById("hudHit");
 const infoCard = document.getElementById("infoCard");
 const infoTitle = document.getElementById("infoTitle");
 const infoSub = document.getElementById("infoSub");
 const infoList = document.getElementById("infoList");
 const infoClose = document.getElementById("infoClose");
-const visualModeSelect = document.getElementById("visualMode");
 const boxplotCanvas = document.getElementById("boxplotCanvas");
 const chordCanvas = document.getElementById("chordCanvas");
 const chordLevelSelect = document.getElementById("chordLevel");
@@ -95,6 +92,7 @@ const state = {
 
 let cityAliasMap = new Map();
 let countryContinentMap = new Map();
+let cityIndexById = new Map();
 let admin1Lines = null;
 let borderLevel = "country";
 
@@ -104,6 +102,7 @@ async function loadCityAliases() {
     const data = await res.json();
     const map = data?.stats?.city_alias_map || {};
     const cc = data?.stats?.country_continent_map || {};
+    const cityIndex = Array.isArray(data?.stats?.city_index) ? data.stats.city_index : [];
     const m = new Map();
     for (const [k, v] of Object.entries(map)) {
       if (!k || !v) continue;
@@ -116,9 +115,18 @@ async function loadCityAliases() {
       cm.set(String(k), String(v));
     }
     countryContinentMap = cm;
+    const ci = new Map();
+    for (const it of cityIndex) {
+      if (!it || typeof it !== "object") continue;
+      const id = String(it.city_id || "").trim();
+      if (!id) continue;
+      ci.set(id, it);
+    }
+    cityIndexById = ci;
   } catch {
     cityAliasMap = new Map();
     countryContinentMap = new Map();
+    cityIndexById = new Map();
   }
 }
 
@@ -191,6 +199,8 @@ async function loadMovements() {
       person_name: String(p.person_name ?? ""),
       org_name: String(p.org_name ?? ""),
       city: String(p.city ?? ""),
+      city_variant: String(p.city_variant ?? ""),
+      city_id: String(p.city_id ?? ""),
       country: String(p.country ?? p.country_name ?? ""),
     });
   }
@@ -201,7 +211,15 @@ async function loadMovements() {
     if (!state.byYear.has(m.year)) state.byYear.set(m.year, []);
     state.byYear.get(m.year).push(m);
     if (!state.byPerson.has(m.person_id)) state.byPerson.set(m.person_id, new Map());
-    state.byPerson.get(m.person_id).set(m.year, { lon: m.lon, lat: m.lat, city: m.city, country: m.country, org_name: m.org_name });
+    state.byPerson.get(m.person_id).set(m.year, {
+      lon: m.lon,
+      lat: m.lat,
+      city: m.city,
+      city_variant: m.city_variant,
+      city_id: m.city_id,
+      country: m.country,
+      org_name: m.org_name,
+    });
   }
 }
 
@@ -399,7 +417,6 @@ function updateHud(peopleCount) {
   if (hudYear) hudYear.textContent = String(currentYear);
   if (hudSpeed) hudSpeed.textContent = `${playSpeed} 年/秒`;
   if (hudState) hudState.textContent = playTimer ? "播放中" : "已暂停";
-  if (hudHit) hudHit.textContent = `${peopleCount} 人`;
 }
 
 function closeInfoCard() {
@@ -634,10 +651,16 @@ function drawChordFromCache(cache, hover) {
     ctx.fillText(label, x, y);
   }
 
-  for (const l of links) {
+  let linksToDraw = [];
+  if (hover && hover.type === "link") {
+    linksToDraw = links.filter((l) => l.k === hover.k);
+  } else if (hover && hover.type === "arc") {
+    linksToDraw = links.filter((l) => l.i === hover.i || l.j === hover.i);
+  }
+  for (const l of linksToDraw) {
     const isHover = hover && hover.type === "link" && hover.k === l.k;
     const alpha = 0.22 + 0.55 * (l.v / Math.max(1, maxLink));
-    ctx.strokeStyle = rgbaWithAlpha(colors[l.i], isHover ? 0.92 : hover ? 0.08 : alpha);
+    ctx.strokeStyle = rgbaWithAlpha(colors[l.i], isHover ? 0.92 : alpha);
     ctx.lineWidth = isHover ? Math.min(12, l.w + 2.4) : Math.min(10, l.w);
     ctx.beginPath();
     ctx.moveTo(l.x1, l.y1);
@@ -836,6 +859,18 @@ function palette(n) {
   return out;
 }
 
+function displayCityLabel(cityId, fallbackCity) {
+  const id = String(cityId || "").trim();
+  if (id && cityIndexById && cityIndexById.has(id)) {
+    const it = cityIndexById.get(id);
+    const en = Array.isArray(it?.names?.en) ? String(it.names.en[0] || "").trim() : "";
+    const zh = Array.isArray(it?.names?.zh) ? String(it.names.zh[0] || "").trim() : "";
+    const canonical = String(it?.canonical || "").trim();
+    return en || canonical || zh || String(fallbackCity || "").trim() || id;
+  }
+  return String(fallbackCity || "").trim() || id;
+}
+
 function renderChord(visiblePersonIds, year, level) {
   if (!chordCanvas) return;
   const ctx = clearCanvas(chordCanvas);
@@ -871,8 +906,8 @@ function renderChord(visiblePersonIds, year, level) {
       a = String(prev.country || "").trim();
       b = String(cur.country || "").trim();
     } else {
-      a = canonicalCityLabel(prev.city);
-      b = canonicalCityLabel(cur.city);
+      a = String(prev.city_id || "").trim() || canonicalCityLabel(prev.city);
+      b = String(cur.city_id || "").trim() || canonicalCityLabel(cur.city);
     }
     add(a, b);
   }
@@ -883,12 +918,12 @@ function renderChord(visiblePersonIds, year, level) {
     nodeTotalsMap.set(a, (nodeTotalsMap.get(a) || 0) + v);
     if (a !== b) nodeTotalsMap.set(b, (nodeTotalsMap.get(b) || 0) + v);
   }
-  let nodes = [...nodeTotalsMap.entries()]
+  let nodeKeys = [...nodeTotalsMap.entries()]
     .sort((x, y) => y[1] - x[1])
     .slice(0, topN)
     .map(([name]) => name);
 
-  if (!nodes.length) {
+  if (!nodeKeys.length) {
     ctx.font = "12px ui-sans-serif, system-ui, -apple-system";
     ctx.fillStyle = "rgba(32,33,36,0.7)";
     ctx.fillText("无迁移记录", 10, 18);
@@ -897,10 +932,14 @@ function renderChord(visiblePersonIds, year, level) {
     updateChordTooltip({ clientX: 0, clientY: 0 }, null);
     return;
   }
-  const nodeSet = new Set(nodes);
+  const nodeSet = new Set(nodeKeys);
+  const nodes = nodeKeys.map((k) => {
+    if (level !== "city") return k;
+    return displayCityLabel(k, k);
+  });
 
   const matrix = Array.from({ length: nodes.length }, () => new Array(nodes.length).fill(0));
-  const idx = new Map(nodes.map((n, i) => [n, i]));
+  const idx = new Map(nodeKeys.map((k, i) => [k, i]));
 
   for (const [k, v] of flow.entries()) {
     let [a, b] = k.split("→");
@@ -997,8 +1036,9 @@ function renderCharts(visiblePersonIds, year) {
     const visible = yearList.filter((m) => matchFocusOrQuery(m, focus, q));
     const byKey = new Map();
     for (const r of visible) {
-      const raw = String(r.city || "").trim() || "(unknown)";
-      const key = raw === "(unknown)" ? "(unknown)" : normalizeCityKey(raw) || raw;
+      const cityId = String(r.city_id || "").trim();
+      const raw = String(r.city || "").trim() || String(r.city_variant || "").trim() || "(unknown)";
+      const key = cityId || (raw === "(unknown)" ? "(unknown)" : normalizeCityKey(raw) || raw);
       if (!byKey.has(key)) byKey.set(key, { total: 0, labels: new Map() });
       const g = byKey.get(key);
       g.total += 1;
@@ -1014,7 +1054,8 @@ function renderCharts(visiblePersonIds, year) {
             bestLabel = label;
           }
         }
-        return { key, city: bestLabel || key, count: g.total, variants: g.labels.size };
+        const city = key.includes(":") ? displayCityLabel(key, bestLabel || key) : bestLabel || key;
+        return { key, city, count: g.total, variants: g.labels.size };
       })
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
@@ -1081,10 +1122,12 @@ function renderCharts(visiblePersonIds, year) {
 
 function play() {
   if (playTimer) return;
-  playBtn.style.display = "none";
-  pauseBtn.style.display = "inline-block";
   if (playState) playState.textContent = "播放中";
   if (hudState) hudState.textContent = "播放中";
+  if (playToggle) {
+    playToggle.textContent = "⏸";
+    playToggle.title = "暂停";
+  }
   playTimer = setInterval(() => {
     let y = currentYear + 1;
     if (y > 2026) y = 1912;
@@ -1096,10 +1139,12 @@ function pause() {
   if (!playTimer) return;
   clearInterval(playTimer);
   playTimer = null;
-  playBtn.style.display = "inline-block";
-  pauseBtn.style.display = "none";
   if (playState) playState.textContent = "已暂停";
   if (hudState) hudState.textContent = "已暂停";
+  if (playToggle) {
+    playToggle.textContent = "▶";
+    playToggle.title = "播放";
+  }
 }
 
 function resize() {
@@ -1241,7 +1286,7 @@ async function init() {
   if (hudSpeed) hudSpeed.textContent = `${playSpeed} 年/秒`;
   if (hudState) hudState.textContent = "已暂停";
   closeInfoCard();
-  applyVisualMode(visualMode);
+applyVisualMode("balanced");
   applyData();
   if (chordCanvas) {
     chordCanvas.addEventListener("mousemove", (ev) => {
@@ -1295,9 +1340,14 @@ if (chordLevelSelect) {
     applyData();
   });
 }
-playBtn.addEventListener("click", play);
-pauseBtn.addEventListener("click", pause);
-pauseBtn.style.display = "none";
+if (playToggle) {
+  playToggle.addEventListener("click", () => {
+    if (playTimer) pause();
+    else play();
+  });
+  playToggle.textContent = "▶";
+  playToggle.title = "播放";
+}
 
 window.addEventListener("keydown", (e) => {
   if (e.code !== "Space") return;
@@ -1424,8 +1474,6 @@ function handlePointHover(d) {
 }
 
 if (infoClose) infoClose.addEventListener("click", closeInfoCard);
-if (visualModeSelect) {
-  visualModeSelect.addEventListener("change", (e) => applyVisualMode(String(e.target.value || "balanced")));
-}
+if (visualModeSelect) visualModeSelect.hidden = true;
 
 init();

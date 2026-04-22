@@ -1,7 +1,7 @@
 import { clamp, debounce, fetchJson, getQueryParam, groupBy, setQueryParam, sortBy } from "./common.js";
 
 const DATA_PATH = "../data/movements.geojson";
-const YEAR_RANGE = { min: 2000, max: 2026 };
+const YEAR_RANGE = { min: 1912, max: 2026 };
 const DEFAULT_VIEW = { center: [30, 120], zoom: 3 };
 const COLOR_CYAN = "rgba(0, 220, 255, 0.95)";
 const COLOR_CYAN_SOFT = "rgba(0, 220, 255, 0.55)";

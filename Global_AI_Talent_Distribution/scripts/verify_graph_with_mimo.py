@@ -346,6 +346,142 @@ def cleanup_noise_nodes(relations: dict) -> dict:
     return {"removed_nodes": len(nodes) - len(kept_nodes), "removed_edges": len(edges) - len(kept_edges)}
 
 
+def cleanup_bad_org_nodes(relations: dict, movements: dict) -> dict:
+    nodes = relations.get("nodes", []) or []
+    edges = relations.get("edges", []) or []
+
+    city_names = set()
+    for ft in movements.get("features", []) or []:
+        p = ft.get("properties", {}) or {}
+        city = str(p.get("city") or "").strip()
+        if city:
+            city_names.add(city)
+        city2 = str(p.get("city_variant") or "").strip()
+        if city2:
+            city_names.add(city2)
+
+    generic = {
+        "university",
+        "company",
+        "researchinstitute",
+        "research institute",
+        "institute",
+        "universitycompanyindependentresearcher",
+        "university/company/independent researcher",
+        "gymnasium",
+        "school",
+    }
+    generic_norm = {normalize_key(x) for x in generic}
+
+    remove_ids = set()
+    for n in nodes:
+        if str(n.get("kind") or "").strip() != "org":
+            continue
+        nid = str(n.get("id") or "").strip()
+        if not nid:
+            continue
+        if nid in city_names:
+            remove_ids.add(nid)
+            continue
+        if normalize_key(nid) in generic_norm:
+            remove_ids.add(nid)
+            continue
+
+    if not remove_ids:
+        return {"removed_nodes": 0, "removed_edges": 0}
+
+    kept_nodes = [n for n in nodes if str(n.get("id") or "").strip() not in remove_ids]
+    kept_edges = [e for e in edges if e.get("from") not in remove_ids and e.get("to") not in remove_ids]
+    relations["nodes"] = kept_nodes
+    relations["edges"] = kept_edges
+    return {"removed_nodes": len(nodes) - len(kept_nodes), "removed_edges": len(edges) - len(kept_edges)}
+
+
+def check_movements_consistency(relations: dict, movements: dict, year_min: int, year_max: int) -> dict:
+    features = movements.get("features", []) or []
+    y0 = int(year_min)
+    y1 = int(year_max)
+    if y1 < y0:
+        y0, y1 = y1, y0
+
+    bad = {
+        "missing_person_id": 0,
+        "bad_year": 0,
+        "bad_country": 0,
+        "missing_city": 0,
+        "missing_city_id": 0,
+        "missing_geocode_source": 0,
+        "missing_coords": 0,
+        "coord_mismatch": 0,
+    }
+    examples = {k: [] for k in bad.keys()}
+
+    def add_example(k: str, ft: dict) -> None:
+        if len(examples[k]) >= 10:
+            return
+        p = ft.get("properties", {}) or {}
+        examples[k].append(
+            {
+                "person_id": p.get("person_id"),
+                "year": p.get("year"),
+                "city": p.get("city"),
+                "country": p.get("country"),
+                "city_id": p.get("city_id"),
+                "geocode_source": p.get("geocode_source"),
+            }
+        )
+
+    for ft in features:
+        p = ft.get("properties", {}) or {}
+        pid = str(p.get("person_id") or "").strip()
+        if not pid:
+            bad["missing_person_id"] += 1
+            add_example("missing_person_id", ft)
+        y = p.get("year")
+        try:
+            y = int(y)
+        except Exception:
+            bad["bad_year"] += 1
+            add_example("bad_year", ft)
+            y = None
+        if y is not None and (y < y0 or y > y1):
+            bad["bad_year"] += 1
+            add_example("bad_year", ft)
+        country = str(p.get("country") or "").strip()
+        if country and not re.fullmatch(r"[A-Z]{2}", country):
+            bad["bad_country"] += 1
+            add_example("bad_country", ft)
+        city = str(p.get("city") or "").strip()
+        if not city:
+            bad["missing_city"] += 1
+            add_example("missing_city", ft)
+        if city and not str(p.get("city_id") or "").strip():
+            bad["missing_city_id"] += 1
+            add_example("missing_city_id", ft)
+        if city and not str(p.get("geocode_source") or "").strip():
+            bad["missing_geocode_source"] += 1
+            add_example("missing_geocode_source", ft)
+        lat = p.get("lat")
+        lng = p.get("lng")
+        geom = ft.get("geometry", {}) or {}
+        coords = geom.get("coordinates")
+        if lat is None or lng is None or not (isinstance(coords, list) and len(coords) == 2):
+            bad["missing_coords"] += 1
+            add_example("missing_coords", ft)
+        else:
+            try:
+                lon2 = float(coords[0])
+                lat2 = float(coords[1])
+                if abs(float(lat) - lat2) > 1e-6 or abs(float(lng) - lon2) > 1e-6:
+                    bad["coord_mismatch"] += 1
+                    add_example("coord_mismatch", ft)
+            except Exception:
+                bad["coord_mismatch"] += 1
+                add_example("coord_mismatch", ft)
+
+    return {"features": len(features), "bad": bad, "examples": examples}
+
+
 def normalize_key(s: str) -> str:
     t = str(s or "").strip().lower()
     t = re.sub(r"\s+", "", t)
@@ -1472,7 +1608,7 @@ def continent_of_country(country: str, country_continent_map=None) -> str:
     return m.get(key, "")
 
 
-def write_year_location_counts(relations: dict, movements: dict) -> dict:
+def write_year_location_counts(relations: dict, movements: dict, year_min: int, year_max: int) -> dict:
     by_person: dict[str, dict[int, dict]] = defaultdict(dict)
     years_all = set()
     cc_map = relations.get("stats", {}).get("country_continent_map") if isinstance(relations.get("stats", {}), dict) else {}
@@ -1489,9 +1625,10 @@ def write_year_location_counts(relations: dict, movements: dict) -> dict:
             continue
         years_all.add(y)
         city = str(p.get("city") or "").strip()
+        city_id = str(p.get("city_id") or "").strip()
         country = str(p.get("country") or p.get("country_name") or "").strip()
         cont = continent_of_country(country, cc_map)
-        by_person[pid][y] = {"continent": cont, "country": country, "city": city}
+        by_person[pid][y] = {"continent": cont, "country": country, "city": city, "city_id": city_id}
 
     filled_rows = []
     for pid, mp in by_person.items():
@@ -1504,25 +1641,34 @@ def write_year_location_counts(relations: dict, movements: dict) -> dict:
                 cur = mp[y]
             filled_rows.append((y, pid, cur))
 
-    out: dict[str, dict] = {}
+    y0 = int(year_min)
+    y1 = int(year_max)
+    if y1 < y0:
+        y0, y1 = y1, y0
+    out: dict[str, dict] = {str(y): {"continent": Counter(), "country": Counter(), "city": Counter(), "city_id": Counter(), "people": set()} for y in range(y0, y1 + 1)}
     for y, pid, rec in filled_rows:
+        if y < y0 or y > y1:
+            continue
         ys = str(y)
-        out.setdefault(ys, {"continent": Counter(), "country": Counter(), "city": Counter(), "people": set()})
         out[ys]["people"].add(pid)
         out[ys]["continent"][rec["continent"]] += 1
         out[ys]["country"][rec["country"]] += 1
         out[ys]["city"][rec["city"]] += 1
+        if rec.get("city_id"):
+            out[ys]["city_id"][rec["city_id"]] += 1
 
     cooked = {}
     for y, v in out.items():
         cont = {k: c for k, c in v["continent"].most_common() if k}
         ctry = {k: c for k, c in v["country"].most_common(80) if k}
         city = {k: c for k, c in v["city"].most_common(120) if k}
+        city_id = {k: c for k, c in v["city_id"].most_common(160) if k}
         cooked[y] = {
             "people": len(v["people"]),
             "continent": cont,
             "country": ctry,
             "city": city,
+            "city_id": city_id,
         }
 
     relations.setdefault("stats", {})["year_location_counts"] = cooked
@@ -1531,7 +1677,7 @@ def write_year_location_counts(relations: dict, movements: dict) -> dict:
     return {"years": [years[0], years[-1]] if years else [], "filled_records": len(filled_rows), "people": len(by_person)}
 
 
-def write_person_year_locations(relations: dict, movements: dict) -> dict:
+def write_person_year_locations(relations: dict, movements: dict, year_min: int, year_max: int) -> dict:
     by_person: dict[str, dict[int, dict]] = defaultdict(dict)
     cc_map = relations.get("stats", {}).get("country_continent_map") if isinstance(relations.get("stats", {}), dict) else {}
     if not isinstance(cc_map, dict):
@@ -1547,19 +1693,26 @@ def write_person_year_locations(relations: dict, movements: dict) -> dict:
         except Exception:
             continue
         city = str(p.get("city") or "").strip()
+        city_id = str(p.get("city_id") or "").strip()
         country = str(p.get("country") or p.get("country_name") or "").strip()
         cont = continent_of_country(country, cc_map)
-        by_person[pid][y] = {"continent": cont, "country": country, "city": city}
+        by_person[pid][y] = {"continent": cont, "country": country, "city": city, "city_id": city_id}
 
     out = {}
     filled = 0
+    y0 = int(year_min)
+    y1 = int(year_max)
+    if y1 < y0:
+        y0, y1 = y1, y0
     for pid, mp in by_person.items():
         ys = sorted(mp.keys())
         if not ys:
             continue
         cur = mp[ys[0]]
         per = {}
-        for y in range(ys[0], ys[-1] + 1):
+        start_y = max(y0, ys[0])
+        end_y = min(y1, ys[-1])
+        for y in range(start_y, end_y + 1):
             if y in mp:
                 cur = mp[y]
             per[str(y)] = cur
@@ -1603,6 +1756,10 @@ def main() -> None:
     ap.add_argument("--align-countries-max", type=int, default=260)
     ap.add_argument("--write-year-location-counts", action="store_true")
     ap.add_argument("--write-person-year-locations", action="store_true")
+    ap.add_argument("--year-min", type=int, default=1912)
+    ap.add_argument("--year-max", type=int, default=2026)
+    ap.add_argument("--cleanup-bad-orgs", action="store_true")
+    ap.add_argument("--check-movements", action="store_true")
     ap.add_argument("--repair-l0", action="store_true")
     args = ap.parse_args()
 
@@ -1674,6 +1831,16 @@ def main() -> None:
         cleanup_report = cleanup_noise_nodes(relations)
         if cleanup_report.get("removed_nodes") or cleanup_report.get("removed_edges"):
             print(f"[cleanup] removed_nodes={cleanup_report.get('removed_nodes', 0)} removed_edges={cleanup_report.get('removed_edges', 0)}", flush=True)
+
+    bad_org_report = {}
+    if args.cleanup_bad_orgs:
+        movements = load_json(args.movements)
+        bad_org_report = cleanup_bad_org_nodes(relations, movements)
+        if bad_org_report.get("removed_nodes") or bad_org_report.get("removed_edges"):
+            print(
+                f"[cleanup_bad_orgs] removed_nodes={bad_org_report.get('removed_nodes', 0)} removed_edges={bad_org_report.get('removed_edges', 0)}",
+                flush=True,
+            )
 
     sanitize_report = {}
     if args.sanitize_summaries:
@@ -1759,15 +1926,20 @@ def main() -> None:
             relations, movements, args.model, args.align_countries_max, args.concurrency
         )
 
+    movements_check_report = {}
+    if args.check_movements:
+        movements = load_json(args.movements)
+        movements_check_report = check_movements_consistency(relations, movements, args.year_min, args.year_max)
+
     year_loc_report = {}
     if args.write_year_location_counts:
         movements = load_json(args.movements)
-        year_loc_report = write_year_location_counts(relations, movements)
+        year_loc_report = write_year_location_counts(relations, movements, args.year_min, args.year_max)
 
     person_year_report = {}
     if args.write_person_year_locations:
         movements = load_json(args.movements)
-        person_year_report = write_person_year_locations(relations, movements)
+        person_year_report = write_person_year_locations(relations, movements, args.year_min, args.year_max)
 
     save_json(args.relations, relations)
     out = {
@@ -1784,8 +1956,10 @@ def main() -> None:
         "city_duplicates": city_dups_report,
         "city_align": city_align_report,
         "country_continent_align": country_cont_report,
+        "movements_consistency": movements_check_report,
         "year_location_counts": year_loc_report,
         "person_year_locations": person_year_report,
+        "cleanup_bad_orgs": bad_org_report,
     }
     print(json.dumps(out, ensure_ascii=False, indent=2))
 
