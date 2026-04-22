@@ -57,6 +57,7 @@ let forceLastTickAt = 0;
 let overlayMode = "";
 let forceWorker = null;
 let forceWorkerRunId = 0;
+let forceWatchdogTimer = 0;
 
 function scheduleDraw() {
   if (drawRaf) return;
@@ -309,6 +310,7 @@ function startForceWorker() {
     const m = ev.data || {};
     if (m.runId !== runId) return;
     if (m.type === "progress" && m.positions) {
+      forceLastTickAt = performance.now();
       const arr = new Float32Array(m.positions);
       const nn = Math.min(nodes.length, Math.floor(arr.length / 2));
       for (let i = 0; i < nn; i++) {
@@ -468,12 +470,26 @@ function startForceAtlas2() {
   forceLastTickAt = forceStartedAt;
   setOverlayMode("layout");
   setOverlayVisible(true, "布局计算中…", "正在计算力导向布局");
+  if (forceWatchdogTimer) window.clearTimeout(forceWatchdogTimer);
+  forceWatchdogTimer = window.setTimeout(() => {
+    if (!forceState.running) return;
+    stopForceAtlas2();
+  }, 15000);
+
+  let startedWorker = false;
   if (typeof Worker !== "undefined" && sim && sim.edgeFrom && sim.edgeTo) {
-    startForceWorker();
-    scheduleDraw();
-    return;
+    try {
+      startForceWorker();
+      startedWorker = true;
+    } catch (e) {
+      console.error(e);
+      stopForceWorker();
+      startedWorker = false;
+    }
   }
-  forceState.raf = requestAnimationFrame(stepForceAtlas2);
+  if (!startedWorker) {
+    forceState.raf = requestAnimationFrame(stepForceAtlas2);
+  }
   scheduleDraw();
 }
 
@@ -483,6 +499,8 @@ function stopForceAtlas2() {
   if (forceState.raf) cancelAnimationFrame(forceState.raf);
   forceState.raf = 0;
   stopForceWorker();
+  if (forceWatchdogTimer) window.clearTimeout(forceWatchdogTimer);
+  forceWatchdogTimer = 0;
   setOverlayMode("");
   setOverlayVisible(false);
   scheduleDraw();
